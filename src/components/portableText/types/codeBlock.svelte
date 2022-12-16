@@ -8,7 +8,7 @@
     hljs.registerLanguage('css', css);
     hljs.registerLanguage('html', html);
 
-    export let portableText
+    export let portableText = []
 
     let code = hljs.highlight(portableText.value.code,
         {language: portableText.value.language}).value
