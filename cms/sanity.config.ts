@@ -1,13 +1,13 @@
 
-// General
+// TODO: General
 import { defineConfig } from 'sanity'
 
-// Plugins
+// TODO: Plugins
 import { codeInput } from "@sanity/code-input";
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 
-import { schemaTypes } from './schemas'
+import { blogData } from './schemas'
 
 export default defineConfig({
   name: 'default',
@@ -19,9 +19,9 @@ export default defineConfig({
   plugins: [
     codeInput(),
     deskTool(),
-    visionTool()],
-
+    visionTool()
+  ],
   schema: {
-    types: schemaTypes,
+    types: blogData,
   },
 })

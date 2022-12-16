@@ -1,6 +1,20 @@
 import blockContent from './blockContent'
-import category from './category'
+
+// TODO: Page Types
+
 import post from './post'
 import author from './author'
 
-export const schemaTypes = [post, author, category, blockContent]
+// TODO: Category Types
+
+import category from './category'
+import role from './role'
+
+export const
+    blogData = [
+        post,
+        author,
+        role,
+        category,
+        blockContent
+    ]
