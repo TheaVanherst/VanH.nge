@@ -5,14 +5,15 @@ export default defineType({
   title: 'Author',
   type: 'document',
   fields: [
+    // TODO: User Data
     defineField({
-      name: 'handle',
-      title: 'Handle',
+      name: 'fullName',
+      title: 'Full Name',
       type: 'string',
     }),
     defineField({
-      name: 'username',
-      title: 'Full Name',
+      name: 'handle',
+      title: 'Handle',
       type: 'string',
     }),
     defineField({
@@ -20,9 +21,11 @@ export default defineType({
       title: 'Twitter URL',
       type: 'string',
     }),
+
+    // TODO: Profile Data
     defineField({
-      name: 'image',
-      title: 'Image',
+      name: 'userPortrait',
+      title: 'User Portrait',
       type: 'image',
       options: {
         hotspot: true,
@@ -36,24 +39,27 @@ export default defineType({
         hotspot: true,
       },
     }),
+
+    // TODO: About
+    defineField({
+      name: 'role',
+      title: 'roles',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'role'}}],
+    }),
     defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      type: 'blockContent',
     }),
   ],
+
+  // TODO: Preview Render
   preview: {
     select: {
-      title: 'name',
-      media: 'image',
+      title: 'fullName',
+      subtitle: 'bio',
+      media: 'userPortrait',
     },
   },
 })

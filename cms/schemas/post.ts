@@ -5,9 +5,6 @@ export default defineType({
   title: 'Post',
   type: 'document',
   fields: [
-
-    // TODO: POST ESTABLISHING
-
     defineField({
       name: 'title',
       title: 'Title',
@@ -28,8 +25,7 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
 
-    // TODO: HEADER IMAGE
-
+    // TODO: Header Image
     defineField({
       name: 'mainImage',
       title: 'Main image',
@@ -39,8 +35,7 @@ export default defineType({
       },
     }),
 
-    // TODO: AUTHOR / EDITOR DATA
-
+    // TODO: Author / Editor Data
     defineField({
       name: 'publishedAt',
       title: 'Published at',
@@ -64,8 +59,7 @@ export default defineType({
       to: {type: 'author'},
     }),
 
-    // TODO: POST DATA
-
+    // TODO: Post Content
     defineField({
       name: 'body',
       title: 'Body',
@@ -73,7 +67,7 @@ export default defineType({
     }),
   ],
 
-
+  // TODO: Preview Render
   preview: {
     select: {
       title: 'title',
