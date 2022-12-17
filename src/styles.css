@@ -1,3 +1,4 @@
+
 :root {
 	--baseColour: #3aecb4;
 	--highColour: #8364fd;
@@ -22,6 +23,12 @@ body {
 	margin: 0;
 	background-image:	url("/background.png");
 	font-family: 'Nunito Sans', sans-serif;
+}
+
+p {
+	line-height:    100%;
+	height: 100%;
+	margin: 0;
 }
 
 h1, h2, h3, h4 {
@@ -66,35 +73,6 @@ blockquote:after {
 	float: 		right;
 	line-height: 	0.05em;
 	margin: 	0.80em 0.00em -0.15em 0.05em;}
-
-code {
-	display: block;
-	width: auto;
-	white-space: pre;
-	background-color: #090909;
-	padding: 5px;
-	margin: 0 10px 10px 10px;
-	color: white;
-	border: 1px solid #1a111a;
-	border-radius: 5px;}
-
-.language-css {
-	color: white;}
-.language-css .hljs-string {
-	color: greenyellow;}
-.language-css .hljs-number {
-	color: #ece516;}
-.language-css .hljs-attribute {
-	color: #a59f85;}
-/* #ffe87a  #a59f85 */
-.language-javascript {
-	color: white;}
-.language-javascript .hljs-string {
-	color: #a6e22e;}
-.language-javascript .hljs-attr {
-	color: #f92672;}
-.language-javascript .hljs-title {
-	color: #65d8ec;}
 
 sub, sup {
 	font-size: 0.6em;}

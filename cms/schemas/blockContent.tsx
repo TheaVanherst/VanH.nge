@@ -1,7 +1,6 @@
 
 //TODO: General Imports
 import { defineType, defineArrayMember } from 'sanity'
-
 //TODO: BLOCK
 
 //TODO: LISTS
@@ -115,15 +114,12 @@ export default defineType({
       title: 'Code',
       type: 'code',
       options: {
-        theme: 'github',
-        darkTheme: 'terminal',
-        language: 'js',
+        language: 'javascript',
         languageAlternatives: [
           {title: 'Javascript',   value: 'javascript'},
           {title: 'TypeScript',   value: 'typescript'},
-          {title: 'HTML',   value: 'html'},
-          {title: 'CSS',    value: 'css'},
-          {title: 'Svelte', value: 'svelte'},
+          {title: 'HTML',         value: 'html'},
+          {title: 'CSS',          value: 'css'},
         ]
       },
     }),

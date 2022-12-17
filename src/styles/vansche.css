@@ -1,0 +1,47 @@
+
+/* TODO: Beforehand styling */
+
+.language-css .hljs-selector-tag::before,
+.language-typescript .hljs-keyword::before,
+.language-javascript .hljs-title.function_::before {
+    content: "↦";
+    color: #f92672;
+    display: inline;
+    left: -2px;
+    counter-increment: section;
+    position: absolute;}
+
+/* TODO: Generic styling */
+
+.hljs-title.function_ {	color: #65d8ec;}
+.hljs-title.class_ {	color: #ff8000;}
+.hljs-string {			color: #a6e22e;}
+.hljs-number {			color: #ece516;}
+.hljs-attr {			color: #f92672;}
+.hljs-keyword {			color: #7339ff;}
+.hljs-function {		color: #65d8ec;}
+.hljs-params {			color: #ff9e0f;}
+.hljs-selector-tag{		color: #f92672;}
+.hljs-selector-pseudo {	color: #a17cff;}
+.hljs-selector-id {		color: #65d8ec;}
+.hljs-tag {				color: #ccfffa;}
+.hljs-name {			color: #f92672;}
+.hljs-selector-class {	color: #ffc36a;}
+.hljs-attribute {		color: #a59f85;}
+.hljs-property {		color: #f92672;}
+.hljs-literal {			color: #a17cff;}
+.hljs-comment {			color: #33333a;}
+.hljs-variable {		color: #ff8000;}
+.hljs-doctag {			color: #39ff00;}
+
+/* TODO: html specific styling */
+
+.language-html .hljs-built_in {			color: #ff9e0f;}
+.language-html .hljs-keyword {			color: #e77cff;}
+.language-html .hljs-attr {				color: #65d8ec;}
+
+/* TODO: javascript specific styling */
+
+.language-typescript .hljs-string {		color: #ff8000;}
+.language-javascript .hljs-property {	color: #f92672;}
+.language-javascript .hljs-built_in {	color: #e77cff;}

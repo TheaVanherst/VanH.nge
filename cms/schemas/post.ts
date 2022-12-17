@@ -61,6 +61,11 @@ export default defineType({
 
     // TODO: Post Content
     defineField({
+      name: 'briefDesc',
+      title: 'Brief Description',
+      type: 'string',
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
@@ -71,12 +76,16 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      subtitle: 'briefDesc',
+      author: 'author.fullName',
       media: 'mainImage',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
+      const {author, title, media} = selection
+      return {
+        title: title,
+        subtitle: `${author} ${title}`,
+        media: media
+      }},
   },
 })

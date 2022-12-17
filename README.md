@@ -1,5 +1,4 @@
-<pre align="center">
-                                                           
+<pre><p align="center">
                                                  .uef^"                              
      ...     ..                     u.    u.   :d88E                                 
   :~""888h.:^"888:         u      x@88k u@88c. `888E                                  
@@ -13,8 +12,7 @@ X888n. 8888X  ?888>  .@88 "8888"   8888  888R   888E~?888L
  <  `"888888:    X"   ^Y"   ^Y'                 `Y"   888        dPYb   88__dP   88   
        %888888x.-`                                   J88"  .o.  dP__Yb  88"Yb    88   
          ""**""                                      @%    `"' dP""""Yb 88  Yb   88   
-                                                   :"                                 
-</pre>
+                                                   :"                                 </p></pre>
 <p align="center">A stupidly simple and "lightweight" attempt at  Svelte.</p>
 
 <p align="center">More information coming soon.</p>

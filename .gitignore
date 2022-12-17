@@ -2,4 +2,3 @@
 /.idea/
 /.svelte-kit/
 /cms/node_modules/
-/cms/sanity.cli.ts
