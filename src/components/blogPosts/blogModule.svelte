@@ -24,7 +24,7 @@
     import FloatRight from '../portableText/marks/floatRight.svelte'
 
     export let postData
-    $: console.log(postData)
+    // $: console.log(postData)
 </script>
 
 <div class="postBody">

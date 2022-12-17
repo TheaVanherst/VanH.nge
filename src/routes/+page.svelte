@@ -6,7 +6,7 @@
 	import Header from "./components/header.svelte"
 
 	export let data;
-	$: console.log(data)
+	// $: console.log(data)
 </script>
 
 <svelte:head>
@@ -22,10 +22,10 @@
 				titleHeader="{post.headerImage}"	title="{post.title}"/>
 		<HeaderModule
 				createdOn="{post._createdAt}" 	updatedOn="{post._updatedAt}"
-				authorhandle="{post.author_handle}" authoruser="{post.author_userName}"
-					authorTwitter="{post.author_twitter}" authorImage="{post.author_image}"
-				editorhandle="{post.editor_handle}" editoruser="{post.editor_userName}"
-					editorTwitter="{post.editor_twitter}" editorImage="{post.editor_image}"
+				authorhandle="{post.author_handle}" authoruser="{post.author_fullName}"
+					authorTwitter="{post.author_twitter}" authorImage="{post.author_portrait}"
+				editorhandle="{post.editor_handle}" editoruser="{post.editor_fullName}"
+					editorTwitter="{post.editor_twitter}" editorImage="{post.editor_portrait}"
 				tags="{post.catagory_tags}"/>
 		<PostModule
 				postData="{post.body}"/>

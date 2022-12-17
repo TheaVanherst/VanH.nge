@@ -1,29 +1,30 @@
 <script>
     import hljs     from 'highlight.js/lib/core';
-    import styling  from '/src/styles/vansche.css';
 
-    import js       from 'highlight.js/es/languages/javascript';
-    import css      from 'highlight.js/es/languages/CSS';
-    import xml      from 'highlight.js/es/languages/XML';
-    import json     from 'highlight.js/es/languages/JSON';
-    import ts       from 'highlight.js/es/languages/typescript';
+    import javascript       from 'highlight.js/es/languages/javascript';
+    import css              from 'highlight.js/es/languages/CSS';
+    import xml              from 'highlight.js/es/languages/XML';
+    import json             from 'highlight.js/es/languages/JSON';
+    import typescript       from 'highlight.js/es/languages/typescript';
 
-    hljs.registerLanguage('javascript', js);
+    export let portableText = []
+    let language = portableText.value.language;
+
+    hljs.registerLanguage('javascript', javascript);
     hljs.registerLanguage('css', css);
     hljs.registerLanguage('html', xml);
     hljs.registerLanguage('json', json);
-    hljs.registerLanguage('typescript', ts);
+    hljs.registerLanguage('typescript', typescript);
 
-    export let portableText = []
-
-    const code = hljs.highlight(portableText.value.code, {language: portableText.value.language}).value;
-    const imgUrl = new URL("/codeTypes/"+portableText.value.language+".png", import.meta.url).href;
+    const code =
+        hljs.highlight(portableText.value.code, {language: language}).value;
+    const imgUrl = new URL("/codeTypes/" + language + ".webp", import.meta.url).href;
 </script>
 
-<code class="language-{portableText.value.language}">
+<code class="language-{language}">
     <div class="codeType">
         <img src="{imgUrl}" alt=" ">
-        <p class="language">{portableText.value.language}</p>
+        <p class="language">{language}</p>
     </div>
     <div class="codeData">
         {@html code}
@@ -46,7 +47,7 @@
 
     .codeType {
         background-color:   #16171a;
-        padding:        5px;}
+        padding:        8px;}
     .codeType > * {
         vertical-align: middle;}
     .codeType p {
@@ -56,8 +57,8 @@
         font-size:      18px;}
     .codeType img {
         padding-right:    10px;
-        height:     25px;
-        width:      25px;
+        height:     33px;
+        width:      33px;
         filter: contrast(-0) brightness(100);}
 
     .colourScheme {
