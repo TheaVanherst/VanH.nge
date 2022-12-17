@@ -1,15 +1,14 @@
 
 /* TODO: Beforehand styling */
 
-.language-css .hljs-selector-tag::before,
-.language-typescript .hljs-keyword::before,
-.language-javascript .hljs-title.function_::before {
-    content: "↦";
-    color: #f92672;
-    display: inline;
-    left: -2px;
-    counter-increment: section;
-    position: absolute;}
+.language-css           .hljs-selector-tag::before,
+.language-typescript    .hljs-keyword::before,
+.language-javascript    .hljs-title.function_::before {
+    content:    "↦";
+    position:   absolute;
+    display:    inline;
+    left:      -2px;
+    color:      #f92672;}
 
 /* TODO: Generic styling */
 
