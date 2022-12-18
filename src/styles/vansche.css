@@ -1,4 +1,16 @@
 
+/*temporary line generator for the ::before tag.*/
+.fljs-Line:before {
+    position: absolute;
+    left: -30px;
+    color: #00ff3a;
+    content: counter(section);
+    padding: 0 3px;}
+.fljs-Line {
+    counter-increment: section;
+    font-size:      13px;
+    padding: 2px 0;}
+
 /* TODO: Beforehand styling */
 
 .language-css           .hljs-selector-tag::before,
@@ -32,15 +44,15 @@
 .hljs-comment {			color: #33333a;}
 .hljs-variable {		color: #ff8000;}
 .hljs-doctag {			color: #39ff00;}
+.hljs-built_in {	    color: #e77cff;}
 
 /* TODO: html specific styling */
 
-.language-html .hljs-built_in {			color: #ff9e0f;}
-.language-html .hljs-keyword {			color: #e77cff;}
-.language-html .hljs-attr {				color: #65d8ec;}
+.language-html > .hljs-built_in {			color: #ff9e0f;}
+.language-html > .hljs-keyword {			color: #e77cff;}
+.language-html > .hljs-attr {				color: #65d8ec;}
 
 /* TODO: javascript specific styling */
 
-.language-typescript .hljs-string {		color: #ff8000;}
-.language-javascript .hljs-property {	color: #f92672;}
-.language-javascript .hljs-built_in {	color: #e77cff;}
+.language-typescript > .hljs-keyword {	    color: #7339ff;}
+.language-jypescript > .hljs-string {		color: #ff8000;}

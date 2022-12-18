@@ -16,8 +16,16 @@
     hljs.registerLanguage('json', json);
     hljs.registerLanguage('typescript', typescript);
 
-    const code =
-        hljs.highlight(portableText.value.code, {language: language}).value;
+    let code = hljs.highlight(
+        portableText.value.code, {language: language}).value;
+
+    //temporary line generator for the ::before tag.
+    let Arr = code.split(/\n/g),
+        temp = "";
+    for (let i = 0; i < Arr.length; i++) {
+        temp += "<span class='fljs-Line'>" + Arr[i] + "</span>" + `\n`;}
+    code = temp;
+
     const imgUrl = new URL("/codeTypes/" + language + ".webp", import.meta.url).href;
 </script>
 
@@ -36,14 +44,14 @@
     code {
         display:        block;
         overflow:       hidden;
+        max-width:      100%;
+        margin:         0 10px 10px 10px;
 
-        margin: 0 10px 10px 10px;
         border-radius:  5px;
-        background-color: #101010;
-
+        background:     #101010;
         color:          white;
         font-size:      0;
-        white-space: pre-wrap;}
+        white-space:    break-spaces;}
 
     .codeType {
         background-color:   #16171a;
@@ -56,25 +64,24 @@
         text-transform: uppercase;
         font-size:      18px;}
     .codeType img {
-        padding-right:    10px;
-        height:     33px;
-        width:      33px;
+        padding-right:  10px;
+        height:         33px;
+        width:          33px;
         filter: contrast(-0) brightness(100);}
 
     .colourScheme {
-        margin: 0;
-        color: #33333a;
+        color:              #33333a;
         background-color:   #16171a;
-        padding: 5px;
-        font-size:  12px;}
+        margin:         0;
+        padding:        5px;
+        font-size:      12px;}
     .colourScheme a {
-        color:      #f92672;}
+        color:              #f92672;}
 
     .codeData {
         border-left:    1px solid #f92672;
-        margin:         0 0 0 15px;
-        padding:        5px 5px 5px 12px;
-        font-size:      13px;
+        margin:         0 0 0 30px;
+        padding:        5px 5px 5px 5px;
         position:       relative;
-        background-color: #090909;}
+        background-color:   #090909;}
 </style>
