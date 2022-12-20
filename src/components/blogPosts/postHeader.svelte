@@ -72,32 +72,32 @@
 
 <style>
     header > div {
-        border-bottom:  1px solid var(--fadedColourAcc);
+        border-bottom:  var(--border-thickness) solid var(--fadedColourAcc);
         white-space:    nowrap;
         width:      auto;
         padding:    0 0 0 118px;}
     div > div {
-        padding:    8px 10px;}
+        padding:    calc(var(--contentPadding) - 2px) var(--contentPadding);}
 
 
     @media (max-width:  500px) {
         tags > tag:first-of-type {
-            margin-left: 0}
-    }
+            margin-left: 0}  }
+
     tags {
-        padding:    0 10px;
+        padding:    0 var(--contentPadding);
         display:    inline-block;}
     tags > tag {
         font-family:    'Poppins', sans-serif;
         font-size:      12px;
 
-        border-radius:  5px;
+        border-radius:      var(--innerRaidus);
         background-color:   var(--backgColour);
-        transition:     background 0.5s;
+        transition:         background 0.5s;
 
         display:        inline-flex;
-        padding:        2px 10px;
-        margin:         0 10px 10px 0;}
+        padding:        2px var(--containerPadding);
+        margin:         0 var(--contentMargin) var(--contentMargin) 0;}
     tag:hover {
         cursor:         pointer;
         color:          var(--linkColour);
@@ -144,7 +144,7 @@
         color:          #fff;
         background:     var(--highColour);}
     .userData {
-        margin:         0 0 10px 0;
+        margin:         0 0 var(--contentPadding) 0;
         width:          auto;}
     .userData > * {
         display:        table-cell;
@@ -168,12 +168,12 @@
 
     img {
         max-width:      105px;
-        margin:         10px;
-        border-radius:  5px;
+        margin:         var(--contentPadding);
+        border-radius:  var(--innerRaidus);
 
         overflow:   hidden;
         position:   absolute;
-        border:     1px solid var(--borderColor);}
+        border:     var(--border-thickness) solid var(--borderColor);}
     img.editor {
         width:          70px;
         height:         70px;

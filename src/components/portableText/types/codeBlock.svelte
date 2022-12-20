@@ -19,9 +19,8 @@
     let code = hljs.highlight(
         portableText.value.code, {language: language}).value;
 
-    //temporary line generator for the ::before tag.
-    let Arr = code.split(/\n/g),
-        temp = "";
+    // This is jank af, but it does the job.
+    let Arr = code.split(/\n/g), temp = "";
     for (let i = 0; i < Arr.length; i++) {
         temp += "<span class='fljs-Line'>" + Arr[i] + "</span>" + `\n`;}
     code = temp;
@@ -34,6 +33,7 @@
         <img src="{imgUrl}" alt=" ">
         <p class="language">{language}</p>
     </div>
+    <div class="lineData"></div>
     <div class="codeData">
         {@html code}
     </div>
@@ -44,14 +44,14 @@
     code {
         display:        block;
         overflow:       hidden;
-        max-width:      100%;
-        margin:         0 10px 10px 10px;
 
+        margin: 0 10px 10px 10px;
         border-radius:  5px;
-        background:     #101010;
+        background-color: #101010;
+
         color:          white;
         font-size:      0;
-        white-space:    break-spaces;}
+        white-space: pre-wrap;}
 
     .codeType {
         background-color:   #16171a;
@@ -64,24 +64,25 @@
         text-transform: uppercase;
         font-size:      18px;}
     .codeType img {
-        padding-right:  10px;
-        height:         33px;
-        width:          33px;
+        padding-right:    10px;
+        height:     33px;
+        width:      33px;
         filter: contrast(-0) brightness(100);}
 
     .colourScheme {
-        color:              #33333a;
+        margin: 0;
+        color: #33333a;
         background-color:   #16171a;
-        margin:         0;
-        padding:        5px;
-        font-size:      12px;}
+        padding: 5px;
+        font-size:  12px;}
     .colourScheme a {
-        color:              #f92672;}
+        color:      #f92672;}
 
     .codeData {
         border-left:    1px solid #f92672;
-        margin:         0 0 0 30px;
-        padding:        5px 5px 5px 5px;
+        margin:         0 0 0 35px;
+        padding:        5px 5px 5px 12px;
+        font-size:      13px;
         position:       relative;
-        background-color:   #090909;}
+        background-color: #090909;}
 </style>

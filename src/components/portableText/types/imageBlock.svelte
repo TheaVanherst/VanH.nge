@@ -1,19 +1,18 @@
 <script>
     import SanityImage from '../../../libaries/sanityImage.svelte'
+
     export let portableText
     $: ({value} = portableText)
 </script>
 
-{#if value.asset}
+<soloImg>
     <SanityImage image={value} />
-    {#if value.caption}
-        <figcaption>{value.caption}</figcaption>
-    {/if}
-{/if}
+</soloImg>
 
 <style>
-    p {
-        padding: 0;
-        margin: 0;
+    soloImg {
+        height: 100%;
+        width: 100%;
+        display: block;
     }
 </style>

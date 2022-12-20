@@ -3,3 +3,4 @@
 /.svelte-kit/
 /cms/node_modules/
 /static/codeTypes/source/
+/cms/.idea/

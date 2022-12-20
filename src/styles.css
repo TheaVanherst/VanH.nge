@@ -1,30 +1,37 @@
 
-@import './styles/vansche.css';
+@import 'styles/vansche.css';
 
 :root {
-	--baseColour: #3aecb4;
-	--highColour: #8364fd;
-	--acctColour: #fd963b;
-	--alteColour: #ff4fc7;
+	--baseColour: 		#3aecb4;
+	--highColour: 		#8364fd;
+	--acctColour: 		#fd963b;
+	--alteColour: 		#ff4fc7;
 
+	--borderColor: 		#d8d5d5;
+	--backgColour: 		#eaeaea;
 
-	--borderColor: #d8d5d5;
-	--backgColour: #eaeaea;
-	--fadedColourAcc: #c5c5c5;
+	--fadedColour: 		#d8d5d5;
+	--fadedColourAcc: 	#c5c5c5;
 
-	--linkColour: #fff;
-	--textColour: #14141f;
+	--textInverted: 	#fff;
+	--linkColour: 		#fff;
+	--textColour: 		#14141f;
 
-	--maxWidth: 550px;
-	--innerRaidus: 5px;
-	--outerRadius: 10px;
+	--maxWidth: 		550px;
+	--contentPadding: 	10px;
+	--contentMargin: 	10px;
+	--containerPadding: 10px;
+
+	--border-thickness: 1px;
+	--innerRaidus: 		5px;
+	--outerRadius: 		10px;
 }
 
 body {
-	min-height: 100vh;
-	margin: 0;
+	min-height: 		100vh;
+	margin: 			0;
 	background-image:	url("/background.png");
-	font-family: 'Nunito Sans', sans-serif;
+	font-family: 		'Nunito Sans', sans-serif;
 }
 
 p {
@@ -37,6 +44,7 @@ h1, h2, h3, h4 {
 	font-family: 	'Poppins', sans-serif;
 	font-weight: 	600;
 	line-height: 	100%;
+	text-transform: capitalize;
 
 	padding: 	0 10px 10px 10px;
 	margin: 	0;}

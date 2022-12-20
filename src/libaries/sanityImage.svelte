@@ -1,5 +1,5 @@
 <script>
-    import {onMount} from 'svelte'
+    import { onMount } from 'svelte'
     import imageUrlBuilder from "@sanity/image-url";
     import client from "./sanityClient";
     export let image
@@ -18,19 +18,22 @@
 </script>
 
 {#if image}
-    <cont>
-        <div class:loaded>
-            <img
-                    loading="lazy"
-                    src={urlFor(image).width(1200).fit('fillmax')}
-                    alt={image.alt}
-                    bind:this={imageRef}
-                    style="aspect-ratio: {aspectRatio}"/>
-        </div>
-    </cont>
+    <div class:loaded>
+        <img
+                loading="lazy"
+                src={ urlFor(image).width(1200).fit('fillmax') }
+                alt={ image.alt }
+                bind:this={ imageRef }
+                style="aspect-ratio: { aspectRatio }"/>
+    </div>
 {/if}
 
 <style>
+    imgGal > div > img {
+        background: red;
+    }
+
+
     cont {
         width:      100%;
         height:     100%;

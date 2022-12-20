@@ -1,6 +1,6 @@
 
 //TODO: General Imports
-import { defineType, defineArrayMember } from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 //TODO: BLOCK
 
 //TODO: LISTS
@@ -16,7 +16,7 @@ import { subscriptIcon, subscriptRender }       from './libs/marks/subScript.jsx
 import { superscriptIcon, superscriptRender }   from './libs/marks/superScript.jsx'     //superscript
 
 //TODO: TYPES
-import {codeRender} from './libs/types/codeBlock.jsx'     //superscript
+import {codeRender} from './libs/types/codeBlock.js'     //superscript
 
 export default defineType({
   title: 'Block Content',
@@ -108,6 +108,73 @@ export default defineType({
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
+    }),
+
+    defineArrayMember({
+      name: 'gallery',
+      type: 'object',
+      title: 'Gallery',
+      fields: [
+        defineField({
+          name: 'images',
+          type: 'array',
+          title: 'Images',
+          of: [
+            {
+              name: 'image',
+              type: 'image',
+              title: 'Image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                },
+              ],
+            },
+          ],
+          options: {
+            layout: 'grid',
+          },
+        }),
+        defineField({
+          name: 'display',
+          type: 'string',
+          title: 'Display as',
+          options: {
+            list: [
+              { title: 'Stacked on top of eachother', value: 'stacked' },
+              { title: 'In-line', value: 'inline' },
+              { title: 'Carousel', value: 'carousel' },
+            ],
+            layout: 'radio',
+          },
+        }),
+        defineField({
+          name: 'zoom',
+          type: 'boolean',
+          title: 'Zoom enabled',
+          description: 'Should we enable zooming of images?',
+        }),
+      ],
+      preview: {
+        select: {
+          images: 'images',
+          image: 'images.0',
+        },
+        prepare(selection) {
+          const { images, image } = selection;
+
+          return {
+            title: `Gallery block of ${Object.keys(images).length} images`,
+            subtitle: `Alt text: ${image.alt}`,
+            media: image,
+          };
+        },
+      },
     }),
 
     defineArrayMember({
