@@ -5,15 +5,26 @@
     $: ({value} = portableText)
 </script>
 
-<soloImg>
-    <SanityImage image={value}/>
-</soloImg>
+<div class="soloParent">
+    <soloImg>
+        <SanityImage image={value}/>
+    </soloImg>
+</div>
 
 <style>
+
+    /* parent container defining */
+
     soloImg {
-        height: 100%;
-        width: 100%;
+        border-radius: var(--innerRaidus);
+        overflow: hidden;
         display: block;}
+    .soloParent:not(:last-child) {
+        padding: 0px 5px 10px 5px;}
+    .soloParent:last-child {
+        padding: 0px 5px 5px 5px;}
+
+    /* general CSS loading */
 
     :global(soloImg div) {
         animation-duration: 2s;

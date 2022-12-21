@@ -41,10 +41,10 @@
         background-size: 800px 100px;}
 
     img {
-        width:      100%;
         margin:     0;
         opacity:    0;
-        display:    block;
+        width: 100%;
+        height: 100%;
         transition: opacity 500ms ease-out;}
 
     @keyframes placeHolderShimmer {

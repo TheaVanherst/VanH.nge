@@ -146,9 +146,9 @@ export default defineType({
           title: 'Display as',
           options: {
             list: [
-              { title: 'Stacked on top of eachother', value: 'stacked' },
-              { title: 'In-line', value: 'inline' },
-              { title: 'Carousel', value: 'carousel' },
+              { title: 'Stacked',         value: 'vertical' },
+              { title: 'Dynamic Inline',  value: 'dynamic' },
+              { title: 'Carousel',        value: 'carousel' },
             ],
             layout: 'radio',
           },

@@ -72,7 +72,7 @@
 
             {#if hoverBool && !copiedBool}
                 <p><de  out:animate="{{duration: copiedBool ? 0 : 250}}">
-                    Copy to clipboard?
+                    Copy to clipboard
                 </de></p>
             {:else if copiedBool}
                 <p><de  in:animate="{{duration: copiedBool ? 0 : 250}}"
@@ -147,7 +147,6 @@
     .codeType p {
         font-weight:    600;
         display:        inline-flex;
-        text-transform: uppercase;
         font-size:      18px;}
 
     .codeType img {
