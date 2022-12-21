@@ -1,11 +1,12 @@
 <script>
-    import SanityImage from '../../../libaries/sanityImage.svelte'
+    import SanityImage from '../../sanityImage.svelte'
 
     export let portableText
     $: ({value} = portableText)
+    $: console.log(value)
 </script>
 
-<imgGal>
+<imgGal class="{value.display}">
     {#each value.images as image}
         <SanityImage image={image}/>
     {/each}
@@ -15,6 +16,7 @@
     imgGal {
         height: 100%;
         width: 100%;
-        display: block;
-    }
+        display: block;}
+
+
 </style>

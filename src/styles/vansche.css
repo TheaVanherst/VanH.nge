@@ -1,16 +1,4 @@
 
-/*temporary line generator for the ::before tag.*/
-.fljs-Line:before {
-    position: absolute;
-    left: -30px;
-    color: #00ff3a;
-    content: counter(section);
-    padding: 0 3px;}
-.fljs-Line {
-    counter-increment: section;
-    font-size:      13px;
-    padding: 2px 0;}
-
 /* TODO: Beforehand styling */
 
 .language-css           .hljs-selector-tag::before,

@@ -18,12 +18,13 @@
     import Numeral          from '../portableText/lists/numeral.svelte';
 
     /* MARX [AXAXAX] */
-    import CodeSnippet      from '../portableText/marks/codeSnippet.svelte'
-    import Highlight        from '../portableText/marks/highlight.svelte'
-    import Subscript        from '../portableText/marks/subScript.svelte'
-    import Superscript      from '../portableText/marks/superScript.svelte'
-    import FloatCenter      from '../portableText/marks/floatCenter.svelte'
-    import FloatRight       from '../portableText/marks/floatRight.svelte'
+    import CodeSnippet      from '../portableText/marks/codeSnippet.svelte';
+    import Highlight        from '../portableText/marks/highlight.svelte';
+    import Subscript        from '../portableText/marks/subScript.svelte';
+    import Superscript      from '../portableText/marks/superScript.svelte';
+    import FloatCenter      from '../portableText/marks/floatCenter.svelte';
+    import FloatRight       from '../portableText/marks/floatRight.svelte';
+    import BlockQuote       from '../portableText/marks/blockQuote.svelte';
 
     export let postData
 </script>
@@ -44,7 +45,8 @@
                 subscript: Subscript,
                 superscript: Superscript,
                 floatright: FloatRight,
-                floatcenter: FloatCenter
+                floatcenter: FloatCenter,
+                blockquote: BlockQuote
             },
             list: {
                 bullet: Bullet,
