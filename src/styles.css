@@ -5,8 +5,8 @@
 
 :root {
 	--baseColour: 		#3aecb4;
-	--highColour: 		#8364fd;
-	--acctColour: 		#fd963b;
+	--highColour: 		#7553ff;
+	--acctColour: 		#ff9900;
 	--alteColour: 		#f92672;
 
 	--borderColor: 		#d8d5d5;
@@ -131,3 +131,11 @@ ul.letter 	li::marker {color: 	var(--highColour);}
 	0% {    transform: rotate(-3deg);}
 	50% {   transform: rotate(3deg) ;}
 	100% {  transform: rotate(-3deg);}}
+
+@keyframes fadein {
+	0% { 	opacity: 0;}
+	100% { 	opacity: 1;}}
+
+@keyframes fadeout {
+	0% { 	opacity: 1;}
+	100% { 	opacity: 0;}}

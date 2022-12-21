@@ -9,7 +9,7 @@ de {
     transition:     margin 0.5s, opacity 0.5s;
     opacity:        0;
     font-size:      13px;
-    text-transform: capitalize;
+    text-transform: lowercase;
 
     pointer-events: none;
     position:   absolute;

@@ -42,7 +42,7 @@
 
     /* animation setting */
 
-    import { fade } from 'svelte/transition';
+    import { fade, fly } from 'svelte/transition';
 
     const animate = (node, args) => fade(node, args);
 
@@ -70,13 +70,14 @@
 
             <img src="{clipboardIcon}"> <!-- TODO: this needs formatting to be a lot -->
 
-            {#if copiedBool}
-                <p><de  in:animate="{{duration: 100}}"
-                        out:animate="{{duration: 250}}">🖋️ Copied!
+            {#if hoverBool && !copiedBool}
+                <p><de  out:animate="{{duration: copiedBool ? 0 : 250}}">
+                    Copy to clipboard?
                 </de></p>
-            {:else if hoverBool}
-                <p><de  in:animate="{{duration: 100}}"
-                        out:animate="{{duration: 250}}">Copy to clipboard
+            {:else if copiedBool}
+                <p><de  in:animate="{{duration: copiedBool ? 0 : 250}}"
+                        out:animate="{{duration: 250}}">
+                    🖋️ Copied!
                 </de></p>
             {/if}
         </div>
@@ -123,9 +124,11 @@
         opacity:    1;
         margin:     0 0 0 23px;
         position:   absolute;
+        animation: fadeIn 0.2s;
         background: var(--alteColour)}
     .copy p de:before {
         color:      var(--alteColour)}
+
 
     .codeData {
         margin:         0 0 0 35px;
