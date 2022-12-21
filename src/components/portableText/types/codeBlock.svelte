@@ -1,7 +1,7 @@
 <script>
-    import hljs             from 'highlight.js/lib/core';
-
     /* language registering */
+
+    import hljs             from 'highlight.js/lib/core';
 
     import javascript       from 'highlight.js/es/languages/javascript';
     import css              from 'highlight.js/es/languages/CSS';
@@ -71,9 +71,13 @@
             <img src="{clipboardIcon}"> <!-- TODO: this needs formatting to be a lot -->
 
             {#if copiedBool}
-                <p><de transition:animate="{{duration: 100}}">Copied!</de></p>
+                <p><de  in:animate="{{duration: 100}}"
+                        out:animate="{{duration: 250}}">Copied!
+                </de></p>
             {:else if hoverBool}
-                <p><de transition:animate="{{duration: 100}}">Copy to clipboard</de></p>
+                <p><de  in:animate="{{duration: 100}}"
+                        out:animate="{{duration: 250}}">Copy to clipboard
+                </de></p>
             {/if}
         </div>
     </div>
