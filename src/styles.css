@@ -1,6 +1,8 @@
 
 @import 'styles/vansche.css';
 
+/* Root variables formatting */
+
 :root {
 	--baseColour: 		#3aecb4;
 	--highColour: 		#8364fd;
@@ -27,12 +29,16 @@
 	--outerRadius: 		10px;
 }
 
+/* document formatting */
+
 body {
 	min-height: 		100vh;
 	margin: 			0;
 	background-image:	url("/background.png");
 	font-family: 		'Nunito Sans', sans-serif;
 }
+
+/* style formatting */
 
 p {
 	line-height:    100%;
@@ -53,6 +59,8 @@ h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
 h3 {font-size: 1.5rem;}
 h4 {font-size: 1.25rem;}
+
+/* mark formatting */
 
 strong {
 	font-weight: 800;
@@ -84,6 +92,8 @@ blockquote:after {
 
 sub, sup {	font-size: 0.6em;}
 
+/* list formatting */
+
 ul {
 	margin: 	0;
 	padding: 	0 10px 5px 32px}
@@ -109,6 +119,8 @@ ul.bullet 	li::marker {color:	var(--baseColour);}
 ul.number 	li::marker {color:	var(--acctColour);}
 ul.numeral 	li::marker {color: 	var(--alteColour);}
 ul.letter 	li::marker {color: 	var(--highColour);}
+
+/* general animation presetting */
 
 @keyframes gradient {
 	0% {    background-position: 0%   50%;}

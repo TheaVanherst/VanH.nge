@@ -1,6 +1,8 @@
 <script>
     import hljs             from 'highlight.js/lib/core';
 
+    /* language registering */
+
     import javascript       from 'highlight.js/es/languages/javascript';
     import css              from 'highlight.js/es/languages/CSS';
     import xml              from 'highlight.js/es/languages/XML';
@@ -16,10 +18,13 @@
     hljs.registerLanguage('json', json);
     hljs.registerLanguage('typescript', typescript);
 
-    const
-        imgUrl = new URL("/codeTypes/" + language + ".webp",    import.meta.url).href,
-        copy =   new URL("/icons/copyClipboard.png",            import.meta.url).href,
-        copied = new URL("/icons/copiedClipboard.png",          import.meta.url).href;
+    /* image url generation */
+
+    let clipboardIcon;
+    let imgUrl = new URL("/codeTypes/" + language + ".webp",    import.meta.url).href;
+    $: clipboardIcon = new URL("/icons/" + (copiedBool ? "copied" : "copy") + "Clipboard.webp", import.meta.url).href; // TODO: pretty sure this is dumb
+
+    /* code baking */
 
     let code = hljs.highlight(
         portableText.value.code, {
@@ -35,7 +40,13 @@
     }
     code = temp;
 
-    let copiedBool = false;
+    /* animation setting */
+
+    import { fade } from 'svelte/transition';
+
+    const animate = (node, args) => fade(node, args);
+
+    let copiedBool = false, hoverBool = false;
     const clicked = () => {
         if (!copiedBool) {
             copiedBool = true;
@@ -46,21 +57,23 @@
             }, 1000);
         }
     };
-
-
 </script>
 
 <code class="language-{language}">
     <div class="codeType">
         <img class="languageIcon" src="{imgUrl}" alt=" ">
         <p class="language">{language}</p>
-        <div class="copy" on:click={clicked}>
-            {#if !copiedBool}
-                <p><img src="{copy}" alt="copy">
-                    <de>Copy to clipboard</de></p>
-            {:else}
-                <p class="a"><img src="{copied}" alt="copied">
-                    <de>Copied!</de></p>
+        <div class="copy"
+             on:mouseleave={() => (hoverBool = false)}
+             on:mouseenter={() => (hoverBool = true)}
+             on:click={clicked}>
+
+            <img src="{clipboardIcon}"> <!-- TODO: this needs formatting to be a lot -->
+
+            {#if copiedBool}
+                <p><de transition:animate="{{duration: 100}}">Copied!</de></p>
+            {:else if hoverBool}
+                <p><de transition:animate="{{duration: 100}}">Copy to clipboard</de></p>
             {/if}
         </div>
     </div>
@@ -97,20 +110,18 @@
         padding:    5px;
         height:     23px;
         width:      23px;
-        background: var(--alteColour);
         float:      right;}
     .copy img {
         width:      inherit;
         height:     inherit;}
 
     .copy p de {
-        margin:     0 0 0 43px;
+        opacity:    1;
+        margin:     0 0 0 23px;
         position:   absolute;
         background: var(--alteColour)}
     .copy p de:before {
         color:      var(--alteColour)}
-    .copy p.a de {
-        opacity:    1;}
 
     .codeData {
         margin:         0 0 0 35px;

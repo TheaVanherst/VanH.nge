@@ -34,32 +34,32 @@
             value={postData}
             components={{
             types: {
-                code: CodeBlock,
-                image: ImageBlock,
-                gallery: imageGallery
+                code:       CodeBlock,
+                image:      ImageBlock,
+                gallery:    imageGallery
             },
             marks: {
-                link: Link,
-                codesnippet: CodeSnippet,
-                highlight: Highlight,
-                subscript: Subscript,
-                superscript: Superscript,
-                floatright: FloatRight,
-                floatcenter: FloatCenter,
-                blockquote: BlockQuote
+                link:           Link,
+                codesnippet:    CodeSnippet,
+                highlight:      Highlight,
+                subscript:      Subscript,
+                superscript:    Superscript,
+                floatright:     FloatRight,
+                floatcenter:    FloatCenter,
+                blockquote:     BlockQuote
             },
             list: {
-                bullet: Bullet,
-                number: Number,
-                letter: Letter,
-                numeral: Numeral
+                bullet:     Bullet,
+                number:     Number,
+                letter:     Letter,
+                numeral:    Numeral
             },
             block: {
-                normal: CustomText,
-                h1: CustomHeading,
-                h2: CustomHeading,
-                h3: CustomHeading,
-                h4: CustomHeading
+                normal:     CustomText,
+                h1:         CustomHeading,
+                h2:         CustomHeading,
+                h3:         CustomHeading,
+                h4:         CustomHeading
             }
           }}
     />
