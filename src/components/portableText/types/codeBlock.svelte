@@ -54,7 +54,7 @@
 
             setTimeout(() => {
                 copiedBool = false;
-            }, 1000);
+            }, 1337);
         }
     };
 </script>
@@ -72,7 +72,7 @@
 
             {#if copiedBool}
                 <p><de  in:animate="{{duration: 100}}"
-                        out:animate="{{duration: 250}}">Copied!
+                        out:animate="{{duration: 250}}">🖋️ Copied!
                 </de></p>
             {:else if hoverBool}
                 <p><de  in:animate="{{duration: 100}}"
