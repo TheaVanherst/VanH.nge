@@ -1,6 +1,6 @@
 <script>
-    import MobileQuery from '../../libaries/mobileQuery.svelte'
-    import styles from "../presetStyling/pointerTag.css"
+    import MobileQuery  from '../../libaries/mobileQuery.svelte'
+    import AuthorTag    from '../authorTag.svelte'
 
     export let createdOn, updatedOn;
     import DateModule from "../dateBuilder.svelte"
@@ -32,31 +32,20 @@
     </div>
     <div class="userData offset">
         {#if authoruser === editoruser}
-            <div><p class="handle">Posted & Edited by
-                    <a href="https://twitter.com/{authorTwitter}">
-                        <b>{authorhandle}
-                            <de>{authoruser}</de></b></a>
-            </p></div>
+            <AuthorTag
+                    content="Posted & Edited by"
+                    linkUrl="{authorTwitter}"
+                    handle="{authorhandle}"/>
         {:else}
-            <div><p class="handle">Posted by
-                {#if authorTwitter}
-                    <a href="https://twitter.com/{authorTwitter}">
-                        <b>{authorhandle}
-                            <de>{authoruser}</de></b></a>
-                {:else}
-                        <b>{authorhandle}
-                            <de>{authoruser}</de></b>{/if}
-            </p></div>
+            <AuthorTag
+                    content="Posted by"
+                    linkUrl="{authorTwitter}"
+                    handle="{authorhandle}"/>
             {#if editorhandle}
-                <div><p class="handle">Edited by
-                    {#if editorTwitter}
-                        <a href="https://twitter.com/{editorTwitter}">
-                            <b>{editorhandle}
-                                <de>{editoruser}</de></b></a>
-                    {:else}
-                            <b>{editorhandle}
-                                <de>{editoruser}</de></b>{/if}
-                </p></div>
+                <AuthorTag
+                        content="Edited by"
+                        linkUrl="{editorTwitter}"
+                        handle="{editorhandle}"/>
             {/if}
         {/if}
     </div>
@@ -82,7 +71,8 @@
 
     @media (max-width:  500px) {
         tags > tag:first-of-type {
-            margin-left: 0}  }
+            margin-left: 0}
+    }
 
     tags {
         padding:    0 var(--contentPadding);
@@ -104,9 +94,6 @@
         background-color: var(--highColour);}
     tags > tag:first-of-type {
         margin-left:    118px;}
-
-
-
     .new {
         background: linear-gradient(-45deg, var(--acctColour), var(--alteColour), var(--highColour));
         background-size: 800% 800%;
@@ -116,28 +103,6 @@
     .new:hover {
         animation:  wiggle 0.5s ease infinite;}
 
-
-
-    a {
-        text-decoration: none;
-        color: var(--highColour);}
-    a:hover {
-        text-decoration: underline;}
-
-    p {
-        font-family:    "Poppins", serif;
-        font-weight:    500;
-        margin:         0;
-        padding:        0;
-
-        width:          min-content;
-        line-height:    100%;}
-
-    b > de {      background-color:   var(--acctColour);}
-    b > de:before {   color:   var(--acctColour);}
-    a > b de {    background-color:   var(--highColour);}
-    a > b de:before { color:   var(--highColour);}
-    *:not(a) > b:hover {cursor:     help;}
 
     .date {
         font-weight:    600;
@@ -154,10 +119,6 @@
         margin:         0;}
     .userData > *:last-child:not(:first-child) {
         border-left:   1px solid var(--fadedColourAcc);}
-
-    .handle > b {
-        color: var(--acctColour);}
-
 
 
     @media (max-width:  500px) {

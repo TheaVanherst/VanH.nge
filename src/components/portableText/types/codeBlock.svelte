@@ -1,4 +1,6 @@
 <script>
+    import TagComponent from "../../tagComponent.svelte";
+
     /* language registering */
 
     import hljs             from 'highlight.js/lib/core';
@@ -22,7 +24,7 @@
 
     let clipboardIcon;
     let imgUrl = new URL("/codeTypes/" + language + ".webp",    import.meta.url).href;
-    $: clipboardIcon = new URL("/icons/" + (copiedBool ? "copied" : "copy") + "Clipboard.webp", import.meta.url).href; // TODO: pretty sure this is dumb
+    $: clipboardIcon = new URL("/icons/" + (copiedBool ? "copied" : "copy") + "Clipboard.webp", import.meta.url).href;
 
     /* code baking */
 
@@ -43,8 +45,6 @@
     /* animation setting */
 
     import { fade, fly } from 'svelte/transition';
-
-    const animate = (node, args) => fade(node, args);
 
     let copiedBool = false, hoverBool = false;
     const clicked = () => {
@@ -68,17 +68,12 @@
              on:mouseenter={() => (hoverBool = true)}
              on:click={clicked}>
 
-            <img src="{clipboardIcon}"> <!-- TODO: this needs formatting to be a lot -->
-
-            {#if hoverBool && !copiedBool}
-                <p><de  out:animate="{{duration: copiedBool ? 0 : 250}}">
-                    Copy to clipboard
-                </de></p>
-            {:else if copiedBool}
-                <p><de  in:animate="{{duration: copiedBool ? 0 : 250}}"
-                        out:animate="{{duration: 250}}">
-                    🖋️ Copied!
-                </de></p>
+            <img src="{clipboardIcon}">
+            {#if copiedBool || hoverBool}
+                <p in:fade="{{duration: copiedBool ? 150 : 250}}"
+                   out:fade="{{duration: copiedBool ? 0 : 250}}">
+                    <TagComponent tagData={!copiedBool ? "Copy to clipboard" : "Copied!"}/>
+                </p>
             {/if}
         </div>
     </div>
@@ -120,15 +115,14 @@
         width:      inherit;
         height:     inherit;}
 
-    .copy p de {
-        opacity:    1;
+    .copy p tag {
+        opacity:    0;
         margin:     0 0 0 23px;
         position:   absolute;
         animation: fadeIn 0.2s;
         background: var(--alteColour)}
-    .copy p de:before {
+    .copy p tag:before {
         color:      var(--alteColour)}
-
 
     .codeData {
         margin:         0 0 0 35px;

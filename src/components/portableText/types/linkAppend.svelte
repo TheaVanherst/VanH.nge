@@ -1,24 +1,34 @@
 <script>
+    import TagComponent from "../../tagComponent.svelte";
+    import { fade, fly } from 'svelte/transition';
+    let hoverBool;
+
     export let portableText
-    import styles from "/src/components/presetStyling/pointerTag.css"
 
     let text = portableText.value.href,
         textSplit = text.split("/");
 </script>
 
-<a href={portableText.value.href} target="_blank">
-    <p>
-        <slot />
-        <de>
-            {textSplit[2]}
-        </de>
-    </p>
+<a href={portableText.value.href} target="_blank"
+   on:mouseleave={() => (hoverBool = false)}
+   on:mouseenter={() => (hoverBool = true)}>
+    <slot />
+    {#if hoverBool}
+        <p in:fade="{{duration: 100}}"
+           out:fade="{{duration: 100}}">
+            <TagComponent tagData={textSplit[2]}/>
+        </p>
+    {/if}
 </a>
 
 <style>
     a {
+        text-decoration: none;
         font-weight:    600;
+        color:      var(--acctColour);
         position:       relative;}
+    a:hover {
+        text-decoration: underline;}
 
     p {
         margin:     0;
@@ -26,8 +36,7 @@
         z-index:    2;
 
         position:   relative;
-        display:    inline-block;
-        color:      var(--acctColour);}
+        display:    inline;}
     p:hover {
         text-decoration: underline;}
 </style>
