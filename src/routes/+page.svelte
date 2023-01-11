@@ -3,8 +3,6 @@
 	import TitleModule from "../components/blogPosts/titleModule.svelte"
 	import PostModule from "../components/blogPosts/blogModule.svelte"
 
-	import Header from "./components/header.svelte"
-
 	export let data;
 </script>
 
@@ -12,8 +10,6 @@
 	<title>Blog</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
-
-<!--<Header/>-->
 
 {#each data[0] as post}
 	<div class="post" id="{post._id}">

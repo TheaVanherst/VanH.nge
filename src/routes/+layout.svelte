@@ -1,28 +1,60 @@
 <script>
 	import '../styles.css';
+	import Header from "./components/header.svelte"
 </script>
 
-<div class="app">
+<pageData>
 	<div class="spaceBg2 backGround"></div>
 	<div class="spaceBg1 backGround"></div>
 
 	<main>
-		<slot />
+		<Header/>
+
+		<table>
+			<div class="col1 col">
+				test lol xd test lol xdtest lol xdtest lol xdtest lol xd
+			</div>
+			<div class="col2 col">
+				<slot/>
+			</div>
+		</table>
 	</main>
-</div>
+</pageData>
 
 <style>
+	/* TODO: column management */
+
+	:root {
+		--row1: 250px;
+		--row2: 600px;
+	}
+
+	main {
+		width: 		max-content;
+		padding: 	1rem;
+		margin: 	0 auto;
+		box-sizing: border-box;}
+
+	table {
+		width: 		max-content;
+		gap: 		var(--containerPadding);
+		display: 	flex;
+	}
+
+	.col {
+		height: max-content;
+		width: inherit;
+		display:	block;}
+	.col1 {
+		max-width: var(--row1);}
+	.col2 {
+		max-width: var(--row2);}
+
+	/* TODO: background management */
 
 	:root {
 		--res1: 234px;
-		--res2: 400px;
-	}
-
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
+		--res2: 400px;}
 
 	.spaceBg1 {
 		-webkit-animation:		backgroundScroll1 10s linear infinite;
@@ -30,10 +62,8 @@
 		background-position: 	center;
 		background-image: 		url("/starTest.gif");
 
-		height: calc(var(--res1) * (var(--res1) / 100));
+		height: 	calc(var(--res1) * (var(--res1) / 100));
 		min-height: calc(100vh + var(--res1));
-
-
 		z-index:   -2;}
 	.spaceBg2 {
 		-webkit-animation:		backgroundScroll2 25s linear infinite;
@@ -41,42 +71,16 @@
 		background-position: 	center;
 		background-image: 		url("/starTest2.gif");
 
-		height: calc(var(--res2) * (var(--res2) / 100));
+		height: 	calc(var(--res2) * (var(--res2) / 100));
 		min-height: calc(100vh + var(--res2));
 
-		left:  -250px;
+		left:  	   -250px;
 		z-index:   -1;
 		opacity: 	0.5;}
 	.backGround {
-		width: 	150%;
-		top: 	0;
-
-		position: 	fixed;
-	}
-
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 40rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: var(--contentPaddingX);
-	}
-
-	footer a {
-		font-weight: bold;
-	}
+		width: 		150%;
+		top: 		0;
+		position: 	fixed;}
 
 	@keyframes backgroundScroll1 {
 		0% {  	transform: translateY(calc(var(--res1) * -1));}
