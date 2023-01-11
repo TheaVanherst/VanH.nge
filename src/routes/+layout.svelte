@@ -26,8 +26,7 @@
 
 	:root {
 		--row1: 250px;
-		--row2: 600px;
-	}
+		--row2: 600px;}
 
 	main {
 		width: 		max-content;
@@ -38,8 +37,7 @@
 	table {
 		width: 		max-content;
 		gap: 		var(--containerPadding);
-		display: 	flex;
-	}
+		display: 	flex;}
 
 	.col {
 		height: max-content;
