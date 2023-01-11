@@ -19,18 +19,19 @@
 </script>
 
 <header>
-    <img src="{urlFor(authorImage).width(250).auto('format')}"/>
-    {#if authoruser !== editoruser && editorImage}
-        <img class="editor" src="{urlFor(editorImage).width(250).auto('format')}"/>{/if}
+<!--    <img src="{urlFor(authorImage).width(250).auto('format')}"/>-->
+<!--    {#if authoruser !== editoruser && editorImage}-->
+<!--        <img class="editor" src="{urlFor(editorImage).width(250).auto('format')}"/>{/if}-->
 
-    <div class="date offset">
-        <MobileQuery query="(min-width: 750px)" let:matches><div>
+    <div class="date">
+        <MobileQuery query="(min-width: 750px)" let:matches>
             {#if matches}
                 <DateModule dateFormat="fullDate" createdOn={createdOn} updatedOn={updatedOn} /> {:else}
                 <DateModule dateFormat="tinyDate" createdOn={createdOn} updatedOn={updatedOn} /> {/if}
-        </div></MobileQuery>
+        </MobileQuery>
     </div>
-    <div class="userData offset">
+
+    <div class="userData">
         {#if authoruser === editoruser}
             <AuthorTag
                     content="Posted & Edited by"
@@ -49,7 +50,7 @@
             {/if}
         {/if}
     </div>
-    <tags class="offset">
+    <tags>
         {#if relativeTime(new Date(createdOn))}
             <tag class="new">NEW</tag>
         {/if}
@@ -63,10 +64,9 @@
     header > div {
         border-bottom:  var(--border-thickness) solid var(--fadedColourAcc);
         white-space:    nowrap;
-        width:      auto;
-        padding:    0 0 0 118px;}
+        width:          auto;}
     div > div {
-        padding:    calc(var(--contentPadding) - 2px) var(--contentPadding);}
+        padding:    calc(var(--contentPaddingX) - 2px) var(--contentPaddingX);}
 
 
     @media (max-width:  500px) {
@@ -75,27 +75,26 @@
     }
 
     tags {
-        padding:    0 var(--contentPadding);
         display:    inline-block;}
     tags > tag {
-        font-family:    'Poppins', sans-serif;
+        font-family: 	'Lucida Console', sans-serif;
         font-size:      12px;
 
         border-radius:      var(--innerRaidus);
-        background-color:   var(--backgColour);
+        background-color:   var(--backgroundAccent);
         transition:         background 0.5s;
 
-        display:        inline-flex;
-        padding:        2px var(--containerPadding);
-        margin:         0 var(--contentMargin) var(--contentMargin) 0;}
+        display:    inline-flex;
+        padding:    5px var(--containerPadding) 2px var(--containerPadding);
+        border:     1px solid var(--accent1);
+        margin:     0 var(--contentPaddingX) var(--contentPaddingY) 0;}
     tag:hover {
         cursor:         pointer;
-        color:          var(--linkColour);
-        background-color: var(--highColour);}
-    tags > tag:first-of-type {
-        margin-left:    118px;}
+        color:          var(--textColourHover);
+        background-color: var(--accent1);}
+
     .new {
-        background: linear-gradient(-45deg, var(--acctColour), var(--alteColour), var(--highColour));
+        background: linear-gradient(-45deg, var(--accent3), var(--accent4), var(--accent2));
         background-size: 800% 800%;
         animation:  gradient 15s ease infinite;
         color:      white;
@@ -103,13 +102,8 @@
     .new:hover {
         animation:  wiggle 0.5s ease infinite;}
 
-
-    .date {
-        font-weight:    600;
-        color:          #fff;
-        background:     var(--highColour);}
     .userData {
-        margin:         0 0 var(--contentPadding) 0;
+        margin:         0 0 var(--contentPaddingX) 0;
         width:          auto;}
     .userData > * {
         display:        table-cell;
@@ -129,7 +123,7 @@
 
     img {
         max-width:      105px;
-        margin:         var(--contentPadding);
+        margin:         var(--contentPaddingX);
         border-radius:  var(--innerRaidus);
 
         overflow:   hidden;

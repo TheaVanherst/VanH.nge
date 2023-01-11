@@ -25,7 +25,7 @@
     a {
         text-decoration: none;
         font-weight:    600;
-        color:      var(--acctColour);
+        color:      var(--accent3);
         position:       relative;}
     a:hover {
         text-decoration: underline;}

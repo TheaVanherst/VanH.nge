@@ -1,41 +1,47 @@
 
 @import 'styles/vansche.css';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 /* Root variables formatting */
 
 :root {
-	--baseColour: 		#3aecb4;
-	--highColour: 		#7553ff;
-	--acctColour: 		#ff9900;
-	--alteColour: 		#f92672;
+	--accent1: 	#3aecb4;
+	--accent2: 	#7553ff;
+	--accent3: 	#ff9900;
+	--accent4:	#f92672;
 
-	--borderColor: 		#d8d5d5;
-	--backgColour: 		#eaeaea;
+	--borderColor: 		var(--accent3);
+	--background: 		#000;
+	--backgroundAccent: #0b0b0c;
+	--textColour: 		#fff;
+	--textColourHover: 	#000;
 
 	--fadedColour: 		#d8d5d5;
 	--fadedColourAcc: 	#c5c5c5;
 
 	--textInverted: 	#fff;
 	--linkColour: 		#fff;
-	--textColour: 		#14141f;
 
-	--maxWidth: 		550px;
-	--contentPadding: 	10px;
-	--contentMargin: 	10px;
-	--containerPadding: 10px;
+
+	--maxWidth: 		450px;
+	--contentPaddingX: 	15px;
+	--contentPaddingY: 	10px;
+	--containerPadding: 15px;
 
 	--border-thickness: 1px;
-	--innerRaidus: 		5px;
-	--outerRadius: 		10px;
+	--innerRaidus: 		4px;
+	--outerRadius: 		8px;
 }
 
 /* document formatting */
 
 body {
-	min-height: 		100vh;
-	margin: 			0;
-	background-image:	url("/background.png");
-	font-family: 		'Nunito Sans', sans-serif;
+	min-height: 100vh;
+	margin: 	0;
+	background:	#000;
+	font-family: 		'Courier New', sans-serif;
+	cursor: crosshair;
+	color: var(--textColour);
 }
 
 /* style formatting */
@@ -47,13 +53,13 @@ p {
 
 h1, h2, h3, h4 {
 	text-transform: capitalize;
-	font-family: 	'Poppins', sans-serif;
-	font-weight: 	600;
-	line-height: 	100%;
-	text-transform: capitalize;
+	font-family: 	'Oswald', sans-serif;
+	line-height: 	120%;
 
-	padding: 	0 10px 10px 10px;
-	margin: 	0;}
+	border-left: 	5px solid var(--accent1);
+	margin:			0 0 var(--containerPadding) calc(var(--contentPaddingX) * -1);
+	padding:	 	0 0 0 20px;
+}
 
 h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
@@ -72,7 +78,7 @@ blockquote {
 	font-style: italic;
 	border-radius: 		5px;
 	border-left: 		1px solid var(--fadedColourAcc);
-	background-color: 	var(--backgColour);}
+	background-color: 	var(--backgroundAccent);}
 blockquote:before {
 	color: 		var(--fadedColourAcc);
 	content: 	open-quote;
@@ -115,10 +121,10 @@ ul.numeral 	li {list-style-type: 	lower-roman;}
 ul.letter 	li {list-style-type: 	lower-latin;}
 ul.letter 	li {list-style-type: 	lower-latin;}
 
-ul.bullet 	li::marker {color:	var(--baseColour);}
-ul.number 	li::marker {color:	var(--acctColour);}
-ul.numeral 	li::marker {color: 	var(--alteColour);}
-ul.letter 	li::marker {color: 	var(--highColour);}
+ul.bullet 	li::marker {color:	var(--accent1);}
+ul.number 	li::marker {color:	var(--accent3);}
+ul.numeral 	li::marker {color: 	var(--accent4);}
+ul.letter 	li::marker {color: 	var(--accent2);}
 
 /* general animation presetting */
 

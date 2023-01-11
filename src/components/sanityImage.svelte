@@ -35,9 +35,9 @@
         animation-name: placeHolderShimmer;
         background:
                 linear-gradient(to right,
-                var(--backgColour) 8%,
+                var(--backgroundAccent) 8%,
                 var(--fadedColourAcc) 18%,
-                var(--backgColour) 33%);
+                var(--backgroundAccent) 33%);
         background-size: 800px 100px;}
 
     img {

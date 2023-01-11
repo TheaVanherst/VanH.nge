@@ -74,12 +74,19 @@
         return updatedString.toLowerCase();}
 </script>
 
-<p class="createdOn">Posted on {createdDay.toLocaleDateString("en-GB", dateTypes[dateFormat])}</p>
-<p class="updatedOn">{updatedWhenTiny()}</p>
+<div>
+    <p class="createdOn">Posted on {createdDay.toLocaleDateString("en-GB", dateTypes[dateFormat])}</p>
+    <p class="updatedOn">{updatedWhenTiny()}</p>
+</div>
 
 <style>
+    div {
+        background-color: var(--accent1);
+
+        padding:    var(--contentPaddingY) var(--contentPaddingX);
+        color:      var(--background);}
+
     p {
-        font-family:    "Poppins", serif;
         font-weight:    500;
         margin:         0;
         line-height:    100%;}

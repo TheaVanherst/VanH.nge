@@ -6,5 +6,5 @@
     h {
         border-radius:  3px;
         padding: 0 3px;
-        background-color: var(--baseColour);}
+        background-color: var(--accent1);}
 </style>

@@ -6,7 +6,6 @@
 	import Header from "./components/header.svelte"
 
 	export let data;
-	// $: console.log(data)
 </script>
 
 <svelte:head>
@@ -14,7 +13,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<Header/>
+<!--<Header/>-->
 
 {#each data[0] as post}
 	<div class="post" id="{post._id}">
@@ -34,11 +33,15 @@
 
 <style>
 	.post {
+		border: 	1px solid var(--accent1);
+		padding: 	var(--containerPadding);
+
 		min-height: 	120px;
-		max-width: 		calc(66% - 10px);
 		min-width: 		min-content;
-		border-radius: 	10px;
+		border-radius: 	var(--outerRadius);
 		margin-bottom: 	15px;
 
-		background:		white;}
+		background:		var(--background);
+		color: 			var(--textColour);
+	}
 </style>

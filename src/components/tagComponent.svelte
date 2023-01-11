@@ -22,7 +22,7 @@
         transition:     margin 0.5s, opacity 0.5s;
         opacity:        1;
 
-        background-color:   var(--acctColour);
+        background-color:   var(--accent3);
 
         vertical-align: middle;
         pointer-events: none;
@@ -36,7 +36,7 @@
     tag:before, tag:after {
         font-size:      13px;
         position:       absolute;
-        color:          var(--acctColour);}
+        color:          var(--accent3);}
 
     tag.left:before {
         content:        "🢐";

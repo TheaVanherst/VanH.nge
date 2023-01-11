@@ -120,9 +120,9 @@
         margin:     0 0 0 23px;
         position:   absolute;
         animation: fadeIn 0.2s;
-        background: var(--alteColour)}
+        background: var(--accent4)}
     .copy p tag:before {
-        color:      var(--alteColour)}
+        color:      var(--accent4)}
 
     .codeData {
         margin:         0 0 0 35px;

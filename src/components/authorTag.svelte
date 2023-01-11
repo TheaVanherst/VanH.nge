@@ -55,21 +55,20 @@
 
     *:not(a) > b {
         line-height: 100%;
-        color:          var(--acctColour)}
+        color:          var(--accent3)}
     a > b {
-        color: var(--highColour);}
+        color: var(--accent2);}
 
     .handle {
-        font-family:    "Poppins", serif;
         font-size:      13px;
         line-height:    100%;
 
         height:     14px;
         display:    table-cell;
         width:      min-content;
-        padding:    calc(var(--contentPadding) - 2px) var(--contentPadding);
+        padding:    var(--contentPaddingY) var(--contentPaddingX);
     }
     .handle:not(:first-child){
-        border-left:    1px solid var(--borderColor)
+        border-left:    1px solid var(--textColour);
     }
 </style>
