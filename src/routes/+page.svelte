@@ -33,7 +33,6 @@
 		padding: 	var(--containerPadding);
 
 		min-height: 	120px;
-		min-width: 		min-content;
 		border-radius: 	var(--outerRadius);
 		margin-bottom: 	15px;
 

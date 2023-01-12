@@ -148,6 +148,8 @@ export default defineType({
             list: [
               { title: 'Stacked',         value: 'vertical' },
               { title: 'Dynamic Inline',  value: 'dynamic' },
+              { title: 'Grid',            value: 'grid' },
+              { title: 'Scroll',          value: 'scroll' },
               { title: 'Carousel',        value: 'carousel' },
             ],
             layout: 'radio',
