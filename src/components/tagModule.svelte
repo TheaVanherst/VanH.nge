@@ -23,7 +23,7 @@
         font-size:      12px;
 
         border-radius:  var(--innerRaidus);
-        background:     var(--backgroundAccent);
+        background:     var(--background);
         transition:     background 0.5s;
 
         display:    inline-flex;

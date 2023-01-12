@@ -24,10 +24,6 @@
 	--fadedColour: 		#d8d5d5;
 	--fadedColourAcc: 	#c5c5c5;
 
-	--textInverted: 	#fff;
-	--linkColour: 		#fff;
-
-
 	--maxWidth: 		450px;
 	--contentPaddingX: 	15px;
 	--contentPaddingY: 	10px;
@@ -89,7 +85,7 @@ blockquote {
 	margin: 	0 5px 10px 5px;
 	font-style: italic;
 	border-radius: 		5px;
-	border: 			1px solid #4d122a;
+	border: 			1px solid var(--darkAccent4);
 	border-left: 		1px solid var(--accent4);
 	background-color: 	var(--backgroundAccent2);}
 blockquote:before {

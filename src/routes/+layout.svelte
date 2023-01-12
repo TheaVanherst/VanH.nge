@@ -1,14 +1,16 @@
 <script>
 	import '../styles.css';
 	import Header from "./components/header.svelte"
+
+	let y;
 </script>
 
-<pageData>
+<pageData style="--yPos: -{y}px">
 	<div class="spaceBg2 backGround"></div>
 	<div class="spaceBg1 backGround"></div>
 
 	<main>
-<!--		<Header/>-->
+		<Header/>
 		<table>
 			<div class="col1 col">
 				test lol xd test lol xdtest lol xdtest lol xdtest lol xd
@@ -19,6 +21,8 @@
 		</table>
 	</main>
 </pageData>
+
+<svelte:window bind:scrollY={y} />
 
 <style>
 	/* TODO: column management */
@@ -75,6 +79,7 @@
 		z-index:   -1;
 		opacity: 	0.5;}
 	.backGround {
+		background-position-y: var(--yPos);
 		width: 		150%;
 		top: 		0;
 		position: 	fixed;}

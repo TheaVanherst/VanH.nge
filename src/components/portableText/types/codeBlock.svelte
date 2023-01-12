@@ -1,6 +1,4 @@
 <script>
-    import TagComponent from "../../tagComponent.svelte";
-
     /* language registering */
 
     import hljs             from 'highlight.js/lib/core';

@@ -1,39 +1,19 @@
 <script>
-    import TagComponent from "./tagComponent.svelte";
-
-    import { fade, fly } from 'svelte/transition';
-    let hoverBool;
-
     export let handle, linkUrl;
     export let content;
 </script>
 
-<div class="handle"
-     on:mouseleave={() => (hoverBool = false)}
-     on:mouseenter={() => (hoverBool = true)}>
+<div class="handle">
     {content}
     {#if linkUrl}
         <a href="https://twitter.com/{linkUrl}">
             <b>
                 {handle}
-                {#if hoverBool}
-                    <e in:fade="{{duration: 100}}"
-                       out:fade="{{duration: 100}}">
-                        <TagComponent tagData={handle}/>
-                    </e>
-                {/if}
             </b>
         </a>
     {:else}
-        <b in:fade="{{duration: 100}}"
-           out:fade="{{duration: 100}}">
+        <b>
             {handle}
-            {#if hoverBool}
-                <e in:fade="{{duration: 100}}"
-                   out:fade="{{duration: 100}}">
-                    <TagComponent tagData={handle}/>
-                </e>
-            {/if}
         </b>
     {/if}
 </div>
@@ -46,9 +26,9 @@
 
     *:not(a) > b {
         line-height: 100%;
-        color:          var(--accent3)}
+        color:          var(--accent2)}
     a > b {
-        color: var(--accent2);}
+        color: var(--accent3);}
 
     .handle {
         font-size:      13px;

@@ -3,7 +3,6 @@
 
     import client from '../../libaries/sanityClient.js'
     import imageUrlBuilder from '@sanity/image-url'
-    import { onMount } from 'svelte';
 
     const urlFor = (source) => {return imageUrlBuilder(client).image(source)}
 </script>
