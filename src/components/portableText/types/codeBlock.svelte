@@ -44,12 +44,11 @@
 
     /* animation setting */
 
-    import { fade, fly } from 'svelte/transition';
-
-    let copiedBool = false, hoverBool = false;
+    let copiedBool = false, hoverBool = false, clickedBool = false;
     const clicked = () => {
         if (!copiedBool) {
             copiedBool = true;
+            clickedBool = true;
             navigator.clipboard.writeText(portableText.value.code);
 
             setTimeout(() => {
@@ -64,17 +63,13 @@
         <img class="languageIcon" src="{imgUrl}" alt=" ">
         <p class="language">{language}</p>
         <div class="copy"
+             class:glow={copiedBool}
+             class:clicked={clickedBool}
              on:mouseleave={() => (hoverBool = false)}
              on:mouseenter={() => (hoverBool = true)}
              on:click={clicked}>
 
-            <img src="{clipboardIcon}">
-            {#if copiedBool || hoverBool}
-                <p in:fade="{{duration: copiedBool ? 150 : 250}}"
-                   out:fade="{{duration: copiedBool ? 0 : 250}}">
-                    <TagComponent tagData={!copiedBool ? "Copy to clipboard" : "Copied!"}/>
-                </p>
-            {/if}
+            <img src="{clipboardIcon}" alt="Copy">
         </div>
     </div>
     <div class="codeData">
@@ -88,7 +83,7 @@
         display:        block;
         overflow:       hidden;
 
-        margin:         0 10px 10px 10px;
+        margin:         0 0 10px 0;
         border-radius:  5px;
         background:     #101010;
 
@@ -105,24 +100,30 @@
     .colourScheme a {
         color:      #f92672;}
 
+
     .copy {
         border-radius: 3px;
-        padding:    5px;
+        padding:    4px;
         height:     23px;
         width:      23px;
-        float:      right;}
+        float:      right;
+
+        transition: background-color 0.2s ease;
+        border:     1px solid var(--accent4);
+        background: var(--accent4);}
+    .copy.clicked {
+        border:     1px solid var(--accent4);
+        background: var(--darkAccent4);}
+    .copy:hover {
+        border:     1px solid var(--accent2);
+        background: var(--accent2);}
+    .copy.glow {
+        border:     1px solid var(--accent2);
+        background: var(--darkAccent2);}
+
     .copy img {
         width:      inherit;
         height:     inherit;}
-
-    .copy p tag {
-        opacity:    0;
-        margin:     0 0 0 23px;
-        position:   absolute;
-        animation: fadeIn 0.2s;
-        background: var(--accent4)}
-    .copy p tag:before {
-        color:      var(--accent4)}
 
     .codeData {
         margin:         0 0 0 35px;

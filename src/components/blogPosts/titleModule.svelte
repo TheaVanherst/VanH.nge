@@ -12,8 +12,7 @@
     <div class="overflow">
         <img src="{urlFor(titleHeader).width(500).auto('format')}">
         <h1>
-            {title}lalalala testing stupidly long length
-            <img>
+            {title}
         </h1>
     </div>
 </div>

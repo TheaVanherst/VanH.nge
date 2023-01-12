@@ -6,15 +6,20 @@
 
 :root {
 	--accent1: 	#3aecb4;
+	--darkAccent1: #0d503d;
 	--accent2: 	#7553ff;
+	--darkAccent2: #261479;
 	--accent3: 	#ff9900;
+	--darkAccent3: #734400;
 	--accent4:	#f92672;
+	--darkAccent4: #670f30;
 
 	--borderColor: 		var(--accent3);
 	--background: 		#000;
-	--backgroundAccent: #0b0b0c;
+	--backgroundAccent1: #1d1d1f;
+	--backgroundAccent2: #0a0a0a;
 	--textColour: 		#fff;
-	--textColourHover: 	#000;
+	--textColourInvert: #000;
 
 	--fadedColour: 		#d8d5d5;
 	--fadedColourAcc: 	#c5c5c5;
@@ -50,6 +55,9 @@ p {
 	line-height:    100%;
 	height: 		100%;
 	margin: 		0;}
+.postBody > *:last-child {
+	padding: 0;
+}
 
 h1, h2, h3, h4 {
 	text-transform: capitalize;
@@ -57,7 +65,7 @@ h1, h2, h3, h4 {
 	line-height: 	120%;
 
 	border-left: 	5px solid var(--accent1);
-	margin:			0 0 var(--containerPadding) calc(var(--contentPaddingX) * -1);
+	margin:			0 0 var(--contentPaddingY) calc(var(--contentPaddingX) * -1);
 	padding:	 	0 0 0 20px;
 }
 
@@ -65,6 +73,10 @@ h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
 h3 {font-size: 1.5rem;}
 h4 {font-size: 1.25rem;}
+
+::selection {
+	color: 				var(--background);
+	background-color: 	var(--accent1)}
 
 /* mark formatting */
 
@@ -74,11 +86,12 @@ strong {
 
 blockquote {
 	padding: 	3px 6px 3px 6px;
-	margin: 	0 10px 10px 10px;
+	margin: 	0 5px 10px 5px;
 	font-style: italic;
 	border-radius: 		5px;
-	border-left: 		1px solid var(--fadedColourAcc);
-	background-color: 	var(--backgroundAccent);}
+	border: 			1px solid #4d122a;
+	border-left: 		1px solid var(--accent4);
+	background-color: 	var(--backgroundAccent2);}
 blockquote:before {
 	color: 		var(--fadedColourAcc);
 	content: 	open-quote;

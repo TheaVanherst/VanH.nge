@@ -8,8 +8,7 @@
 	<div class="spaceBg1 backGround"></div>
 
 	<main>
-		<Header/>
-
+<!--		<Header/>-->
 		<table>
 			<div class="col1 col">
 				test lol xd test lol xdtest lol xdtest lol xdtest lol xd

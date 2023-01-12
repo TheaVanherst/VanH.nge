@@ -4,7 +4,12 @@
 
 <style>
     h {
-        border-radius:  3px;
-        padding: 0 3px;
-        background-color: var(--accent1);}
+        padding:    0 3px;
+        color:      var(--textColourInvert);
+        border-radius:      3px;
+        background-color:   var(--accent2);}
+
+    ::selection {
+        color: 				var(--accent2);
+        background-color: 	var(--background)}
 </style>

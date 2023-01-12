@@ -81,21 +81,16 @@
 
 <style>
     div {
-        background-color: var(--accent1);
-
         padding:    var(--contentPaddingY) var(--contentPaddingX);
         color:      var(--background);}
 
-    p {
-        font-weight:    500;
-        margin:         0;
-        line-height:    100%;}
+    ::selection {
+        color: 				var(--accent1);
+        background-color: 	var(--background)}
 
     .createdOn {
-        padding:        0 0 2px 0;
         font-size:      100%;}
     .updatedOn {
         text-transform: lowercase;
-        padding:        0 0 3px 0;
         font-size:      70%;}
 </style>

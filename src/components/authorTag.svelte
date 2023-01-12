@@ -44,15 +44,6 @@
     a:hover {
         text-decoration: underline;}
 
-    p {
-        font-family:    "Poppins", serif;
-        font-weight:    500;
-        margin:         0;
-        padding:        0;
-
-        width:          min-content;
-        line-height:    100%;}
-
     *:not(a) > b {
         line-height: 100%;
         color:          var(--accent3)}
@@ -63,10 +54,10 @@
         font-size:      13px;
         line-height:    100%;
 
-        height:     14px;
-        display:    table-cell;
+        display:    inline-block;
         width:      min-content;
-        padding:    var(--contentPaddingY) var(--contentPaddingX);
+        padding:    0 var(--contentPaddingX);
+        margin:     var(--contentPaddingY) 0;
     }
     .handle:not(:first-child){
         border-left:    1px solid var(--textColour);

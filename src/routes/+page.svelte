@@ -29,7 +29,7 @@
 
 <style>
 	.post {
-		border: 	1px solid var(--accent1);
+		border: 	var(--border-thickness) solid var(--accent1);
 		padding: 	var(--containerPadding);
 
 		min-height: 	120px;

@@ -3,8 +3,6 @@
     export let direction = "left";
 </script>
 
-<!--todo: Fix the vertical alignment issue. -->
-
 <tag class="{direction}">
     <p>{tagData}</p>
 </tag>
