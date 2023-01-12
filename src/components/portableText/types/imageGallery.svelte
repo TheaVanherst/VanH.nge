@@ -25,51 +25,28 @@
 
 </script>
 
-<div class="galParent">
-    <imgGal class="{value.display}">
-        {#each arr as row}
-            <tr>
-                {#each row as image}
-                    <th><SanityImage image={image}/></th>
-                {/each}
-            </tr>
-        {/each}
-    </imgGal>
+<div class="{value.display}">
+    {#each arr as row}
+        <div class="row">
+            {#each row as image}
+                <div class="col">
+                    <SanityImage image={image}/>
+                </div>
+            {/each}
+        </div>
+    {/each}
 </div>
 
 <style>
-    imgGal {
-        overflow: hidden;
-        display: block;}
-
-    .galParent:not(:last-child) {
-        padding: 0px 5px 10px 5px;}
-    .galParent:last-child {
-        padding: 0px 5px 5px 5px;}
-
-    th {
-        border-radius:  var(--outerRadius);
-        overflow:   hidden;}
-
-    /* .stacked */
-
-    .vertical th {
-        width: auto;
-        display: block;}
-
-    /* inline // grid */
-
-    .dynamic tr {
-        display:    flex;}
-    .dynamic th {
-        max-width:  50%;
-        position:   relative;
-        display:    flex;}
-    .dynamic th:only-child {
-        max-width:  100%;}
 
     /* .carousel */
-
+    .dynamic .row {
+        display:    inline-flex;
+        gap:        var(--innerRaidus);}
+    .dynamic .col {
+        display:    inline-flex;}
+    .dynamic .col:not(:only-child) {
+        flex-basis: inherit;}
 
 
     :global(imgGal div) {

@@ -29,6 +29,9 @@
 
 <style>
     div {
+        height: 100%;
+        width:  100%;
+
         animation-duration: 2s;
         animation-fill-mode: forwards;
         animation-iteration-count: infinite;
@@ -43,9 +46,13 @@
     img {
         margin:     0;
         opacity:    0;
-        width: 100%;
-        height: 100%;
+        width:     100%;
+        height:    100%;
+        object-fit: cover;
         transition: opacity 500ms ease-out;}
+    .loaded > img {
+        opacity: 1!important;
+    }
 
     @keyframes placeHolderShimmer {
         0% {    background-position: -800px 0}
