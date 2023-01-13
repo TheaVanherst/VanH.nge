@@ -15,8 +15,8 @@
 	--darkAccent4: #670f30;
 
 	--background: 		#000;
-	--backgroundAccent1: #1d1d1f;
-	--backgroundAccent2: #0a0a0a;
+	--backgroundAccent1: #323232;
+	--backgroundAccent2: #141414;
 	--textColour: 		#fff;
 	--textColourInvert: #000;
 
@@ -44,6 +44,17 @@ body {
 	cursor: crosshair;
 	color: var(--textColour);
 }
+
+::-webkit-scrollbar {
+	width: 		var(--innerRaidus);}
+::-webkit-scrollbar-track {
+	background: var(--backgroundAccent2);}
+::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	border: 	1px solid var(--background);
+	background: var(--accent1);}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--darkAccent1);}
 
 /* style formatting */
 

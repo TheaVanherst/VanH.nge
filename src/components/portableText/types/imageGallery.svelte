@@ -58,17 +58,16 @@
         flex-basis: inherit;}
 
     .scroll {
-        width:      100%;
-        max-width:  100%;
-        position:   relative;}
-    .scroll .row {
         overflow-x: scroll;
         overflow-y: hidden;
-        height:     250px;
-        display:    block ruby;
+        scrollbar-color: var(--accent1) var(--backgroundAccent2);
+        scrollbar-width: thin;
 
-        scrollbar-color: var(--accent1) var(--fadedColourAcc);
-        scrollbar-width: none;}
+        width:      calc(100% - 2px);
+        position:   relative;}
+    .scroll .row {
+        height:     250px;
+        display:    inline-flex;}
     .scroll .col {
         height:     250px;
         width:      250px;

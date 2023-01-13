@@ -66,7 +66,7 @@
         overflow: hidden;}
 
     .userData {
-        border-bottom:  var(--border-thickness) solid var(--fadedColourAcc);
+        border-bottom:  var(--border-thickness) solid var(--textColour);
         margin:         0 0 var(--contentPaddingY) 0;
         padding-left:   calc(var(--contentPaddingY) + 24px);
         width:          auto;

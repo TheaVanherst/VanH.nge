@@ -90,11 +90,12 @@
         border-radius:  5px;
         background:     black;
         border:         1px solid var(--backgroundAccent2);
+        border-top:     var(--innerRaidus) solid var(--backgroundAccent2);
         color:          white;
         white-space:    pre-wrap;}
 
     .titleBar {
-        border-top:     var(--innerRaidus) solid var(--backgroundAccent2);
+        border-top:     1px solid var(--backgroundAccent1);
         border-bottom:  1px solid var(--backgroundAccent1);}
     .titleBar img {
         filter:     contrast(-0) brightness(100);}
@@ -112,7 +113,7 @@
     .titleBar p {
         font-weight:    700;
         font-family:    Arial;
-        color:          #454549;
+        color:          var(--backgroundAccent1);
         font-size:      11px;
 
         padding:    7px 7px 5px 3px;
@@ -167,12 +168,11 @@
         background:     black;}
 
     .colourScheme {
-        color:          #33333a;
+        color:          var(--backgroundAccent1);
         font-family:    Arial;
         font-size:      11px;
-
-        background: var(--backgroundAccent2);
-        padding:    6px 5px 4px;}
+        padding:        6px 5px 4px;
+        background:     var(--backgroundAccent2);}
     .colourScheme a {
         color:      var(--accent2);}
 
