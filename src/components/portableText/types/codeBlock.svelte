@@ -1,7 +1,7 @@
 <script>
-    /* language registering */
-
     import hljs             from 'highlight.js/lib/core';
+
+    /* language registering */
 
     import javascript       from 'highlight.js/es/languages/javascript';
     import css              from 'highlight.js/es/languages/CSS';
@@ -57,18 +57,25 @@
 </script>
 
 <code class="language-{language}">
-    <div class="codeType">
-        <img class="languageIcon" src="{imgUrl}" alt=" ">
-        <p class="language">{language}</p>
-        <div class="copy"
-             class:glow={copiedBool}
-             class:clicked={clickedBool}
-             on:mouseleave={() => (hoverBool = false)}
-             on:mouseenter={() => (hoverBool = true)}
-             on:click={clicked}>
-
-            <img src="{clipboardIcon}" alt="Copy">
-        </div>
+    <div class="titleBar">
+        <tab>
+            <img class="languageIcon" src="{imgUrl}" alt=" ">
+            <p>
+                DemoCode.{language}
+            </p>
+        </tab>
+        <copyTab
+            class="copy"
+            class:glow={copiedBool}
+            class:clicked={clickedBool}
+            on:mouseleave={() => (hoverBool = false)}
+            on:mouseenter={() => (hoverBool = true)}
+            on:click={clicked}>
+            <p></p>
+            <div class="copy">
+                <img src="{clipboardIcon}" alt="Copy">
+            </div>
+        </copyTab>
     </div>
     <div class="codeData">
         {@html code}
@@ -79,90 +86,94 @@
 <style>
     code {
         display:        block;
-        overflow:       hidden;
-
         margin:         0 0 10px 0;
         border-radius:  5px;
-        background:     #101010;
-
+        background:     black;
+        border:         1px solid var(--backgroundAccent2);
         color:          white;
-        font-size:      0;
         white-space:    pre-wrap;}
 
-    .colourScheme {
-        color:      #33333a;
-        background: #16171a;
+    .titleBar {
+        border-top:     var(--innerRaidus) solid var(--backgroundAccent2);
+        border-bottom:  1px solid var(--backgroundAccent1);}
+    .titleBar img {
+        filter:     contrast(-0) brightness(100);}
 
-        padding:    5px;
-        font-size:  12px;}
-    .colourScheme a {
-        color:      #f92672;}
+    tab {
+        vertical-align:     middle;
+        border-bottom:      2px solid var(--accent2);
+        position:   relative;
+        display:    inline-block;
+        padding:    2px;
+        height:     100%;}
+    .titleBar > * {
+        vertical-align: middle;
+        display:        inline-flex;}
+    .titleBar p {
+        font-weight:    700;
+        font-family:    Arial;
+        color:          #454549;
+        font-size:      11px;
 
+        padding:    7px 7px 5px 3px;
+        display:    inline-flex;}
+    .titleBar .languageIcon {
+        height:  17px;
+        width:   17px;
+        padding: 3px;}
 
-    .copy {
-        border-radius: 3px;
-        padding:    4px;
-        height:     23px;
-        width:      23px;
-        float:      right;
+    copyTab {
+        padding:    2px 2px 2px 7px;
+        float:      right;}
 
-        transition: background-color 0.2s ease;
-        border:     1px solid var(--accent4);
-        background: var(--accent4);}
-    .copy.clicked {
-        border:     1px solid var(--accent4);
-        background: var(--darkAccent4);}
-    .copy:hover {
-        border:     1px solid var(--accent2);
-        background: var(--accent2);}
-    .copy.glow {
-        border:     1px solid var(--accent2);
-        background: var(--darkAccent2);}
+    copyTab p:before { /* this is a bit silly */
+        opacity:    1;
+        content:    "Copy to clipboard"}
+    copyTab.glow p:before {
+        color:      var(--accent3);
+        content:    "Copied to clipboard!"}
 
-    .copy img {
+    copyTab .copy {
+        padding:    3px;
+        margin:     2px;
+        height:     13px;
+        width:      13px;
+
+        border-radius:  3px;
+        transition:     background-color 0.2s ease;
+        border:         1px solid var(--accent2);
+        background:     var(--accent2);}
+    copyTab .copy img {
         width:      inherit;
         height:     inherit;}
 
+    copyTab.clicked .copy {
+        border:     1px solid var(--accent2);
+        background: var(--darkAccent2);}
+    copyTab:hover .copy {
+        border:     1px solid var(--accent3);
+        background: var(--accent3);}
+    copyTab.glow .copy {
+        border:     1px solid var(--accent3);
+        background: var(--darkAccent3);}
+
     .codeData {
-        margin:         0 0 0 35px;
-        padding:        5px 5px 5px 12px;
-        font-size:      13px;
-        position:       relative;
+        display:    inline-block;
+        margin:     0 0 0 35px;
+        padding:    5px 5px 5px 12px;
+        position:   relative;
 
-        border-left:    1px solid #f92672;
-        background:     #090909;}
+        border-left:    1px solid var(--backgroundAccent1);
+        background:     black;}
 
-    .codeType {
-        background:     #16171a;
-        padding:        8px;}
-    .codeType > * {
-        vertical-align: middle;}
-    .codeType p {
-        font-weight:    600;
-        display:        inline-flex;
-        font-size:      18px;}
+    .colourScheme {
+        color:          #33333a;
+        font-family:    Arial;
+        font-size:      11px;
 
-    .codeType img {
-        filter: contrast(-0)
-        brightness(100);}
-    .codeType img:not(:last-of-type) {
-        padding-right:  10px;}
+        background: var(--backgroundAccent2);
+        padding:    6px 5px 4px;}
+    .colourScheme a {
+        color:      var(--accent2);}
 
-    .codeType .languageIcon {
-        height:         33px;
-        width:          33px;}
-    .codeType .language {
-        padding-left:   var(--containerPadding);}
-
-    :global(.fljs-Line:before) {
-        position:   absolute;
-        left:      -30px;
-        padding:    0 3px;
-
-        color:      #00ff3a;
-        content:    counter(section);}
-    :global(.fljs-Line) {
-        counter-increment:  section;
-        font-size:  13px;
-        padding:    2px 0;}
 </style>

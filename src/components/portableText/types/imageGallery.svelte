@@ -2,16 +2,17 @@
     import SanityImage from '../../sanityImage.svelte'
     import {onMount} from "svelte";
 
-    export let portableText
+    export let portableText;
     $: ({value} = portableText)
-    let arr = [], datatype; //image array
-    $: datatype = value.display
+    let arr = []; //image array
+
+    /* organizes into array data to be used as columns */
 
     onMount(() => {
-        if(datatype === "vertical" || datatype === "carousel" || datatype === "scroll"){
+        if(value.display === "vertical" || value.display === "carousel" || value.display === "scroll"){
             arr = [value.images]
         }
-        else if(datatype === "dynamic" || datatype === "grid"){
+        else if(value.display === "dynamic" || value.display === "grid"){
             for (let e = 0; e < Math.ceil(value.images.length / 2); e++){
                 arr[e] = []
                 for (let i = 0; i < 2; i++){
@@ -20,7 +21,6 @@
                         arr[e][i] = value.images[f];
         }}}}
     });
-
 </script>
 
 <div class="table {value.display}">

@@ -1,4 +1,14 @@
 
+.fljs-Line:before {
+    position:   absolute;
+    left:      -38px;
+    padding:    0 3px;
+    content:    counter(section);}
+.fljs-Line {
+    counter-increment:  section;
+    font-size:  13px;
+    padding:    2px 0;}
+
 /* TODO: Beforehand styling */
 
 .language-css           .hljs-selector-tag::before,
@@ -11,6 +21,8 @@
     color:      #f92672;}
 
 /* TODO: Generic styling */
+
+.fljs-Line:before {color:      #00ff3a;}
 
 .hljs-title.function_ {	color: #65d8ec;}
 .hljs-title.class_ {	color: #ff8000;}
