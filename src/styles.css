@@ -41,6 +41,7 @@ body {
 	margin: 	0;
 	background:	#000;
 	font-family: 		'Courier New', sans-serif;
+	scroll-behavior: smooth;
 	cursor: crosshair;
 	color: var(--textColour);
 }

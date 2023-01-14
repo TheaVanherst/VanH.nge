@@ -8,12 +8,21 @@
 
 <style>
     a {
-        text-decoration: none;
+        text-decoration: underline 1px;
         font-weight:    600;
-        color:      var(--accent3);
-        position:       relative;}
+        color:          var(--accent3);
+        position:       relative;
+
+        margin:     0 -.25rem;
+        padding:    0  .25rem;
+
+        border-radius:  var(--innerRaidus);
+        box-shadow:     inset 0 0 0 0 var(--darkAccent3);
+        transition:     color .2s ease-in-out, box-shadow .2s ease-in-out;}
     a:hover {
-        text-decoration: underline;}
+        text-decoration: none;
+        box-shadow:     inset 0 0 100px 0 var(--accent3);
+        color:          var(--textColourInvert);}
 
     p {
         margin:     0;

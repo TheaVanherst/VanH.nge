@@ -24,7 +24,7 @@
             src={ urlFor(image).width(1200).fit('fillmax') }
             alt={ image.alt }
             bind:this={ imageRef }
-            style="aspect-ratio: { aspectRatio }"/>
+            style="aspect-ratio: {aspectRatio}"/>
 </div>
 
 <style>
@@ -32,16 +32,20 @@
         height: 100%;
         width:  100%;
 
+        display: flex; /* fixes an issue with the padding at the bottom of images*/
+
         animation-duration: 2s;
         animation-fill-mode: forwards;
         animation-iteration-count: infinite;
         animation-name: placeHolderShimmer;
-        background:
-                linear-gradient(to right,
-                var(--backgroundAccent) 8%,
-                var(--fadedColourAcc) 18%,
-                var(--backgroundAccent) 33%);
+        background: linear-gradient(to right,
+            var(--backgroundAccent) 8%,
+            var(--fadedColourAcc) 18%,
+            var(--backgroundAccent) 33%);
         background-size: 800px 100px;}
+
+    div:active > img {
+        object-fit: contain;}
 
     img {
         margin:     0;
