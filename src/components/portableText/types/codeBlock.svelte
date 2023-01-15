@@ -101,6 +101,10 @@
     .titleBar img {
         filter:     contrast(-0) brightness(100);}
 
+    .titleBar p::selection {
+        color: 				var(--background);
+        background-color: 	var(--accent2)}
+
     tab {
         vertical-align:     middle;
         border-bottom:      2px solid var(--accent2);
@@ -111,8 +115,7 @@
         height:     100%;}
     tab:hover {
         background-color: var(--backgroundAccent2);
-        color: var(--textColour);
-    }
+        color: var(--textColour);}
 
     .titleBar > * {
         vertical-align: middle;
@@ -178,11 +181,18 @@
 
     .colourScheme {
         color:          var(--backgroundAccent1);
-        font-family:    Arial;
+        font-family:    Arial, serif;
         font-size:      11px;
         padding:        6px 5px 4px;
         background:     var(--backgroundAccent2);}
     .colourScheme a {
         color:      var(--accent2);}
+
+    .colourScheme::selection {
+        color: 				var(--background);
+        background-color: 	var(--accent2)}
+    .colourScheme a::selection {
+        color: 				var(--background);
+        background-color: 	var(--accent2)}
 
 </style>

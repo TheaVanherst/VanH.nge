@@ -24,13 +24,7 @@
         box-shadow:     inset 0 0 100px 0 var(--accent3);
         color:          var(--textColourInvert);}
 
-    p {
-        margin:     0;
-        padding:    0;
-        z-index:    2;
-
-        position:   relative;
-        display:    inline;}
-    p:hover {
-        text-decoration: underline;}
+    a::selection {
+        color: 				var(--background);
+        background-color: 	var(--accent3)}
 </style>

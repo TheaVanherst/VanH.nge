@@ -37,8 +37,6 @@
             }
         }
     });
-
-    console.log(arr)
 </script>
 
 <div class="table {value.display}">
@@ -105,9 +103,6 @@
         width:      50%;}
     .dynamicvertical .col {
         display:    flex;}
-    .dynamicvertical .row:last-of-type {
-        flex: max-content;}
-
 
     /* Grid */
 
@@ -166,15 +161,13 @@
         width:      calc(100% - 2px);
         position:   relative;}
     .scroll .row {
-        height:     250px;
+        gap:        var(--imageSpacing);
         display:    inline-flex;}
     .scroll .col {
-        height:     250px;
-        width:      250px;
+        height:     400px;
+        width:      max-content;
         display:    inline-block;
         position:   relative;
         overflow:   hidden;}
-    .scroll .col:not(:last-of-type) {
-        margin-right:   var(--imageSpacing);}
 
 </style>

@@ -10,6 +10,5 @@
         background-color:   var(--accent2);}
 
     ::selection {
-        color: 				var(--accent2);
-        background-color: 	var(--background)}
+        background-color: 	var(--accent2)}
 </style>

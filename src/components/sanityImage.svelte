@@ -31,9 +31,7 @@
     div {
         height:     100%;
         width:      100%;
-
         display:    flex; /* fixes an issue with the padding at the bottom of images*/
-
 
         animation-fill-mode:    forwards;
         animation-name:         placeHolderShimmer;
@@ -46,8 +44,8 @@
             var(--fadedColourAcc) 18%,
             var(--backgroundAccent) 33%);}
 
-    /*div:active > img {*/
-    /*    object-fit: contain;}*/
+    div:active > img {
+        object-fit: contain;} /* this is a temporary solution */
 
     img {
         margin:     0;
@@ -57,8 +55,7 @@
         object-fit: cover;
         transition: opacity 500ms ease-out;}
     .loaded > img {
-        opacity: 1!important;
-    }
+        opacity: 1!important;}
 
     @keyframes placeHolderShimmer {
         0% {    background-position: -800px 0}
