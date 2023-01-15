@@ -147,7 +147,8 @@ export default defineType({
           options: {
             list: [
               { title: 'Stacked',         value: 'vertical' },
-              { title: 'Dynamic Inline',  value: 'dynamic' },
+              { title: 'Dynamic Inline',  value: 'dynamicinline' },
+              { title: 'Dynamic Grid',    value: 'dynamicgrid' },
               { title: 'Grid',            value: 'grid' },
               { title: 'Scroll',          value: 'scroll' },
               { title: 'Carousel',        value: 'carousel' },
@@ -165,15 +166,15 @@ export default defineType({
       preview: {
         select: {
           images: 'images',
-          image: 'images.0',
+          image: 'images',
         },
         prepare(selection) {
           const { images, image } = selection;
 
           return {
             title: `Gallery block of ${Object.keys(images).length} images`,
-            subtitle: `Alt text: ${image.alt}`,
-            media: image,
+            subtitle: `Preview image alt text: ${image[0]?.alt}`,
+            media: image[0],
           };
         },
       },
