@@ -10,11 +10,11 @@
         if(value.display === "vertical" || value.display === "scroll"){
             arr = [value.images]
         }
-        else if (value.display === "carousel") {
+        else if (value.display === "carousel" || value.display === "dynamicinline" ) {
             arr = [value.images]
             y = value.images.length;
         }
-        else if(value.display === "dynamic" || value.display === "grid"){
+        else if(value.display === "dynamicgrid" || value.display === "grid"){
             for (let e = 0; e < Math.ceil(value.images.length / 2); e++){
                 arr[e] = []
                 for (let i = 0; i < 2; i++){
@@ -32,7 +32,7 @@
 
 <div class="table {value.display}">
     {#each arr as row}
-        <div class="row" style="--yWid: {y}00%">
+        <div class="row" style="--yWid: {y}">
             {#each row as image}
                 <div class="col">
                     <SanityImage image={image}/>
@@ -46,7 +46,7 @@
     /* TODO: DUMP ALL OF THESE INTO SEPERATE GALLERY TYPES. */
 
     .table {
-        border-radius:  var(--innerRaidus);
+        border-radius:  var(--outerRadius);
         margin-bottom:  var(--contentPaddingY);
         overflow:       hidden;
 
@@ -56,42 +56,61 @@
         width: 3px;
         height: 3px;}
 
+    .row {
+        vertical-align: bottom;}
+    .row:not(:last-of-type) {
+        padding-bottom: var(--imageSpacing);}
+
     .col {
+        background-color: var(--backgroundAccent2);
         border-radius:  var(--innerRaidus);
         overflow:       hidden;}
-    .row {
-        background-color: var(--backgroundAccent2);
-    }
 
-    /* Stacked Vertically */
+    /* Dynamic Grid */
 
-    .stacked {
+    .dynamicgrid .row {
+        display:        inline-flex;
+        gap:            var(--imageSpacing);}
+    .dynamicgrid .row:not(:last-of-type) {
+        padding-bottom: var(--imageSpacing);}
 
+    .dynamicgrid .col:not(:only-child) {
+        max-width: 60%;
     }
 
     /* Dynamic Inline */
 
-    .dynamic .row {
-        vertical-align: bottom;
+    .dynamicinline .row {
         display:        inline-flex;
-        gap:            var(--imageSpacing);
+        gap:            var(--imageSpacing);}
+    .dynamicinline .row:not(:last-of-type) {
         padding-bottom: var(--imageSpacing);}
 
-    .dynamic .col {
-        display:    inline-flex;}
-    .dynamic .col:not(:only-child) {
-        flex-basis: inherit;}
+    .dynamicinline .col {
+        max-width: calc(110% / var(--yWid));}
+
 
     /* Dynamic Vertical */
 
 
+
     /* Grid */
 
+    .grid .row {
+        width: 100%;
+        display:        inline-flex;
+        gap:            var(--imageSpacing);}
 
+    .grid .col {
+        transition: width 250ms ease-in, height 250ms ease-out;
+        display:    inline-block;
+        width:      50%;}
+    .grid .col:only-child {
+        width: inherit;}
 
-    /* Scroll */
-
-
+    .grid .col:active {
+        width: 200%;
+        max-width: inherit;}
 
     /* Carousel */
 
@@ -104,8 +123,9 @@
         width:      calc(100% - 2px);
         position:   relative;}
     .carousel .row {
+        gap:        var(--imageSpacing);
         height:     350px;
-        width:      var(--yWid);
+        width:      calc(100% * var(--yWid));
         display:    inline-flex;}
 
     .carousel .col {

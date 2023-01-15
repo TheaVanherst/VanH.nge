@@ -44,8 +44,8 @@
             var(--backgroundAccent) 33%);
         background-size: 800px 100px;}
 
-    div:active > img {
-        object-fit: contain;}
+    /*div:active > img {*/
+    /*    object-fit: contain;}*/
 
     img {
         margin:     0;
