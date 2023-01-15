@@ -29,20 +29,22 @@
 
 <style>
     div {
-        height: 100%;
-        width:  100%;
+        height:     100%;
+        width:      100%;
 
-        display: flex; /* fixes an issue with the padding at the bottom of images*/
+        display:    flex; /* fixes an issue with the padding at the bottom of images*/
 
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
-        animation-iteration-count: infinite;
-        animation-name: placeHolderShimmer;
-        background: linear-gradient(to right,
+
+        animation-fill-mode:    forwards;
+        animation-name:         placeHolderShimmer;
+        animation-duration:     2s;
+        animation-iteration-count:  infinite;
+
+        background-size:    800px 100px;
+        background:         linear-gradient(to right,
             var(--backgroundAccent) 8%,
             var(--fadedColourAcc) 18%,
-            var(--backgroundAccent) 33%);
-        background-size: 800px 100px;}
+            var(--backgroundAccent) 33%);}
 
     /*div:active > img {*/
     /*    object-fit: contain;}*/
@@ -50,8 +52,8 @@
     img {
         margin:     0;
         opacity:    0;
-        width:     100%;
-        height:    100%;
+        width:      100%;
+        height:     100%;
         object-fit: cover;
         transition: opacity 500ms ease-out;}
     .loaded > img {

@@ -95,6 +95,7 @@
         white-space:    pre-wrap;}
 
     .titleBar {
+        color:      var(--backgroundAccent1);
         border-top:     1px solid var(--backgroundAccent1);
         border-bottom:  1px solid var(--backgroundAccent1);}
     .titleBar img {
@@ -103,21 +104,27 @@
     tab {
         vertical-align:     middle;
         border-bottom:      2px solid var(--accent2);
+
         position:   relative;
         display:    inline-block;
         padding:    2px;
         height:     100%;}
+    tab:hover {
+        background-color: var(--backgroundAccent2);
+        color: var(--textColour);
+    }
+
     .titleBar > * {
         vertical-align: middle;
         display:        inline-flex;}
     .titleBar p {
         font-weight:    700;
         font-family:    Arial;
-        color:          var(--backgroundAccent1);
         font-size:      11px;
 
         padding:    7px 7px 5px 3px;
         display:    inline-flex;}
+
     .titleBar .languageIcon {
         height:  17px;
         width:   17px;
@@ -151,6 +158,8 @@
     copyTab.clicked .copy {
         border:     1px solid var(--accent2);
         background: var(--darkAccent2);}
+    copytab:hover {
+        color: var(--darkAccent3);}
     copyTab:hover .copy {
         border:     1px solid var(--accent3);
         background: var(--accent3);}

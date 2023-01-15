@@ -25,6 +25,17 @@
                 }
             }
         }
+        else if (value.display === "dynamicvertical") {
+            for (let e = 0; e < 2; e++){
+                arr[e] = []
+                for (let i = 0; i < Math.ceil(value.images.length / 2); i++){
+                    let f = e + (i * 2);
+                    if (value.images[f]){
+                        arr[e][i] = value.images[f];
+                    }
+                }
+            }
+        }
     });
 
     console.log(arr)
@@ -50,67 +61,73 @@
         margin-bottom:  var(--contentPaddingY);
         overflow:       hidden;
 
-        scrollbar-color: var(--accent1) var(--backgroundAccent2);
-        scrollbar-width: thin;}
+        scrollbar-color:    var(--accent1) var(--backgroundAccent2);
+        scrollbar-width:    thin;}
     .table::-webkit-scrollbar {
-        width: 3px;
-        height: 3px;}
-
+        width:      3px;
+        height:     3px;}
     .row {
         vertical-align: bottom;}
-    .row:not(:last-of-type) {
-        padding-bottom: var(--imageSpacing);}
-
     .col {
-        background-color: var(--backgroundAccent2);
-        border-radius:  var(--innerRaidus);
-        overflow:       hidden;}
+        background-color:   var(--backgroundAccent2);
+        border-radius:      var(--innerRaidus);
+        overflow:           hidden;}
 
     /* Dynamic Grid */
 
     .dynamicgrid .row {
-        display:        inline-flex;
-        gap:            var(--imageSpacing);}
+        display:    inline-flex;
+        gap:        var(--imageSpacing);}
     .dynamicgrid .row:not(:last-of-type) {
         padding-bottom: var(--imageSpacing);}
-
     .dynamicgrid .col:not(:only-child) {
-        max-width: 60%;
-    }
+        max-width: 60%;}
 
     /* Dynamic Inline */
 
     .dynamicinline .row {
         display:        inline-flex;
         gap:            var(--imageSpacing);}
-    .dynamicinline .row:not(:last-of-type) {
-        padding-bottom: var(--imageSpacing);}
-
     .dynamicinline .col {
         max-width: calc(110% / var(--yWid));}
 
-
     /* Dynamic Vertical */
 
+    .dynamicvertical {
+        display:        inline-flex;
+        column-count:   2;
+        gap:    5px;
+        width:  100%;
+        height: max-content;}
+    .dynamicvertical .row {
+        display:    grid;
+        gap:        5px;
+        width:      50%;}
+    .dynamicvertical .col {
+        display:    flex;}
+    .dynamicvertical .row:last-of-type {
+        flex: max-content;}
 
 
     /* Grid */
 
     .grid .row {
-        width: 100%;
-        display:        inline-flex;
-        gap:            var(--imageSpacing);}
+        width:      100%;
+        display:    inline-flex;
+        gap:        var(--imageSpacing);}
+    .grid .row:not(:last-of-type) {
+        padding-bottom:     var(--imageSpacing);}
 
     .grid .col {
-        transition: width 250ms ease-in, height 250ms ease-out;
+        transition: width 250ms ease-out, height 250ms ease-in;
         display:    inline-block;
         width:      50%;}
     .grid .col:only-child {
-        width: inherit;}
+        width:      inherit;}
 
-    .grid .col:active {
-        width: 200%;
-        max-width: inherit;}
+    /*.grid .col:active {*/
+    /*    width:      200%;*/
+    /*    max-width:  inherit;}*/
 
     /* Carousel */
 
@@ -158,6 +175,6 @@
         position:   relative;
         overflow:   hidden;}
     .scroll .col:not(:last-of-type) {
-        margin-right: var(--imageSpacing);}
+        margin-right:   var(--imageSpacing);}
 
 </style>
