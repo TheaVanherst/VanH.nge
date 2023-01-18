@@ -2,15 +2,16 @@
     <slot/>
 </codesnippet>
 
-<style>
+<style lang="scss">
     codesnippet {
         font-family:        monospace;
         background-color:   var(--backgroundAccent2);
 
         padding:        1px 4px;
-        border-radius:  var(--innerRaidus);}
+        border-radius:  var(--innerRaidus);
 
-    ::selection {
-        color:              var(--textColourInvert);
-        background-color: 	var(--textColour)}
+        &::selection {
+            color:              var(--textColourInvert);
+            background-color: 	var(--textColour);}
+    }
 </style>

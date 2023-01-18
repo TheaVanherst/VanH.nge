@@ -1,0 +1,77 @@
+
+.fljs-Line {
+    counter-increment:  section;
+    font-size:  13px;
+    padding:    2px 0;
+
+    &:before {
+        color:      #00ff3a;
+        position:   absolute;
+        left:      -38px;
+        padding:    0 3px;
+        content:    counter(section);}
+}
+
+/* TODO: Beforehand styling */
+
+.indent {
+    content:    "|";
+    position:   absolute;
+    left:      -43px;
+
+    font-family:    'Oswald', sans-serif;
+    opacity:        0.5;
+    line-height:    100%;}
+
+.language-css           .hljs-selector-tag::before{
+    @extend .indent;    color: #a59f85;}
+.language-typescript    .hljs-keyword::before{
+    @extend .indent;    color: #a6e22e;}
+.language-javascript    .hljs-title.function_::before {
+    @extend .indent;    color: #a17cff;}
+.language-html {
+    .hljs-built_in::before {
+        @extend .indent;
+        color: #65d8ec;}
+    .hljs-selector-pseudo::before {
+        @extend .indent;
+        color: #a17cff;}
+}
+
+/* TODO: Generic styling */
+
+.hljs-title {	        color: #39ff00;}
+.hljs-title.function_ {	color: #65d8ec;}
+.hljs-title.class_ {	color: #ff8000;}
+.hljs-string {			color: #a6e22e;}
+.hljs-number {			color: #ece516;}
+.hljs-attr {			color: #f92672;}
+.hljs-keyword {			color: #7339ff;}
+.hljs-function {		color: #65d8ec;}
+.hljs-params {			color: #ff9e0f;}
+.hljs-selector-tag{		color: #f92672;}
+.hljs-selector-pseudo {	color: #a17cff;}
+.hljs-selector-id {		color: #65d8ec;}
+.hljs-tag {				color: #ccfffa;}
+.hljs-name {			color: #f92672;}
+.hljs-selector-class {	color: #ffc36a;}
+.hljs-attribute {		color: #a59f85;}
+.hljs-property {		color: #f92672;}
+.hljs-literal {			color: #a17cff;}
+.hljs-comment {			color: #33333a;}
+.hljs-variable {		color: #ff8000;}
+.hljs-doctag {			color: #39ff00;}
+.hljs-built_in {	    color: #e77cff;}
+
+/* TODO: html specific styling */
+
+.language-html {
+    .hljs-built_in {			color: #ff9e0f;}
+    .hljs-keyword {			color: #e77cff;}
+    .hljs-attr {				color: #65d8ec;}}
+
+    /* TODO: javascript specific styling */
+
+.language-typescript {
+    .hljs-keyword {	    color: #7339ff;}
+    .hljs-string {		color: #ff8000;} }

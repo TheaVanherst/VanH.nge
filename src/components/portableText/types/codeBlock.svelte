@@ -65,16 +65,14 @@
             </p>
         </tab>
         <copyTab
-            class="copy"
             class:glow={copiedBool}
             class:clicked={clickedBool}
+            class:hovered={hoverBool}
             on:mouseleave={() => (hoverBool = false)}
             on:mouseenter={() => (hoverBool = true)}
             on:click={clicked}>
-            <p></p>
-            <div class="copy">
-                <img src="{clipboardIcon}" alt="Copy">
-            </div>
+            <p/>
+            <div><img src="{clipboardIcon}" alt="Copy Icon"></div>
         </copyTab>
     </div>
     <div class="codeData">
@@ -83,116 +81,141 @@
     <p class="colourScheme">Scheme <a href="https://github.com/TheaVanherst/TheaVanherst/blob/master/personaRes/Vansche_me.icls">Vansche.me</a> designed By TheaVanherst</p>
 </code>
 
-<style>
+<style lang="scss">
     code {
         display:        block;
         margin:         0 0 10px 0;
+
         border-radius:  5px;
         background:     black;
         border:         1px solid var(--backgroundAccent2);
         border-top:     var(--innerRaidus) solid var(--backgroundAccent2);
+
         color:          white;
-        white-space:    pre-wrap;}
+        white-space:    pre-wrap;
+    }
 
     .titleBar {
         color:      var(--backgroundAccent1);
         border-top:     1px solid var(--backgroundAccent1);
-        border-bottom:  1px solid var(--backgroundAccent1);}
-    .titleBar img {
-        filter:     contrast(-0) brightness(100);}
+        border-bottom:  1px solid var(--backgroundAccent1);
 
-    .titleBar p::selection {
-        color: 				var(--background);
-        background-color: 	var(--accent2)}
+        img {
+            filter:     contrast(-0) brightness(100);}
+
+        * {
+            display:        inline-flex;}
+
+        p {
+            font-weight:    700;
+            font-family:    Arial;
+            font-size:      11px;
+
+            padding:    6px 7px 6px 4px;
+            display:    inline-flex;}
+        p::selection {
+            color: 				var(--background);
+            background-color: 	var(--accent2);}
+
+        & > *:hover {
+          background-color: var(--backgroundAccent2);
+          color: var(--textColour);
+        }
+    }
 
     tab {
-        vertical-align:     middle;
-        border-bottom:      2px solid var(--accent2);
-
-        position:   relative;
-        display:    inline-block;
+        vertical-align: top;
         padding:    2px;
-        height:     100%;}
-    tab:hover {
-        background-color: var(--backgroundAccent2);
-        color: var(--textColour);}
+        height:     23px;
 
-    .titleBar > * {
-        vertical-align: middle;
-        display:        inline-flex;}
-    .titleBar p {
-        font-weight:    700;
-        font-family:    Arial;
-        font-size:      11px;
-
-        padding:    7px 7px 5px 3px;
-        display:    inline-flex;}
-
-    .titleBar .languageIcon {
-        height:  17px;
-        width:   17px;
-        padding: 3px;}
+        .languageIcon {
+            height:  17px;
+            width:   17px;
+            padding: 3px;}
+    }
 
     copyTab {
         padding:    2px 2px 2px 7px;
-        float:      right;}
+        float:      right;
 
-    copyTab p:before { /* this is a bit silly */
-        opacity:    1;
-        content:    "Copy to clipboard"}
-    copyTab.glow p:before {
-        color:      var(--accent3);
-        content:    "Copied to clipboard!"}
+        div {
+            padding:    3px;
+            margin:     2px;
+            height:     13px;
+            width:      13px;
 
-    copyTab .copy {
-        padding:    3px;
-        margin:     2px;
-        height:     13px;
-        width:      13px;
+            border-radius:  3px;
+            transition:     background-color 0.2s ease;
 
-        border-radius:  3px;
-        transition:     background-color 0.2s ease;
-        border:         1px solid var(--accent2);
-        background:     var(--accent2);}
-    copyTab .copy img {
-        width:      inherit;
-        height:     inherit;}
+            img {
+                width:      inherit;
+                height:     inherit;}}
 
-    copyTab.clicked .copy {
-        border:     1px solid var(--accent2);
-        background: var(--darkAccent2);}
-    copytab:hover {
-        color: var(--darkAccent3);}
-    copyTab:hover .copy {
-        border:     1px solid var(--accent3);
-        background: var(--accent3);}
-    copyTab.glow .copy {
-        border:     1px solid var(--accent3);
-        background: var(--darkAccent3);}
+        p:before {
+            content:    "Copy to clipboard"}
+
+        .regularBut {
+            background: var(--accent2);}
+        .hoverBut {
+            background: var(--darkAccent2);}
+
+        .glowBut {
+            background: var(--accent3);}
+        .glowButTxt {
+            color:      var(--accent3);}
+
+        .pressedBut {
+            background: var(--darkAccent3);}
+        .pressButTxt {
+            color:      var(--textColour)}
+
+        & {
+            div {@extend .regularBut;} }
+        &.hovered {
+            p:before {@extend .pressButTxt;}
+            div {@extend .glowBut;}}
+        &.clicked {
+            div {@extend .hoverBut;}
+            &.glow {
+                p:before {@extend .pressButTxt;}
+                div {@extend .glowBut;}
+                &.hovered {
+                    p:before {@extend .glowButTxt;}}}
+            &.hovered {
+              p:before {@extend .pressButTxt;}
+              div {@extend .pressedBut;}}}
+        &.glow {
+            p:before {@extend .pressButTxt;}
+            div {@extend .pressedBut;}
+            p:before {
+                content:    "Copied to clipboard!";}}
+    }
 
     .codeData {
         display:    inline-block;
-        margin:     0 0 0 35px;
+        margin:     0 0 0 40px;
         padding:    5px 5px 5px 12px;
         position:   relative;
 
         border-left:    1px solid var(--backgroundAccent1);
-        background:     black;}
+        background:     black;
+    }
 
     .colourScheme {
         color:          var(--backgroundAccent1);
         font-family:    Arial, serif;
         font-size:      11px;
         padding:        6px 5px 4px;
-        background:     var(--backgroundAccent2);}
-    .colourScheme a {
-        color:      var(--accent2);}
+        background:     var(--backgroundAccent2);
 
-    .colourScheme::selection {
-        color: 				var(--background);
-        background-color: 	var(--accent2)}
-    .colourScheme a::selection {
-        color: 				var(--background);
-        background-color: 	var(--accent2)}
+        &::selection {
+            color: 				var(--background);
+            background-color: 	var(--accent2)}
 
+        a {
+            color:      var(--accent2);}
+        a::selection {
+            color: 				var(--background);
+            background-color: 	var(--accent2)}
+    }
 </style>
