@@ -51,7 +51,7 @@
     {/each}
 </div>
 
-<style>
+<style lang="scss">
     /* TODO: DUMP ALL OF THESE INTO SEPERATE GALLERY TYPES. */
 
     .table {
@@ -83,11 +83,15 @@
 
     /* Dynamic Inline */
 
-    .dynamicinline .row {
+    $font-stack: Helvetica, sans-serif;
+    .dynamicinline {
+      .row {
         display:        inline-flex;
         gap:            var(--imageSpacing);}
-    .dynamicinline .col {
+
+      .col {
         max-width: calc(110% / var(--yWid));}
+    }
 
     /* Dynamic Vertical */
 
