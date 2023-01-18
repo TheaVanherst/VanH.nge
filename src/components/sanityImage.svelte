@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte'
     import imageUrlBuilder from "@sanity/image-url";
+
     import client from "../libaries/sanityClient";
     export let image
 
@@ -12,10 +13,13 @@
     let loaded = false
     onMount(() => {
         imageRef.onload = () => {
-            loaded = true}})
+            loaded = true;
+        }
+    })
 
     const urlFor = (source) => {
-        return imageUrlBuilder(client).image(source)}
+        return imageUrlBuilder(client).image(source);
+    }
 </script>
 
 <div class:loaded>
@@ -27,25 +31,38 @@
             style="aspect-ratio: {aspectRatio}"/>
 </div>
 
-<style>
+<style lang="scss">
+    $backgroundSize: 800px;
     div {
         height:     100%;
         width:      100%;
+
         display:    flex; /* fixes an issue with the padding at the bottom of images*/
+        position:   relative;
 
-        animation-fill-mode:    forwards;
-        animation-name:         placeHolderShimmer;
-        animation-duration:     2s;
-        animation-iteration-count:  infinite;
+        &.loaded {
+          img {
+            opacity: 1!important;}
+        }
+        &:not(.loaded) {
+          animation-duration: 2s;
+          animation-fill-mode: forwards;
+          animation-iteration-count: infinite;
+          animation-name: placeHolderShimmer;
+          animation-timing-function: linear;
 
-        background-size:    800px 100px;
-        background:         linear-gradient(to right,
-            var(--backgroundAccent) 8%,
-            var(--fadedColourAcc) 18%,
-            var(--backgroundAccent) 33%);}
+          background: linear-gradient(to right,
+                  var(--backgroundAccent2) 8%,
+                  var(--backgroundAccent1) 18%,
+                  var(--backgroundAccent2) 33%);
 
-    div:active > img {
-        object-fit: contain;} /* this is a temporary solution */
+          background-size: 800px 104px;
+        }
+
+        &:active > img {
+            object-fit: contain;
+        } /* this is a temporary solution */
+    }
 
     img {
         margin:     0;
@@ -53,11 +70,10 @@
         width:      100%;
         height:     100%;
         object-fit: cover;
-        transition: opacity 500ms ease-out;}
-    .loaded > img {
-        opacity: 1!important;}
+        transition: opacity 500ms ease-out;
+    }
 
     @keyframes placeHolderShimmer {
-        0% {    background-position: -800px 0}
-        100% {  background-position:  800px 0}}
+        0% {    background-position:    0px 0}
+        100% {  background-position:    $backgroundSize 0}}
 </style>
