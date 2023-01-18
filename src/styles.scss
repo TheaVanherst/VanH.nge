@@ -50,6 +50,8 @@ body {
 	cursor: 			crosshair;
 
 	scrollbar-color:    var(--accent1) var(--backgroundAccent2);
+	scrollbar-width:    thin;
+
 	&::-webkit-scrollbar {
 		width: 			var(--innerRaidus);}
 	&::-webkit-scrollbar-track {

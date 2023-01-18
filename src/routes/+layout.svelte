@@ -1,5 +1,5 @@
 <script>
-	import '../styles.css';
+	import '../styles.scss';
 	import Header from "./components/header.svelte"
 
 	let y;

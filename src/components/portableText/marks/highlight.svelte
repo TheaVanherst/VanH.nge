@@ -2,13 +2,14 @@
     <slot/>
 </h>
 
-<style>
+<style lang="scss">
     h {
-        padding:    0 3px;
-        color:      var(--textColourInvert);
-        border-radius:      3px;
-        background-color:   var(--accent2);}
+        padding:        0 3px;
+        color:          var(--textColourInvert);
+        border-radius:  3px;
+        background:     var(--accent2);
 
-    ::selection {
-        background-color: 	var(--accent2)}
+        &::selection {
+          background: 	var(--accent2);}
+    }
 </style>

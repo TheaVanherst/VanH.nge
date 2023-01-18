@@ -55,6 +55,7 @@
                 numeral:    Numeral
             },
             block: {
+                normal:     CustomText,
                 h1:         CustomHeading,
                 h2:         CustomHeading,
                 h3:         CustomHeading,

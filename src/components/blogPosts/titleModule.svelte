@@ -1,42 +1,38 @@
 <script>
     export let titleHeader, title;
-
-    import client from '../../libaries/sanityClient.js'
-    import imageUrlBuilder from '@sanity/image-url'
-
-    const urlFor = (source) => {return imageUrlBuilder(client).image(source)}
+    import SanityImage from '../sanityImage.svelte'
 </script>
 
 <div class="title">
-    <div class="overflow">
-        <img src="{urlFor(titleHeader).width(500).auto('format')}">
-        <h1>
-            {title}
-        </h1>
+    <div class="headerBackground">
+        <SanityImage image={titleHeader}/>
     </div>
+    <h1>
+        {title}
+    </h1>
 </div>
 
-<style>
+<style lang="scss">
     .title {
-        overflow:   hidden;
-        width:      100%;
+        overflow:       hidden;
+        width:          100%;
         border-top-right-radius:    var(--innerRaidus);
-        border-top-left-radius:     var(--innerRaidus);}
+        border-top-left-radius:     var(--innerRaidus);
 
-    .overflow {
-        display:    flex;
-        align-items: center;
-        position:   relative;}
+        display:        flex;
+        align-items:    center;
+        position:       relative;
 
-    h1 {
-        z-index:    100;
-        margin:     0;
-        padding:    var(--contentPaddingY) var(--containerPadding);}
+        h1 {
+            z-index:    100;
+            margin:     0;
+            padding:    var(--contentPaddingY) var(--containerPadding);}
 
-    img {
-        filter:     blur(5px);
-        display:    block;
-        position:   absolute;
-        width:      110%;
-        opacity:    0.6;}
+        .headerBackground {
+            filter:     blur(var(--imageBlurring));
+            display:    block;
+            position:   absolute;
+            width:      110%;
+            opacity:    0.6;}
+    }
 </style>

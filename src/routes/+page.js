@@ -6,7 +6,7 @@ let query =
         _id,
         
         title,
-        'headerImage': mainImage.asset._ref,
+        'headerImage': mainImage,
         
         _createdAt,
         _updatedAt,
@@ -28,8 +28,10 @@ let query =
 
 export const load = async () => {
     const postData = await client.fetch(query);
+
     if (!postData) {
-        return []}
-    $: console.log(postData)
+        return []
+    }
+
     return [postData]
 }
