@@ -6,11 +6,7 @@
 
 <div class="dynamicInline" style="--yWid:{push.length}">
     {#each push as image, e}
-        {#if e === 0}
-            <input type="radio" name="radio-{randomId}" checked id="{randomId}-{e}"/>
-        {:else}
-            <input type="radio" name="radio-{randomId}" id="{randomId}-{e}"/>
-        {/if}
+        <input type="radio" name="radio-{randomId}" checked={e === 0} id="{randomId}-{e}"/>
 
         <label for="{randomId}-{e}">
             <div class="col">
@@ -37,15 +33,21 @@
 			border-radius:      var(--innerRaidus);
 			display: inline-flex;
 
-			overflow:           hidden;
-
             width:100%;
-            height: 100%;}
+            height: 100%;
+        }
 
         label {
 	        min-width:  calc(100% / var(--yWid));
 	        max-width:  calc(100% / var(--yWid));
+	        overflow:   hidden;
 	        transition: min-width .4s, max-width .5s, opacity .5s;
+
+	        &:active {
+                .col {
+	                position: scale(2);
+                }
+	        }
 
             &:hover {
 	            opacity: 0.8;}}

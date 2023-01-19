@@ -5,10 +5,6 @@
     import client from "../libaries/sanityClient";
     export let image
 
-    $: dimensions = image?.asset?._ref?.split('-')[2]
-    $: [width, height] = dimensions.split('x').map(Number)
-    $: aspectRatio = width / height
-
     let imageRef
     let loaded = false
     onMount(() => {
@@ -23,12 +19,10 @@
 </script>
 
 <div class:loaded>
-    <img
-            loading="lazy"
+    <img    loading="lazy"
             src={ urlFor(image).width(1200).fit('fillmax') }
             alt={ image.alt }
-            bind:this={ imageRef }
-            style="aspect-ratio: {aspectRatio}"/>
+            bind:this={ imageRef }/>
 </div>
 
 <style lang="scss">
@@ -45,23 +39,23 @@
             opacity: 1!important;}
         }
         &:not(.loaded) {
-          animation-duration: 2s;
-          animation-fill-mode: forwards;
-          animation-iteration-count: infinite;
-          animation-name: placeHolderShimmer;
-          animation-timing-function: linear;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+            animation-name: placeHolderShimmer;
+            animation-timing-function: linear;
 
-          background: linear-gradient(to right,
-                  var(--backgroundAccent2) 8%,
-                  var(--backgroundAccent1) 18%,
-                  var(--backgroundAccent2) 33%);
+            background: linear-gradient(to right,
+                var(--backgroundAccent2) 8%,
+                var(--backgroundAccent1) 18%,
+                var(--backgroundAccent2) 33%);
 
           background-size: 800px 104px;
         }
-
-        &:active > img {
-            object-fit: contain;
-        } /* this is a temporary solution */
+        //
+        //&:active > img {
+        //    object-fit: contain;
+        //} /* this is a temporary solution */
     }
 
     img {
