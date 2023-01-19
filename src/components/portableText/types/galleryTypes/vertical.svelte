@@ -5,9 +5,7 @@
 
 <div class="table vertical">
     {#each push as image}
-        <div class="col">
-            <SanityImage image={image}/>
-        </div>
+        <SanityImage image={image}/>
     {/each}
 </div>
 

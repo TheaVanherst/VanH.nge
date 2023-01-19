@@ -15,7 +15,7 @@
                     <label for="{randomId}-{e - 1}" class="prev">
                         &#x2039;</label>{/if}
 
-                <input type="radio" name="radio-btn" id="{randomId}-{e}"/>
+                <input type="radio" name="radio" id="{randomId}-{e}"/>
                 <SanityImage image={image}/>
             </div>
         {/each}
@@ -36,10 +36,10 @@
 
 		scroll-snap-type:   x mandatory;
 		scroll-behavior:    smooth;
+        background: var(--backgroundAccent2);
 
 		div {
 			vertical-align: bottom;
-			gap:        var(--imageSpacing);
 			height:     350px;
 			width:      calc(100% * var(--yWid));
 			display:    inline-flex;
