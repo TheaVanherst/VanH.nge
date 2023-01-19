@@ -58,10 +58,11 @@
 
 <code class="language-{language}">
     <div class="titleBar">
-        <tab>
+        <tab class="active">
             <img class="languageIcon" src="{imgUrl}" alt=" ">
             <p>
                 DemoCode.{language}
+                <x>✕</x>
             </p>
         </tab>
         <copyTab
@@ -112,10 +113,12 @@
             font-size:      11px;
 
             padding:    6px 7px 6px 4px;
-            display:    inline-flex;}
-        p::selection {
-            color: 				var(--background);
-            background-color: 	var(--accent2);}
+            display:    inline-flex;
+        }
+
+	    &::selection {
+		    color: 				var(--background);
+		    background-color: 	var(--accent2);}
 
         & > *:hover {
           background-color: var(--backgroundAccent2);
@@ -128,6 +131,27 @@
         padding:    2px;
         height:     23px;
 
+        &.active {
+	        padding-bottom: 0;
+	        border-bottom:  2px solid var(--darkAccent1);
+
+	        &::selection {
+		        color: 				var(--background);
+		        background-color: 	var(--accent1)}}
+
+        p {
+	        color: var(--accent1);
+
+	        x {
+		        font-size: 7px;
+		        border-radius: 50%;
+		        text-align: center;
+		        padding: 0 3px;
+		        margin: 0 0 0 5px;
+
+		        &:hover {
+			        background: var(--backgroundAccent1);}}}
+
         .languageIcon {
             height:  17px;
             width:   17px;
@@ -139,8 +163,8 @@
         float:      right;
 
         div {
-            padding:    3px;
-            margin:     2px;
+            padding:    4px;
+            margin:     1px;
             height:     13px;
             width:      13px;
 
@@ -167,7 +191,7 @@
         .pressedBut {
             background: var(--darkAccent3);}
         .pressButTxt {
-            color:      var(--textColour)}
+            color:      var(--darkAccent3)}
 
         & {
             div {@extend .regularBut;} }
@@ -176,14 +200,14 @@
             div {@extend .glowBut;}}
         &.clicked {
             div {@extend .hoverBut;}
+	        &:not(.glow).hovered {
+		        p:before {@extend .pressButTxt;}
+		        div {@extend .pressedBut;}}
             &.glow {
                 p:before {@extend .pressButTxt;}
                 div {@extend .glowBut;}
                 &.hovered {
-                    p:before {@extend .glowButTxt;}}}
-            &.hovered {
-              p:before {@extend .pressButTxt;}
-              div {@extend .pressedBut;}}}
+                    p:before {@extend .glowButTxt;}}}}
         &.glow {
             p:before {@extend .pressButTxt;}
             div {@extend .pressedBut;}
