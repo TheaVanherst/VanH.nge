@@ -20,7 +20,26 @@
 
 		overflow:   scroll hidden;
 		position:   relative;
-		display: grid;
+		display:    grid;
+
+		scrollbar-width:            thin;
+		-webkit-overflow-scrolling: touch;
+
+		scroll-snap-align:  start;
+		scroll-snap-type:   x mandatory;
+		scroll-snap-stop:   always;
+		scroll-behavior:    smooth;
+
+		&::-webkit-scrollbar {
+			height: 		var(--innerRaidus);}
+		&::-webkit-scrollbar-track {
+			background: 	var(--backgroundAccent2);}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 	2px;
+			border: 		1px solid var(--background);
+			background: 	var(--accent1);}
+		&::-webkit-scrollbar-thumb:hover {
+			background: 	var(--darkAccent1);}
 
 		div {
             gap:        var(--imageSpacing);
@@ -29,14 +48,9 @@
 	        .col {
 		        background-color:   var(--backgroundAccent2);
 		        border-radius:      var(--innerRaidus);
-		        overflow:           hidden;
-		        vertical-align:     bottom;
 
+		        overflow:   hidden;
 		        height:     400px;
-		        width:      max-content;
-
-		        display:    inline-block;
-		        position:   relative;
-		        overflow:   hidden;} }
+		        width:      max-content;}}
     }
 </style>

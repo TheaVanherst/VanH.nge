@@ -24,16 +24,16 @@
 		.row {
 			display: inline-flex;
 			gap: var(--imageSpacing);
-			vertical-align: bottom;}
-		.row:not(:last-of-type) {
-			padding-bottom: var(--imageSpacing);}
+			vertical-align: bottom;
 
+            &:not(:last-of-type) {
+	            padding-bottom: var(--imageSpacing);}
 
-		.col {
-			background-color:   var(--backgroundAccent2);
-			border-radius:      var(--innerRaidus);
-			overflow:           hidden;}
-		.col:not(:only-child) {
-			max-width: 60%;}
-	}
+			.col {
+				background-color:   var(--backgroundAccent2);
+				border-radius:      var(--innerRaidus);
+				overflow:           hidden;
+
+                &:not(:only-child) {
+	                max-width: 60%;}}}}
 </style>

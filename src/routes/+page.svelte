@@ -27,7 +27,7 @@
 	</div>
 {/each}
 
-<style>
+<style lang="scss">
 	.post {
 		border: 	var(--border-thickness) solid var(--accent1);
 		padding: 	var(--containerPadding);

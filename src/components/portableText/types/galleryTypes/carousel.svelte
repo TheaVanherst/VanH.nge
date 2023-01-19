@@ -20,7 +20,7 @@
 <div class="carousel" id="a{randomId}"
      bind:clientWidth={containerWidth}
      on:scroll={({target}) => {x = target.scrollLeft}}>
-    <div class="container" style="--yWid: {push.length}">
+    <div class="row" style="--yWid: {push.length}">
 
         {#each push as image, e}
             <div class="{e === 0 ? 'image active' : 'image'}" id="a{randomId}-{e}">
@@ -34,7 +34,9 @@
                         href="#a{randomId}-{(e !== 0 ? e - 1 : push.length - 1)}">
                     &#x2039;
                 </label>
-                <SanityImage image={image}/>
+                <container>
+                    <SanityImage image={image}/>
+                </container>
             </div>
         {/each}
     </div>
@@ -45,72 +47,70 @@
 		margin-bottom:  var(--contentPaddingY);
 		border-radius:  var(--outerRadius);
 		overflow:       scroll hidden;
-		-webkit-overflow-scrolling: touch;
-
-		width:      calc(100% - 2px);
-		position:   relative;
+		background:     var(--backgroundAccent2);
 
 		scrollbar-width:    thin;
+		-webkit-overflow-scrolling: touch;
 
 		scroll-snap-align:  start;
 		scroll-snap-type:   x mandatory;
 		scroll-snap-stop:   always;
 		scroll-behavior:    smooth;
 
-        background: var(--backgroundAccent2);
+		&::-webkit-scrollbar {
+			height: 		var(--innerRaidus);}
+		&::-webkit-scrollbar-track {
+			background: 	var(--backgroundAccent2);}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 	2px;
+			border: 		1px solid var(--background);
+			background: 	var(--accent1);}
+		&::-webkit-scrollbar-thumb:hover {
+			background: 	var(--darkAccent1);}}
 
-		.container {
-			vertical-align: bottom;
-			height:     350px;
-			width:      calc(100% * var(--yWid));
-			display:    inline-flex;
+    .row {
+	    vertical-align: bottom;
+	    display:        inline-flex;
+	    width:          calc(100% * var(--yWid));
 
-			.image {
-				scroll-behavior:    smooth;
-				scroll-snap-align:  start;
+	    .image {
+		    scroll-behavior:    smooth;
+		    scroll-snap-align:  start;
+		    width:      100%;
+		    position:   relative;
 
-				height:     350px;
-				width:      100%;
-				max-width:  inherit;
+		    label {
+			    padding:    30px 10px;
+			    top:        50%;
 
-				display:    inline-block;
-				position:   relative;
-				overflow:   hidden;
-                opacity:    0.1;
-				transition: opacity .6s;
+			    position: absolute;
+			    z-index:    100;
+			    transform:  translateY(-50%);
+			    background: rgba(0, 0, 0, 0.50);
 
-				&.active {
-					opacity: 1 !important;
-				}
-            }
-        }
-	}
+			    transition: background .2s ease-out;
 
-	input {
-        position:       absolute;
-        opacity:        0;
-        margin-top:    -25px;
-		pointer-events: none;}
+			    &.next {
+				    right:  0;
+				    border-radius:  5px 0 0 5px;}
+			    &.prev {
+				    left:   0;
+				    border-radius:  0 5px 5px 0;}
+			    &:hover {
+				    background: rgba(0, 0, 0, 1);}}
 
-	label {
-        display: block;
-        position: absolute;
+		    container {
+			    transition:         opacity .6s, filter .4s;
+			    -webkit-transition: opacity .6s, filter .4s;
+			    -moz-transition:    opacity .6s, filter .4s;
+			    -ms-transition:     opacity .6s, filter .4s;
+			    -o-transition:      opacity .6s, filter .4s;
 
-		padding:    30px 10px;
-		top:        50%;
-		z-index:    100;
-		transform:  translateY(-50%);
-		background: rgba(0, 0, 0, 0.50);
-		transition: background .2s ease-out;
+			    opacity:    0.3;
+			    filter:     blur(var(--imageBlurring));}
 
-		&.next {
-            right:  0;
-            border-radius:  5px 0 0 5px;}
-		&.prev {
-			left:   0;
-			border-radius:  0 5px 5px 0;}
-        &:hover {
-	        background: rgba(0, 0, 0, 1);
-        }
-	}
+		    &.active {
+			    container {
+				    filter:     none;
+				    opacity:    1 !important;}}}}
 </style>

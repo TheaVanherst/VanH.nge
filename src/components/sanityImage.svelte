@@ -27,6 +27,7 @@
 
 <style lang="scss">
     $backgroundSize: 800px;
+
     div {
         height:     100%;
         width:      100%;
@@ -50,12 +51,8 @@
                 var(--backgroundAccent1) 18%,
                 var(--backgroundAccent2) 33%);
 
-          background-size: 800px 104px;
+          background-size: $backgroundSize 104px;
         }
-        //
-        //&:active > img {
-        //    object-fit: contain;
-        //} /* this is a temporary solution */
     }
 
     img {
@@ -68,6 +65,6 @@
     }
 
     @keyframes placeHolderShimmer {
-        0% {    background-position:    0px 0}
+        0% {    background-position:    0 0}
         100% {  background-position:    $backgroundSize 0}}
 </style>

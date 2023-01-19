@@ -25,7 +25,7 @@
 
 <svelte:window bind:scrollY={y} />
 
-<style>
+<style lang="scss">
 	/* TODO: column management */
 
 	:root {
@@ -41,16 +41,17 @@
 	table {
 		width: 		max-content;
 		gap: 		var(--containerPadding);
-		display: 	flex;}
+		display: 	flex;
 
-	.col {
-		height: max-content;
-		width: inherit;
-		display:	block;}
-	.col1 {
-		max-width: var(--row1);}
-	.col2 {
-		max-width: var(--row2);}
+		.col {
+			height: max-content;
+			width: inherit;
+			display:	block;}
+		.col1 {
+			max-width: var(--row1);}
+		.col2 {
+			max-width: var(--row2);}
+	}
 
 	/* TODO: background management */
 

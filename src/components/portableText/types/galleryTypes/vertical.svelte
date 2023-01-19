@@ -11,8 +11,7 @@
 
 <style>
 	.table {
-		border-radius: var(--outerRadius);
-		margin-bottom: var(--contentPaddingY);
-		overflow: hidden;
-	}
+		border-radius:  var(--outerRadius);
+		margin-bottom:  var(--contentPaddingY);
+		overflow:       hidden;}
 </style>

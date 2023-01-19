@@ -20,22 +20,12 @@
 	.dynamicInline {
 		border-radius:  var(--outerRadius);
 		margin-bottom:  var(--contentPaddingY);
+		gap:            var(--imageSpacing);
 
 		overflow:           hidden;
 		vertical-align:     bottom;
 		justify-content:    center;
-
-        display: flex;
-		gap:        var(--imageSpacing);
-
-		.col {
-			background-color:   var(--backgroundAccent1);
-			border-radius:      var(--innerRaidus);
-			display: inline-flex;
-
-            width:100%;
-            height: 100%;
-        }
+        display:            flex;
 
         label {
 	        min-width:  calc(100% / var(--yWid));
@@ -43,14 +33,21 @@
 	        overflow:   hidden;
 	        transition: min-width .4s, max-width .5s, opacity .5s;
 
-	        &:active {
-                .col {
-	                position: scale(2);
-                }
-	        }
+	        .col {
+		        background-color:   var(--backgroundAccent1);
+		        border-radius:      var(--innerRaidus);
 
-            &:hover {
-	            opacity: 0.8;}}
+		        filter: blur(var(--imageBlurring));
+
+		        transition:         opacity .6s, filter .4s, scale 2s ease-out;
+		        -webkit-transition: opacity .6s, filter .4s, scale 2s ease-out;
+		        -moz-transition:    opacity .6s, filter .4s, scale 2s ease-out;
+		        -ms-transition:     opacity .6s, filter .4s, scale 2s ease-out;
+		        -o-transition:      opacity .6s, filter .4s, scale 2s ease-out;
+
+		        display:    inline-flex;
+		        width:      100%;
+		        height:     100%;}}
 
 		input {
 			position: absolute;
@@ -60,15 +57,22 @@
 				+ label {
 					min-width:  calc(100% - (12.5% * var(--yWid)));
 					max-width:  calc(100% - (12.5% * var(--yWid)));
+					.col {
+						opacity:    1;
+						filter:     none}
+
 					opacity: 1;}}
 			&:not(:checked) {
 				+ label {
-					min-width: 15%;
-					opacity: 0.2;
+					min-width:  100px;
+                    .col {
+	                    opacity:    0.2;
+						scale:      1.025;}
+
 					&:hover {
-						min-width: 30.0%;
-						max-width: 40.0%;
-						opacity: 0.6;}}}
-		}
-	}
+						min-width:  30.0%;
+						max-width:  40.0%;
+						.col {
+							opacity:    0.6;
+							filter:     none}}}}}}
 </style>

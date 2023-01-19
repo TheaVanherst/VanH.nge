@@ -34,43 +34,25 @@
         let i = 0, format;
         while (format = time_formats[i++]) {
             if (seconds < format[0]) {
-                if (typeof format[2] == 'string') {
-                    return format[1];}
-                else {
-                    return Math.floor(seconds / format[2]) + ' ' + format[1] + ' ago';}
-            }
+                return typeof format[2] == 'string' ? format[1] : Math.floor(seconds / format[2]) + ' ' + format[1] + ' ago';}
         }
     }
 
-    $: createdDay = new Date(createdOn);
-    $: updatedDay = new Date(updatedOn)
+    let createdDay = new Date(createdOn);
+    let updatedDay = new Date(updatedOn)
 
-    $: updatedWhenLong = () => {
-        let updatedString = "";
-        if (createdDay.getHours() !== updatedDay.getHours()){
-            updatedString += "↳ 📑 Last updated ";
-        } else {
-            updatedString += "📰 ";}
-
-        updatedString += time_ago(updatedDay);
-
-        if (2419200 > relativeTime(updatedDay)) {
-            updatedString += " at " + updatedDay.toLocaleTimeString('en-US');}
-
-        return updatedString.toLowerCase();}
+    // $: updatedWhenLong = () => {
+    //     let updatedString = "";
+    //         updatedString += createdDay.getHours() !== updatedDay.getHours() ? "↳ 📑 Last updated " : "📰 "
+    //         updatedString += time_ago(updatedDay);
+    //         updatedString += 2419200 > relativeTime(updatedDay) ? " at " + updatedDay.toLocaleTimeString('en-US') : ""
+    //     return updatedString.toLowerCase();}
 
     $: updatedWhenTiny = () => {
         let updatedString = "";
-        if (createdDay.getHours() !== updatedDay.getHours()){
-            updatedString += "↳ 📑 Updated ";
-        } else {
-            updatedString += "📰 ";}
-
-        updatedString += time_ago(updatedDay);
-
-        if (2419200 > relativeTime(updatedDay)) {
-            updatedString += " at " + updatedDay.toLocaleTimeString('en-US');}
-
+            updatedString += createdDay.getHours() !== updatedDay.getHours() ? "↳ 📑 Updated " :  "📰 ";
+            updatedString += time_ago(updatedDay);
+            updatedString += 2419200 > relativeTime(updatedDay) ? " at " + updatedDay.toLocaleTimeString('en-US') : "";
         return updatedString.toLowerCase();}
 </script>
 
@@ -79,18 +61,19 @@
     <p class="updatedOn">{updatedWhenTiny()}</p>
 </div>
 
-<style>
+<style lang="scss">
     div {
         padding:    var(--contentPaddingY) var(--contentPaddingX);
-        color:      var(--background);}
+        color:      var(--background);
 
-    ::selection {
-        color: 				var(--accent1);
-        background-color: 	var(--background)}
+        &::selection {
+            color: 				var(--accent1);
+            background-color: 	var(--background)}
 
-    .createdOn {
-        font-size:      100%;}
-    .updatedOn {
-        text-transform: lowercase;
-        font-size:      70%;}
+        .createdOn {
+            font-size:      100%;}
+        .updatedOn {
+            text-transform: lowercase;
+            font-size:      70%;}
+    }
 </style>

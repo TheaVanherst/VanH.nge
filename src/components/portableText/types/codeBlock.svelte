@@ -58,6 +58,7 @@
 
 <code class="language-{language}">
     <div class="titleBar">
+
         <tab class="active">
             <img class="languageIcon" src="{imgUrl}" alt=" ">
             <p>
@@ -65,6 +66,7 @@
                 <x>✕</x>
             </p>
         </tab>
+
         <copyTab
             class:glow={copiedBool}
             class:clicked={clickedBool}
@@ -73,8 +75,11 @@
             on:mouseenter={() => (hoverBool = true)}
             on:click={clicked}>
             <p/>
-            <div><img src="{clipboardIcon}" alt="Copy Icon"></div>
+            <div>
+                <img src="{clipboardIcon}" alt="Copy Icon">
+            </div>
         </copyTab>
+
     </div>
     <div class="codeData">
         {@html code}

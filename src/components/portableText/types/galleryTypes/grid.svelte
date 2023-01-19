@@ -17,25 +17,25 @@
 
 <style lang="scss">
 	.grid {
-	    border-radius:  var(--outerRadius);
 	    margin-bottom:  var(--contentPaddingY);
-        overflow:       hidden;
 
         .row {
 	        vertical-align: bottom;
-            width:    100%;
-            display:  inline-flex;
-            gap:      var(--imageSpacing);}
-        .row:not(:last-of-type) {
-            padding:  0 0 var(--imageSpacing) 0;}
+	        display: inline-flex;
 
-        .col {
-	        background-color:   var(--backgroundAccent2);
-	        border-radius:      var(--innerRaidus);
-	        overflow:           hidden;
-            display:  inline-block;
-            width:    50%;}
-        .col:only-child {
-            width:    inherit;}
-  }
+	        width: 100%;
+	        gap: var(--imageSpacing);
+
+	        &:not(:last-of-type) {
+		        padding: 0 0 var(--imageSpacing) 0;}
+
+	        .col {
+		        background-color:   var(--backgroundAccent2);
+		        border-radius:      var(--innerRaidus);
+
+		        overflow: hidden;
+		        width:    50%;
+
+		        &:only-child {
+			        width:    inherit;}}}}
 </style>

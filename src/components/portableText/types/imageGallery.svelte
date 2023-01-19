@@ -2,7 +2,7 @@
     import {onMount} from "svelte";
 
     export let portableText;
-    $: ({value} = portableText)
+    let {value} = portableText;
     let returnSheet, imageArray;
 
     const grid = () => {

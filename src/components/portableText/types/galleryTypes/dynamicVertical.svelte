@@ -19,22 +19,23 @@
 	.dynamicVertical {
 		border-radius: var(--outerRadius);
 		margin-bottom: var(--contentPaddingY);
-        overflow: hidden;
+		column-count:   2;
+		gap:            var(--imageSpacing);
 
-		display: flex;
-		column-count: 2;
-		gap: 5px;
+        overflow:   hidden;
+		display:    flex;
 
 		.row {
-			display: flex;
-			gap: 5px;
-			width: 50%;
-			flex-direction: column;}
-		.col {
-			display: contents;
-			background-color: var(--backgroundAccent2);
-			border-radius: var(--innerRaidus);
-			overflow: hidden;}
-	}
+			width:  50%;
+			gap:    var(--imageSpacing);
 
+			display:        flex;
+			flex-direction: column;
+
+			.col {
+				display:            contents;
+				background-color:   var(--backgroundAccent2);
+
+				overflow:       hidden;
+				border-radius:  var(--innerRaidus);}}}
 </style>
