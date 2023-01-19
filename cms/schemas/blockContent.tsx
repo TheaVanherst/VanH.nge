@@ -132,6 +132,9 @@ export default defineType({
                   name: 'alt',
                   type: 'string',
                   title: 'Alternative text',
+                  validation:
+                    Rule => [
+                      Rule.max(50).warning('30 characters or less')]
                 },
               ],
             },
@@ -146,13 +149,28 @@ export default defineType({
           title: 'Display as',
           options: {
             list: [
-              { title: 'Stacked',           value: 'vertical' },
-              { title: 'Dynamic Inline',    value: 'dynamicinline' },
-              { title: 'Dynamic Vertical',  value: 'dynamicvertical' },
-              { title: 'Dynamic Grid',      value: 'dynamicgrid' },
-              { title: 'Grid',              value: 'grid' },
-              { title: 'Scroll',            value: 'scroll' },
-              { title: 'Carousel',          value: 'carousel' },
+              {
+                title: 'Stacked',
+                value: 'vertical'
+              }, {
+                title: 'Dynamic Inline',
+                value: 'dynamicinline'
+              }, {
+                title: 'Dynamic Vertical',
+                value: 'dynamicvertical'
+              }, {
+                title: 'Dynamic Grid',
+                value: 'dynamicgrid'
+              }, {
+                title: 'Grid',
+                value: 'grid'
+              }, {
+                title: 'Scroll',
+                value: 'scroll'
+              }, {
+                title: 'Carousel',
+                value: 'carousel'
+              },
             ],
             layout: 'radio',
           },
@@ -172,9 +190,18 @@ export default defineType({
         prepare(selection) {
           const { images, image } = selection;
 
+          function pull(){
+            let arr = [];
+            for (let i = 0; i < images.length; i++){
+              if (images[i]?.alt){
+                arr[i] = ` ${i}: ${images[i].alt}`;}}
+            return arr + " ";
+          }
+          let temp = pull();
+
           return {
             title: `Gallery block of ${Object.keys(images).length} images`,
-            subtitle: `Preview image alt text: ${image[0]?.alt}`,
+            subtitle: `Alt text: [${temp}]`,
             media: image[0],
           };
         },
