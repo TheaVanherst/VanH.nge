@@ -38,6 +38,8 @@
 		        border-radius:      var(--innerRaidus);
 
 		        filter: blur(var(--imageBlurring));
+		        opacity:    0.6;
+		        scale:      1.025;
 
 		        transition:         opacity .6s, filter .4s, scale 2s ease-out;
 		        -webkit-transition: opacity .6s, filter .4s, scale 2s ease-out;
@@ -65,14 +67,11 @@
 			&:not(:checked) {
 				+ label {
 					min-width:  100px;
-                    .col {
-	                    opacity:    0.2;
-						scale:      1.025;}
 
 					&:hover {
 						min-width:  30.0%;
 						max-width:  40.0%;
 						.col {
-							opacity:    0.6;
+							opacity:    0.8;
 							filter:     none}}}}}}
 </style>

@@ -106,7 +106,7 @@
 			    -ms-transition:     opacity .6s, filter .4s;
 			    -o-transition:      opacity .6s, filter .4s;
 
-			    opacity:    0.3;
+			    opacity:    0.6;
 			    filter:     blur(var(--imageBlurring));}
 
 		    &.active {

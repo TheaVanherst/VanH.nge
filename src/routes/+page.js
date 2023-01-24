@@ -1,5 +1,5 @@
 
-import client from "../libaries/sanityClient";
+import client from "../libaries/sanityClient.js";
 
 let query =
     `*[_type == 'post'][0..2]{
@@ -30,8 +30,8 @@ export const load = async () => {
     const postData = await client.fetch(query);
 
     if (!postData) {
-        return []
+        return [];
     }
 
-    return [postData]
+    return [postData];
 }

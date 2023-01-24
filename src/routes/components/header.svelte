@@ -22,8 +22,5 @@
                 position:   absolute;
                 left:      -20px;
                 top:       -50px;
-                width:      940px;
-            }
-        }
-    }
+                width:      940px;}}}
 </style>

@@ -3,19 +3,18 @@
     import imageUrlBuilder from "@sanity/image-url";
 
     import client from "../libaries/sanityClient";
-    export let image
+    export let image;
 
     let imageRef
     let loaded = false
     onMount(() => {
         imageRef.onload = () => {
             loaded = true;
-        }
-    })
+    };});
 
     const urlFor = (source) => {
         return imageUrlBuilder(client).image(source);
-    }
+    };
 </script>
 
 <div class:loaded>
@@ -26,19 +25,15 @@
 </div>
 
 <style lang="scss">
-    $backgroundSize: 800px;
+    $backgroundSize: 800px; // pretty sure I don't need this tbh.
 
     div {
         height:     100%;
         width:      100%;
 
-        display:    flex; /* fixes an issue with the padding at the bottom of images*/
+        display:    flex; // fixes an issue with the padding at the bottom of images
         position:   relative;
 
-        &.loaded {
-          img {
-            opacity: 1!important;}
-        }
         &:not(.loaded) {
             animation-duration: 2s;
             animation-fill-mode: forwards;
@@ -51,18 +46,19 @@
                 var(--backgroundAccent1) 18%,
                 var(--backgroundAccent2) 33%);
 
-          background-size: $backgroundSize 104px;
-        }
-    }
+          background-size: $backgroundSize 104px;}
 
-    img {
-        margin:     0;
-        opacity:    0;
-        width:      100%;
-        height:     100%;
-        object-fit: cover;
-        transition: opacity 500ms ease-out;
-    }
+	    img {
+		    margin:     0;
+		    opacity:    0;
+		    width:      100%;
+		    height:     100%;
+		    object-fit: cover;
+		    transition: opacity 500ms ease-out;}
+
+	    &.loaded {
+		    img {
+			    opacity: 1!important;}}}
 
     @keyframes placeHolderShimmer {
         0% {    background-position:    0 0}

@@ -7,24 +7,23 @@
 
     const grid = () => {
         let arr = [];
-        for (let e = 0; e < Math.ceil(value.images.length / 2); e++){
+        for (let e = 0; e < Math.ceil(value.images.length / 2); e++) {
             arr[e] = [];
-            for (let i = 0; i < 2; i++){
+            for (let i = 0; i < 2; i++) {
                 let f = i + (e * 2);
-                    if (value.images[f]){
+                    if (value.images[f]) {
                         arr[e][i] = value.images[f];}}}
         return arr;
     }
 
     const verGrid = () => {
         let arr = []
-        for (let e = 0; e < 2; e++){
+        for (let e = 0; e < 2; e++) {
             arr[e] = []
-            for (let i = 0; i < Math.ceil(value.images.length / 2); i++){
-            let f = e + (i * 2);
-                if (value.images[f]){
-                    arr[e][i] = value.images[f];
-                }}}
+            for (let i = 0; i < Math.ceil(value.images.length / 2); i++) {
+                let f = e + (i * 2);
+                    if (value.images[f]){
+                        arr[e][i] = value.images[f];}}}
         return arr;
     }
 
@@ -62,15 +61,3 @@
 </script>
 
 <svelte:component this={returnSheet} push="{imageArray}"/>
-
-<!--<div class="table {value.display}">-->
-<!--    {#each arr as row}-->
-<!--        <div class="row" style="&#45;&#45;yWid: {y}">-->
-<!--            {#each row as image}-->
-<!--                <div class="col">-->
-<!--                    <SanityImage image={image}/>-->
-<!--                </div>-->
-<!--            {/each}-->
-<!--        </div>-->
-<!--    {/each}-->
-<!--</div>-->

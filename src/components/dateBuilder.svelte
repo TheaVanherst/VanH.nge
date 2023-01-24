@@ -41,14 +41,7 @@
     let createdDay = new Date(createdOn);
     let updatedDay = new Date(updatedOn)
 
-    // $: updatedWhenLong = () => {
-    //     let updatedString = "";
-    //         updatedString += createdDay.getHours() !== updatedDay.getHours() ? "↳ 📑 Last updated " : "📰 "
-    //         updatedString += time_ago(updatedDay);
-    //         updatedString += 2419200 > relativeTime(updatedDay) ? " at " + updatedDay.toLocaleTimeString('en-US') : ""
-    //     return updatedString.toLowerCase();}
-
-    $: updatedWhenTiny = () => {
+    $: updatedWhen = () => {
         let updatedString = "";
             updatedString += createdDay.getHours() !== updatedDay.getHours() ? "↳ 📑 Updated " :  "📰 ";
             updatedString += time_ago(updatedDay);
@@ -58,17 +51,19 @@
 
 <div>
     <p class="createdOn">Posted on {createdDay.toLocaleDateString("en-GB", dateTypes[dateFormat])}</p>
-    <p class="updatedOn">{updatedWhenTiny()}</p>
+    <p class="updatedOn">{updatedWhen()}</p>
 </div>
 
 <style lang="scss">
     div {
         padding:    var(--contentPaddingY) var(--contentPaddingX);
-        color:      var(--background);
 
-        &::selection {
-            color: 				var(--accent1);
-            background-color: 	var(--background)}
+        p {
+	        color:      var(--background);
+
+	        &::selection {
+		        color: var(--accent1);
+		        background-color: var(--background);}}
 
         .createdOn {
             font-size:      100%;}

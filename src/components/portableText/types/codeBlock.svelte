@@ -1,8 +1,6 @@
 <script>
     import hljs             from 'highlight.js/lib/core';
 
-    /* language registering */
-
     import javascript       from 'highlight.js/es/languages/javascript';
     import css              from 'highlight.js/es/languages/CSS';
     import xml              from 'highlight.js/es/languages/XML';
@@ -18,13 +16,9 @@
     hljs.registerLanguage('json', json);
     hljs.registerLanguage('typescript', typescript);
 
-    /* image url generation */
-
     let clipboardIcon;
     let imgUrl = new URL("/codeTypes/" + language + ".webp",    import.meta.url).href;
     $: clipboardIcon = new URL("/icons/" + (copiedBool ? "copied" : "copy") + "Clipboard.webp", import.meta.url).href;
-
-    /* code baking */
 
     let code = hljs.highlight(
         portableText.value.code, {
@@ -40,20 +34,20 @@
     }
     code = temp;
 
-    /* animation setting */
+    let copiedBool = false,
+        hoverBool = false,
+        clickedBool = false;
 
-    let copiedBool = false, hoverBool = false, clickedBool = false;
     const clicked = () => {
         if (!copiedBool) {
             copiedBool = true;
             clickedBool = true;
+
             navigator.clipboard.writeText(portableText.value.code);
 
             setTimeout(() => {
                 copiedBool = false;
-            }, 1337);
-        }
-    };
+            }, 1337);}};
 </script>
 
 <code class="language-{language}">
@@ -68,11 +62,8 @@
         </tab>
 
         <copyTab
-            class:glow={copiedBool}
-            class:clicked={clickedBool}
-            class:hovered={hoverBool}
-            on:mouseleave={() => (hoverBool = false)}
-            on:mouseenter={() => (hoverBool = true)}
+            class:glow={copiedBool} class:clicked={clickedBool} class:hovered={hoverBool}
+            on:mouseleave={() => (hoverBool = false)} on:mouseenter={() => (hoverBool = true)}
             on:click={clicked}>
             <p/>
             <div>
@@ -98,8 +89,7 @@
         border-top:     var(--innerRaidus) solid var(--backgroundAccent2);
 
         color:          white;
-        white-space:    pre-wrap;
-    }
+        white-space:    pre-wrap;}
 
     .titleBar {
         color:      var(--backgroundAccent1);
@@ -114,7 +104,7 @@
 
         p {
             font-weight:    700;
-            font-family:    Arial;
+            font-family:    Arial, serif;
             font-size:      11px;
 
             padding:    6px 7px 6px 4px;
@@ -127,9 +117,7 @@
 
         & > *:hover {
           background-color: var(--backgroundAccent2);
-          color: var(--textColour);
-        }
-    }
+          color: var(--textColour);}}
 
     tab {
         vertical-align: top;
@@ -142,7 +130,7 @@
 
 	        &::selection {
 		        color: 				var(--background);
-		        background-color: 	var(--accent1)}}
+		        background-color: 	var(--accent1);}}
 
         p {
 	        color: var(--accent1);
@@ -160,8 +148,7 @@
         .languageIcon {
             height:  17px;
             width:   17px;
-            padding: 3px;}
-    }
+            padding: 3px;}}
 
     copyTab {
         padding:    2px 2px 2px 7px;
@@ -181,7 +168,7 @@
                 height:     inherit;}}
 
         p:before {
-            content:    "Copy to clipboard"}
+            content:    "Copy to clipboard";}
 
         .regularBut {
             background: var(--accent2);}
@@ -196,10 +183,10 @@
         .pressedBut {
             background: var(--darkAccent3);}
         .pressButTxt {
-            color:      var(--darkAccent3)}
+            color:      var(--darkAccent3);}
 
         & {
-            div {@extend .regularBut;} }
+            div {@extend .regularBut;}}
         &.hovered {
             p:before {@extend .pressButTxt;}
             div {@extend .glowBut;}}
@@ -217,8 +204,7 @@
             p:before {@extend .pressButTxt;}
             div {@extend .pressedBut;}
             p:before {
-                content:    "Copied to clipboard!";}}
-    }
+                content:    "Copied to clipboard!";}}}
 
     .codeData {
         display:    inline-block;
@@ -227,8 +213,7 @@
         position:   relative;
 
         border-left:    1px solid var(--backgroundAccent1);
-        background:     black;
-    }
+        background:     black;}
 
     .colourScheme {
         color:          var(--backgroundAccent1);
@@ -245,6 +230,5 @@
             color:      var(--accent2);}
         a::selection {
             color: 				var(--background);
-            background-color: 	var(--accent2)}
-    }
+            background-color: 	var(--accent2)}}
 </style>
