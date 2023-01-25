@@ -17,12 +17,15 @@
         position:   relative;
 
         div {
-            height:     120px;
+            height:     100%;
             position:   relative;
 
             img {
                 position:   absolute;
-                left:      -20px;
-                top:       -50px;
-                width:      calc(100% + ($padding * 2));}}}
+	            object-fit: cover;
+	            height: 100%;
+	            width: 100%;
+            }
+        }
+    }
 </style>

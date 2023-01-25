@@ -70,8 +70,8 @@
 			&.col1 {
 				width: $row1;}
 			&.col2 {
-				width: $row2;
-				min-width: $row2;}
+				flex-basis: content;
+				max-width: $row2;}
 			&.col3 {
 				width: $row3;}
 
