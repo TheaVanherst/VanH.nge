@@ -27,8 +27,6 @@
                 previousName = name
             }, transTimeIn);
         }
-
-    $: console.log(name, previousName)
 </script>
 
 {#if !transitioning}
@@ -38,9 +36,3 @@
         <slot/>
     </div>
 {/if}
-
-<style>
-    .transitionWrapper {
-
-    }
-</style>

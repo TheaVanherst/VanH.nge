@@ -1,6 +1,5 @@
 <script>
     import { fade } from 'svelte/transition';
-    import error from '../../routes/+error.svelte';
 
     // page memory vars
     export let name;
@@ -20,10 +19,6 @@
 
     let transitioning = false;
 
-    $: if (name) {
-
-    }
-
     // checks if the previous page is different to the new page.
     $:  if(name !== previousName) {
             transitioning = true;
@@ -32,9 +27,6 @@
                 previousName = name
             }, transTimeIn);
         }
-
-    $:console.log(name)
-
 </script>
 
 {#if !transitioning}
@@ -44,9 +36,3 @@
         <slot/>
     </div>
 {/if}
-
-<style>
-	.transitionWrapper {
-
-	}
-</style>
