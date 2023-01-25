@@ -1,5 +1,4 @@
 <script>
-    import SanityImage  from '../../components/sanityImage.svelte'
     export let data;
     $: data = data[0][0]
 
@@ -11,10 +10,14 @@
         <div class="profile">
             <img src="/profilePicture.jpg">
         </div>
-        <div class="prompt" style="--stringLength: {data.fullName.length}">
-            <p>{data.fullName} 🦌</p><a href="https://twitter.com/{data.twitter}"><ico/></a>
+        <div class="prompt">
+            <div>
+                <p style="--stringLength: {data.fullName.length}">{data.fullName} 🦌</p>
+            </div>
+            <a href="https://twitter.com/{data.twitter}" target="_blank">
+                <img src="/icons/twitterLogo.png"/>
+            </a>
         </div>
-
     </div>
     <div class="buttonWrapper">
         <div class="title">
@@ -64,32 +67,55 @@
             }
 	    }
 
-        .prompt {
-            padding: 10px;
-            background-color: var(--accent1);
 
-	        p {
-                $stringLength: calc(var(--stringLength) + 3);
+	    .prompt {
+		    width: 100%;
+		    display: flex;
+		    gap: 10px;
 
-		        font: 15px monospace;
-		        text-wrap: none;
-		        line-height: 100%;
-		        color: black;
+		    > * {
+			    font-size: 0;
+			    padding: 10px;
+			    background-color: var(--accent1);
+                border-radius: var(--innerRaidus);
+		    }
 
-		        width: calc($stringLength * 1ch);
-		        animation:
-                    typing 1.2s steps($stringLength),
-                    blink .5s step-end infinite alternate;
+            div {
+	            width: inherit;
 
-		        white-space: nowrap;
-		        overflow: hidden;
-		        border-right: 9px solid transparent;
+	            p {
+		            $stringLength: calc(var(--stringLength) + 3);
 
-		        &::selection {
-			        color: 				var(--accent1);
-			        background-color: 	black;}
-	        }
-        }
+		            font: 14px monospace;
+		            line-height: 100%;
+		            color: black;
+
+		            width: calc($stringLength * 1ch);
+		            animation:
+				            typing 1.2s steps($stringLength),
+				            blink .5s step-end infinite alternate;
+
+		            white-space: nowrap;
+		            border-right: 9px solid transparent;
+                    overflow: hidden;
+
+		            &::selection {
+			            color: 				var(--accent1);
+			            background-color: 	black;}
+	            }
+            }
+
+		    a {
+			    float: right;
+
+			    img {
+				    margin: -4px;
+				    height: 22px;
+				    width: 22px;
+				    filter: contrast(0) brightness(0);
+			    }
+		    }
+	    }
     }
 
     .buttonWrapper {

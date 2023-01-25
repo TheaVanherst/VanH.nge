@@ -6,7 +6,6 @@ let query =
         'handle': handle,
         'fullName': fullName,
         'twitter': twitterURL,
-        'portrait': userPortrait,
     }`
 
 export const load = async () => {
@@ -17,6 +16,4 @@ export const load = async () => {
     }
 
     return [userData];
-
-    console.log(userData)
 }
