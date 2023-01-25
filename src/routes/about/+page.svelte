@@ -24,3 +24,16 @@
 		using it with JavaScript disabled!
 	</p>
 </div>
+
+<style lang="scss">
+	.text-column {
+		border: 	var(--border-thickness) solid var(--accent1);
+		padding: 	var(--containerPadding);
+
+		min-height: 	120px;
+		border-radius: 	var(--outerRadius);
+
+		background:		var(--background);
+		color: 			var(--textColour);
+	}
+</style>

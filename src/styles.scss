@@ -1,6 +1,8 @@
 
 @import 'styles/vansche.scss';
+
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Flow+Circular&family=Monda:wght@400;700&family=Press+Start+2P&display=swap');
 
 /* Root variables formatting */
 $baseColour: 10px;
@@ -15,7 +17,8 @@ $baseColour: 10px;
 	--accent4:		#f92672;
 	--darkAccent4: 	#670f30;
 
-	--background: 			#000;
+	--background:           #000;
+	--backgroundTrans:      rgba(0, 0, 0, 0.8);
 	--backgroundAccent1: 	#323232;
 	--backgroundAccent2: 	#141414;
 	--textColour: 			#efefef;
@@ -23,6 +26,7 @@ $baseColour: 10px;
 
 	--fadedColour: 		#d8d5d5;
 	--fadedColourAcc: 	#c5c5c5;
+	--dropShadow:      rgba(0, 0, 0, 0.5);
 
 	--maxWidth: 		450px;
 	--contentPaddingX: 	15px;

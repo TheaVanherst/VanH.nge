@@ -1,28 +1,36 @@
 <script>
 	import '../styles.scss';
 	import Header from "./components/header.svelte"
+	import Background from "./components/background.svelte"
+
 	import Navigation from "./components/navigation.svelte"
+	import SideBar from "./components/sideBar.svelte"
+
+	import Transition from "$lib/transitions/transitionFly.svelte";
+	import message from '$lib/directoryController.js';
 
 	let y;
 </script>
 
 
+<Background/>
 <pageData style="--yPos: -{y}px">
-	<div class="spaceBg3 backGround"></div>
-	<div class="spaceBg2 backGround"></div>
-	<div class="spaceBg1 backGround"></div>
-
-	<main>
-		<Header/>
-		<table>
-			<div class="col1 col">
-				<Navigation/>
+	<Header/>
+	<table>
+		<div class="col1 col">
+			<Navigation {$message} />
+		</div>
+		<div class="col2 col">
+			<div class="wrapper">
+				<Transition name={$message}>
+					<slot/>
+				</Transition>
 			</div>
-			<div class="col2 col">
-				<slot/>
-			</div>
-		</table>
-	</main>
+		</div>
+		<div class="col3 col">
+			<SideBar/>
+		</div>
+	</table>
 </pageData>
 
 <svelte:window bind:scrollY={y} />
@@ -30,17 +38,25 @@
 <style lang="scss">
 	/* TODO: column management */
 
-	$row1: 250px;
-	$row2: 600px;
+	$row1: 275px;
+	$row2: 520px;
+	$row3: 250px;
 
-	main {
-		width: 		max-content;
-		padding: 	1rem;
+	$padding: 15px;
+	$width: $row1 + $row2 + $row3 + ($padding * 2);
+
+	pageData {
+		display: 	block;
+		padding: 	$padding;
 		margin: 	0 auto;
+
+		max-width:  $width;
+		width: 		100%;
+
 		box-sizing: border-box;}
 
 	table {
-		width: 		max-content;
+		width: 		100%;
 		gap: 		var(--containerPadding);
 		display: 	flex;
 
@@ -49,65 +65,14 @@
 			width:		inherit;
 			display:	block;
 
-			&.col1 {max-width: $row1;}
-			&.col2 {max-width: $row2;}
+			&.col1 {width: $row1;}
+			&.col2 {width: $row2;}
+			&.col3 {width: $row3;}
+
+			.wrapper {
+
+			}
 		}
 	}
-
-	/* TODO: background management */
-
-	:root {
-		--res1: 234px;
-		--res2: 400px;}
-
-	.backGround {
-		width: 		150%;
-		top: 		0;
-
-		position: 				fixed;
-		background-position-x: 	center;
-
-		&.spaceBg1 {
-			-webkit-animation: 	backgroundScroll1 15s linear infinite;
-			animation: 			backgroundScroll1 15s linear infinite;
-			background-position-y: 	calc(var(--yPos) / 2);
-			background-image: 		url("/starTest3.gif");
-
-			height: 		calc(var(--res1) * (var(--res1) / 100));
-			min-height: 	calc(100vh + var(--res1));
-			z-index: 		-2;}
-
-		&.spaceBg2 {
-			-webkit-animation: 	backgroundScroll2 45s linear infinite;
-			animation: 			backgroundScroll2 45s linear infinite;
-			background-position-y: 	calc(var(--yPos) / 3);
-			background-image: 		url("/starTest2.gif");
-
-			height: 		calc(var(--res2) * (var(--res2) / 100));
-			min-height: 	calc(100vh + var(--res2));
-
-			left: 		-250px;
-			z-index: 	-1;
-			opacity: 	 0.7;}
-
-		&.spaceBg3 {
-			-webkit-animation: 	backgroundScroll1 45s linear infinite;
-			animation: 			backgroundScroll1 45s linear infinite;
-			background-position-y: 	calc(var(--yPos) / 4);
-			background-image: 		url("/starTest3.gif");
-
-			height: 		calc(var(--res1) * (var(--res1) / 100));
-			min-height: 	calc(100vh + var(--res1));
-
-			left: 		-355px;
-			z-index: 	-1;
-			opacity: 	 0.5;}}
-
-	@keyframes backgroundScroll1 {
-		0% {  	transform: translateY(calc(var(--res1) * -1));}
-		100% {  transform: translateY(0px);} }
-	@keyframes backgroundScroll2 {
-		0% {  	transform: translateY(calc(var(--res2) * -1));}
-		100% {  transform: translateY(0px);} }
 
 </style>

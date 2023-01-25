@@ -1,5 +1,5 @@
 <script>
-    import MobileQuery  from '../../libaries/mobileQuery.svelte'
+    import MobileQuery  from '../../lib/mobileQuery.svelte'
     import AuthorTag    from '../authorTag.svelte'
 
     export let createdOn, updatedOn;
@@ -11,7 +11,7 @@
     export let authorhandle, authoruser, authorTwitter, authorImage,
                editorhandle, editoruser, editorTwitter, editorImage;
 
-    import client from '../../libaries/sanityClient.js'
+    import client from '../../lib/sanityClient.js'
     import imageUrlBuilder from '@sanity/image-url'
     const urlFor = (source) => {return imageUrlBuilder(client).image(source)}
 </script>
@@ -53,56 +53,78 @@
     <TagModule time="{createdOn}" tags="{tags}" />
 </header>
 
-<style>
-    header > div {
-        white-space:    nowrap;
-        width:          auto;}
+<style lang="scss">
+    header {
+	    > div {
+		    white-space: nowrap;
+		    width: auto;
+	    }
+    }
 
     .date {
         background-color: var(--accent1);
         padding-left: calc(var(--contentPaddingY) + 24px);
         border-bottom-left-radius:  var(--innerRaidus);
         border-bottom-right-radius: var(--innerRaidus);
-        overflow: hidden;}
+        overflow: hidden;
+    }
 
     .userData {
         border-bottom:  var(--border-thickness) solid var(--textColour);
         margin:         0 0 var(--contentPaddingY) 0;
         padding-left:   calc(var(--contentPaddingY) + 24px);
         width:          auto;
-        font-size:      0;}
-    .userData > * {
-        display:        table-cell;
-        width:          min-content;
-        line-height:    normal;
-        font-size:      80%;
-        margin:         0;}
-    .userData > *:last-child:not(:first-child) {
-        border-left:   1px solid var(--fadedColourAcc);}
+        font-size:      0;
 
-    @media (max-width:  500px) {
-        img {
-            max-width:  62px;}
-        .date {     padding: 9px 15px 9px 84px;}
-        .userData { padding: 5px 15px 5px 84px;}}
-
+	    > * {
+		    display:        table-cell;
+		    width:          min-content;
+		    line-height:    normal;
+		    font-size:      80%;
+		    margin:         0;}
+	    > *:last-child:not(:first-child) {
+		    border-left:   1px solid var(--fadedColourAcc);
+        }
+    }
 
     .profile {
-        margin-left: -35px;}
-    .profile > img {
-        max-width:      60px;
-        margin:         var(--contentPaddingY);
-        border-radius:  var(--innerRaidus);
+        margin-left: -35px;
+	    box-shadow: var(--dropShadow) 5px 5px;
 
-        position:   absolute;
-        border:     var(--border-thickness) solid var(--accent1);}
-    .profile > img.editor {
-        width:          70px;
-        transform:      scale(50%);
-        transition:     transform 0.5s;
-        border-radius:  50%;
-        margin-left:   -16px;
-        margin-top:     32px;}
-    .profile > img.editor:hover {
-        transform:      scale(100%);}
+        > img {
+	        max-width:      60px;
+	        margin:         var(--contentPaddingY);
+	        border-radius:  var(--innerRaidus);
+
+	        position:   absolute;
+	        border:     var(--border-thickness) solid var(--accent1);
+
+	        transition:
+			        border 0.5s;
+
+	        &:hover {
+		        border-color: var(--accent3);
+            }
+        }
+
+	    > img.editor {
+		    margin-left:    -20px;
+		    margin-top:     42px;
+
+		    border:         2px solid var(--accent1);
+		    transform:      scale(50%);
+		    border-radius:  var(--outerRadius);
+
+		    transition:
+                    transform 0.5s,
+                    border 0.5s,
+                    border-radius 0.5s;
+
+		    &:hover { // this is kinda lazy
+			    border-radius:  var(--innerRaidus);
+			    border:         1px solid var(--accent2);
+		        transform:      scale(100%);
+		    }
+	    }
+    }
 </style>

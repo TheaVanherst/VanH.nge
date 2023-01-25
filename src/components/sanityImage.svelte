@@ -2,15 +2,16 @@
     import { onMount } from 'svelte'
     import imageUrlBuilder from "@sanity/image-url";
 
-    import client from "../libaries/sanityClient";
+    import client from "../lib/sanityClient";
     export let image;
 
-    let imageRef
-    let loaded = false
+    let imageRef;
+    let loaded = false;
     onMount(() => {
         imageRef.onload = () => {
             loaded = true;
-    };});
+        };
+    });
 
     const urlFor = (source) => {
         return imageUrlBuilder(client).image(source);
@@ -54,11 +55,15 @@
 		    width:      100%;
 		    height:     100%;
 		    object-fit: cover;
-		    transition: opacity 500ms ease-out;}
+		    transition: opacity 500ms ease-out;
+        }
 
 	    &.loaded {
 		    img {
-			    opacity: 1!important;}}}
+			    opacity: 1!important;
+            }
+        }
+    }
 
     @keyframes placeHolderShimmer {
         0% {    background-position:    0 0}

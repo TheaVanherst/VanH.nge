@@ -34,9 +34,8 @@
 
 		min-height: 	120px;
 		border-radius: 	var(--outerRadius);
-		margin-bottom: 	15px;
 
-		background:		var(--background);
+		background:		var(--backgroundTrans);
 		color: 			var(--textColour);
 	}
 </style>

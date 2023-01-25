@@ -1,5 +1,5 @@
 
-import client from "../libaries/sanityClient.js";
+import client from "../lib/sanityClient.js";
 
 let query =
     `*[_type == 'post'][0..2]{

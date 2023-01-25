@@ -2,7 +2,7 @@
     export let portableText
 </script>
 
-<a href={portableText.value.href} target="_blank">
+<a href={portableText.value.href} target="_blank" class="yes">
     <slot />
 </a>
 
@@ -21,13 +21,13 @@
         transition: color .2s ease-in-out,
                     box-shadow .2s ease-in-out;
 
-        a:hover {
+        &:hover {
             text-decoration: none;
             box-shadow: inset 0 0 100px 0 var(--accent3);
             color: var(--textColourInvert);
         }
 
-        a::selection {
+	    &::selection {
             color: var(--background);
             background-color: var(--accent3)
         }
