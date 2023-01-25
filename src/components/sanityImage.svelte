@@ -56,6 +56,7 @@
 		    height:     100%;
 		    object-fit: cover;
 		    transition: opacity 500ms ease-out;
+		    pointer-events: none;
         }
 
 	    &.loaded {

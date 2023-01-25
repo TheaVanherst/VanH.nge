@@ -5,12 +5,15 @@
 <nav>
     <notice>
         <div class="warning">
-            <p>TESTING</p>
+            <div><p>T</p><p>E</p><p>S</p><p>T</p><p>I</p><p>N</p><p>G</p></div>
         </div>
-        <p>This is just a testing site. Please do not take what you see as a true representation of the final site.</p>
+        <n>Please note:</n>
+        <p>This site is currently in development - please do not take what you see as a true representation of the final site.</p>
     </notice>
+</nav>
+<nav>
     <p>
-        test
+        lol xd
     </p>
 </nav>
 
@@ -26,19 +29,22 @@
 		border-radius:      var(--outerRadius);
 		border:             1px solid var(--accent1);
 
-        > p {
-           padding-top:     var(--containerPadding);
+		&:not(:first-child),
+        & > p:not(:first-child) {
+            margin-top:     var(--containerPadding);
         }
 	}
 
 	notice {
         display: block;
         border: 1px solid var(--accent3);
+		margin: -5px;
 
 		.warning {
 			$textColour: #ffc402;
 
-			padding: 7px 5px 3px;
+			padding: 8px 7px 5px;
+
 			border-bottom: 1px solid var(--accent3);
 			background-image:
 					repeating-linear-gradient( 45deg,
@@ -47,29 +53,57 @@
 			background-size: 200% 200%;
 			animation: barberpole 10s linear infinite;
 
-			p {
-				font:           20px 'Press Start 2P', cursive;
-				font-weight:    bolder;
-				color:          black;
+            div {
+	            font:           20px 'Press Start 2P', cursive;
+	            line-height:    100%;
+	            font-weight:    bolder;
+	            color:          black;
+	            margin:         0 auto;
+	            width:          max-content;
 
-				margin:         0 auto;
-				width:          max-content;
+	            p {
+		            display:        inline-block;
+		            width:          max-content;
 
-				text-wrap:      none;
-				text-shadow:
-						-1px -1px 0 $textColour, 0px -1px 0 $textColour, 1px -1px 0 $textColour,
-						-1px  1px 0 $textColour, 0px  1px 0 $textColour, 1px  1px 0 $textColour;
-			}
+		            animation: wave-text 1s ease-in-out infinite;
+
+		            text-wrap:      none;
+		            text-shadow:
+				            -1px -1px 0 $textColour, 0px -1px 0 $textColour, 1px -1px 0 $textColour,
+				            -1px  1px 0 $textColour, 0px  1px 0 $textColour, 1px  1px 0 $textColour;
+	            }
+
+	            @for $i from 1 through 7 {
+		            p:nth-child(#{$i}) {
+			            animation-delay:  $i * 0.1s;
+		            }
+	            }
+            }
 		}
 
-        > p {
+		> n {
+			width:              max-content;
+            text-decoration:    underline;
+			display:            block;
+		}
+
+        > *:not(div) {
             color: var(--accent1);
-            padding: 10px 10px 10px 10px;
+
+	        padding: 0px 10px 10px 10px;
+	        &:not(:last-child) {
+		        padding: 7px 10px 7px 10px;
+	        }
         }
     }
 
 	@keyframes barberpole {
-		0% {
-			background-position: 100% 100%;}
+		0% {background-position: 100% 100%;}
 	}
+	@keyframes wave-text{
+		50%{    transform: translateY(0);}
+		60%{    transform: translateY(-5px);}
+		70%{   transform: translateY(0);}
+	}
+
 </style>

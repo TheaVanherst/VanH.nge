@@ -1,5 +1,7 @@
 <script>
     import MobileQuery  from '../../lib/mobileQuery.svelte'
+    import SanityImage  from '../sanityImage.svelte'
+
     import AuthorTag    from '../authorTag.svelte'
 
     export let createdOn, updatedOn;
@@ -10,17 +12,18 @@
 
     export let authorhandle, authoruser, authorTwitter, authorImage,
                editorhandle, editoruser, editorTwitter, editorImage;
-
-    import client from '../../lib/sanityClient.js'
-    import imageUrlBuilder from '@sanity/image-url'
-    const urlFor = (source) => {return imageUrlBuilder(client).image(source)}
 </script>
 
 <header>
     <div class="profile">
-        <img src="{urlFor(authorImage).width(250).auto('format')}"/>
+        <div class="author">
+            <SanityImage image={authorImage}/>
+        </div>
         {#if authoruser !== editoruser && editorImage}
-            <img class="editor" src="{urlFor(editorImage).width(250).auto('format')}"/>{/if}
+            <div class="editor">
+                <SanityImage image={editorImage}/>
+            </div>
+        {/if}
     </div>
 
     <div class="date">
@@ -91,40 +94,42 @@
         margin-left: -35px;
 	    box-shadow: var(--dropShadow) 5px 5px;
 
-        > img {
+        > div {
 	        max-width:      60px;
 	        margin:         var(--contentPaddingY);
 	        border-radius:  var(--innerRaidus);
-
-	        position:   absolute;
 	        border:     var(--border-thickness) solid var(--accent1);
+	        position:   absolute;
 
-	        transition:
-			        border 0.5s;
+	        &.author {
 
-	        &:hover {
-		        border-color: var(--accent3);
-            }
+		        transition:
+				        border 0.5s;
+
+		        &:hover {
+			        border-color: var(--accent3);
+		        }
+	        }
+
+	        &.editor {
+		        margin-left:    -20px;
+		        margin-top:     42px;
+
+		        border:         2px solid var(--accent1);
+		        transform:      scale(50%);
+		        border-radius:  var(--outerRadius);
+
+		        transition:
+				        transform 0.5s,
+				        border 0.5s,
+				        border-radius 0.5s;
+
+		        &:hover { // this is kinda lazy
+			        border-radius:  var(--innerRaidus);
+			        border:         1px solid var(--accent2);
+			        transform:      scale(100%);
+		        }
+	        }
         }
-
-	    > img.editor {
-		    margin-left:    -20px;
-		    margin-top:     42px;
-
-		    border:         2px solid var(--accent1);
-		    transform:      scale(50%);
-		    border-radius:  var(--outerRadius);
-
-		    transition:
-                    transform 0.5s,
-                    border 0.5s,
-                    border-radius 0.5s;
-
-		    &:hover { // this is kinda lazy
-			    border-radius:  var(--innerRaidus);
-			    border:         1px solid var(--accent2);
-		        transform:      scale(100%);
-		    }
-	    }
     }
 </style>

@@ -4,7 +4,7 @@
 
     // page memory vars
     export let name;
-    let previousName = "/";
+    let previousName = name;
 
     // transition timeout vars
     export let transTimeIn = 500;

@@ -3,7 +3,7 @@
 
     // page memory vars
     export let name;
-    let previousName;
+    let previousName = name;
 
     // transition timeout vars
     export let transTimeIn = 500;
@@ -29,10 +29,6 @@
         }
 
     $: console.log(name, previousName)
-
-    import { page } from '$app/stores';
-
-    $: console.log($page.status)
 </script>
 
 {#if !transitioning}

@@ -16,11 +16,11 @@
 		<TitleModule
 				titleHeader="{post.headerImage}"	title="{post.title}"/>
 		<HeaderModule
-				createdOn="{post._createdAt}" 	updatedOn="{post._updatedAt}"
+				createdOn="{post._createdAt}" 		updatedOn="{post._updatedAt}"
 				authorhandle="{post.author_handle}" authoruser="{post.author_fullName}"
-					authorTwitter="{post.author_twitter}" authorImage="{post.author_portrait}"
-				editorhandle="{post.editor_handle}" editoruser="{post.editor_fullName}"
-					editorTwitter="{post.editor_twitter}" editorImage="{post.editor_portrait}"
+				authorTwitter="{post.author_twitter}" 	authorImage="{post.author_portrait}"
+				editorhandle="{post.editor_handle}" 	editoruser="{post.editor_fullName}"
+				editorTwitter="{post.editor_twitter}" 	editorImage="{post.editor_portrait}"
 				tags="{post.catagory_tags}"/>
 		<PostModule
 				postData="{post.body}"/>

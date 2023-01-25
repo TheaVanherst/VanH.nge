@@ -9,16 +9,18 @@
 	import Transition from "$lib/transitions/transitionFly.svelte";
 	import message from '$lib/directoryController.js';
 
+	export let data;
+
 	let y;
 </script>
 
 
 <Background/>
-<pageData style="--yPos: -{y}px">
+<page style="--yPos: -{y}px">
 	<Header/>
-	<table>
+	<pageData>
 		<div class="col1 col">
-			<Navigation {$message} />
+			<Navigation data={data} {$message} />
 		</div>
 		<div class="col2 col">
 			<div class="wrapper">
@@ -30,8 +32,8 @@
 		<div class="col3 col">
 			<SideBar/>
 		</div>
-	</table>
-</pageData>
+	</pageData>
+</page>
 
 <svelte:window bind:scrollY={y} />
 
@@ -45,7 +47,7 @@
 	$padding: 15px;
 	$width: $row1 + $row2 + $row3 + ($padding * 2);
 
-	pageData {
+	page {
 		display: 	block;
 		padding: 	$padding;
 		margin: 	0 auto;
@@ -55,7 +57,7 @@
 
 		box-sizing: border-box;}
 
-	table {
+	pageData {
 		width: 		100%;
 		gap: 		var(--containerPadding);
 		display: 	flex;

@@ -29,7 +29,6 @@
 	    border-right: 2px solid var(--accent1);
 
         transition: all .1s ease-in-out;
-	    pointer-events: auto;
 
         &:not(:first-child){
 	        margin-top: 10px;
