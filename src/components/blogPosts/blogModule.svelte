@@ -32,6 +32,7 @@
 <div class="postBody">
     <PortableText
             value={postData}
+            onMissingComponent={false}
             components={{
             types: {
                 code:       CodeBlock,

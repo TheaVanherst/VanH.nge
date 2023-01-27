@@ -71,9 +71,10 @@
 			&.col1 {
 				width: $row1;}
 			&.col2 {
-				flex-basis: content;
+				flex-basis: 100%;
 				max-width: $row2;}
 			&.col3 {
+				margin-left: auto;
 				width: $row3;}
 		}
 	}

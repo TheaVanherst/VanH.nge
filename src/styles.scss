@@ -189,3 +189,10 @@ ul {
 @keyframes fadeout {
 	0% { 	opacity: 1;}
 	100% { 	opacity: 0;}}
+
+@keyframes typing {
+	from {  width: 0;}}
+
+@keyframes blink {
+	0% {    border-right: 9px solid;}
+	50% {   border-color: transparent;}}

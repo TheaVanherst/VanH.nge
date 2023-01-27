@@ -1,7 +1,7 @@
 <script>
     import SanityImage from '../../sanityImage.svelte'
 
-    export let portableText
+    export let portableText = null;
     $: ({value} = portableText)
 </script>
 

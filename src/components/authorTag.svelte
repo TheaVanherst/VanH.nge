@@ -1,6 +1,6 @@
 <script>
-    export let handle, linkUrl;
-    export let content;
+    export let handle = null, linkUrl = null;
+    export let content = null;
 </script>
 
 <div class="handle">

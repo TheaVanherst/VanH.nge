@@ -67,7 +67,10 @@
 .hljs-literal {			color: #a17cff;}
 .hljs-comment {			color: #33333a;}
 .hljs-variable {		color: #ff8000;}
-.hljs-doctag {			color: #39ff00;}
+.hljs-doctag {          color: #39ff00;} // for firefox;
+.hljs-comment:has(> .hljs-doctag) {
+                        color: #39ff00!important;}
+
 .hljs-built_in {	    color: #e77cff;}
 
 /* TODO: html specific styling */

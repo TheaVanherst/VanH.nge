@@ -3,7 +3,7 @@
     import imageUrlBuilder from "@sanity/image-url";
 
     import client from "../lib/sanityClient";
-    export let image;
+    export let image = null;
 
     let imageRef;
     let loaded = false;
@@ -56,7 +56,6 @@
 		    height:     100%;
 		    object-fit: cover;
 		    transition: opacity 500ms ease-out;
-		    pointer-events: none;
         }
 
 	    &.loaded {

@@ -1,7 +1,7 @@
 <script>
     import {onMount} from "svelte";
 
-    export let portableText;
+    export let portableText = null;
     let {value} = portableText;
     let returnSheet, imageArray;
 

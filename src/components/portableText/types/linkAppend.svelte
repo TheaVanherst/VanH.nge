@@ -1,5 +1,5 @@
 <script>
-    export let portableText
+    export let portableText = null;
 </script>
 
 <a href={portableText.value.href} target="_blank" class="yes">

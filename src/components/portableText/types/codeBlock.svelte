@@ -7,7 +7,7 @@
     import json             from 'highlight.js/es/languages/JSON';
     import typescript       from 'highlight.js/es/languages/typescript';
 
-    export let portableText = []
+    export let portableText = [];
     let language = portableText.value.language;
 
     hljs.registerLanguage('javascript', javascript);

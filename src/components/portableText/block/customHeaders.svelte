@@ -1,5 +1,5 @@
 <script>
-    export let portableText
+    export let portableText = null;
 
     $: anchorId = `heading-${portableText.indexInParent}`
     $: style = portableText.value.style

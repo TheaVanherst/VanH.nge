@@ -1,10 +1,14 @@
 <script>
     import message from '$lib/directoryController.js';
 
+    const urlChanger = (url) => {
+        $message = url
+    }
+
     export let push;
 </script>
 
-<a href={push} on:click={() => $message = push}>
+<a href={push} on:click={urlChanger(push)}>
     <div>
         <p>
             <slot/>

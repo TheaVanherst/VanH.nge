@@ -84,6 +84,7 @@
 
 	            p {
 		            $stringLength: calc(var(--stringLength) + 3);
+                    $timerElement: calc(var(--stringLength) / 10 * 1s);
 
 		            font: 14px monospace;
 		            line-height: 100%;
@@ -91,11 +92,11 @@
 
 		            width: calc($stringLength * 1ch);
 		            animation:
-				            typing 1.2s steps($stringLength),
-				            blink .5s step-end infinite alternate;
+				            typing $timerElement steps($stringLength),
+				            blink .5s calc($timerElement + 0.2s) step-end infinite alternate;
 
 		            white-space: nowrap;
-		            border-right: 9px solid transparent;
+		            border-right: 2px solid black;
                     overflow: hidden;
 
 		            &::selection {
@@ -105,7 +106,7 @@
             }
 
 		    a {
-			    float: right;
+			    margin: 0 0 0 auto;
 
 			    img {
 				    margin: -4px;
@@ -116,18 +117,4 @@
 		    }
 	    }
     }
-
-    .buttonWrapper {
-        .title {
-            .t {
-
-            }
-        }
-    }
-
-    @keyframes typing {
-	    from {  width: 0;}}
-
-    @keyframes blink {
-	    50% {   border-color: black;}}
 </style>

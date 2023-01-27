@@ -1,3 +1,7 @@
+<script>
+    export let portableText = null;
+</script>
+
 <right>
     <slot/>
 </right>
