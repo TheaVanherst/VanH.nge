@@ -7,9 +7,16 @@
     &:before {
         color:      #00ff3a;
         position:   absolute;
-        left:      -38px;
+        left:      -32px;
         padding:    0 3px;
-        content:    counter(section);}
+        content:    counter(section);
+    }
+
+    .highlight {
+        width: 100%;
+        display: inline-block;
+        background-color: rgba(94, 38, 249, 0.5);
+    }
 }
 
 /* TODO: Beforehand styling */
@@ -17,7 +24,7 @@
 .indent {
     content:    "|";
     position:   absolute;
-    left:      -43px;
+    left:      -36px;
 
     font-family:    'Oswald', sans-serif;
     opacity:        0.5;
@@ -66,9 +73,9 @@
 /* TODO: html specific styling */
 
 .language-html {
-    .hljs-built_in {			color: #ff9e0f;}
-    .hljs-keyword {			color: #e77cff;}
-    .hljs-attr {				color: #65d8ec;}}
+    .hljs-built_in {	color: #ff9e0f;}
+    .hljs-keyword {	    color: #e77cff;}
+    .hljs-attr {		color: #65d8ec;}}
 
     /* TODO: javascript specific styling */
 

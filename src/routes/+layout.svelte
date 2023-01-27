@@ -55,7 +55,8 @@
 		max-width:  $width;
 		width: 		100%;
 
-		box-sizing: border-box;}
+		box-sizing: border-box;
+	}
 
 	pageData {
 		width: 		100%;
@@ -74,10 +75,6 @@
 				max-width: $row2;}
 			&.col3 {
 				width: $row3;}
-
-			.wrapper {
-
-			}
 		}
 	}
 

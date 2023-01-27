@@ -15,8 +15,8 @@ import { highlightIcon, highlightRender }       from './libs/marks/highlight.jsx
 import { subscriptIcon, subscriptRender }       from './libs/marks/subScript.jsx'     //subscript
 import { superscriptIcon, superscriptRender }   from './libs/marks/superScript.jsx'     //superscript
 
-//TODO: TYPES
-import {codeRender} from './libs/types/codeBlock.js'     //superscript
+// TODO: components
+import { pull } from './libs/components/altTextReq.tsx'
 
 export default defineType({
   title: 'Block Content',
@@ -27,25 +27,30 @@ export default defineType({
       title: 'Block',
       type: 'block',
       styles: [
-        {title: 'H1',         value: 'h1'},
-        {title: 'H2',         value: 'h2'},
-        {title: 'H3',         value: 'h3'},
-        {title: 'H4',         value: 'h4'},
-        {title: 'Quote',      value: 'blockquote'}
+        { title: 'H1',
+          value: 'h1'},
+        { title: 'H2',
+          value: 'h2'},
+        { title: 'H3',
+          value: 'h3'},
+        { title: 'H4',
+          value: 'h4'},
+        { title: 'Quote',
+          value: 'blockquote'}
       ],
       lists: [
         {title: 'Bullet', value: 'bullet'},
         {title: 'Numbered', value: 'number'},
         {
-          title: 'Lettered', value: 'letter',
-          blockEditor: {
-            icon: letterIcon,
-            render: letterRender}
+          title: 'Lettered',
+          value: 'letter',
+          icon: letterIcon,
+          component: letterRender
         },{
-          title: 'Numerals', value: 'numeral',
-          blockEditor: {
-            icon: romanIcon,
-            render: romanRender}
+          title: 'Numerals',
+          value: 'numeral',
+          icon: romanIcon,
+          component: romanRender
         }
       ],
       marks: {
@@ -55,35 +60,35 @@ export default defineType({
           {title: 'Underline',  value: 'underline' },
           {title: 'Strike',     value: 'strike-through'},
           {
-            title: 'CodeSnippet', value: 'codesnippet',
-            blockEditor: {
-              icon: codeSnippetIcon,
-              render: codeSnippetRender}
+            title: 'CodeSnippet',
+            value: 'codesnippet',
+            icon: codeSnippetIcon,
+            component: codeSnippetRender,
           },{
-            title: 'Highlight', value: 'highlight',
-            blockEditor: {
-              icon: highlightIcon,
-              render: highlightRender}
+            title: 'Highlight',
+            value: 'highlight',
+            icon: highlightIcon,
+            component: highlightRender,
           },{
-            title: 'Subscript', value: 'subscript',
-            blockEditor: {
-              icon: subscriptIcon,
-              render: subscriptRender}
+            title: 'Subscript',
+            value: 'subscript',
+            icon: subscriptIcon,
+            component: subscriptRender,
           },{
-            title: 'Superscript', value: 'superscript',
-            blockEditor: {
-              icon: superscriptIcon,
-              render: superscriptRender}
+            title: 'Superscript',
+            value: 'superscript',
+            icon: superscriptIcon,
+            component: superscriptRender,
           },{
-            title: 'Right', value: 'floatright',
-            blockEditor: {
-              icon: floatRightIcon,
-              render: floatRightRender}
+            title: 'Right',
+            value: 'floatright',
+            icon: floatRightIcon,
+            component: floatRightRender,
           },{
-            title: 'Center', value: 'floatcenter',
-            blockEditor: {
-              icon: floatCenterIcon,
-              render: floatCenterRender}
+            title: 'Center',
+            value: 'floatcenter',
+            icon: floatCenterIcon,
+            component: floatCenterRender,
           }
         ],
         annotations: [
@@ -102,9 +107,7 @@ export default defineType({
         ],
       },
     }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
+
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
@@ -190,18 +193,9 @@ export default defineType({
         prepare(selection) {
           const { images, image } = selection;
 
-          function pull(){
-            let arr = [];
-            for (let i = 0; i < images.length; i++){
-              if (images[i]?.alt){
-                arr[i] = ` ${i}: ${images[i].alt}`;}}
-            return arr + " ";
-          }
-          let temp = pull();
-
           return {
             title: `Gallery block of ${Object.keys(images).length} images`,
-            subtitle: `Alt text: [${temp}]`,
+            subtitle: pull(image),
             media: image[0],
           };
         },
@@ -218,7 +212,8 @@ export default defineType({
           {title: 'TypeScript',   value: 'typescript'},
           {title: 'HTML',         value: 'html'},
           {title: 'CSS',          value: 'css'},
-        ]
+        ],
+        withFilename: true,
       },
     }),
   ],

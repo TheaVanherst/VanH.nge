@@ -25,14 +25,28 @@
             language: language
         }).value;
 
-    let Arr = code.split(/\n/g), temp = "";
-    for (let i = 0; i < Arr.length; i++) {
-        temp +=
+    let arr = code.split(/\n/g),
+        codeString = "";
+    let hlArr = portableText.value.highlightedLines;
+    let fileName = portableText.value.filename
+
+    if(hlArr){
+        for (let i = 0; i < hlArr.length; i++) {
+            arr[hlArr[i]] =
+                "<span class='highlight'>" +
+                    arr[hlArr[i]] +
+                "</span>";
+        }
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        codeString +=
             "<span class='fljs-Line'>" +
-                Arr[i] +
+                arr[i] +
             "</span>" + `\n`;
     }
-    code = temp;
+
+    code = codeString;
 
     let copiedBool = false,
         hoverBool = false,
@@ -56,7 +70,7 @@
         <tab class="active">
             <img class="languageIcon" src="{imgUrl}" alt=" ">
             <p>
-                DemoCode.{language}
+                {fileName}.{language}
                 <x>✕</x>
             </p>
         </tab>
@@ -89,7 +103,9 @@
         border-top:     var(--innerRaidus) solid var(--backgroundAccent2);
 
         color:          white;
-        white-space:    pre-wrap;}
+        white-space:    pre-wrap;
+	    font-size: 0;
+    }
 
     .titleBar {
         color:      var(--backgroundAccent1);
@@ -207,13 +223,13 @@
                 content:    "Copied to clipboard!";}}}
 
     .codeData {
-        display:    inline-block;
         margin:     0 0 0 40px;
-        padding:    5px 5px 5px 12px;
+        // padding:    5px 5px 5px 12px;
         position:   relative;
 
         border-left:    1px solid var(--backgroundAccent1);
-        background:     black;}
+        background:     black;
+    }
 
     .colourScheme {
         color:          var(--backgroundAccent1);
