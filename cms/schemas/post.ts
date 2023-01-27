@@ -1,4 +1,5 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
+import { slugUniqueCheck } from './libs/components/slugCheck'
 
 export default defineType({
   name: 'post',
@@ -17,6 +18,7 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 96,
+        isUnique: slugUniqueCheck,
       },}),
     defineField({
       name: 'categories',

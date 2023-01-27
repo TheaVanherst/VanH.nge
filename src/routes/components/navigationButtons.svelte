@@ -2,7 +2,7 @@
     import message from '$lib/directoryController.js';
 
     const urlChanger = (url) => {
-        $message = url
+        $message = url;
     }
 
     export let push;

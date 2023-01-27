@@ -24,7 +24,7 @@
             <t>NAVIGATION</t>
         </div>
         <Button push="/">Home</Button>
-        <Button push="/about">About</Button>
+        <Button push="/blogPosts">Blog</Button>
         <Button push="/artchive">Artchive</Button>
     </div>
 </nav>

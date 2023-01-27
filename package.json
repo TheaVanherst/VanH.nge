@@ -12,6 +12,7 @@
 	"devDependencies": {
 		"@portabletext/svelte": "^1.0.1",
 		"@sanity/image-url": "^1.0.1",
+		"@sentry/node": "^7.34.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@sveltejs/svelte-virtual-list": "^3.0.1",
@@ -30,6 +31,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@crownframework/svelte-error-boundary": "^1.0.3",
 		"@sanity/client": "^3.4.1",
 		"highlight.js": "^11.7.0",
 		"svelte-spa-router": "^3.3.0"

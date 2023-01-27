@@ -1,9 +1,9 @@
 <script>
     import { fly } from 'svelte/transition';
 
-    // page memory vars
+    // page memory varsnpm
     export let name;
-    let previousName = name;
+    let previousName = "notloaded";
 
     // transition timeout vars
     export let transTimeIn = 500;
@@ -27,6 +27,8 @@
                 previousName = name
             }, transTimeIn);
         }
+
+        $: console.log(name, previousName)
 </script>
 
 {#if !transitioning}

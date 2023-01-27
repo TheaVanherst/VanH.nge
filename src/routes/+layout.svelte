@@ -14,8 +14,8 @@
 	let y;
 </script>
 
-
 <Background/>
+
 <page style="--yPos: -{y}px">
 	<Header/>
 	<pageData>
