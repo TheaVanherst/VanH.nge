@@ -1,12 +1,5 @@
 <script>
     import { page } from '$app/stores';
-
-    export let error = null;
-    export let onError = null;
-    let ENV =
-        typeof process !== 'undefined' && process.env && process.env.NODE_ENV;
-    let DEV = ENV !== 'production';
-    $: if ($error && onError) onError($error);
 </script>
 
 {#if $page?.error}
