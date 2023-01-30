@@ -1,5 +1,6 @@
 
 import client from "../lib/sanityClient.js";
+import error from "./components/error.svelte"
 
 let query =
     `*[_type == 'post'][0...9]{
@@ -25,9 +26,12 @@ let query =
 export const load = async () => {
     const postData = await client.fetch(query);
 
-    if (!postData) {
-        return [];
+    if (postData) {
+        return [postData];
+    } else {
+        return {
+            status: 500,
+            body: error
+        };
     }
-    console.log(postData)
-    return [postData];
 }

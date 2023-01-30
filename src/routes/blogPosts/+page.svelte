@@ -1,7 +1,8 @@
 <script>
-	import HeaderModule from "./blogModules/postHeader.svelte"
-	import TitleModule from "./blogModules/titleModule.svelte"
-	import PostModule from "./blogModules/blogModule.svelte"
+	import TitleModule from "./components/titleModule.svelte"
+	import PostHeader from "./components/postHeader.svelte"
+	import TagModule from "../../components/tagModule.svelte"
+	import PostModule from "../../components/portableText.svelte"
 
 	export let data;
 </script>
@@ -15,13 +16,12 @@
 	<div class="post" id="{post.slug}">
 		<TitleModule
 				titleHeader="{post.headerImage}"	title="{post.title}"/>
-		<HeaderModule
+		<PostHeader
 				createdOn="{post._createdAt}" 		updatedOn="{post._updatedAt}"
-				authorhandle="{post.author_handle}" authoruser="{post.author_fullName}"
-				authorTwitter="{post.author_twitter}" 	authorImage="{post.author_portrait}"
-				editorhandle="{post.editor_handle}" 	editoruser="{post.editor_fullName}"
-				editorTwitter="{post.editor_twitter}" 	editorImage="{post.editor_portrait}"
-				tags="{post.catagory_tags}"/>
+				editorHandle={post.author_handle} 	editorUser={post.author_fullName}	editorTwitter={post.editor_twitter} 	editorImage={post.author_portrait}
+				authorHandle={post.author_handle} 	authorUser={post.author_fullName}  	authorTwitter={post.author_twitter} 	authorImage={post.author_portrait}
+				title="{post.title}"/>
+		<TagModule time="{post._updatedAt}" tags="{post.catagory_tags}" />
 		<PostModule
 				postData="{post.body}"/>
 	</div>

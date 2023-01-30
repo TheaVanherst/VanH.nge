@@ -1,6 +1,6 @@
 
 import client from "../lib/sanityClient.js";
-import Error from './components/error.svelte';
+import error from './components/error.svelte';
 
 let query =
     `*[_type == 'author' && fullName == "Thea Vanherst"]{
@@ -14,6 +14,9 @@ export const load = async (params) => {
     if (params) {
         return [userData];
     } else {
-        return Error;
+        return {
+            status: 500,
+            body: error
+        };
     }
 }

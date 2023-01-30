@@ -1,18 +1,13 @@
 <script>
-	import HeaderModule from "../components/blogModules/postHeader.svelte"
-	import TitleModule from "../components/blogModules/titleModule.svelte"
-	import PostModule from "../components/blogModules/blogModule.svelte"
+	import HeaderModule from "../components/postHeader.svelte"
+	import TitleModule from "../components/titleModule.svelte"
+	import PostModule from "../../../components/portableText.svelte"
 
 	export let data;
 </script>
 
-<svelte:head>
-	<title>Blog</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
 {#each data[0] as post}
-	<div class="post" id="{post.slug}">
+	<div class="postPreview" id="{post.slug}">
 		<TitleModule
 				titleHeader="{post.headerImage}"	title="{post.title}"/>
 		<HeaderModule
@@ -28,7 +23,7 @@
 {/each}
 
 <style lang="scss">
-	.post {
+	.postPreview {
 		border: 	var(--border-thickness) solid var(--accent1);
 		padding: 	var(--containerPadding);
 

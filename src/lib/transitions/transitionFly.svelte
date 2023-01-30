@@ -3,7 +3,7 @@
 
     // page memory varsnpm
     export let name;
-    let previousName = "notloaded";
+    let previousName = Math.random();
 
     // transition timeout vars
     export let transTimeIn = 500;

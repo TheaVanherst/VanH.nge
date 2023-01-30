@@ -1,12 +1,11 @@
 <script>
     export let createdOn, updatedOn;
-    import {createdPush, updatedPush} from "../../../components/dateBuilder.js"
+    import {createdPush, updatedPush} from "../../../../components/dateBuilder.js"
 
-    export let tags;
-    import TagModule from "../../../components/tagModule.svelte"
 
     export let authoruser, editoruser;
 </script>
+
 
 <header>
     <div class="userData">
@@ -22,7 +21,6 @@
             <span>{authoruser}</span>
         {/if}
     </div>
-    <TagModule time="{createdOn}" tags="{tags}" />
 </header>
 
 <style lang="scss">
