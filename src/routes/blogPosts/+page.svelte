@@ -52,7 +52,7 @@
 
 	.contentList {
 		border: 	var(--border-thickness) solid var(--accent1);
-		padding: 	var(--containerPadding);
+		padding: 	10px var(--containerPadding) var(--containerPadding) var(--containerPadding);
 		margin-bottom:  20px;
 
 		min-height: 	120px;
@@ -65,7 +65,7 @@
 			border-left: 	5px solid var(--accent1);
 
 			padding:	 	0 0 0 20px;
-			margin:			0 0 var(--contentPaddingY) calc(var(--contentPaddingX) * -1);
+			margin:			0 0 var(--containerPadding) calc(var(--contentPaddingX) * -1);
 		}
 	}
 
