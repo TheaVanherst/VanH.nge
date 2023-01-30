@@ -1,5 +1,6 @@
 <script>
     import { fly } from 'svelte/transition';
+    import { afterUpdate  } from 'svelte';
 
     // page memory varsnpm
     export let name;
@@ -18,23 +19,21 @@
     export let TransXOut = 50;
 
     let transitioning = false;
-
     // checks if the previous page is different to the new page.
     $:  if(name !== previousName) {
             transitioning = true;
-            setTimeout(() => {
-                transitioning = false;
-                previousName = name
-            }, transTimeIn);
         }
 
-        $: console.log(name, previousName)
+    afterUpdate(() => {
+        transitioning = false;
+        previousName = name
+    });
 </script>
 
 {#if !transitioning}
     <div class="transitionWrapper"
-        in:fly={{ x: TransXIn, in: transTimeIn}}
-        out:fly={{ x: TransXOut, in: transTimeOut}}>
-        <slot/>
+         in:fly={{ x: TransXIn, in: transTimeIn}}
+         out:fly={{ x: TransXOut, in: transTimeOut}}>
+        <slot />
     </div>
 {/if}

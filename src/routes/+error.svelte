@@ -9,7 +9,7 @@
         </div>
         <div>
             <h1>{$page?.status}</h1>
-            <p>Page {$page?.error?.message}.</p>
+            <p>Page {$page?.error?.message}</p>
         </div>
     </div>
 {/if}

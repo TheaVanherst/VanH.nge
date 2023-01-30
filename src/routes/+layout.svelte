@@ -4,7 +4,6 @@
 	import Background from "./components/background.svelte"
 
 	import Navigation from "./components/navigation.svelte"
-	import SideBar from "./components/sideBar.svelte"
 
 	import Transition from "$lib/transitions/transitionFly.svelte";
 	import message from '$lib/directoryController.js';
@@ -18,21 +17,14 @@
 
 <page style="--yPos: -{y}px">
 	<Header/>
-	<pageData>
+	<main>
 		<div class="col1 col">
 			<Navigation data={data} {$message} />
 		</div>
-		<div class="col2 col">
-			<div class="wrapper">
-				<Transition name={$message}>
-					<slot/>
-				</Transition>
-			</div>
-		</div>
-		<div class="col3 col">
-			<SideBar/>
-		</div>
-	</pageData>
+		<Transition name={$message}>
+			<slot/>
+		</Transition>
+	</main>
 </page>
 
 <svelte:window bind:scrollY={y} />
@@ -58,7 +50,7 @@
 		box-sizing: border-box;
 	}
 
-	pageData {
+	main {
 		width: 		100%;
 		gap: 		var(--containerPadding);
 		display: 	flex;
@@ -70,12 +62,6 @@
 
 			&.col1 {
 				width: $row1;}
-			&.col2 {
-				flex-basis: 100%;
-				max-width: $row2;}
-			&.col3 {
-				margin-left: auto;
-				width: $row3;}
 		}
 	}
 

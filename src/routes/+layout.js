@@ -1,6 +1,6 @@
 
 import client from "../lib/sanityClient.js";
-import error from './components/error.svelte';
+import { error } from '@sveltejs/kit';
 
 let query =
     `*[_type == 'author' && fullName == "Thea Vanherst"]{
@@ -14,9 +14,6 @@ export const load = async (params) => {
     if (params) {
         return [userData];
     } else {
-        return {
-            status: 500,
-            body: error
-        };
+        throw new error(100, "Page userdata not found!")
     }
 }

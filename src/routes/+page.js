@@ -1,23 +1,20 @@
 
 import client from "../lib/sanityClient.js";
-import error from "./components/error.svelte"
+import { error } from '@sveltejs/kit';
 
 let query =
-    `*[_type == 'post'][0...9]{
+    `*[_type == 'post'][0...3]{
         slug,
         title,
         'headerImage': mainImage,
         
         _createdAt,
         _updatedAt,
-        
-        'catagory_tags': categories[]->title,
     
-        'author_handle': author->handle,
         'author_fullName': author->fullName,
-        'editor_handle': editor->handle,
         'editor_fullName': editor->fullName,
         
+        'catagory_tags': categories[]->title,
         'description': briefDesc,
         
         body[0...2],
@@ -26,12 +23,9 @@ let query =
 export const load = async () => {
     const postData = await client.fetch(query);
 
-    if (postData) {
+    if (postData.length > 0) {
         return [postData];
     } else {
-        return {
-            status: 500,
-            body: error
-        };
+        throw new error(404, "No return searches found.")
     }
 }

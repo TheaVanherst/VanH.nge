@@ -1,5 +1,5 @@
 <script>
-	import HeaderModule from "../components/postHeader.svelte"
+	import HeaderModule from "../components/blogPostHeader.svelte"
 	import TitleModule from "../components/titleModule.svelte"
 	import PostModule from "../../../components/portableText.svelte"
 

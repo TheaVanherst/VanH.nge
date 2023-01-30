@@ -3,7 +3,7 @@
 
     // page memory vars
     export let name;
-    let previousName = name;
+    let previousName = Math.random();
 
     // transition timeout vars
     export let transTimeIn = 500;

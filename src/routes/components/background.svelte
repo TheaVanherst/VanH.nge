@@ -1,6 +1,3 @@
-<script>
-
-</script>
 
 <backgroundElement>
     <div class="spaceBg3 backGround"></div>

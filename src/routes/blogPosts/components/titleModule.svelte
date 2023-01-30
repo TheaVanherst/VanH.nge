@@ -1,6 +1,7 @@
 <script>
-    export let titleHeader, title;
     import SanityImage from '../../../components/sanityImage.svelte'
+
+    export let titleHeader = null, title = null;
 </script>
 
 <div class="title">

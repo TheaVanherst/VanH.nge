@@ -78,16 +78,22 @@ body {
 p {
 	line-height:    100%;
 	margin: 		0;}
-.postBody > *:last-child {
+.postBody > *:last-child:not(h1, h2, h3, h4) {
 	padding: 0;
 }
 
 h1, h2, h3, h4 {
 	text-transform: capitalize;
 	font-family: 	'Oswald', sans-serif;
-	line-height: 	120%;
-	margin:			0 0 var(--contentPaddingY) 0;
 
+	&:only-child {
+		line-height: 	100%;
+		margin:         0 0 5px 0;
+	}
+	&:not(:only-child) {
+		line-height: 	120%;
+		margin:			0 0 var(--contentPaddingY) 0;
+	}
 }
 
 h1 {font-size: 2rem;}

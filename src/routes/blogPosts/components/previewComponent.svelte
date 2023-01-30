@@ -1,8 +1,8 @@
 <script>
-    import HeaderModule from "./postHeader.svelte"
-    import TitleModule from "../titleModule.svelte"
-    import PostModule from "../../../../components/portableText.svelte"
-    import TagModule from "../../../../components/tagModule.svelte"
+    import HeaderModule from "./previewHeader.svelte"
+    import TitleModule from "./titleModule.svelte"
+    import PostModule from "../../../components/portableText.svelte"
+    import TagModule from "../../../components/tagModule.svelte"
 
     export let post
 </script>
@@ -10,7 +10,7 @@
 <a href="/blog/{post.slug.current}">
     <div class="post" id="{post._id}">
         <div class="readMore">
-            <p>▼</p>
+            <img src="/icons/downArrowPreview.webp">
         </div>
         <div class="padding">
             <TitleModule
@@ -45,6 +45,8 @@
 		overflow: hidden;
 		position: relative;
 
+		transition: border 0.2s ease-in-out;
+
 		color: 			var(--textColour);
 
 		.padding {
@@ -56,6 +58,10 @@
 				margin-bottom: 15px;
 			}
 		}
+
+        &:hover {
+            border-color: var(--accent3);
+        }
 
 		&:before {
 			content  : "";
@@ -81,12 +87,16 @@
 			z-index  : 20;
 			width: 100%;
 
-			p {
+			img {
+                display: block;
 				margin: 0 auto;
+                color: black;
 
-				padding: 5px;
-				width: 10px;
-				height: 10px;
+                transition: background-color 0.2s ease-in-out;
+
+				padding: 3px;
+				width: 16px;
+				height: 16px;
 
 				border-radius: 50%;
 				background-color: var(--accent1);
@@ -94,5 +104,11 @@
 				text-wrap: none;
 			}
 		}
+
+        &:hover {
+            img {
+                background-color: var(--accent3);
+            }
+        }
 	}
 </style>
