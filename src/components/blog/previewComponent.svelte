@@ -1,8 +1,8 @@
 <script>
     import HeaderModule from "./previewHeader.svelte"
-    import TitleModule from "./titleModule.svelte"
-    import PostModule from "../../../components/portableText.svelte"
-    import TagModule from "../../../components/tagModule.svelte"
+    import TitleModule from "./postHeader.svelte"
+    import PostModule from "../portableText/portableText.svelte"
+    import TagModule from "../tagModule.svelte"
 
     export let post
 </script>

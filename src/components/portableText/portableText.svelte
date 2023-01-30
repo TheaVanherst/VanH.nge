@@ -2,29 +2,29 @@
     import {PortableText} from '@portabletext/svelte'
 
     /* BLOCKS */
-    import CustomText       from './portableText/block/customText.svelte'
-    import CustomHeading    from './portableText/block/customHeaders.svelte'
+    import CustomText       from './block/customText.svelte'
+    import CustomHeading    from './block/customHeaders.svelte'
 
     /* TYPES */
-    import CodeBlock        from './portableText/types/codeBlock.svelte'
-    import Link             from './portableText/types/linkAppend.svelte'
-    import ImageBlock       from './portableText/types/imageBlock.svelte'
-    import imageGallery     from "./portableText/types/imageGallery.svelte";
+    import CodeBlock        from './types/codeBlock.svelte'
+    import Link             from './types/linkAppend.svelte'
+    import ImageBlock       from './types/imageBlock.svelte'
+    import imageGallery     from "./types/imageGallery.svelte";
 
     /* LISTS */
-    import Bullet           from './portableText/lists/bullet.svelte';
-    import Number           from './portableText/lists/number.svelte';
-    import Letter           from './portableText/lists/letter.svelte';
-    import Numeral          from './portableText/lists/numeral.svelte';
+    import Bullet           from './lists/bullet.svelte';
+    import Number           from './lists/number.svelte';
+    import Letter           from './lists/letter.svelte';
+    import Numeral          from './lists/numeral.svelte';
 
     /* MARX [AXAXAX] */
-    import CodeSnippet      from './portableText/marks/codeSnippet.svelte';
-    import Highlight        from './portableText/marks/highlight.svelte';
-    import Subscript        from './portableText/marks/subScript.svelte';
-    import Superscript      from './portableText/marks/superScript.svelte';
-    import FloatCenter      from './portableText/marks/floatCenter.svelte';
-    import FloatRight       from './portableText/marks/floatRight.svelte';
-    import BlockQuote       from './portableText/marks/blockQuote.svelte';
+    import CodeSnippet      from './marks/codeSnippet.svelte';
+    import Highlight        from './marks/highlight.svelte';
+    import Subscript        from './marks/subScript.svelte';
+    import Superscript      from './marks/superScript.svelte';
+    import FloatCenter      from './marks/floatCenter.svelte';
+    import FloatRight       from './marks/floatRight.svelte';
+    import BlockQuote       from './marks/blockQuote.svelte';
 
     export let postData
 </script>

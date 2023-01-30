@@ -1,18 +1,18 @@
 <script>
     export let portableText = null;
 
-    $: anchorId = `heading-${portableText.indexInParent}`
-    $: style = portableText.value.style
+    let style = portableText.value.style,
+        id = portableText.value._key
 </script>
 
 {#if style === 'h1'}
-    <h1><slot /></h1>
+    <h1 id="{id}"><slot /></h1>
 {:else if style === 'h2'}
-    <h2><slot /></h2>
+    <h2 id="{id}"><slot /></h2>
 {:else if style === 'h3'}
-    <h3><slot /></h3>
+    <h3 id="{id}"><slot /></h3>
 {:else}
-    <h4><slot /></h4>
+    <h4 id="{id}"><slot /></h4>
 {/if}
 
 <style lang="scss">

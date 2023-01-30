@@ -1,5 +1,5 @@
 <script>
-    import SanityImage from '../../../components/sanityImage.svelte'
+    import SanityImage from '../sanityImage.svelte'
 
     export let titleHeader = null, title = null;
 </script>

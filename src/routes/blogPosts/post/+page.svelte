@@ -1,7 +1,7 @@
 <script>
-	import HeaderModule from "../components/blogPostHeader.svelte"
-	import TitleModule from "../components/titleModule.svelte"
-	import PostModule from "../../../components/portableText.svelte"
+	import HeaderModule from "../../../components/blog/blogPostHeader.svelte"
+	import TitleModule from "../../../components/blog/postHeader.svelte"
+	import PostModule from "../../../components/portableText/portableText.svelte"
 
 	export let data;
 </script>

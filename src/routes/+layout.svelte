@@ -1,11 +1,11 @@
 <script>
 	import '../styles.scss';
-	import Header from "./components/header.svelte"
-	import Background from "./components/background.svelte"
+	import Header from "../components/general/header.svelte"
+	import Background from "../components/general/background.svelte"
 
-	import Navigation from "./components/navigation.svelte"
+	import Navigation from "../components/general/navigation.svelte"
 
-	import Transition from "$lib/transitions/transitionFly.svelte";
+	import Transition from "$lib/layout/transitionFly.svelte";
 	import message from '$lib/directoryController.js';
 
 	export let data;

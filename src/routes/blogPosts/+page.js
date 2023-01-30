@@ -24,6 +24,7 @@ let query =
         'editor_portrait': editor->userPortrait,
     
         body,
+        'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]
     }`
 
 export const load = async () => {

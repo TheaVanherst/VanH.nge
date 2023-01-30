@@ -1,13 +1,13 @@
 <script>
-    import TitleModule from "./../components/titleModule.svelte"
+    import TitleModule from "./postHeader.svelte"
     import PostHeader from "./blogPostHeader.svelte"
-    import TagModule from "../../../components/tagModule.svelte"
-    import PostModule from "../../../components/portableText.svelte"
+    import TagModule from "../tagModule.svelte"
+    import PostModule from "../portableText/portableText.svelte"
 
     export let post
 </script>
 
-<div class="post" id="{post.slug}">
+<div class="post" id="{post.slug.current}">
     <TitleModule
             titleHeader="{post.headerImage}"	title="{post.title}"/>
     <PostHeader

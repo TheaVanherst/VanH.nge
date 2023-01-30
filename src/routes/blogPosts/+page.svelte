@@ -1,6 +1,6 @@
 <script>
-	import BlogComponent  from "./components/blogComponent.svelte"
-	import Contents from './components/postsContentsList.svelte'
+	import BlogComponent  from "../../components/blog/blogComponent.svelte"
+	import Contents from '../../components/blog/contentList.svelte'
 
 	export let data;
 </script>

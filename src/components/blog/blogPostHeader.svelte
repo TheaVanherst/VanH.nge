@@ -1,10 +1,10 @@
 <script>
-    import SanityImage  from '../../../components/sanityImage.svelte'
+    import SanityImage  from '../sanityImage.svelte'
 
-    import AuthorTag    from '../../../components/authorTag.svelte'
+    import AuthorTag    from '../authorTag.svelte'
 
     export let createdOn = null, updatedOn = null;
-    import {createdPush, updatedPush} from "../../../components/dateBuilder"
+    import {createdPush, updatedPush} from "../dateBuilder.js"
 
     export let authorHandle = null, authorUser = null, authorTwitter = null, authorImage = null,
                editorHandle = null, editorUser = null, editorTwitter = null, editorImage = null;
