@@ -2,16 +2,19 @@
     import {PortableText} from '@portabletext/svelte'
 
     /* BLOCKS */
-    import CustomText       from './block/customText.svelte'
-    import CustomHeading    from './block/customHeaders.svelte'
+    import CustomText       from './block/customText.svelte';
+    import CustomHeading    from './block/customHeaders.svelte';
+    import CustomBlockQuote from './block/customBlockQuote.svelte';
 
     /* TYPES */
-    import CodeBlock        from './types/codeBlock.svelte'
-    import Link             from './types/linkAppend.svelte'
-    import ImageBlock       from './types/imageBlock.svelte'
-    import imageGallery     from "./types/imageGallery.svelte";
+    import CodeBlock        from './types/codeBlock.svelte';
+    import Link             from './types/linkAppend.svelte';
+    import ImageBlock       from './types/imageBlock.svelte';
+    import ImageGallery     from './types/imageGallery.svelte';
+    import Divider          from './types/divider.svelte';
 
     /* LISTS */
+    import Wrapper          from './lists/wrapper.svelte';
     import Bullet           from './lists/bullet.svelte';
     import Number           from './lists/number.svelte';
     import Letter           from './lists/letter.svelte';
@@ -37,7 +40,16 @@
             types: {
                 code:       CodeBlock,
                 image:      ImageBlock,
-                gallery:    imageGallery
+                gallery:    ImageGallery,
+                divider:    Divider
+            },
+            block: {
+                normal:     CustomText,
+                h1:         CustomHeading,
+                h2:         CustomHeading,
+                h3:         CustomHeading,
+                h4:         CustomHeading,
+                blockquote: CustomBlockQuote
             },
             marks: {
                 link:           Link,
@@ -50,17 +62,17 @@
                 blockquote:     BlockQuote
             },
             list: {
+                bullet:     Wrapper,
+                number:     Wrapper,
+                letter:     Wrapper,
+                numeral:    Wrapper
+            },
+            listItem: {
                 bullet:     Bullet,
                 number:     Number,
                 letter:     Letter,
-                numeral:    Numeral
-            },
-            block: {
-                normal:     CustomText,
-                h1:         CustomHeading,
-                h2:         CustomHeading,
-                h3:         CustomHeading,
-                h4:         CustomHeading
+                numeral:    Numeral,
+                normal:     Bullet
             }
           }}
     />

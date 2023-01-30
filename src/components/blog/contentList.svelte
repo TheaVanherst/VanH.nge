@@ -25,7 +25,15 @@
         }
     }
 
-    $: console.log(arr, placementArr, list)
+    placementArr = placementArr.map(i => 'e' + i);
+
+    let arrayElements = []
+
+    // for (let i = 0; i < arr.length; i++) {
+    //     arrayElements[placementArr[i]].push("yes")
+    // }
+
+    $:console.log(placementArr, arr)
 </script>
 
 <div class="contents">
@@ -35,8 +43,8 @@
         </h4>
     </a>
 
-    {#each list.titles as title}
-        <a href="#{title._key}">
+    {#each list.titles as title, i}
+        <a href="#{title._key}" class="list {placementArr[i]}">
             {#if title.children.length > 1}
                 {#each title.children as child}
                     {child.text}
@@ -65,6 +73,22 @@
             margin-bottom: 2px;
             width: 100%;
             display: block;
+
+            h4 {
+                padding: 5px 6px;
+                background-color: var(--background);
+            }
         }
+
+        //.list {
+        //    padding-left: 5px;
+        //    border-left: 3px solid var(--darkAccent4);
+        //    &.e1 {
+        //        margin-left: 10px;}
+	    //    &.e2 {
+		//        margin-left: 20px;}
+	    //    &.e3 {
+		//        margin-left: 30px;}
+        //}
     }
 </style>

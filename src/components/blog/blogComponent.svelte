@@ -2,7 +2,7 @@
     import TitleModule from "./postHeader.svelte"
     import PostHeader from "./blogPostHeader.svelte"
     import TagModule from "../tagModule.svelte"
-    import PostModule from "../portableText/portableText.svelte"
+    import PostModule from "../serializer/portableText.svelte"
 
     export let post
 </script>
