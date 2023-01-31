@@ -11,7 +11,7 @@
     import Link             from './types/linkAppend.svelte';
     import ImageBlock       from './types/imageBlock.svelte';
     import ImageGallery     from './types/imageGallery.svelte';
-    import Divider          from './types/divider.svelte';
+    import Seperator        from './types/seperator.svelte';
 
     /* LISTS */
     import Wrapper          from './lists/wrapper.svelte';
@@ -23,25 +23,28 @@
     /* MARX [AXAXAX] */
     import CodeSnippet      from './marks/codeSnippet.svelte';
     import Highlight        from './marks/highlight.svelte';
+
     import Subscript        from './marks/subScript.svelte';
     import Superscript      from './marks/superScript.svelte';
+    import BlockQuote       from './marks/blockQuote.svelte';
+
     import FloatCenter      from './marks/floatCenter.svelte';
     import FloatRight       from './marks/floatRight.svelte';
-    import BlockQuote       from './marks/blockQuote.svelte';
+    import ReadMore         from './marks/readMore.svelte';
 
     export let postData
 </script>
 
 <div class="postBody">
     <PortableText
-            value={postData}
-            onMissingComponent={false}
-            components={{
+        value={postData}
+        onMissingComponent={false}
+        components={{
             types: {
                 code:       CodeBlock,
                 image:      ImageBlock,
                 gallery:    ImageGallery,
-                divider:    Divider
+                seperator:  Seperator,
             },
             block: {
                 normal:     CustomText,
@@ -59,7 +62,8 @@
                 superscript:    Superscript,
                 floatright:     FloatRight,
                 floatcenter:    FloatCenter,
-                blockquote:     BlockQuote
+                blockquote:     BlockQuote,
+                readmore:       ReadMore,
             },
             list: {
                 bullet:     Wrapper,
@@ -74,6 +78,6 @@
                 numeral:    Numeral,
                 normal:     Bullet
             }
-          }}
+        }}
     />
 </div>

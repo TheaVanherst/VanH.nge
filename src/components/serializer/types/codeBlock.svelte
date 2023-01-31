@@ -164,11 +164,14 @@
         .languageIcon {
             height:  17px;
             width:   17px;
-            padding: 3px;}}
+            padding: 3px;
+        }
+    }
 
     copyTab {
         padding:    2px 2px 2px 7px;
         float:      right;
+        cursor:     copy;
 
         div {
             padding:    4px;

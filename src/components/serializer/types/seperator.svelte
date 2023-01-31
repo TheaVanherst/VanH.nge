@@ -2,10 +2,11 @@
     export let portableText = null;
 </script>
 
-<dividerElement/>
+<seperatorElement/>
 
 <style lang="scss">
 	dividerElement {
-
+        width: 100%;
+        border-bottom: 1px;
     }
 </style>

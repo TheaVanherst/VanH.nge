@@ -58,19 +58,23 @@
             margin-bottom:  15px;}
 
 	    h4 {
-		    padding: 8px 10px 10px 10px;
-		    background-color: var(--accent1);
-		    color: black;
+            cursor:     alias;
+		    padding:    8px 10px 10px 10px;
+
+		    background-color:   var(--accent1);
+		    color:              black;
         }
 
         .list {
-	        padding:    2px 10px;
+	        cursor:     alias;
 	        font:       15px monospace;
+
+	        padding:    2px 10px;
 
             &:last-child {
                 padding-bottom: 10px;
             }
-            //padding-left: 5px;
+
             //border-left: 3px solid var(--darkAccent4);
             //&.e1 {
             //    margin-left: 10px;}

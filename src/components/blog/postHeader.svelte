@@ -7,6 +7,7 @@
 <div class="title">
     <div class="headerBackground">
         <SanityImage image={titleHeader}/>
+        <SanityImage image={titleHeader}/>
     </div>
     <h1>
         {title}
