@@ -2,17 +2,25 @@
     export let portableText = null;
 
     let style = portableText.value.style,
-        id = portableText.value._key
+        id = "header-" + portableText.value._key
 </script>
 
 {#if style === 'h1'}
-    <h1 id="{id}"><slot /></h1>
+    <h1 id="{id}">
+        <slot />
+    </h1>
 {:else if style === 'h2'}
-    <h2 id="{id}"><slot /></h2>
+    <h2 id="{id}">
+        <slot />
+    </h2>
 {:else if style === 'h3'}
-    <h3 id="{id}"><slot /></h3>
+    <h3 id="{id}">
+        <slot />
+    </h3>
 {:else}
-    <h4 id="{id}"><slot /></h4>
+    <h4 id="{id}">
+        <slot />
+    </h4>
 {/if}
 
 <style lang="scss">

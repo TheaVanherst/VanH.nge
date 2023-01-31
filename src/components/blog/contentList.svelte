@@ -1,4 +1,5 @@
 <script>
+    import scrollIntoView from "$lib/scrollHandler.js";
     export let list;
 
     let arr = []
@@ -25,14 +26,12 @@
 </script>
 
 <div class="contents">
-    <a href="#{list.slug.current}">
-        <h4>
-            {list.title}
-        </h4>
-    </a>
+    <h4 href="#post-{list.slug.current}" on:click|preventDefault={scrollIntoView}>
+        {list.title}
+    </h4>
 
     {#each list.titles as title, i}
-        <a href="#{title._key}" class="list {placementArr[i]}">
+        <p href="#header-{title._key}" class="list {placementArr[i]}" on:click|preventDefault={scrollIntoView}>
             {#if title.children.length > 1}
                 {#each title.children as child}
                     {child.text}
@@ -40,7 +39,7 @@
             {:else}
                 {title.children[0].text}
             {/if}
-        </a>
+        </p>
     {/each}
 </div>
 
@@ -58,15 +57,10 @@
         &:not(:last-of-type) {
             margin-bottom:  15px;}
 
-        a {
-            width:      100%;
-            display:    block;
-
-            h4 {
-                padding: 8px 10px 10px 10px;
-                background-color: var(--accent1);
-                color: black;
-            }
+	    h4 {
+		    padding: 8px 10px 10px 10px;
+		    background-color: var(--accent1);
+		    color: black;
         }
 
         .list {

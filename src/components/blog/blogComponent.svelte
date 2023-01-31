@@ -7,7 +7,7 @@
     export let post
 </script>
 
-<div class="post" id="{post.slug.current}">
+<div class="post" id="post-{post.slug.current}">
     <TitleModule
             titleHeader="{post.headerImage}"	title="{post.title}"/>
     <PostHeader
