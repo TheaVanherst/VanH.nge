@@ -1,6 +1,4 @@
 
-export {superscriptIcon, superscriptRender}
-
 const superscriptIcon = () => (
   <span>
     A
@@ -21,3 +19,5 @@ const superscriptRender = (props) => (
     {props.children}
   </span>
 );
+
+export {superscriptIcon, superscriptRender}

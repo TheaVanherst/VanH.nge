@@ -1,6 +1,4 @@
 
-export {codeSnippetIcon, codeSnippetRender}
-
 const codeSnippetIcon = () => (
   <span
     style={{
@@ -18,3 +16,5 @@ const codeSnippetRender = (props) => (
       {props.children}
     </span>
 );
+
+export {codeSnippetIcon, codeSnippetRender}

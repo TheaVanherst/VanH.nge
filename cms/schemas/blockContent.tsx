@@ -8,15 +8,19 @@ import { letterIcon, letterRender } from './libs/lists/letter.jsx'   //letter
 import { romanIcon, romanRender }   from './libs/lists/roman.jsx'   //codesnippets
 
 //TODO: MARKS
-import { codeSnippetIcon, codeSnippetRender }   from './libs/marks/codeSnippet.jsx'   //codesnippets
-import { floatCenterIcon, floatCenterRender }   from './libs/marks/floatCenter.jsx'   //floatcenter
-import { floatRightIcon, floatRightRender }     from './libs/marks/floatRight.jsx'    //floatright
-import { highlightIcon, highlightRender }       from './libs/marks/highlight.jsx'     //highlight
-import { subscriptIcon, subscriptRender }       from './libs/marks/subScript.jsx'     //subscript
+import { codeSnippetIcon, codeSnippetRender }   from './libs/marks/codeSnippet.jsx'     //codesnippets
+import { floatCenterIcon, floatCenterRender }   from './libs/marks/floatCenter.jsx'     //floatcenter
+import { floatRightIcon, floatRightRender }     from './libs/marks/floatRight.jsx'      //floatright
+import { highlightIcon, highlightRender }       from './libs/marks/highlight.jsx'       //highlight
+import { subscriptIcon, subscriptRender }       from './libs/marks/subScript.jsx'       //subscript
 import { superscriptIcon, superscriptRender }   from './libs/marks/superScript.jsx'     //superscript
 
+//TODO: MARKS / BLOCK DATA
+import { readMoreIcon, readMoreRender }         from './libs/types/readMore.jsx'  //superscript
+import { separatorIcon }                        from './libs/types/separatorsElement.jsx'  //superscript
+
 // TODO: components
-import { pull } from './libs/components/altTextReq.tsx'
+import { pull } from './components/altTextReq.jsx'
 
 export default defineType({
   title: 'Block Content',
@@ -89,6 +93,11 @@ export default defineType({
             value: 'floatcenter',
             icon: floatCenterIcon,
             component: floatCenterRender,
+          },{
+            title: 'Read More',
+            value: 'readmore',
+            icon: readMoreIcon,
+            component: readMoreRender,
           }
         ],
         annotations: [
@@ -109,8 +118,44 @@ export default defineType({
     }),
 
     defineArrayMember({
+      name: 'separator',
+      title: 'separator',
+      type: 'object',
+      icon: separatorIcon,
+      initialValue: {
+        title: "Normal Separator", value: "normal-separator"
+      },
+      fields: [
+        {
+          name: 'style',
+          type: 'string',
+          options: {
+            list: [
+              { title: "Wave Separator", value: "wave-separator" },
+              { title: "Normal Separator", value: "normal-separator" },
+            ],
+          },
+        },
+      ],
+      preview: {
+        select: {
+          styleType: 'style'
+        },
+        prepare(selection) {
+          const {styleType} = selection
+          return {
+            title: "Content Separator",
+            subtitle: styleType.split('-')[0] + " separator type"
+          }
+        },
+      },
+    }),
+
+    defineArrayMember({
       type: 'image',
-      options: {hotspot: true},
+      options: {
+        hotspot: true
+      },
     }),
 
     defineArrayMember({
@@ -135,9 +180,7 @@ export default defineType({
                   name: 'alt',
                   type: 'string',
                   title: 'Alternative text',
-                  validation:
-                    Rule => [
-                      Rule.max(50).warning('30 characters or less')]
+                  validation: Rule => [Rule.max(50).warning('30 characters or less')]
                 },
               ],
             },
@@ -150,6 +193,7 @@ export default defineType({
           name: 'display',
           type: 'string',
           title: 'Display as',
+          initialValue: "dynamicvertical",
           options: {
             list: [
               {
@@ -182,6 +226,7 @@ export default defineType({
           name: 'zoom',
           type: 'boolean',
           title: 'Zoom enabled',
+          initialValue: false,
           description: 'Should we enable zooming of images?',
         }),
       ],

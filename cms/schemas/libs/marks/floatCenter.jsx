@@ -1,6 +1,4 @@
 
-export {floatCenterIcon, floatCenterRender}
-
 const floatCenterIcon = () => (
   <span>
       ⌧
@@ -10,9 +8,15 @@ const floatCenterIcon = () => (
 const floatCenterRender = (props) => (
   <span
     style={{
-        width: "100%",
+        borderRight: "2px dashed yellow",
+        borderLeft: "2px dashed yellow",
+        paddingRight: "10px",
+        paddingLeft: "10px",
+
         display: "block",
         textAlign: "center"}}>
       {props.children}
   </span>
 );
+
+export {floatCenterIcon, floatCenterRender}

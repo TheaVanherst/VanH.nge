@@ -1,6 +1,4 @@
 
-export {subscriptIcon, subscriptRender}
-
 const subscriptIcon = () => (
   <span>
     A
@@ -22,3 +20,5 @@ const subscriptRender = (props) => (
     {props.children}
   </span>
 );
+
+export {subscriptIcon, subscriptRender}

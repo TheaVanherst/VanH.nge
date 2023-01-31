@@ -1,6 +1,4 @@
 
-export { pull }
-
 const pull = (obj) => {
   let arr = [];
   for (let i = 0; i < obj.length; i++){
@@ -15,3 +13,5 @@ const pull = (obj) => {
     return "No alternative text provided."
   }
 }
+
+export { pull }

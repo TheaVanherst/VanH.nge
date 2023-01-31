@@ -1,6 +1,4 @@
 
-export {highlightIcon, highlightRender}
-
 const highlightIcon = () => (
   <span
     style={{
@@ -19,3 +17,5 @@ const highlightRender = (props) => (
     {props.children}
   </span>
 );
+
+export {highlightIcon, highlightRender}

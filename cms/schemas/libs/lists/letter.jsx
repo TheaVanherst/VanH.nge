@@ -1,6 +1,4 @@
 
-export {letterIcon, letterRender}
-
 const letterIcon = () => (
   <span>
     b.
@@ -13,3 +11,5 @@ const letterRender = (props) => (
       listStyleType: 'lower-latin'}}>
     {props.children}
   </li>);
+
+export {letterIcon, letterRender}

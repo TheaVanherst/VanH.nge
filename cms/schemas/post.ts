@@ -1,5 +1,6 @@
+
 import { defineField, defineType } from 'sanity'
-import { slugUniqueCheck } from './libs/components/slugCheck'
+import { slugUniqueCheck } from './components/slugCheck'
 
 export default defineType({
   name: 'post',
@@ -10,11 +11,13 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required().min(12).max(64),
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      validation: Rule => Rule.required().min(6).max(32),
       options: {
         source: 'title',
         maxLength: 96,
@@ -24,7 +27,12 @@ export default defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      of: [{
+        type: 'reference',
+        to: {
+          type: 'category'
+        }
+      }],
     }),
 
     // TODO: Header Image
@@ -47,18 +55,18 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
-    }),
-    defineField({
-      name: 'editedAt',
-      title: 'Edited at',
-      type: 'datetime',
+      validation: Rule => Rule.required(),
+      to: {
+        type: 'author'
+      },
     }),
     defineField({
       name: 'editor',
       title: 'Editor',
       type: 'reference',
-      to: {type: 'author'},
+      to: {
+        type: 'author'
+      },
     }),
 
     // TODO: Post Content
@@ -66,11 +74,21 @@ export default defineType({
       name: 'briefDesc',
       title: 'Brief Description',
       type: 'string',
+      validation: Rule => Rule.required().min(24).max(160),
     }),
+
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      validation: Rule => Rule.required(),
+    }),
+
+    defineField({
+      name: 'editorNotes',
+      title: 'Editor Notes',
+      type: 'string',
+      validation: Rule => Rule.min(10).max(160),
     }),
   ],
 
@@ -88,6 +106,7 @@ export default defineType({
         title: title,
         subtitle: `${author} ${title}`,
         media: media
-      }},
+      }
+      },
   },
 })
