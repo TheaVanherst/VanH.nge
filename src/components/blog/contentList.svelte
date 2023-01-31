@@ -75,13 +75,12 @@
                 padding-bottom: 10px;
             }
 
-            //border-left: 3px solid var(--darkAccent4);
-            //&.e1 {
-            //    margin-left: 10px;}
-	        //&.e2 {
-		    //    margin-left: 20px;}
-	        //&.e3 {
-		    //    margin-left: 30px;}
+            &.e1 {
+                margin-left: 10px;}
+	        &.e2 {
+		        margin-left: 20px;}
+	        &.e3 {
+		        margin-left: 30px;}
         }
     }
 </style>

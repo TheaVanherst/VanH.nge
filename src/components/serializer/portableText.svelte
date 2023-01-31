@@ -11,7 +11,7 @@
     import Link             from './types/linkAppend.svelte';
     import ImageBlock       from './types/imageBlock.svelte';
     import ImageGallery     from './types/imageGallery.svelte';
-    import Seperator        from './types/seperator.svelte';
+    import separator        from "./block/separator.svelte";
 
     /* LISTS */
     import Wrapper          from './lists/wrapper.svelte';
@@ -32,7 +32,8 @@
     import FloatRight       from './marks/floatRight.svelte';
     import ReadMore         from './marks/readMore.svelte';
 
-    export let postData
+    export let postData;
+    console.log(postData)
 </script>
 
 <div class="postBody">
@@ -44,7 +45,7 @@
                 code:       CodeBlock,
                 image:      ImageBlock,
                 gallery:    ImageGallery,
-                seperator:  Seperator,
+                separator:  separator,
             },
             block: {
                 normal:     CustomText,

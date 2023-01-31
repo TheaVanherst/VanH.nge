@@ -15,7 +15,7 @@
     {/if}
 
     <div class="Pre" on:click={readMore}>
-        {#if bool}
+        {#if !bool}
             <img src="/icons/expand.webp">
         {:else}
             <img src="/icons/fold.webp">
@@ -26,29 +26,50 @@
 <style lang="scss">
 
     readMore {
-        margin-top: -10px;
-
         display:    block;
         position:   relative;
 
         .more {
-            padding-bottom: 10px;
+	        border-left: 1px solid var(--accent4);
+	        padding: 2px 0 0 var(--contentPaddingX);
+            margin-left: -16px;
+
+	        &::selection {
+		        color: 				var(--background);
+		        background-color: 	var(--accent4)}
 
             ~ div {
-                cursor: zoom-out;
-	            margin: -25px 0 0 -23px;
+                cursor:             zoom-out;
+                background-color:   var(--accent4);
+	            margin:            -16px 0 0 -25px;
+
+                top: 100%;
+
+	            &:hover {
+		            background-color: var(--darkAccent1);
+	            }
             }
         }
 
         div {
-	        cursor:     zoom-in;
 	        display:    inline-flex;
             overflow:   hidden;
             position:   absolute;
 
-            margin:     -16px 0 0 -23px;
+	        border:             2px solid black;
 	        border-radius:      50%;
+
+	        width:      15px;
+	        height:     15px;
+
+	        cursor:             zoom-in;
 	        background-color:   var(--accent1);
+	        margin:            -6px 0 0 -25px;
+            top:               -12px;
+
+            transition: background-color 0.3s ease-in-out,
+                        margin 0.5s ease-out,
+                        top 0.3s ease-out;
 
             img {
 	            display:    block;
@@ -57,7 +78,7 @@
             }
 
             &:hover {
-                background-color: var(--accent2);
+                background-color: var(--darkAccent4);
             }
         }
     }

@@ -123,7 +123,7 @@ export default defineType({
       type: 'object',
       icon: separatorIcon,
       initialValue: {
-        title: "Normal Separator", value: "normal-separator"
+        title: "Normal Separator", value: "normal"
       },
       fields: [
         {
@@ -131,8 +131,8 @@ export default defineType({
           type: 'string',
           options: {
             list: [
-              { title: "Wave Separator", value: "wave-separator" },
-              { title: "Normal Separator", value: "normal-separator" },
+              { title: "Wave Separator", value: "wave" },
+              { title: "Normal Separator", value: "normal" },
             ],
           },
         },
@@ -145,7 +145,7 @@ export default defineType({
           const {styleType} = selection
           return {
             title: "Content Separator",
-            subtitle: styleType.split('-')[0] + " separator type"
+            subtitle: "Type: " + styleType + " separator"
           }
         },
       },
