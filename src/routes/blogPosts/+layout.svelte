@@ -1,5 +1,5 @@
 <script>
-    import Header from '../../components/pageHeader.svelte'
+    import Header from '$components/pageHeader.svelte'
 </script>
 
 <svelte:head>

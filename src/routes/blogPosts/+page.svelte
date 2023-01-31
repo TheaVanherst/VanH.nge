@@ -1,15 +1,20 @@
 <script>
-	import BlogComponent  from "../../components/blog/blogComponent.svelte"
-	import Contents from '../../components/blog/contentList.svelte'
+	import BlogComponent  from "$components/blog/blogComponent.svelte"
+	import Contents from '$components/blog/contentList.svelte'
+	import EmptyReturn from "$lib/layout/emptyReturn.svelte";
 
 	export let data;
 </script>
 
 <content>
 	<div class="col2 col">
-		{#each data[0] as data}
-			<BlogComponent post={data}/>
-		{/each}
+		{#if data}
+			{#each data[0] as data}
+				<BlogComponent post={data}/>
+			{/each}
+		{:else}
+			<EmptyReturn/>
+		{/if}
 	</div>
 	<div class="col3 col">
 		<div class="contentList">
@@ -19,6 +24,7 @@
 			{/each}
 		</div>
 	</div>
+
 </content>
 
 

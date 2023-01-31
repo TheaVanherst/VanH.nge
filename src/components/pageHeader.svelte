@@ -1,7 +1,5 @@
 <script>
-
-    export let title;
-
+    export let title = null;
 </script>
 
 

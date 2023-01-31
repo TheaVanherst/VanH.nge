@@ -10,7 +10,7 @@
     export let transTimeIn = 500;
     export let transTimeOut = 100;
 
-    $: if(transTimeIn < transTimeOut) {
+    $: if (transTimeIn < transTimeOut) {
         transTimeOut = transTimeIn - 100;
     } //fallback to prevent container overflow
 
@@ -37,3 +37,9 @@
         <slot />
     </div>
 {/if}
+
+<style lang="scss">
+    div {
+        width: 100%;
+    }
+</style>

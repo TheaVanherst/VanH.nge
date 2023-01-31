@@ -1,5 +1,5 @@
 <script>
-    export let data;
+    export let data = null;
     $: data = data[0][0]
 
     import Button from './navigationButtons.svelte';

@@ -1,8 +1,8 @@
 <script>
-	import BlogPostPreview from "../components/blog/previewComponent.svelte"
-	import SideBar from "../components/general/sideBar.svelte"
+	import BlogPostPreview from "$components/blog/previewComponent.svelte"
+	import SideBar from "$components/general/sideBar.svelte"
 
-	export let data;
+	export let data = null;
 </script>
 
 <content>
