@@ -21,9 +21,11 @@
 		<div class="col1 col">
 			<Navigation data={data} {$message} />
 		</div>
-		<Transition name={$message}>
-			<slot/>
-		</Transition>
+		<div class="wrapper col">
+			<Transition name={$message}>
+				<slot/>
+			</Transition>
+		</div>
 	</main>
 </page>
 
@@ -57,6 +59,9 @@
 
 			&.col1 {
 				width: 23%;}
+
+			&.wrapper {
+				width: 77%;}
 		}
 	}
 
