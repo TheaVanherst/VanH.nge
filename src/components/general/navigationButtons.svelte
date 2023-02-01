@@ -8,7 +8,7 @@
     export let push;
 </script>
 
-<a href={push} on:click={urlChanger(push)}>
+<a href={push} on:click={urlChanger(push)} data-sveltekit-prefetch>
     <div>
         <p>
             <slot/>

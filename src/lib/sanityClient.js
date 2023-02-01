@@ -1,9 +1,10 @@
+
 import sanityClient from "@sanity/client"
 
 const client = sanityClient({
-    projectId: "ydhblbds",
-    dataset: "blog-posts",
-    apiVersion: "v2021-10-21",
+    projectId: import.meta.env.SANITY_PROJECT_ID,
+    dataset: import.meta.env.SANITY_DATASET,
+    token: '', // or leave blank for unauthenticated usage
     useCdn: true,
 });
 

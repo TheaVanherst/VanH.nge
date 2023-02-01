@@ -31,7 +31,6 @@
 
 <style lang="scss">
     nav {
-        max-width: 100%;
 	    padding: var(--containerPadding);
 
 	    background-color:   var(--backgroundTrans);
@@ -47,8 +46,6 @@
     }
 
     .container {
-        width: 100%;
-
         > * {
 	        border-radius: var(--innerRaidus);
         }

@@ -1,28 +1,27 @@
 
-// TODO: General
-import { defineConfig } from 'sanity'
-
 // TODO: Plugins
 import { codeInput } from "@sanity/code-input";
 import { deskTool } from 'sanity/desk'
-import { visionTool } from '@sanity/vision'
+// import { visionTool } from '@sanity/vision'
 
 import { blogData } from './schemas'
 
-export default defineConfig({
+const config = {
   name: 'default',
   title: 'Vanh.art',
 
-  projectId: 'ydhblbds',
-  dataset: 'blog-posts',
+  projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID,
+  dataset: import.meta.env.SANITY_STUDIO_DATASET,
 
   plugins: [
     codeInput(),
     deskTool(),
-    visionTool()
+    // visionTool()
   ],
   schema: {
     types: blogData,
   },
 
-})
+}
+
+export default config;

@@ -2,7 +2,7 @@
     import { fly } from 'svelte/transition';
     import { afterUpdate  } from 'svelte';
 
-    // page memory varsnpm
+    // page memory vars
     export let name;
     let previousName = Math.random();
 
@@ -37,9 +37,3 @@
         <slot />
     </div>
 {/if}
-
-<style lang="scss">
-    div {
-        width: 100%;
-    }
-</style>

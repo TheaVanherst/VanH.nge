@@ -1,10 +1,11 @@
+
 import adapter from '@sveltejs/adapter-auto';
-import { sveltePreprocess } from "svelte-preprocess/dist/autoProcess.js";
+import preprocess from 'svelte-preprocess';
 import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: sveltePreprocess(),
+	preprocess: preprocess(),
 	kit: {
 		adapter: adapter(),
 		alias: {

@@ -32,19 +32,14 @@
 <style lang="scss">
 	/* TODO: column management */
 
-	$row1: 275px;
-	$row2: 520px;
-	$row3: 250px;
-
 	$padding: 15px;
-	$width: $row1 + $row2 + $row3 + ($padding * 2);
 
 	page {
 		display: 	block;
 		padding: 	$padding;
 		margin: 	0 auto;
 
-		max-width:  $width;
+		max-width:  var(--maxWidth);
 		width: 		100%;
 
 		box-sizing: border-box;
@@ -61,7 +56,7 @@
 			display:	block;
 
 			&.col1 {
-				width: $row1;}
+				width: 23%;}
 		}
 	}
 

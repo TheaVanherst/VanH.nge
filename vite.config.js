@@ -1,10 +1,14 @@
+
 import { sveltekit } from '@sveltejs/kit/vite';
 
 /** @type {import('vite').UserConfig} */
-export default config => ({
+const config = {
 	plugins: [
-		sveltekit({
-
-		})
+		sveltekit()
 	],
-});
+	optimizeDeps: {
+		include: ['sanity']
+	}
+};
+
+export default config;

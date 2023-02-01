@@ -36,9 +36,3 @@
         <slot/>
     </div>
 {/if}
-
-<style lang="scss">
-	div {
-		width: 100%;
-	}
-</style>
