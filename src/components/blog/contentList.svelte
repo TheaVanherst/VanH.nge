@@ -75,6 +75,8 @@
                 padding-bottom: 10px;
             }
 
+	        &.e0 {
+		        margin-left: 10px;}
             &.e1 {
                 margin-left: 10px;}
 	        &.e2 {
