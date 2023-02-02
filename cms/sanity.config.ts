@@ -2,7 +2,7 @@
 // TODO: Plugins
 import { codeInput } from "@sanity/code-input";
 import { deskTool } from 'sanity/desk'
-// import { visionTool } from '@sanity/vision'
+import { visionTool } from '@sanity/vision'
 
 import { blogData } from './schemas'
 
@@ -16,7 +16,7 @@ const config = {
   plugins: [
     codeInput(),
     deskTool(),
-    // visionTool()
+    visionTool()
   ],
   schema: {
     types: blogData,

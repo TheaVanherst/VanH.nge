@@ -2,12 +2,12 @@
 	import '../styles.scss';
 
 	import Header from "../components/general/header.svelte"
+	import Directory from '$components/directoryRoute.svelte'
 	import Background from "../components/general/background.svelte"
 
 	import Navigation from "../components/general/navigation.svelte"
 
-	import Transition from "$lib/layout/transitionFly.svelte";
-
+	import Transition from "$lib/handlers/transitionFly.svelte";
 	export let data;
 </script>
 
@@ -20,6 +20,7 @@
 			<Navigation data={data}/>
 		</div>
 		<div class="wrapper col">
+			<Directory/>
 			<Transition>
 				<slot/>
 			</Transition>

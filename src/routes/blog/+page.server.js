@@ -1,12 +1,10 @@
-
-import client from "../lib/sanityClient.js";
-import query from "$lib/queries/blogPreviews.js"
+import client from "$lib/sanityClient.js";
+import query from "$lib/queries/blogPosts"
 
 import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    const postData = await client.fetch(`*[_type == 'post'][0..2]{${query}}`);
-
+    const postData = await client.fetch(`*[_type == 'post'][0..9]{${query}}`);
     if (postData.length > 0) {
         return [postData];
     } else {

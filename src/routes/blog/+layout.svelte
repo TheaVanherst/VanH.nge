@@ -1,5 +1,5 @@
 <script>
-    import Header from '$components/pageHeader.svelte'
+    import Header from '$components/directoryRoute.svelte'
 </script>
 
 <svelte:head>
@@ -7,7 +7,6 @@
     <meta name="description" content="Blog posts"/>
 </svelte:head>
 
-<Header/> <!-- TODO: adjust this to be chained -->
 <slot/>
 
 <style lang="scss">

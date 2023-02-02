@@ -23,7 +23,7 @@
     }
 </script>
 
-{#if $directory && !$loading}
+{#if $directory !== "/..." && !$loading}
     <div class="transitionWrapper"
          in:slide={{ x: TransXIn, in: transTimeIn}}
          out:slide={{ x: TransXOut, in: transTimeOut}}>

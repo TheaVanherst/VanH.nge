@@ -1,23 +1,18 @@
-<script>
-    import { page } from '$app/stores';
-</script>
 
-{#if $page?.error}
-    <div class="flexContainer">
-        <div class="pony">
-            <img src="/error.png"/>
-        </div>
-        <div>
-            <h1>{$page?.status}</h1>
-            <p>{$page?.error?.message}</p>
-        </div>
+<div class="flexContainer">
+    <div class="pony">
+        <img src="/error.png"/>
     </div>
-{/if}
+    <div>
+        <h1>Nothing!</h1>
+        <p>There's nothing here but us deer.</p>
+    </div>
+</div>
 
 <style lang="scss">
 	.flexContainer {
 		display: flex;
-        gap:     30px;
+		gap:     30px;
 
 		padding:    var(--containerPadding);
 
@@ -27,13 +22,13 @@
 
 		font-size:  14px;
 
-        img {
+		img {
 			width: 200px;
 			height: 100%;
 		}
 
 		h1 {
-            font-size:      65px;
+			font-size:      65px;
 			border-left: 	5px solid var(--accent1);
 
 			padding:	 	0 0 0 20px;

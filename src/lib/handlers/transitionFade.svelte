@@ -11,10 +11,6 @@
         transTimeOut = transTimeIn - 100;
     } //fallback to prevent container overflow
 
-    // transition position vars
-    export let TransXIn = 30;
-    export let TransXOut = 50;
-
     // checks if the previous page is different to the new page.
     $:  if($loading === true) {
         setTimeout(() => {
@@ -25,8 +21,8 @@
 
 {#if $directory && !$loading}
     <div class="transitionWrapper"
-         in:fade={{ x: TransXIn, in: transTimeIn}}
-         out:fade={{ x: TransXOut, in: transTimeOut}}>
+         in:fade={{ in: transTimeIn}}
+         out:fade={{ in: transTimeOut}}>
         <slot/>
     </div>
 {/if}

@@ -9,9 +9,9 @@ let query =
         'twitter': twitterURL,
     }`;
 
-export const load = async (params) => {
+export const load = async () => {
     const userData = await client.fetch(query);
-    if (params) {
+    if (userData) {
         return [userData];
     } else {
         throw new error(100, "Page userdata not found!")

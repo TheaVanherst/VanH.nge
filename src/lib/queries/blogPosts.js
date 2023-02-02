@@ -1,10 +1,8 @@
 
-import client from "$lib/sanityClient.js";
-
 let query =
-    `*[_type == 'post'][0..2]{
+    `
         _id,
-        
+        'slug': slug.current,
         title,
         'headerImage': mainImage,
         
@@ -24,14 +22,7 @@ let query =
         'editor_portrait': editor->userPortrait,
     
         body,
-    }`
+        'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]
+    `
 
-export const load = async () => {
-    const postData = await client.fetch(query);
-
-    if (!postData) {
-        return [];
-    }
-
-    return [postData];
-}
+export default query;

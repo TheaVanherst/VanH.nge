@@ -7,8 +7,8 @@
     export let post
 </script>
 
-<a href="/blog/{post.slug.current}">
-    <div class="post" id="{post._id}">
+<a href="/blog/{post.slug}">
+    <div class="post" id="{post.slug}">
         <div class="readMore">
             <img src="/icons/downArrowPreview.webp">
         </div>
