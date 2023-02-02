@@ -1,7 +1,7 @@
 <script>
     import { loading, directory } from '$lib/directoryController.js';
 
-    import { fly } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
 
     // transition timeout vars
     export let transTimeIn = 500;
@@ -25,8 +25,8 @@
 
 {#if $directory && !$loading}
     <div class="transitionWrapper"
-         in:fly={{ x: TransXIn, in: transTimeIn}}
-         out:fly={{ x: TransXOut, in: transTimeOut}}>
+         in:slide={{ x: TransXIn, in: transTimeIn}}
+         out:slide={{ x: TransXOut, in: transTimeOut}}>
         <slot/>
     </div>
 {/if}

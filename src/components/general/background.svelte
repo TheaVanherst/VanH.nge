@@ -1,9 +1,15 @@
+<script>
+    let y;
+</script>
 
-<backgroundElement>
+
+<backgroundElement style="--yPos: -{y}px">
     <div class="spaceBg3 backGround"></div>
     <div class="spaceBg2 backGround"></div>
     <div class="spaceBg1 backGround"></div>
 </backgroundElement>
+
+<svelte:window bind:scrollY={y} />
 
 <style lang="scss">
     $res1: 234px;

@@ -1,19 +1,20 @@
 <script>
-    import message from '$lib/directoryController.js';
+    import {loading, directory, getPage} from '$lib/directoryController.js';
+    import { page } from "$app/stores"
 
-    const urlChanger = (url) => {
-        $message = url;
+    const urlChanger = async (url) => {
+        $loading = true;
+        $directory = undefined;
+        $directory = await getPage(url);
     }
 
     export let push;
 </script>
 
-<a href={push} on:click={urlChanger(push)} data-sveltekit-prefetch>
-    <div>
-        <p>
-            <slot/>
-        </p>
-    </div>
+<a href={push} class:active={$page.url.pathname === push} on:click={urlChanger(push)}>
+    <p>
+        <slot/>
+    </p>
 </a>
 
 <style lang="scss">
@@ -41,6 +42,11 @@
         &:hover {
             color: var(--accent3);
             border-color: var(--accent3);
+        }
+
+        &.active {
+	        color: var(--accent3);
+	        border-color: var(--accent3);
         }
 
         p {

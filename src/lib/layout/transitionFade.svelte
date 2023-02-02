@@ -1,9 +1,7 @@
 <script>
-    import { fade } from 'svelte/transition';
+    import { loading, directory } from '$lib/directoryController.js';
 
-    // page memory vars
-    export let name;
-    let previousName = Math.random();
+    import { fade } from 'svelte/transition';
 
     // transition timeout vars
     export let transTimeIn = 500;
@@ -17,19 +15,15 @@
     export let TransXIn = 30;
     export let TransXOut = 50;
 
-    let transitioning = false;
-
     // checks if the previous page is different to the new page.
-    $:  if(name !== previousName) {
-            transitioning = true;
-            setTimeout(() => {
-                transitioning = false;
-                previousName = name
-            }, transTimeIn);
-        }
+    $:  if($loading === true) {
+        setTimeout(() => {
+            $loading = false;
+        }, transTimeIn);
+    }
 </script>
 
-{#if !transitioning}
+{#if $directory && !$loading}
     <div class="transitionWrapper"
          in:fade={{ x: TransXIn, in: transTimeIn}}
          out:fade={{ x: TransXOut, in: transTimeOut}}>

@@ -1,8 +1,9 @@
 <script>
-    export let data = null;
-    $: data = data[0][0]
-
     import Button from './navigationButtons.svelte';
+    import navigation from '$lib/navigationDirectories.js'
+
+    export let data = null;
+    data = data[0][0]
 </script>
 
 <nav>
@@ -20,12 +21,9 @@
         </div>
     </div>
     <div class="buttonWrapper">
-        <div class="title">
-            <t>NAVIGATION</t>
-        </div>
-        <Button push="/">Home</Button>
-        <Button push="/blogPosts">Blog</Button>
-        <Button push="/artchive">Artchive</Button>
+        {#each navigation as item}
+            <Button push="{item.path}">{item.title}</Button>
+        {/each}
     </div>
 </nav>
 

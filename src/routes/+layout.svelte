@@ -1,35 +1,31 @@
 <script>
 	import '../styles.scss';
+
 	import Header from "../components/general/header.svelte"
 	import Background from "../components/general/background.svelte"
 
 	import Navigation from "../components/general/navigation.svelte"
 
 	import Transition from "$lib/layout/transitionFly.svelte";
-	import message from '$lib/directoryController.js';
 
 	export let data;
-
-	let y;
 </script>
 
 <Background/>
 
-<page style="--yPos: -{y}px">
+<page>
 	<Header/>
 	<main>
 		<div class="col1 col">
-			<Navigation data={data} {$message} />
+			<Navigation data={data}/>
 		</div>
 		<div class="wrapper col">
-			<Transition name={$message}>
+			<Transition>
 				<slot/>
 			</Transition>
 		</div>
 	</main>
 </page>
-
-<svelte:window bind:scrollY={y} />
 
 <style lang="scss">
 	/* TODO: column management */
