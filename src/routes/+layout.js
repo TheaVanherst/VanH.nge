@@ -14,6 +14,6 @@ export const load = async () => {
     if (userData) {
         return [userData];
     } else {
-        throw new error(100, "Page userdata not found!")
+        throw new error(404, "Page userdata not found!")
     }
 }

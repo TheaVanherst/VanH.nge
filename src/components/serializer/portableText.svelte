@@ -33,7 +33,6 @@
     import ReadMore         from './marks/readMore.svelte';
 
     export let postData;
-    console.log(postData)
 </script>
 
 <div class="postBody">

@@ -1,7 +1,6 @@
 <script>
     import { directory } from '$lib/directoryController.js';
     import { loading } from '$lib/directoryController.js';
-    import Transition from "$lib/handlers/transitionFade.svelte";
     import LoadingAnimation from '$lib/handlers/loadingAnimation.svelte'
 </script>
 
