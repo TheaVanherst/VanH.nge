@@ -1,41 +1,40 @@
 <script>
-    import { loading, directory } from '$lib/directoryController.js';
+    import { navigating } from '../../stores/directoryController.js';
+
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'
 
-    export let transitionReqType = "fly";
-    export let easingName = "easeInOut";
-
+    // transition types
+    export let
+        transitionReqType = "fly",
+        easingName = "easeInOut";
     // transition timeout vars
-    export let transTimeIn = 500;
-    export let transTimeOut = 100;
+    export let
+        transTimeIn = 500,
+        transTimeOut = 100;
 
     $: if(transTimeIn < transTimeOut) {
         transTimeOut = transTimeIn - 100;
     } //fallback to prevent container overflow
 
     // transition position vars
-    export let transXIn = 30;
-    export let transXOut = 50;
-
-    export let delayIn = 30;
-    export let delayOut = 50;
+    export let
+        transYIn = 30,
+        transYOut = 30;
+    // transition delay values
+    export let
+        delayIn = 0,
+        delayOut = 0;
 
     let transition = transitionFunctions[transitionReqType]
     let easing = easingFunctions[easingName];
-
-    // checks if the previous page is different to the new page.
-    $:  if($loading === true) {
-        setTimeout(() => {
-            $loading = false;
-        }, transTimeIn);
-    }
 </script>
 
-{#if $directory && !$loading}
+{#if !$navigating}
     <div class="transitionWrapper"
-         in:transition={{transTimeIn, delayIn, easing, x: transXIn}}
-         out:transition={{transTimeOut, delayOut, easing, x: transXOut}}>
+         on:outroend={() => navigating.set(false)}
+         in:transition={{transTimeIn, delayIn, easing, y: transYIn}}
+         out:transition={{transTimeOut, delayOut, easing, y: transYOut}}>
         <slot/>
     </div>
 {/if}
