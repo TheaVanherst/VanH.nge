@@ -2,12 +2,13 @@
 	import '../styles.scss';
 
 	import Header from "../components/general/header.svelte"
-	import Directory from '$components/directoryRoute.svelte'
 	import Background from "../components/general/background.svelte"
 
+	import Directory from '$components/general/directoryRoute.svelte'
 	import Navigation from "../components/general/navigation.svelte"
 
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
+
 	export let data;
 </script>
 

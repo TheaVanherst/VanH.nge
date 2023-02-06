@@ -1,30 +1,26 @@
 <script>
-	import BlogComponent  from "$components/blog/blogComponent.svelte"
-	import Contents from '$components/blog/contentList.svelte'
-	import EmptyReturn from "$lib/layout/emptyReturn.svelte";
-
+	import PreviewBlogPost from "$components/blog/previewComponent.svelte"
 	export let data;
 </script>
 
 <content>
 	<div class="col2 col">
-		{#if data}
-			{#each data[0] as data}
-				<BlogComponent post={data}/>
-			{/each}
-		{:else}
-			<EmptyReturn/>
-		{/if}
+		<div class="col2 col">
+			<div class="wrapper">
+				{#each data[0] as post}
+					<PreviewBlogPost post={post}/>
+				{/each}
+			</div>
+		</div>
 	</div>
 	<div class="col3 col">
 		<div class="contentList">
 			<h1>Contents:</h1>
 			{#each data[0] as data}
-				<Contents list={data}/>
+				<p>{data.title}</p>
 			{/each}
 		</div>
 	</div>
-
 </content>
 
 

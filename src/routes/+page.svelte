@@ -3,6 +3,7 @@
 	import SideBar from "$components/general/sideBar.svelte"
 
 	export let data = null;
+	console.log(data)
 </script>
 
 <content>

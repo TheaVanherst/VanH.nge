@@ -1,6 +1,6 @@
 <script>
     import Button from './navigationButtons.svelte';
-    import navigation from '$lib/navigationDirectories.js'
+    import navigation from '../../stores/navigationDirectories.js'
 
     export let data = null;
     data = data[0][0]

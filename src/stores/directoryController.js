@@ -16,7 +16,8 @@ const urlChanger = async (url) => {
         loading.set(true);
         navigating.set(true);
         const res = await self.fetch(url);
-        if (res.ok) {
+        const data = res.json();
+        if (data) {
             let check = await navigating === false;
             if (!check) {
                 directory.set(url);

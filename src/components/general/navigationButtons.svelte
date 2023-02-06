@@ -1,16 +1,9 @@
 <script>
-    import { loading, directory, getPage } from '$lib/directoryController.js';
-    import { page } from "$app/stores"
+    import { page } from "$app/stores";
+    import { urlChanger } from '../../stores/directoryController.js';
 
-    const urlChanger = async (url) => {
-        if($directory !== url) {
-            $loading = true;
-            $directory = "/..."
-            $directory = await getPage(url); // TODO: this still needs a better technique
-        }
-    }
-
-    export let push;
+    export let
+        push = null;
 </script>
 
 <a href={push} class:active={$page.url.pathname === push} on:click={urlChanger(push)}> <!--* TODO: this is broken -->

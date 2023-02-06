@@ -12,8 +12,9 @@ let query =
         'editor_fullName': editor->fullName,
         
         'catagory_tags': categories[]->title,
-        'description': briefDesc,
+        'catagory_id': categories[]->_id,
         
+        'description': briefDesc,
         body[0...2],
     `
 

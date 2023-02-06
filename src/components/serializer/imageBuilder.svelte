@@ -2,7 +2,7 @@
     import { onMount } from 'svelte'
     import imageUrlBuilder from "@sanity/image-url";
 
-    import client from "../lib/sanityClient";
+    import client from "$lib/sanityClient.js";
     export let image = null;
 
     let imageRef;

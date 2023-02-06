@@ -1,6 +1,3 @@
-<script>
-    import Header from '$components/directoryRoute.svelte'
-</script>
 
 <svelte:head>
     <title>Blog</title>
@@ -8,7 +5,3 @@
 </svelte:head>
 
 <slot/>
-
-<style lang="scss">
-
-</style>

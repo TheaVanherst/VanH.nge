@@ -4,10 +4,12 @@
     import PostModule from "../serializer/portableText.svelte"
     import TagModule from "../tagModule.svelte"
 
-    export let post
+    import { urlChanger } from '../../stores/directoryController.js';
+
+    export let post = null;
 </script>
 
-<a href="/blog/{post.slug}">
+<a href="/blog/{post.slug}" on:click={urlChanger("/blog/" + post.slug)}>
     <div class="post" id="{post.slug}">
         <div class="readMore">
             <img src="/icons/downArrowPreview.webp">
@@ -16,10 +18,12 @@
             <TitleModule
                     titleHeader="{post.headerImage}"	title="{post.title}"/>
             <HeaderModule
-                    createdOn="{post._createdAt}" 		updatedOn="{post._updatedAt}"
-                    authorhandle="{post.author_handle}" authoruser="{post.author_fullName}"
-                    editorhandle="{post.editor_handle}" editoruser="{post.editor_fullName}"/>
-            <TagModule time="{post._createdAt}" tags="{post.catagory_tags}" />
+                    createdOn={post._createdAt} 		updatedOn={post._updatedAt}
+                    authorhandle={post.author_handle}   authoruser={post.author_fullName}
+                    editorhandle={post.editor_handle}   editoruser={post.editor_fullName}/>
+            <TagModule
+                    time="{post._createdAt}"
+                    tags={post.catagory_tags}   tagsIds={post.catagory_id} />
             <p class="description">
                 {post?.description}
             </p>

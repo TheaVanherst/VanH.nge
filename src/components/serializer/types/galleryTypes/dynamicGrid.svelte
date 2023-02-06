@@ -1,5 +1,5 @@
 <script>
-    import SanityImage from '../../../sanityImage.svelte'
+    import SanityImage from '../../imageBuilder.svelte'
     export let push
 </script>
 

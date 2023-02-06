@@ -1,5 +1,5 @@
 <script>
-    import SanityImage from '../../../sanityImage.svelte'
+    import SanityImage from '../../imageBuilder.svelte'
     export let push
     let randomId = Math.floor(Math.random() * 999);
 </script>

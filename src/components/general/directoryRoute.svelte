@@ -1,6 +1,8 @@
 <script>
-    import { directory } from '$lib/directoryController.js';
-    import { loading } from '$lib/directoryController.js';
+    import { directory } from '../../stores/directoryController.js';
+    import { loading } from '../../stores/directoryController.js';
+    import Transition from "$lib/handlers/transitionWrapper.svelte";
+
     import LoadingAnimation from '$lib/handlers/loadingAnimation.svelte'
 </script>
 
@@ -8,7 +10,9 @@
 <div class="titleCard">
     <div>
         <h1>
-            {$directory}
+            <Transition transitionReqType="fade">
+                {$directory} <!-- temporary solution -->
+            </Transition>
         </h1>
     </div>
     <div class="right">

@@ -1,5 +1,5 @@
 <script>
-    import SanityImage  from '../sanityImage.svelte'
+    import SanityImage  from '../serializer/imageBuilder.svelte'
     import AuthorTag    from '../authorTag.svelte'
 
     export let createdOn = null, updatedOn = null;

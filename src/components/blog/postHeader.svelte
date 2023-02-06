@@ -1,12 +1,11 @@
 <script>
-    import SanityImage from '../sanityImage.svelte'
+    import SanityImage from '../serializer/imageBuilder.svelte'
 
     export let titleHeader = null, title = null;
 </script>
 
 <div class="title">
     <div class="headerBackground">
-        <SanityImage image={titleHeader}/>
         <SanityImage image={titleHeader}/>
     </div>
     <h1>
