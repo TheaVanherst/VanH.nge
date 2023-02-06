@@ -7,7 +7,7 @@
 
 	import Navigation from "../components/general/navigation.svelte"
 
-	import Transition from "$lib/handlers/transitionFly.svelte";
+	import Transition from "$lib/handlers/transitionWrapper.svelte";
 	export let data;
 </script>
 
