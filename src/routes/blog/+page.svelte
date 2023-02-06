@@ -5,12 +5,10 @@
 
 <content>
 	<div class="col2 col">
-		<div class="col2 col">
-			<div class="wrapper">
-				{#each data[0] as post}
-					<PreviewBlogPost post={post}/>
-				{/each}
-			</div>
+		<div class="wrapper">
+			{#each data[0] as post}
+				<PreviewBlogPost post={post}/>
+			{/each}
 		</div>
 	</div>
 	<div class="col3 col">
@@ -25,10 +23,6 @@
 
 
 <style lang="scss">
-	/* TODO: column management */
-	$row2: 520px;
-	$row3: 250px;
-
 	content {
 		width: 100%;
 		gap: var(--containerPadding);
@@ -45,23 +39,20 @@
 
 			&.col2 {
 				flex-basis: 100%;
-				max-width: $row2;}
+				max-width: 65%;}
 			&.col3 {
 				margin-left: auto;
-				width: $row3;}
+				width: 35%;}
 		}
 	}
 
 	.contentList {
-		border: 	var(--border-thickness) solid var(--accent1);
-		padding: 	10px var(--containerPadding) var(--containerPadding) var(--containerPadding);
-		margin-bottom:  20px;
+		max-width: 100%;
+		padding: var(--containerPadding);
 
-		min-height: 	120px;
-		border-radius: 	var(--outerRadius);
-
-		background:		var(--backgroundTrans);
-		color: 			var(--textColour);
+		background-color:   var(--backgroundTrans);
+		border-radius:      var(--outerRadius);
+		border:             1px solid var(--accent1);
 
 		h1 {
 			border-left: 	5px solid var(--accent1);

@@ -1,6 +1,6 @@
 <script>
     import { page } from "$app/stores";
-    import { urlChanger } from '../../stores/directoryController.js';
+    import { urlChanger } from '$stores/directoryController.js';
 
     export let
         push = null;

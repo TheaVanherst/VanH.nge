@@ -11,14 +11,13 @@ export {loading, navigating, directory}; // function callers
 let localValue;
 directory.subscribe((val) => { localValue = val })
 
-const urlChanger = async (url) => {
+const urlChanger = async (url) => { // not perfect, but better.
     if(localValue !== url) {
         loading.set(true);
         navigating.set(true);
         const res = await self.fetch(url);
-        const data = res.json();
-        if (data) {
-            let check = await navigating === false;
+        if (res.ok) {
+            let check = await navigating === false; // this doesn't fucking work lol
             if (!check) {
                 directory.set(url);
                 loading.set(false);

@@ -6,7 +6,6 @@
 
 	import Directory from '$components/general/directoryRoute.svelte'
 	import Navigation from "../components/general/navigation.svelte"
-
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	export let data;

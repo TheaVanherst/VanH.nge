@@ -1,5 +1,5 @@
 <script>
-    import { navigating } from '../../stores/directoryController.js';
+    import { navigating, loading } from '../../stores/directoryController.js';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'

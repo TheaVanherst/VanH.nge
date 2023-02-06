@@ -4,7 +4,7 @@
     import PostModule from "../serializer/portableText.svelte"
     import TagModule from "../tagModule.svelte"
 
-    import { urlChanger } from '../../stores/directoryController.js';
+    import { urlChanger } from '$stores/directoryController.js';
 
     export let post = null;
 </script>

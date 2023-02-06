@@ -1,6 +1,5 @@
 <script>
-    import { directory } from '../../stores/directoryController.js';
-    import { loading } from '../../stores/directoryController.js';
+    import { directory, loading } from '$stores/directoryController.js';
     import Transition from "$lib/handlers/transitionWrapper.svelte";
 
     import LoadingAnimation from '$lib/handlers/loadingAnimation.svelte'
