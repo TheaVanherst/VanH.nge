@@ -9,9 +9,9 @@
 <div class="titleCard">
     <div>
         <h1>
-            <Transition transitionReqType="fade">
+<!--            <Transition transitionReqType="fade">-->
                 {$directory} <!-- temporary solution -->
-            </Transition>
+<!--            </Transition>-->
         </h1>
     </div>
     <div class="right">

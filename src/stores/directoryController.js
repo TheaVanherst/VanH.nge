@@ -1,4 +1,6 @@
 
+import { goto } from '$app/navigation';
+
 import { writable } from 'svelte/store';
 import { error } from "@sveltejs/kit";
 
@@ -8,23 +10,28 @@ const directory = writable("/");
 
 export {loading, navigating, directory}; // function callers
 
-let localValue;
+let localValue, replaceVal = true;
 directory.subscribe((val) => { localValue = val })
 
+const fetchData = (url) => {
+    return fetch(url)
+        .then(async (e) => {
+            directory.set(url);
+            goto(e.url);
+        })
+}
+
 const urlChanger = async (url) => { // not perfect, but better.
+    event.preventDefault();
+
     if(localValue !== url) {
         loading.set(true);
         navigating.set(true);
-        const res = await self.fetch(url);
-        if (res.ok) {
-            let check = await navigating === false; // this doesn't fucking work lol
-            if (!check) {
-                directory.set(url);
-                loading.set(false);
-            }
-        } else {
-            throw new error(404, "Page not found.")
+        let page = fetchData(url)
+        if (page) {
+            loading.set(true);
         }
+
     }
 }
 

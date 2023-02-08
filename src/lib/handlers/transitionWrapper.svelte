@@ -1,5 +1,5 @@
 <script>
-    import { navigating, loading } from '../../stores/directoryController.js';
+    import { navigating } from '$stores/directoryController.js';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'
@@ -32,7 +32,7 @@
 
 {#if !$navigating}
     <div class="transitionWrapper"
-         on:outroend={() => navigating.set(false)}
+         on:outroend={() =>  setTimeout(() => navigating.set(false), 50)}
          in:transition={{transTimeIn, delayIn, easing, y: transYIn}}
          out:transition={{transTimeOut, delayOut, easing, y: transYOut}}>
         <slot/>
