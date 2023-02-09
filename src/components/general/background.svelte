@@ -1,15 +1,13 @@
 <script>
-    let y;
+    import { scrollPos } from '$stores/directoryController.js';
 </script>
 
 
-<backgroundElement style="--yPos: -{y}px">
+<backgroundElement style="--yPos: -{$scrollPos}px">
     <div class="spaceBg3 backGround"></div>
     <div class="spaceBg2 backGround"></div>
     <div class="spaceBg1 backGround"></div>
 </backgroundElement>
-
-<svelte:window bind:scrollY={y} />
 
 <style lang="scss">
     $res1: 234px;

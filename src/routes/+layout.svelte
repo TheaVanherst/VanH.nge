@@ -8,9 +8,12 @@
 	import Navigation from "$components/general/navigation.svelte"
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
+	import { scrollPos } from '$stores/directoryController.js';
+
 	export let data;
 </script>
 
+<svelte:window bind:scrollY={$scrollPos} />
 <Background/>
 
 <page>
