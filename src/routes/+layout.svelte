@@ -1,11 +1,11 @@
 <script>
 	import '../styles.scss';
 
-	import Header from "../components/general/header.svelte"
-	import Background from "../components/general/background.svelte"
+	import Header from "$components/general/header.svelte"
+	import Banner from "$components/general/banner.svelte"
+	import Background from "$components/general/background.svelte"
 
-	import Directory from '$components/general/directoryRoute.svelte'
-	import Navigation from "../components/general/navigation.svelte"
+	import Navigation from "$components/general/navigation.svelte"
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	export let data;
@@ -14,13 +14,13 @@
 <Background/>
 
 <page>
-	<Header/>
+	<Banner/>
 	<main>
 		<div class="col1 col">
 			<Navigation data={data}/>
 		</div>
 		<div class="wrapper col">
-			<Directory/>
+			<Header/>
 			<Transition>
 				<slot/>
 			</Transition>

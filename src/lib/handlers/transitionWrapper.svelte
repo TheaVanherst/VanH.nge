@@ -1,8 +1,21 @@
 <script>
-    import { navigating } from '$stores/directoryController.js';
+    import { navigating, loading } from '$stores/directoryController.js';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'
+
+    import { afterNavigate, beforeNavigate } from '$app/navigation';
+
+    afterNavigate(() => {
+        loading.set(false);
+    })
+
+    beforeNavigate(() => {
+        navigating.set(true);
+        setTimeout(() => {
+            navigating.set(false);
+        }, transTimeOut + 50)
+    })
 
     // transition types
     export let
@@ -10,31 +23,31 @@
         easingName = "easeInOut";
     // transition timeout vars
     export let
-        transTimeIn = 500,
-        transTimeOut = 100;
+        transTimeIn = 300,
+        transTimeOut = 300;
+
+    export let
+        delayIn = 0,
+        delayOut = 0;
 
     $: if(transTimeIn < transTimeOut) {
         transTimeOut = transTimeIn - 100;
     } //fallback to prevent container overflow
 
     // transition position vars
-    export let
-        transYIn = 30,
-        transYOut = 30;
-    // transition delay values
-    export let
-        delayIn = 0,
-        delayOut = 0;
+    let direction = 'back'
+    $: direction;
+
+    export let transX = 30;
 
     let transition = transitionFunctions[transitionReqType]
     let easing = easingFunctions[easingName];
 </script>
 
-{#if !$navigating}
+{#if !$navigating && !$loading}
     <div class="transitionWrapper"
-         on:outroend={() =>  setTimeout(() => navigating.set(false), 50)}
-         in:transition={{transTimeIn, delayIn, easing, y: transYIn}}
-         out:transition={{transTimeOut, delayOut, easing, y: transYOut}}>
+         in:transition={{transTimeIn, delayIn, easing, x: direction === 'forwards' ? transX : -transX}}
+         out:transition={{transTimeOut, delayOut, easing, x: direction === 'forwards' ? transX : -transX}}>
         <slot/>
     </div>
 {/if}

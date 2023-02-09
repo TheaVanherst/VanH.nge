@@ -1,5 +1,6 @@
 <script>
 	import PreviewBlogPost from "$components/blog/previewComponent.svelte"
+	import TitleList from "$components/blog/previewTitleList.svelte"
 	export let data;
 </script>
 
@@ -12,12 +13,7 @@
 		</div>
 	</div>
 	<div class="col3 col">
-		<div class="contentList">
-			<h1>Contents:</h1>
-			{#each data[0] as data}
-				<p>{data.title}</p>
-			{/each}
-		</div>
+		<TitleList list={data[0]}/>
 	</div>
 </content>
 
@@ -59,6 +55,14 @@
 
 			padding:	 	0 0 0 20px;
 			margin:			0 0 var(--containerPadding) calc(var(--contentPaddingX) * -1);
+		}
+
+		.list {
+			padding:    2px 15px;
+
+			&:last-child {
+				padding-bottom: 15px;
+			}
 		}
 	}
 

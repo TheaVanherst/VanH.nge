@@ -17,3 +17,15 @@ export const load = async () => {
         throw new error(404, "Page userdata not found!")
     }
 }
+
+import { goto, afterNavigate } from '$app/navigation';
+import { base } from '$app/paths'
+
+let previousPage = base ;
+
+export const test = async () => {
+    afterNavigate(({from}) => {
+        previousPage = from?.url.pathname || previousPage
+        console.log(previousPage);
+    })
+}

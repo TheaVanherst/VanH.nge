@@ -1,6 +1,6 @@
 <script>
     import scrollIntoView from "$lib/scrollHandler.js";
-    export let list;
+    export let list = null;
 
     let arr = []
     for (let i = 0; i < list.titles.length; i++) {
@@ -25,7 +25,7 @@
     placementArr = placementArr.map(i => 'e' + i);
 </script>
 
-<div class="contents">
+<div class="contentList">
     <h4 href="#post-{list.slug.current}" on:click|preventDefault={scrollIntoView}>
         {list.title}
     </h4>
@@ -49,40 +49,39 @@
         color: white;
     }
 
-    .contents {
-        background-color:   var(--backgroundAccent2);
-        border-radius:      var(--innerRaidus);
-        overflow:           hidden;
+    .contentList {
+	    border-radius: 	var(--outerRadius);
+	    background:		var(--backgroundTrans);
+        border:         1px solid var(--accent1);
 
-        &:not(:last-of-type) {
-            margin-bottom:  15px;}
+        overflow:       hidden;
+    }
 
-	    h4 {
-            cursor:     alias;
-		    padding:    8px 10px 10px 10px;
+    h4 {
+	    cursor:     alias;
+	    padding:    8px 10px 10px 10px;
 
-		    background-color:   var(--accent1);
-		    color:              black;
-        }
+	    background-color:   var(--accent1);
+	    color:              black;
+    }
 
-        .list {
-	        cursor:     alias;
-	        font:       15px monospace;
+    .list {
+	    cursor:     alias;
+	    font:       15px monospace;
 
-	        padding:    2px 10px;
+	    padding:    2px 15px;
 
-            &:last-child {
-                padding-bottom: 10px;
-            }
+	    &:last-child {
+		    padding-bottom: 15px;
+	    }
 
-	        &.e0 {
-		        margin-left: 10px;}
-            &.e1 {
-                margin-left: 10px;}
-	        &.e2 {
-		        margin-left: 20px;}
-	        &.e3 {
-		        margin-left: 30px;}
-        }
+	    &.e0 {
+		    margin-left: 0px;}
+	    &.e1 {
+		    margin-left: 10px;}
+	    &.e2 {
+		    margin-left: 20px;}
+	    &.e3 {
+		    margin-left: 35px;}
     }
 </style>

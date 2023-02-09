@@ -1,38 +1,36 @@
 
-import { goto } from '$app/navigation';
+// navigation fetch vars
 
 import { writable } from 'svelte/store';
-import { error } from "@sveltejs/kit";
-
 const loading = writable(false);
 const navigating = writable(false);
 const directory = writable("/");
+const scrollPos = writable(0);
 
-export {loading, navigating, directory}; // function callers
+export {loading, navigating, directory, scrollPos};
 
-let localValue, replaceVal = true;
-directory.subscribe((val) => { localValue = val })
+// navigation controller
+
+import { goto } from '$app/navigation';
+
+let localValue;
+directory.subscribe((val) => { localValue = val });
 
 const fetchData = (url) => {
+    loading.set(true);
     return fetch(url)
         .then(async (e) => {
-            directory.set(url);
+            directory.set(url)
             goto(e.url);
         })
 }
 
-const urlChanger = async (url) => { // not perfect, but better.
+const urlChanger = async (url) => {
     event.preventDefault();
 
     if(localValue !== url) {
-        loading.set(true);
-        navigating.set(true);
-        let page = fetchData(url)
-        if (page) {
-            loading.set(true);
-        }
-
+        await fetchData(url);
     }
 }
 
-export {urlChanger}; // function callers
+export { urlChanger };
