@@ -1,7 +1,6 @@
 <script>
     import scrollIntoView from "$lib/scrollHandler.js";
     export let list = null;
-    console.log(list)
 </script>
 
 <div class="contentList">

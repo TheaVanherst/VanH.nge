@@ -22,7 +22,7 @@ const fetchData = (url) => {
         .then(async (e) => {
             directory.set(url)
             goto(e.url);
-        })
+        });
 }
 
 const urlChanger = async (url) => {

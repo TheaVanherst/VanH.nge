@@ -14,18 +14,25 @@
         navigating.set(true);
         setTimeout(() => {
             navigating.set(false);
-        }, transTimeOut + 50)
+        }, transTimeOut + 50);
     })
 
     // transition types
     export let
         transitionReqType = "fly",
         easingName = "easeInOut";
+
+    // transition position vars
+    let direction = 'back';
+    $: direction;
+
+    let transition = transitionFunctions[transitionReqType];
+    let easing = easingFunctions[easingName];
+
     // transition timeout vars
     export let
         transTimeIn = 300,
         transTimeOut = 300;
-
     export let
         delayIn = 0,
         delayOut = 0;
@@ -34,14 +41,7 @@
         transTimeOut = transTimeIn - 100;
     } //fallback to prevent container overflow
 
-    // transition position vars
-    let direction = 'back'
-    $: direction;
-
     export let transX = 30;
-
-    let transition = transitionFunctions[transitionReqType]
-    let easing = easingFunctions[easingName];
 </script>
 
 {#if !$navigating && !$loading}
