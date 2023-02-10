@@ -1,40 +1,24 @@
 <script>
-
+    import Container from "$components/generic/container.svelte";
 </script>
 
-<nav>
+<Container>
     <notice>
         <div class="warning">
-            <div><p>T</p><p>E</p><p>S</p><p>T</p><p>I</p><p>N</p><p>G</p></div>
+            <div><d>T</d><d>E</d><d>S</d><d>T</d><d>I</d><d>N</d><d>G</d></div>
         </div>
         <n>Please note:</n>
         <p>This site is currently in development - please do not take what you see as a true representation of the final site.</p>
     </notice>
-</nav>
-<nav>
+</Container>
+<Container>
     <p>
         lol xd
     </p>
-</nav>
+</Container>
 
 
 <style lang="scss">
-	nav {
-        font-size:  14px;
-
-        max-width:  100%;
-		padding:    var(--containerPadding);
-
-		background-color:   var(--backgroundTrans);
-		border-radius:      var(--outerRadius);
-		border:             1px solid var(--accent1);
-
-		&:not(:first-child),
-        & > p:not(:first-child) {
-            margin-top:     var(--containerPadding);
-        }
-	}
-
 	notice {
         display: block;
         border: 1px solid var(--accent3);
@@ -61,7 +45,7 @@
 	            margin:         0 auto;
 	            width:          max-content;
 
-	            p {
+	            d {
 		            display:        inline-block;
 		            width:          max-content;
 
@@ -74,7 +58,7 @@
 	            }
 
 	            @for $i from 1 through 7 {
-		            p:nth-child(#{$i}) {
+		            d:nth-child(#{$i}) {
 			            animation-delay:  $i * 0.1s;
 		            }
 	            }

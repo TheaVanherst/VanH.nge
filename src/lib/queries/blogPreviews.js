@@ -15,7 +15,7 @@ let query =
         'catagory_id': categories[]->_id,
         
         'description': briefDesc,
-        body[0...2],
+        body[0...4],
     `
 
 export default query;

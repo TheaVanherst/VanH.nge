@@ -11,11 +11,7 @@
 
 <header>
     <div class="profile">
-        {#if !authorImage}
-            <div class="default">
-
-            </div>
-        {:else}
+        {#if authorImage}
             <div class="author">
                 <SanityImage image={authorImage}/>
             </div>

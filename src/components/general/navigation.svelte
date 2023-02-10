@@ -1,115 +1,89 @@
 <script>
-    import Button from './navigationButtons.svelte';
+    import Button from '../generic/navigationButton.svelte';
     import navigation from '../../stores/navigationDirectories.js'
+
+    import Container from "$components/generic/container.svelte";
 
     export let data = null;
     data = data[0][0]
 </script>
 
-<nav>
-    <div class="container">
-        <div class="profile">
-            <img src="/profilePicture.jpg">
+<Container>
+    <img class="profile" src="/profilePicture.jpg">
+    <div class="prompt">
+        <div class="nameCard">
+            <p style="--stringLength: {data.fullName.length}">{data.fullName} 🦌</p>
         </div>
-        <div class="prompt">
-            <div>
-                <p style="--stringLength: {data.fullName.length}">{data.fullName} 🦌</p>
-            </div>
-            <a href="https://twitter.com/{data.twitter}" target="_blank">
-                <img src="/icons/twitterLogo.png"/>
-            </a>
-        </div>
+        <a href="https://twitter.com/{data.twitter}" target="_blank">
+            <img src="/icons/twitterLogo.png"/>
+        </a>
     </div>
     <div class="buttonWrapper">
         {#each navigation as item}
             <Button push="{item.path}">{item.title}</Button>
         {/each}
     </div>
-</nav>
+</Container>
 
 <style lang="scss">
-    nav {
-	    padding: var(--containerPadding);
+	.profile {
+		border-radius:  var(--innerRaidus);
+		border:         1px solid var(--accent1);
 
-	    background-color:   var(--backgroundTrans);
-	    border-radius:      var(--outerRadius);
-	    border:             1px solid var(--accent1);
+        object-fit:     cover;
+		max-width:      fit-content;
+		overflow:       hidden;
 
-	    transition:
-			    border .1s ease-in-out;
+		margin-bottom:  15px;
+		aspect-ratio:   1/1;
+		width:          100%;
+	}
 
-        & > *:not(:first-of-type){
-            margin-top: 15px;
-        }
-    }
+	.prompt {
+		display:    flex;
+		gap:        10px;
+		margin:     0 0 15px 0;
 
-    .container {
-        > * {
-	        border-radius: var(--innerRaidus);
-        }
+		> * {
+			font-size:  0;
+			padding:    10px;
+			background-color:   var(--accent1);
+			border-radius:      var(--innerRaidus);
+		}
 
-	    .profile {
-		    border: 1px solid var(--accent1);
-		    margin-bottom: 15px;
+		.nameCard {
+			p {
+				$stringLength: calc(var(--stringLength) + 3);
+				$timerElement: calc(var(--stringLength) / 10 * 1s);
 
-		    max-width:      fit-content;
-            aspect-ratio:   1/1;
-            overflow:       hidden;
+				font: 14px monospace;
+				line-height: 100%;
+				color: black;
 
-            img {
-                width:  100%;
-	            pointer-events: none;
-            }
-	    }
+				width: calc($stringLength * 1ch);
+				animation:
+						typing $timerElement steps($stringLength),
+						blink .5s calc($timerElement + 0.2s) step-end infinite alternate;
 
+				white-space: nowrap;
+				border-right: 2px solid black;
+				overflow: hidden;
 
-	    .prompt {
-		    display: flex;
-		    gap: 10px;
+				&::selection {
+					color: 				var(--accent1);
+					background-color: 	black;}
+			}
+		}
 
-		    > * {
-			    font-size: 0;
-			    padding: 10px;
-			    background-color: var(--accent1);
-                border-radius: var(--innerRaidus);
-		    }
+		a {
+			margin: 0 0 0 auto;
 
-            div {
-	            width: inherit;
-
-	            p {
-		            $stringLength: calc(var(--stringLength) + 3);
-                    $timerElement: calc(var(--stringLength) / 10 * 1s);
-
-		            font: 14px monospace;
-		            line-height: 100%;
-		            color: black;
-
-		            width: calc($stringLength * 1ch);
-		            animation:
-				            typing $timerElement steps($stringLength),
-				            blink .5s calc($timerElement + 0.2s) step-end infinite alternate;
-
-		            white-space: nowrap;
-		            border-right: 2px solid black;
-                    overflow: hidden;
-
-		            &::selection {
-			            color: 				var(--accent1);
-			            background-color: 	black;}
-	            }
-            }
-
-		    a {
-			    margin: 0 0 0 auto;
-
-			    img {
-				    margin: -4px;
-				    height: 22px;
-				    width: 22px;
-				    filter: contrast(0) brightness(0);
-			    }
-		    }
-	    }
-    }
+			img {
+				margin: -4px;
+				height: 22px;
+				width: 22px;
+				filter: contrast(0) brightness(0);
+			}
+		}
+	}
 </style>

@@ -1,40 +1,30 @@
 <script>
+    import TitleCard from "$components/generic/containerTitle.svelte"
+    import Container from "$components/generic/container.svelte";
+
     import scrollIntoView from "$lib/scrollHandler.js";
     export let list = null;
 </script>
 
-<div class="contentList">
-    <h4>Contents:</h4>
+<Container>
+    <TitleCard>
+        Contents:
+    </TitleCard>
     {#each list as data}
-        <p href="#post-{data.slug}" class="list" on:click|preventDefault={scrollIntoView}>{data.title}</p>
+        <p href="#post-{data.slug}" on:click|preventDefault={scrollIntoView}>
+            {data.title}
+        </p>
     {/each}
-</div>
+</Container>
 
 <style lang="scss">
-	.contentList {
-		border-radius: 	var(--outerRadius);
-		background:		var(--backgroundTrans);
-		border:         1px solid var(--accent1);
-
-		overflow:       hidden;
-	}
-
-	h4 {
-		cursor:     alias;
-		padding:    8px 10px 10px 10px;
-
-		background-color:   var(--accent1);
-		color:              black;
-	}
-
-	.list {
+	p {
 		cursor:     alias;
 		font:       15px monospace;
+		padding:    0 0 4px 0;
 
-		padding:    2px 15px;
-
-		&:last-child {
-			padding-bottom: 15px;
-		}
+        &:last-of-type {
+            padding: 0 0 0 0;
+        }
 	}
 </style>

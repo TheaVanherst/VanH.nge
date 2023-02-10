@@ -4,16 +4,18 @@
     import PostModule from "../serializer/portableText.svelte"
     import TagModule from "../tagModule.svelte"
 
+    import Container from "$components/generic/container.svelte";
+
     import { urlChanger } from '$stores/directoryController.js';
 
     export let post = null;
 </script>
 
-<div class="post" id="post-{post.slug}" on:click={urlChanger("/blog/" + post.slug)}>
-    <div class="readMore">
-        <img src="/icons/downArrowPreview.webp">
-    </div>
-    <div class="padding">
+<Container hoverBool="{true}">
+    <div class="post" id="post-{post.slug}" on:click={urlChanger("/blog/" + post.slug)}>
+        <div class="readMore">
+            <img src="/icons/downArrowPreview.webp">
+        </div>
         <TitleModule
                 titleHeader="{post.headerImage}"	title="{post.title}"/>
         <HeaderModule
@@ -29,7 +31,7 @@
         <PostModule
                 postData="{post?.body}"/>
     </div>
-</div>
+</Container>
 
 <style lang="scss">
 	* {
@@ -37,28 +39,14 @@
 	}
 
 	.post {
-		border-radius: 	var(--outerRadius);
-		border: 	var(--border-thickness) solid var(--accent1);
-		background:		var(--backgroundTrans);
-
-		margin-bottom: 	15px;
-
-		height: 		300px;
+		height:     300px;
 		overflow: hidden;
 		position: relative;
 
-		transition: border 0.2s ease-in-out;
-
-		color: 			var(--textColour);
-
-		.padding {
-			padding: 	var(--containerPadding);
-
-			.description {
-				padding-bottom: 10px;
-				border-bottom: 1px solid var(--backgroundAccent1);
-				margin-bottom: 15px;
-			}
+		.description {
+			padding-bottom: 10px;
+			border-bottom: 1px solid var(--backgroundAccent1);
+			margin-bottom: 15px;
 		}
 
         &:hover {
@@ -66,50 +54,50 @@
         }
 
 		&:before {
-			content  : "";
-			width: 		100%;
-			height   : 100px;
+			width:      100%;
+			height:     100px;
+			margin-top: 200px;
+			left:       0;
+			z-index:    1;
+
+			content:    "";
 			position: absolute;
 			display: block;
 
-			z-index  : 1;
-			margin-top: 200px;
-			left     : 0;
-			pointer-events   : none;
-			background-image : linear-gradient(to bottom,
+			pointer-events:     none;
+			background-image:   linear-gradient(to bottom,
 					rgba(0,0,0, 0),
 					rgba(0,0,0, 1) 100%);
 		}
 
 		.readMore {
-			margin: 260px 0 0 0;
-			position: absolute;
-			display: block;
-			color: white;
-			z-index  : 20;
-			width: 100%;
+			position:   absolute;
+			display:    block;
+			color:      white;
+
+			margin:     277px 0 0 0;
+			z-index:    20;
+			width:      100%;
 
 			img {
-                display: block;
-				margin: 0 auto;
-                color: black;
-
-                transition: background-color 0.2s ease-in-out;
-
-				padding: 3px;
-				width: 16px;
-				height: 16px;
-
-				border-radius: 50%;
-				background-color: var(--accent1);
-
+                display:    block;
 				text-wrap: none;
+
+				padding:    3px;
+				width:      16px;
+				height:     16px;
+				margin:     0 auto;
+
+				border-radius:      50%;
+				background-color:   var(--accent1);
+				color:              black;
+				transition: background-color 0.2s ease-in-out;
 			}
 		}
 
         &:hover {
             img {
-                background-color: var(--accent3);
+                background-color:   var(--accent3);
             }
         }
 	}
