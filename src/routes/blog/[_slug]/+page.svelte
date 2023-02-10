@@ -22,9 +22,6 @@
 
 
 <style lang="scss">
-	$row2: 520px;
-	$row3: 250px;
-
 	content {
 		width: 100%;
 		gap: var(--containerPadding);
@@ -41,10 +38,10 @@
 
 			&.col2 {
 				flex-basis: 100%;
-				max-width: $row2;}
+				max-width: 65%;}
 			&.col3 {
 				margin-left: auto;
-				width: $row3;}
+				width: 35%;}
 		}
 	}
 
