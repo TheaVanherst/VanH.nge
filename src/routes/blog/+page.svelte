@@ -1,7 +1,8 @@
 <script>
 	import PreviewBlogPost from "$components/blog/previewComponent.svelte"
 	import TitleList from "$components/blog/previewTitleList.svelte"
-	export let data;
+
+	export let data = null;
 </script>
 
 <content>

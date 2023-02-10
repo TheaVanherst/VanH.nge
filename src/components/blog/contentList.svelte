@@ -34,7 +34,9 @@
     </TitleCard>
 
     {#each list.titles as title, i}
-        <p href="#header-{title._key}" class="{placementArr[i]}" on:click|preventDefault={scrollIntoView}>
+        <p href="#header-{title._key}"
+           class="{placementArr[i]}"
+           on:click|preventDefault={scrollIntoView}>
             {#if title.children.length > 1}
                 {#each title.children as child}
                     {child.text}

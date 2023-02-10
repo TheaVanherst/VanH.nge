@@ -1,6 +1,3 @@
-<script>
-
-</script>
 
 <span class="loader"></span>
 
@@ -18,19 +15,19 @@
 			display: inline-block;
 		}
 		&:before {
-			content: "{";
-			animation: pulse 0.4s alternate infinite ease-in-out;
+			content:    "{";
+			animation:  pulse 0.4s alternate infinite ease-in-out;
 		}
 		&:after {
-			content: "}";
-			animation: pulse 0.4s 0.3s alternate infinite ease-in-out;
+			content:    "}";
+			animation:  pulse 0.4s 0.3s alternate infinite ease-in-out;
 		}
 	}
 
 	@keyframes pulse {
 		to {
-			transform: scale(0.8);
-			opacity: 0.5;
+			transform:  scale(0.8);
+			opacity:    0.5;
 		}
 	}
 </style>

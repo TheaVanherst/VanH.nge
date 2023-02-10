@@ -15,7 +15,7 @@
             <p style="--stringLength: {data.fullName.length}">{data.fullName} 🦌</p>
         </div>
         <a href="https://twitter.com/{data.twitter}" target="_blank">
-            <img src="/icons/twitterLogo.png"/>
+            <img src="/icons/socialMedia/twitterLogo.png"/>
         </a>
     </div>
     <div class="buttonWrapper">

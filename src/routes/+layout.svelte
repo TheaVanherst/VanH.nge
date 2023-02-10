@@ -10,7 +10,7 @@
 
 	import { scrollPos } from '$stores/directoryController.js';
 
-	export let data;
+	export let data = null;
 </script>
 
 <svelte:window bind:scrollY={$scrollPos} />

@@ -2,11 +2,7 @@
 	import BlogComponent  from "$components/blog/blogComponent.svelte"
 	import Contents from '$components/blog/contentList.svelte'
 
-    import { directory } from '$stores/directoryController.js'; //temp
-    import { page } from "$app/stores" //temp
-
-	export let data;
-    $directory = $page.url.pathname; //temp
+	export let data = null;
 </script>
 
 <content>

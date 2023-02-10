@@ -1,7 +1,7 @@
 <script>
     import { urlChanger } from '$stores/directoryController.js';
 
-    export let push = undefined;
+    export let push = null;
 </script>
 
 <div class:clickable={!!push} on:click={urlChanger(push)}>
