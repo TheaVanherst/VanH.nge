@@ -9,7 +9,7 @@
     export let post
 </script>
 
-<Container>
+<Container overflowBool="{false}">
     <div id="post-{post.slug}">
         <TitleModule
                 titleHeader="{post.headerImage}"	title="{post.title}"/>

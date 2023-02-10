@@ -41,29 +41,4 @@
 				width: 35%;}
 		}
 	}
-
-	.contentList {
-		max-width: 100%;
-		padding: var(--containerPadding);
-
-		background-color:   var(--backgroundTrans);
-		border-radius:      var(--outerRadius);
-		border:             1px solid var(--accent1);
-
-		h1 {
-			border-left: 	5px solid var(--accent1);
-
-			padding:	 	0 0 0 20px;
-			margin:			0 0 var(--containerPadding) calc(var(--contentPaddingX) * -1);
-		}
-
-		.list {
-			padding:    2px 15px;
-
-			&:last-child {
-				padding-bottom: 15px;
-			}
-		}
-	}
-
 </style>

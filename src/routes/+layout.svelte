@@ -1,7 +1,7 @@
 <script>
 	import '../styles.scss';
 
-	import Header from "$components/general/header.svelte"
+	import Route from "$components/general/routePreview.svelte"
 	import Banner from "$components/general/banner.svelte"
 	import Background from "$components/general/background.svelte"
 
@@ -23,7 +23,7 @@
 			<Navigation data={data}/>
 		</div>
 		<div class="wrapper col">
-			<Header/>
+			<Route/>
 			<Transition>
 				<slot/>
 			</Transition>

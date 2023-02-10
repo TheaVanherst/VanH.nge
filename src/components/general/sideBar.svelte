@@ -20,16 +20,16 @@
 
 <style lang="scss">
 	notice {
-        display: block;
-        border: 1px solid var(--accent3);
-		margin: -5px;
+        display:    block;
+        border:     1px solid var(--accent3);
+		margin:     -5px;
 
 		.warning {
 			$textColour: #ffc402;
 
 			padding: 8px 7px 5px;
 
-			border-bottom: 1px solid var(--accent3);
+			border-bottom:  1px solid var(--accent3);
 			background-image:
 					repeating-linear-gradient( 45deg,
 							transparent,        transparent 1rem,

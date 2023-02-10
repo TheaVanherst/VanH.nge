@@ -2,13 +2,11 @@
 	import BlogComponent  from "$components/blog/blogComponent.svelte"
 	import Contents from '$components/blog/contentList.svelte'
 
-    import { directory } from '../../../stores/directoryController.js'; //temp
+    import { directory } from '$stores/directoryController.js'; //temp
     import { page } from "$app/stores" //temp
 
 	export let data;
     $directory = $page.url.pathname; //temp
-
-    // TODO: I need to redesign the router transition, as this page doesn't get transitioned to.
 </script>
 
 <content>
@@ -44,16 +42,4 @@
 				width: 35%;}
 		}
 	}
-
-	.contentList {
-		border: 	var(--border-thickness) solid var(--accent1);
-		padding: 	var(--containerPadding);
-		margin-bottom:  20px;
-
-		min-height: 	120px;
-		border-radius: 	var(--outerRadius);
-		background:		var(--backgroundTrans);
-		color: 			var(--textColour);
-	}
-
 </style>

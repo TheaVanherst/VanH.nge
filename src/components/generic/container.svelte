@@ -1,8 +1,9 @@
 <script>
     export let hoverBool = false;
+    export let overflowBool = true;
 </script>
 
-<div class:hoverable={hoverBool}>
+<div class:hoverable={hoverBool} class:overflow={overflowBool}>
     <slot/>
 </div>
 
@@ -12,7 +13,6 @@
 		background:		var(--backgroundTrans);
 		border:         1px solid var(--accent1);
 
-		overflow:       hidden;
         margin-bottom:  var(--containerPadding);
         padding:        var(--containerPadding);
 
@@ -22,6 +22,10 @@
 			&:hover {
 				border:         1px solid var(--accent3);
 			}
+		}
+
+		&.overflow {
+            overflow: hidden;
 		}
 	}
 </style>
