@@ -1,6 +1,6 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    export let push
+
     let randomId = Math.floor(Math.random() * 999);
 
     const scrollIntoView = async ({target}) => {
@@ -15,7 +15,12 @@
         document.querySelector(".active")?.classList.remove("active")
         document.querySelector("#a"+randomId+"-"+(Math.round(x / containerWidth))).classList.add("active");
     }
+
+    export let push
 </script>
+
+<!-- TODO: something in this document relating to the width / display type
+     TODO: is forcing the container to be bigger than it should be. FIX IT. -->
 
 <div class="carousel" id="a{randomId}"
      bind:clientWidth={containerWidth}
@@ -66,7 +71,8 @@
 			border: 		1px solid var(--background);
 			background: 	var(--accent1);}
 		&::-webkit-scrollbar-thumb:hover {
-			background: 	var(--darkAccent1);}}
+			background: 	var(--darkAccent1);}
+    }
 
     .row {
 	    vertical-align: bottom;
@@ -97,7 +103,9 @@
 				    left:   0;
 				    border-radius:  0 5px 5px 0;}
 			    &:hover {
-				    background: rgba(0, 0, 0, 1);}}
+				    background: rgba(0, 0, 0, 1);
+                }
+            }
 
 		    container {
 			    transition:         opacity .6s, filter .4s;
@@ -107,10 +115,15 @@
 			    -o-transition:      opacity .6s, filter .4s;
 
 			    opacity:    0.6;
-			    filter:     blur(var(--imageBlurring));}
+			    filter:     blur(var(--imageBlurring));
+            }
 
 		    &.active {
 			    container {
 				    filter:     none;
-				    opacity:    1 !important;}}}}
+				    opacity:    1 !important;
+                }
+            }
+        }
+    }
 </style>

@@ -4,8 +4,8 @@
 
 <style lang="scss">
 	h4 {
-        margin:         calc(var(--containerPadding) * -1);
-        margin-bottom:  var(--containerPadding);
+        margin:         calc(var(--containerPadding) * -1) !important;
+        margin-bottom:  var(--containerPadding) !important;
 		padding:        8px 10px 10px 10px;
 		background-color:   var(--accent1);
 		color:              black;

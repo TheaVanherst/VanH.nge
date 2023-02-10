@@ -18,6 +18,8 @@
 </Container>
 
 <style lang="scss">
+    $margin: calc(var(--containerPadding) * -1);
+
 	p {
 		cursor:     alias;
 		font:       15px monospace;

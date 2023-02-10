@@ -14,16 +14,14 @@
     div {
         display:    block;
 
-        background-color:   black;
-        color:              var(--accent1);
+        background-color:   var(--accent1);
+        color:              var(--textColourInvert);
         border-radius:      var(--innerRaidus);
 
-	    padding:        5px;
-	    border:         1px solid var(--darkAccent1);
-        border-left:    2px solid var(--accent1);
-	    border-right:   2px solid var(--accent1);
+        font: 14px monospace;
 
-        transition:     border .1s ease-in-out;
+	    padding:        7px;
+        transition:     background .2s ease-in-out;
 
         > p {
 	        line-height: 	12px;
@@ -38,8 +36,7 @@
 
     .clickable {
 	    &:hover {
-		    color: var(--accent3);
-		    border-color: var(--accent3);
+		    background-color:   var(--accent3);
 	    }
     }
 </style>

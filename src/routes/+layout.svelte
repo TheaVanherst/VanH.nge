@@ -2,7 +2,6 @@
 	import '../styles.scss';
 
 	import Route from "$components/general/routePreview.svelte"
-	import Banner from "$components/general/banner.svelte"
 	import Background from "$components/general/background.svelte"
 
 	import Navigation from "$components/general/navigation.svelte"
@@ -17,7 +16,6 @@
 <Background/>
 
 <page>
-	<Banner/>
 	<main>
 		<div class="col1 col">
 			<Navigation data={data}/>
@@ -54,13 +52,14 @@
 
 		.col {
 			height: 	max-content;
-			width:		inherit;
 			display:	block;
+			position: 	relative;
 
 			&.col1 {
 				width: 23%;}
 
 			&.wrapper {
+				z-index: 2;
 				width: 77%;}
 		}
 	}

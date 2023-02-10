@@ -27,7 +27,7 @@
 			height: 0;
 
 	        &:checked + .slider {
-		        background-color: var(--accent1);
+		        background-color: var(--accent3);
 	        }
 
 	        &:checked + .slider:before {
