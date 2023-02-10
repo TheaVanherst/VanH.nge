@@ -1,5 +1,5 @@
 <script>
-    import { navigating, loading, animations } from '$stores/directoryController.js';
+    import { navigating, loading, motion } from '$stores/directoryController.js';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'
@@ -27,7 +27,7 @@
     $: direction;
 
     let transition
-    $: transition = $animations ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
+    $: transition = !$motion ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
     let easing = easingFunctions[easingName];
 
     // transition timeout vars
@@ -37,10 +37,6 @@
     export let
         delayIn = 0,
         delayOut = 0;
-
-    $: if(transTimeIn < transTimeOut) {
-        transTimeOut = transTimeIn - 100;
-    } //fallback to prevent container overflow
 
     export let transX = 30;
 </script>

@@ -4,7 +4,7 @@
 </script>
 
 <label class="switch">
-    <input type="checkbox" bind:checked={bool} />
+    <input type="checkbox" bind:checked={bool}/>
     <span class="slider"/>
 </label>
 <label>
@@ -38,6 +38,11 @@
 		}
 
 	}
+
+    .disabled {
+        pointer-events: none;
+	    background-color: var(--backgroundAccent2);
+    }
 
 	.slider {
 		position: absolute;

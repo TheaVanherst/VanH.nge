@@ -5,10 +5,15 @@ import { writable } from 'svelte/store';
 
 const loading = writable(false);
 const navigating = writable(false);
-const animations = writable(true);
 const directory = writable("/");
 
-export { loading, navigating, animations, directory };
+export { loading, navigating, directory };
+
+// accessibility settings
+
+const motion = writable(false);
+
+export { motion };
 
 // navigation controller
 
@@ -46,7 +51,7 @@ export { urlChanger };
 // other page vars
 
 const scrollPos = writable(0);
-let localScroll;
-directory.subscribe((val) => { localScroll = val });
+// let localScroll;
+// directory.subscribe((val) => { localScroll = val });
 
 export { scrollPos };
