@@ -24,11 +24,10 @@
     <div class="inline">
         {#each localRoute as router, i}
             <wrapper
-                   class:transitioning={$loading}
-                   class:clickable={i < localRoute.length - 1}>
-                <div class="route">
-                    <h1 transition:fade
-                        on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+                class:transitioning={$loading}
+                class:clickable={i < localRoute.length - 1}>
+                <div class="route" transition:fade>
+                    <h1 on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
                         } {router}
                     </h1>
                 </div>

@@ -31,8 +31,8 @@
             width: min-content;
         }
 
-	    &:not(:first-child){
-		    margin-top: 10px;
+	    &:not(:last-child){
+		    margin-bottom: 10px;
 	    }
     }
 

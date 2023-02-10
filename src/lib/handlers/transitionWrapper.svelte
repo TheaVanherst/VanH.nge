@@ -1,5 +1,5 @@
 <script>
-    import { navigating, loading } from '$stores/directoryController.js';
+    import { navigating, loading, animations } from '$stores/directoryController.js';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'
@@ -26,7 +26,8 @@
     let direction = 'back';
     $: direction;
 
-    let transition = transitionFunctions[transitionReqType];
+    let transition
+    $: transition = $animations ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
     let easing = easingFunctions[easingName];
 
     // transition timeout vars

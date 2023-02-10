@@ -1,6 +1,8 @@
 <script>
-    import Button from '../generic/navigationButton.svelte';
-    import navigation from '../../stores/navigationDirectories.js'
+    import Button from '$components/generic/navigationButton.svelte';
+    import Switch from '$components/generic/toggleSwitch.svelte'
+    import navigation from '$stores/navigationDirectories.js'
+    import { animations } from '$stores/directoryController'
 
     import Container from "$components/generic/container.svelte";
 
@@ -22,6 +24,7 @@
         {#each navigation as item}
             <Button push="{item.path}">{item.title}</Button>
         {/each}
+        <Switch label="Page Animations" bind:bool={$animations}/>
     </div>
 </Container>
 

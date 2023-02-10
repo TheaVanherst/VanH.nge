@@ -5,9 +5,10 @@ import { writable } from 'svelte/store';
 
 const loading = writable(false);
 const navigating = writable(false);
+const animations = writable(false);
 const directory = writable("/");
 
-export { loading, navigating, directory };
+export { loading, navigating, animations, directory };
 
 // navigation controller
 
