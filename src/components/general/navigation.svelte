@@ -5,7 +5,7 @@
     import Button from '$components/generic/navigationButton.svelte';
     import Switch from '$components/generic/toggleSwitch.svelte'
 
-    import { motion } from '$stores/directoryController'
+    import { motion } from '$stores/accessibilityController';
 
     export let data = null;
     data = data[0][0]

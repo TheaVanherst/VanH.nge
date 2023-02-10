@@ -1,5 +1,5 @@
 <script>
-    import { scrollPos } from '$stores/directoryController.js';
+    import { scrollPos } from '$stores/accessibilityController';
 </script>
 
 

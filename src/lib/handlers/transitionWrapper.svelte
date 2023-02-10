@@ -1,5 +1,6 @@
 <script>
-    import { navigating, loading, motion } from '$stores/directoryController.js';
+    import { navigating, loading } from '$stores/directoryController.js';
+    import { motion } from '$stores/accessibilityController';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions from 'svelte/easing'

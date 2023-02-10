@@ -9,12 +9,6 @@ const directory = writable("/");
 
 export { loading, navigating, directory };
 
-// accessibility settings
-
-const motion = writable(false);
-
-export { motion };
-
 // navigation controller
 
 import { goto } from '$app/navigation';
@@ -47,11 +41,3 @@ const urlChanger = async (url) => {
 };
 
 export { urlChanger };
-
-// other page vars
-
-const scrollPos = writable(0);
-// let localScroll;
-// directory.subscribe((val) => { localScroll = val });
-
-export { scrollPos };

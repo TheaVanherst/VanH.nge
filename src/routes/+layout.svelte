@@ -8,7 +8,7 @@
 	import Navigation from "$components/general/navigation.svelte"
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
-	import { scrollPos } from '$stores/directoryController.js';
+	import { scrollPos } from '$stores/accessibilityController';
 
 	export let data = null;
 </script>
