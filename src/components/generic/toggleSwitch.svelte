@@ -5,24 +5,38 @@
 
 <label class="switch">
     <input type="checkbox" bind:checked={bool} />
-    <span class="slider" />
+    <span class="slider"/>
 </label>
 <label>
     {label}
 </label>
 
 <style lang="scss">
+    label {
+	    display: inline-block;
+    }
+
 	.switch {
 		position: relative;
-		display: inline-block;
 		width: 42px;
 		height: 16px;
-	}
 
-	.switch input {
-		opacity: 0;
-		width: 0;
-		height: 0;
+        input {
+			opacity: 0;
+			width: 0;
+			height: 0;
+
+	        &:checked + .slider {
+		        background-color: var(--accent1);
+	        }
+
+	        &:checked + .slider:before {
+		        -webkit-transform: translateX(26px);
+		        -ms-transform: translateX(26px);
+		        transform: translateX(26px);
+	        }
+		}
+
 	}
 
 	.slider {
@@ -36,28 +50,18 @@
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
 		border-radius: 4px;
-	}
 
-	.slider:before {
-		position: absolute;
-		content: "";
-		height: 14px;
-		width: 14px;
-		left: 1px;
-		bottom: 1px;
-		background-color: var(--background);
-		-webkit-transition: 0.4s;
-		transition: 0.4s;
-		border-radius: 3px;
-	}
-
-	input:checked + .slider {
-		background-color: var(--accent1);
-	}
-
-	input:checked + .slider:before {
-		-webkit-transform: translateX(26px);
-		-ms-transform: translateX(26px);
-		transform: translateX(26px);
+        &:before {
+	        position: absolute;
+	        content: "";
+	        height: 14px;
+	        width: 14px;
+	        left: 1px;
+	        bottom: 1px;
+	        background-color: var(--background);
+	        -webkit-transition: 0.4s;
+	        transition: 0.4s;
+	        border-radius: 3px;
+        }
 	}
 </style>
