@@ -1,5 +1,5 @@
 
-const pull = (obj) => {
+const altTextRequest = (obj) => {
   let arr = [];
   for (let i = 0; i < obj.length; i++){
     if (obj[i]?.alt){
@@ -9,9 +9,9 @@ const pull = (obj) => {
     return "Alt texts: [" + arr + "]"
   } else if (arr.length === 1) {
     return "Alt text: [" + arr + "]"
-  } else {
+  } if (arr.length === 0) {
     return "No alternative text provided."
   }
 }
 
-export { pull }
+export { altTextRequest }

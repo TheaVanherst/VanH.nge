@@ -19,7 +19,7 @@ const config = {
     visionTool()
   ],
   schema: {
-    types: blogData,
+    types: blogData
   },
 
 }

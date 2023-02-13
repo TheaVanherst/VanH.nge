@@ -1,3 +1,4 @@
+
 import blockContent from './blockContent'
 
 // TODO: Page Types
@@ -8,13 +9,14 @@ import author from './author'
 // TODO: Category Types
 
 import category from './category'
-import role from './role'
+import jobDescription from './jobDescription'
 
-export const
-    blogData = [
-        post,
-        author,
-        role,
-        category,
-        blockContent
-    ]
+const blogData = [
+  post,
+  author,
+  jobDescription,
+  category,
+  blockContent
+];
+
+export {blogData};
