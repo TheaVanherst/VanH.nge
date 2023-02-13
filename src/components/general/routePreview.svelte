@@ -1,7 +1,6 @@
 <script>
     import { directory, loading } from '$stores/directoryController.js';
 
-    import LoadingShifting from '$lib/handlers/loadingShifting.svelte'
     import LoadingBlinking from '$lib/handlers/loadingBlinking.svelte'
 
     import { fade } from 'svelte/transition';
@@ -31,7 +30,7 @@
                 class:clickable={i < previewRoute.length - 1}>
             <span transition:fade>
                 <h1 on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-                    <div>}</div> {router}
+                    <span class="dir">}</span> <span>{router}</span>
                 </h1>
             </span>
         </wrapper>
@@ -39,7 +38,6 @@
 
     {#if $loading}
         <LoadingBlinking/>
-    <!--    <LoadingShifting/>-->
     {/if}
 </div>
 
@@ -55,9 +53,9 @@
 
 	    span {
 		    h1 {
-			    div {
+			    .dir {
 				    display:    inline-block;
-				    top:        -2px;
+				    top:        -4px;
 				    position:   relative;
 			    }
             }

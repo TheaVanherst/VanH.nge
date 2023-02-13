@@ -5,13 +5,23 @@
 
 <div class="table vertical">
     {#each push as image}
-        <SanityImage image={image}/>
+        <div>
+            <SanityImage image={image}/>
+        </div>
     {/each}
 </div>
 
-<style>
+<style lang="scss">
 	.table {
-		border-radius:  var(--outerRadius);
 		margin-bottom:  var(--contentPaddingY);
-		overflow:       hidden;}
+
+        > div {
+	        border-radius:  var(--innerRaidus);
+	        overflow:       hidden;
+
+            &:not(:last-of-type){
+	            margin-bottom:  var(--imageSpacing);
+            }
+        }
+    }
 </style>

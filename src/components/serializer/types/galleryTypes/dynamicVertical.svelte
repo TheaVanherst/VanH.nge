@@ -17,13 +17,11 @@
 
 <style lang="scss">
 	.dynamicVertical {
-		border-radius: var(--outerRadius);
 		margin-bottom: var(--contentPaddingY);
+
 		column-count:   2;
 		gap:            var(--imageSpacing);
-
-        overflow:   hidden;
-		display:    flex;
+		display:        flex;
 
 		.row {
 			width:  50%;
@@ -37,5 +35,8 @@
 				background-color:   var(--backgroundAccent2);
 
 				overflow:       hidden;
-				border-radius:  var(--innerRaidus);}}}
+				border-radius:  var(--innerRaidus);
+            }
+        }
+    }
 </style>

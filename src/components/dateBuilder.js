@@ -1,15 +1,15 @@
 
-export function createdPush(creationDate, dateLength) {
-    let createdDay = new Date(creationDate);
-    return "Posted on " + createdDay.toLocaleDateString("en-GB", dateTypes[dateLength]);
-}
+const createdPush = (creationDate, dateLength) => {
+        let createdDay = new Date(creationDate);
+        return "Posted on " + createdDay.toLocaleDateString("en-GB", dateTypes[dateLength]);
+    },
 
-export function updatedPush(currentDate, creationDate) {
-    let updatedDay = new Date(currentDate)
-    return updatedWhen(updatedDay,creationDate)
-}
+     updatedPush = (currentDate, creationDate) => {
+        let updatedDay = new Date(currentDate)
+        return updatedWhen(updatedDay,creationDate)
+    },
 
-const dateTypes = {
+    dateTypes = {
         fullDate : {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'},
         shortDate : {year: 'numeric', month: 'long', day: 'numeric'},
         tinyDate : {year: 'numeric', month: 'short', day: 'numeric'}
@@ -59,3 +59,5 @@ const dateTypes = {
             updatedString += 2419200 > relativeTime(updatedDay) ? " at " + updatedDay.toLocaleTimeString('en-US') : "";
         return updatedString.toLowerCase();
     };
+
+export {createdPush, updatedPush}

@@ -1,8 +1,8 @@
 <script>
     import HeaderModule from "./previewHeader.svelte"
-    import TitleModule from "./postHeader.svelte"
-    import PostModule from "../serializer/portableText.svelte"
-    import TagModule from "../tagModule.svelte"
+    import TitleModule from "../postHeader.svelte"
+    import PostModule from "../../serializer/portableText.svelte"
+    import TagModule from "../../tagModule.svelte"
 
     import Container from "$components/generic/container.svelte";
 
@@ -25,11 +25,13 @@
         <TagModule
                 time="{post._createdAt}"
                 tags={post.catagory_tags}   tagsIds={post.catagory_id} />
-        <p class="description">
-            {post?.description}
-        </p>
-        <PostModule
-                postData="{post?.body}"/>
+        <div class="nonClickable">
+            <p class="description">
+                {post?.description}
+            </p>
+            <PostModule
+                    postData="{post?.body}"/>
+        </div>
     </div>
 </Container>
 
@@ -39,35 +41,42 @@
 	}
 
 	.post {
-		height:     300px;
-		overflow: hidden;
 		position: relative;
+        min-height: 250px;
+        max-height: 350px;
 
 		.description {
 			padding-bottom: 10px;
-			border-bottom: 1px solid var(--backgroundAccent1);
-			margin-bottom: 15px;
+			border-bottom:  1px solid var(--backgroundAccent1);
+			margin-bottom:  15px;
 		}
+
+        .nonClickable {
+	        pointer-events: none;
+        }
 
         &:hover {
             border-color: var(--accent3);
         }
 
 		&:before {
-			width:      100%;
-			height:     100px;
-			margin-top: 200px;
-			left:       0;
+			width:      calc(100% + (var(--containerPadding) * 2));
+			height:     150px;
 			z-index:    1;
 
+			bottom:     0;
+			left:       0;
+            margin:     0 calc(var(--containerPadding) * -1)
+                        calc(var(--containerPadding) * -2) calc(var(--containerPadding) * -1);
+
 			content:    "";
-			position: absolute;
-			display: block;
+			position:   absolute;
+			display:    block;
 
 			pointer-events:     none;
 			background-image:   linear-gradient(to bottom,
 					rgba(0,0,0, 0),
-					rgba(0,0,0, 1) 100%);
+					rgba(0,0,0, 1) 90%);
 		}
 
 		.readMore {
@@ -75,7 +84,8 @@
 			display:    block;
 			color:      white;
 
-			margin:     277px 0 0 0;
+			margin:     0;
+            bottom:     0;
 			z-index:    20;
 			width:      100%;
 

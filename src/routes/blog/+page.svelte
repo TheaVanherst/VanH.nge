@@ -1,6 +1,6 @@
 <script>
-	import PreviewBlogPost from "$components/blog/previewComponent.svelte"
-	import TitleList from "$components/blog/previewTitleList.svelte"
+	import PreviewBlogPost from "$components/blog/preview/previewComponent.svelte"
+	import TitleList from "$components/blog/preview/previewTitleList.svelte"
 
 	export let data = null;
 </script>

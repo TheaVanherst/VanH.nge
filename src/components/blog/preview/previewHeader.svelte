@@ -1,5 +1,5 @@
 <script>
-    import {createdPush, updatedPush} from "../dateBuilder.js"
+    import {createdPush, updatedPush} from "../../dateBuilder.js"
 
     export let createdOn = null, updatedOn = null;
     export let authoruser = null, editoruser = null;

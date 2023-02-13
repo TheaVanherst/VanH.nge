@@ -18,7 +18,7 @@
         if (arr[i] < arr[i + 1]){
             placement++;
         } else if (arr[i] > arr[i + 1]){
-            for (let e = 0; e < arr[i] - arr[i + 1]; e++){
+            for (let e = 0; e <= arr[i] - arr[i + 1]; e++){
                 if (placement > 0){
                     placement--;}}
         } else if (arr[i] === arr[i - 1]) {
@@ -59,12 +59,19 @@
 	    }
 
 	    &.e0 {
-		    margin-left: 0;}
+		    margin-left: 0;
+		    &:not(:first-of-type){
+			    margin-top: 2px;
+		    }
+        }
 	    &.e1 {
-		    margin-left: 10px;}
+		    margin-left: 10px;
+        }
 	    &.e2 {
-		    margin-left: 20px;}
+		    margin-left: 20px;
+        }
 	    &.e3 {
-		    margin-left: 35px;}
+		    margin-left: 35px;
+        }
     }
 </style>

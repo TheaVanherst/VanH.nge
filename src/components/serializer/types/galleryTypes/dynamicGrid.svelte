@@ -17,9 +17,7 @@
 
 <style lang="scss">
 	.dynamicGrid {
-		border-radius:  var(--outerRadius);
 		margin-bottom:  var(--contentPaddingY);
-		overflow: hidden;
 
 		.row {
 			display: inline-flex;
@@ -35,5 +33,9 @@
 				overflow:           hidden;
 
                 &:not(:only-child) {
-	                max-width: 60%;}}}}
+	                max-width: 60%;
+                }
+            }
+        }
+    }
 </style>
