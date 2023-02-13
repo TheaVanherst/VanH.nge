@@ -56,11 +56,15 @@
 			position: 	relative;
 
 			&.col1 {
-				width: 23%;}
+				width: 		25%;}
+
+			&.col2 {
+				flex-basis: 100%;
+				max-width: 	65%;}
 
 			&.wrapper {
-				z-index: 2;
-				width: 77%;}
+				z-index: 	2;
+				width: 		75%;}
 		}
 	}
 

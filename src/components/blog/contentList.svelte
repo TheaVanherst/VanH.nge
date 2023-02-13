@@ -59,7 +59,7 @@
 	    }
 
 	    &.e0 {
-		    margin-left: 0px;}
+		    margin-left: 0;}
 	    &.e1 {
 		    margin-left: 10px;}
 	    &.e2 {

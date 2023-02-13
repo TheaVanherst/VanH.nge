@@ -18,9 +18,8 @@
 
 		&.hoverable {
 			transition: border 0.2s ease-in-out;
-
 			&:hover {
-				border:         1px solid var(--accent3);
+				border: 1px solid var(--accent3);
 			}
 		}
 

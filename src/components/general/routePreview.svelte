@@ -1,15 +1,19 @@
 <script>
     import { directory, loading } from '$stores/directoryController.js';
-    import LoadingAnimation from '$lib/handlers/loadingAnimation.svelte'
+
+    import LoadingShifting from '$lib/handlers/loadingShifting.svelte'
+    import LoadingBlinking from '$lib/handlers/loadingBlinking.svelte'
 
     import { fade } from 'svelte/transition';
     import { urlChanger } from '$stores/directoryController.js';
 
-    import Container from "$components/generic/container.svelte";
-
-    let localRoute;
+    let localRoute; //backend management url string
     $: localRoute = $directory.split("/");
     $: localRoute.shift();
+
+    let previewRoute; //frontend viewable url string
+    $: previewRoute = $directory.replaceAll("-"," ").split("/")
+    $: previewRoute.shift();
 
     const urlGenerator = (pos) => {
         let routeUrl = "";
@@ -20,42 +24,42 @@
     }
 </script>
 
-<Container>
-    <div class="inline">
-        {#each localRoute as router, i}
-            <wrapper
+<div class="inline">
+    {#each previewRoute as router, i}
+        <wrapper
                 class:transitioning={$loading}
-                class:clickable={i < localRoute.length - 1}>
-                <div class="route" transition:fade>
-                    <h1 on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-                        } {router}
-                    </h1>
-                </div>
-            </wrapper>
-        {/each}
+                class:clickable={i < previewRoute.length - 1}>
+            <span transition:fade>
+                <h1 on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+                    <div>}</div> {router}
+                </h1>
+            </span>
+        </wrapper>
+    {/each}
 
-        {#if $loading}
-            <LoadingAnimation/>
-        {/if}
-    </div>
-</Container>
+    {#if $loading}
+        <LoadingBlinking/>
+    <!--    <LoadingShifting/>-->
+    {/if}
+</div>
 
 <style lang="scss">
     .inline {
-	    display: inline-table;
-	    vertical-align: middle;
+        margin: 0 var(--containerPadding) 17px var(--containerPadding);
 
-	    div {
-		    display: table-cell;
-		    padding-right: 10px;
+	    wrapper {
+		    &:not(:last-child){
+			    padding-right:  10px;
+            }
+        }
 
+	    span {
 		    h1 {
-			    margin: 0;
-			    text-wrap: none;
-
-                &.pointer {
-                    margin-top: -3px
-                }
+			    div {
+				    display:    inline-block;
+				    top:        -2px;
+				    position:   relative;
+			    }
             }
 
 		    img {
@@ -68,8 +72,8 @@
 
     wrapper {
 	    transition: opacity .3s ease-in-out;
-        display: inline-block;
-        position: relative;
+        display:    inline-block;
+        position:   relative;
 
 	    &.clickable {
 		    cursor: alias;

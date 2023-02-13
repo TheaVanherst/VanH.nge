@@ -28,8 +28,8 @@
 
 <style lang="scss">
 	.profileGraphic {
-        height: 500px;
-        margin-bottom: var(--containerPadding);
+        height:         500px;
+        margin-bottom:  var(--containerPadding);
 
         > img {
             height:     550px;
@@ -41,8 +41,8 @@
 	}
 
     .buttonWrapper, .prompt {
-        z-index: 100;
-        position: relative;
+        z-index:    100;
+        position:   relative;
     }
 
 	.prompt {
@@ -85,10 +85,10 @@
 
 	@keyframes float {
 		0% {    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.6);
-			    transform: translatey(0px);}
+			    transform:  translatey(0px);}
 		50% {   box-shadow: 0 25px 15px 0 rgba(0,0,0,0.2);
-			    transform: translatey(-20px);}
+			    transform:  translatey(-20px);}
 		100% {  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.6);
-			    transform: translatey(0px);}
+			    transform:  translatey(0px);}
 	}
 </style>

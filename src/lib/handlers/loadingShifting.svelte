@@ -1,8 +1,8 @@
 
-<span class="loader"></span>
+<div></div>
 
 <style lang="scss">
-	.loader {
+	div {
 		color:          #fff;
 		font-family: 	'Oswald', sans-serif;
 		font-weight:    bold;
@@ -12,7 +12,7 @@
 		opacity:        1;
 
 		&:before, &:after {
-			display: inline-block;
+			display:    inline-block;
 		}
 		&:before {
 			content:    "{";
