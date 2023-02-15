@@ -3,8 +3,8 @@
     export let label = "";
 </script>
 
-<div>
-    <label class="switch" on:click={() => bool = !bool}>
+<div on:click={() => bool = !bool}>
+    <label class="switch">
         <input type="checkbox" bind:checked={bool}/>
         <span class="slider"/>
     </label>

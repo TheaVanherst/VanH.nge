@@ -49,22 +49,22 @@
             div {
 	            font-family:    'Press Start 2P', cursive;
 	            font-weight:    bolder;
-	            color:          black;
 	            margin:         0 auto;
 	            width:          max-content;
 
 	            p {
-                    font-size:      20px;
 		            display:        inline-block;
 		            width:          max-content;
 
-		            animation: wave-text 1s ease-in-out infinite;
-
+		            color:          black;
+		            font-size:      20px;
 		            text-wrap:      none;
 		            text-shadow:
 				            -1px -1px 0 $textColour, 0px -1px 0 $textColour, 1px -1px 0 $textColour,
 				            -1px  1px 0 $textColour, 0px  1px 0 $textColour, 1px  1px 0 $textColour;
-	            }
+
+		            animation: wave-text 1s ease-in-out infinite;
+                }
 
 	            @for $i from 1 through 7 {
 		            p:nth-child(#{$i}) {

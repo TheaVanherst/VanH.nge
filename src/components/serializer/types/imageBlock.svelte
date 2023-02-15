@@ -24,7 +24,7 @@
     .soloParent:last-child {
         padding: 0px 5px 5px 5px;}
 
-    /* general CSS loading */
+    /* layout CSS loading */
 
     :global(soloImg div) {
         animation-duration: 2s;

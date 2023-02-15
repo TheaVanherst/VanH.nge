@@ -4,7 +4,9 @@
     export let push = null;
 </script>
 
-<a href={push} on:click={urlChanger(push)}>
+<a href={push}
+   class:clickable={!!push}
+   on:click={urlChanger(push)}>
     <p>
         <slot/>
     </p>

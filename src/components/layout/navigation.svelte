@@ -1,6 +1,6 @@
 <script>
     import navigation from '$stores/navigationDirectories.js'
-    import Button from '$components/generic/navigationButton.svelte';
+    import Button from '$components/layout/navigationButton.svelte';
     import Switch from '$components/generic/toggleSwitch.svelte'
 
     import { motion } from '$stores/accessibilityController'

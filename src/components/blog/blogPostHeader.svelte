@@ -69,8 +69,9 @@
             var(--contentPaddingY) calc(var(--containerPadding) + 34px);
 
 		p {
-            display: block;
-            width: 100%;
+            color:      var(--textColourInvert);
+            display:    block;
+            width:      100%;
 			&.createdOn {
 				font-size:      100%;}
 			&.updatedOn {
