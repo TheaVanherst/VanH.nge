@@ -25,7 +25,7 @@
 
     import Subscript        from './marks/subScript.svelte';
     import Superscript      from './marks/superScript.svelte';
-    import BlockQuote       from './marks/blockQuote.svelte';
+    import BlockQuote       from './block/blockQuote.svelte';
 
     import FloatCenter      from './marks/floatCenter.svelte';
     import FloatRight       from './marks/floatRight.svelte';

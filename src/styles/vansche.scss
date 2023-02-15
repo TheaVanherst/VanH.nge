@@ -1,8 +1,6 @@
 
 .fljs-Line {
     counter-increment:  section;
-    font-size:  13px;
-    padding:    2px 0;
 
     &:before {
         color:      #00ff3a;
@@ -15,7 +13,7 @@
     .highlight {
         width: 100%;
         display: inline-block;
-        background-color: rgba(94, 38, 249, 0.5);
+        background-color: rgba(24, 24, 24, 0.5);
     }
 }
 

@@ -24,7 +24,7 @@
                     authorhandle={post.author_handle}   authoruser={post.author_fullName}
                     editorhandle={post.editor_handle}   editoruser={post.editor_fullName}/>
             <TagModule
-                    time="{post._createdAt}"
+                    time="{post._createdAt}"    inline="{true}"
                     tags={post.catagory_tags}   tagsIds={post.catagory_id} />
             <div class="nonClickable">
                 <p class="description">

@@ -5,16 +5,24 @@
 <Container>
     <notice>
         <div class="warning">
-            <div><d>T</d><d>E</d><d>S</d><d>T</d><d>I</d><d>N</d><d>G</d></div>
+            <div>
+                <p>T</p><p>E</p><p>S</p><p>T</p><p>I</p><p>N</p><p>G</p>
+            </div>
         </div>
-        <n>Please note:</n>
-        <p>This site is currently in development - please do not take what you see as a true representation of the final site.</p>
+        <div class="body">
+            <p class="title">
+                Please note:
+            </p>
+            <p>
+                This site is currently in development - please do not take what you see as a true representation of the final site.
+            </p>
+        </div>
     </notice>
 </Container>
 <Container>
-    <p>
+    <cite>
         lol xd
-    </p>
+    </cite>
 </Container>
 
 
@@ -22,6 +30,7 @@
 	notice {
         display:    block;
         border:     1px solid var(--accent3);
+        font-size:  12px;
 		margin:     -5px;
 
 		.warning {
@@ -38,14 +47,14 @@
 			animation: barberpole 10s linear infinite;
 
             div {
-	            font:           20px 'Press Start 2P', cursive;
-	            line-height:    100%;
+	            font-family:    'Press Start 2P', cursive;
 	            font-weight:    bolder;
 	            color:          black;
 	            margin:         0 auto;
 	            width:          max-content;
 
-	            d {
+	            p {
+                    font-size:      20px;
 		            display:        inline-block;
 		            width:          max-content;
 
@@ -58,25 +67,25 @@
 	            }
 
 	            @for $i from 1 through 7 {
-		            d:nth-child(#{$i}) {
+		            p:nth-child(#{$i}) {
 			            animation-delay:  $i * 0.1s;
 		            }
 	            }
             }
 		}
 
-		> n {
-			width:              max-content;
-            text-decoration:    underline;
-			display:            block;
-		}
+        .body {
+            padding: 10px;
 
-        > *:not(div) {
-            color: var(--accent1);
+            > p {
+	            color:  var(--accent1);
+            }
 
-	        padding: 0px 10px 10px 10px;
-	        &:not(:last-child) {
-		        padding: 7px 10px 7px 10px;
+	        .title {
+		        width:              max-content;
+		        text-decoration:    underline;
+		        display:            block;
+                padding-bottom:     10px;
 	        }
         }
     }

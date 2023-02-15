@@ -68,18 +68,22 @@
     <div class="titleBar">
 
         <tab class="active">
-            <img class="languageIcon" src="{imgUrl}" alt=" ">
-            <p>
-                {fileName}.{language}
-                <x>✕</x>
-            </p>
+            <div>
+                <img class="languageIcon" src="{imgUrl}" alt=" ">
+            </div>
+            <div>
+                <p>
+                    {fileName}.{language}
+                    <x>✕</x>
+                </p>
+            </div>
         </tab>
 
         <copyTab
             class:glow={copiedBool} class:clicked={clickedBool} class:hovered={hoverBool}
             on:mouseleave={() => (hoverBool = false)} on:mouseenter={() => (hoverBool = true)}
             on:click={clicked}>
-            <p/>
+            <p></p>
             <div>
                 <img src="{clipboardIcon}" alt="Copy Icon">
             </div>
@@ -93,6 +97,8 @@
 </code>
 
 <style lang="scss">
+    // this is all dumb and needs recoding
+
     code {
         display:        block;
         margin:         0 0 10px 0;
@@ -123,7 +129,8 @@
             font-family:    Arial, serif;
             font-size:      11px;
 
-            padding:    6px 7px 6px 4px;
+            padding:    0 5px;
+            margin:     auto 0;
             display:    inline-flex;
         }
 
@@ -152,11 +159,12 @@
 	        color: var(--accent1);
 
 	        x {
-		        font-size: 7px;
-		        border-radius: 50%;
-		        text-align: center;
-		        padding: 0 3px;
-		        margin: 0 0 0 5px;
+		        font-size:      7px;
+		        text-align:     center;
+
+		        border-radius:  50%;
+		        padding:    0 3px;
+		        margin:     0 0 0 5px;
 
 		        &:hover {
 			        background: var(--backgroundAccent1);}}}
@@ -169,7 +177,7 @@
     }
 
     copyTab {
-        padding:    2px 2px 2px 7px;
+        padding:    2px;
         float:      right;
         cursor:     copy;
 
@@ -187,6 +195,7 @@
                 height:     inherit;}}
 
         p:before {
+	        color: var(--backgroundAccent2);
             content:    "Copy to clipboard";}
 
         .regularBut {
@@ -227,7 +236,7 @@
 
     .codeData {
         margin:     0 0 0 40px;
-        // padding:    5px 5px 5px 12px;
+         padding:   5px 2px;
         position:   relative;
 
         border-left:    1px solid var(--backgroundAccent1);
@@ -238,7 +247,7 @@
         color:          var(--backgroundAccent1);
         font-family:    Arial, serif;
         font-size:      11px;
-        padding:        6px 5px 4px;
+        padding:        5px;
         background:     var(--backgroundAccent2);
 
         &::selection {

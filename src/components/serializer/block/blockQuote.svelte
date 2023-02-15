@@ -9,12 +9,12 @@
 <div class="blockquote">
     <div class="line"></div>
     <div class="quote">
-        <span>
+        <label>
             {quote}
-        </span>
+        </label>
     </div>
     <div class="author">
-        <span>{author}</span>
+        <cite>{author}</cite>
         {#if cite}
             <a href={cite} target="_blank"><sup>[]</sup></a>
         {/if}
@@ -31,11 +31,12 @@
 		margin: 	5px 5px 15px 5px;
 
         .quote {
-	        font: 24px Georgia;
-            font-weight: bolder;
-
 	        background-image:   linear-gradient(45deg, var(--accent2), var(--accent4));
 	        background-size:    100%;
+
+	        font-family: Georgia, sans-serif!important;
+	        font-size: 24px!important;
+	        font-weight: bolder;
 
 	        -webkit-background-clip:    text;
 	        -webkit-text-fill-color:    transparent;
@@ -52,14 +53,7 @@
         }
 
 		.author {
-			font: 14px monospace;
-
-			display:    block;
-			position:   relative;
 			margin-top: 7px;
-
-			letter-spacing: 0.15em;
-			text-transform: uppercase;
         }
 
         .line {

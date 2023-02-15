@@ -4,21 +4,16 @@
 <style lang="scss">
 	div {
 		animation:      blinkUq .5s calc(0.2s) step-end infinite alternate;
-		border-right:   2px solid var(--textColour);
-
-		width:  min-content;
-        height: 40px;
-        top:    5px;
-        left:  -10px;
-
-        position:       relative;
 		vertical-align: top;
 		overflow:       hidden;
         display:        inline-block;
+		position:       relative;
+		border-right:   2px solid var(--textColour);
 
-		&::selection {
-			color: 				var(--accent1);
-			background-color: 	black;}
+		width:  min-content;
+		height: 32px;
+		top:    -0px;
+		left:  -16px;
 	}
 
 	@keyframes blinkUq {

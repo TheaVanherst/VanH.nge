@@ -26,12 +26,13 @@ $baseColour: 10px;
 
 	--fadedColour: 		#d8d5d5;
 	--fadedColourAcc: 	#c5c5c5;
-	--dropShadow:      rgba(0, 0, 0, 0.5);
+	--dropShadow:       rgba(0, 0, 0, 0.5);
 
 	--maxWidth: 		1080px;
 	--contentPaddingX: 	15px;
 	--contentPaddingY: 	10px;
 	--containerPadding: 15px;
+	--containerPaddingInv: calc(var(--containerPadding) * -1);
 
 	--imageSpacing:		5px;
 	--imageBlurring: 	3px;
@@ -78,28 +79,55 @@ body {
 a {
 	text-decoration: none;
 	color: var(--accent3);
-
-	&:hover {
-		text-decoration: underline;
-	}
 }
 
 p {
-	font-size:      15px;
-	line-height:    15px;
+	font-size:      14px;
+	line-height:    100%;
+	color:	 		var(--textColourInvert);
 	margin: 		0;}
+
 .postBody > *:last-child:not(h1, h2, h3, h4) {
 	padding: 0;
 }
 
 span {
-	margin: 0;
+	font-family:    monospace;
+	font-size:      12px;
+	line-height:    100%;
+	margin:         0;
+}
+
+blockQuote {
+	font-family:    Georgia, sans-serif;
+	line-height:    100%;
+
+	&:before {
+		color: 		var(--textColour)!important;
+		content: 	open-quote;}
+	&:after {
+		color: 		var(--textColour)!important;
+		content: 	close-quote;}
+}
+
+cite {
+	font-family:    monospace;
+	font-style:     normal;
+	line-height:    100%;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
 }
 
 h1, h2, h3, h4, h5 {
 	text-transform: capitalize;
+	vertical-align: middle;
 	font-family: 	'Oswald', sans-serif;
-	margin: 0;
+	line-height:    100%;
+
+	padding-bottom: var(--containerPadding);
+
+	position:   relative;
+	margin:     0;
 }
 
 h1 {font-size: 2rem;}

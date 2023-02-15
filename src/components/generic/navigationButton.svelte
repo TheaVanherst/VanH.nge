@@ -4,10 +4,12 @@
     export let push = null;
 </script>
 
-<div class:clickable={!!push} on:click={urlChanger(push)}>
-    <p>
-        <slot/>
-    </p>
+<div class:clickable={!!push}>
+    <a href={push} on:click={urlChanger(push)}>
+        <p>
+            <slot/>
+        </p>
+    </a>
 </div>
 
 <style lang="scss">
@@ -23,9 +25,10 @@
 	    padding:        7px;
         transition:     background .2s ease-in-out;
 
-        > p {
-	        line-height: 	12px;
-            margin: 0 auto;
+        > a {
+	        line-height:    12px;
+	        text-align:     center;
+            color:          var(--textColourInvert);
             width: min-content;
         }
 

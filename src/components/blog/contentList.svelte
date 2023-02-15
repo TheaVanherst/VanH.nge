@@ -52,6 +52,7 @@
     p {
 	    cursor:     alias;
 	    font:       15px monospace;
+	    color:      var(--textColour);
 	    padding:    0 0 4px 0;
 
 	    &:last-of-type {
