@@ -17,7 +17,6 @@
         display:    block;
 
         background-color:   var(--accent1);
-        color:              var(--textColourInvert);
         border-radius:      var(--innerRaidus);
 
         font: 14px monospace;
@@ -28,8 +27,11 @@
         > a {
 	        line-height:    12px;
 	        text-align:     center;
-            color:          var(--textColourInvert);
             width: min-content;
+
+            > p {
+	            color:          var(--textColourInvert);
+            }
         }
 
 	    &:not(:last-child){

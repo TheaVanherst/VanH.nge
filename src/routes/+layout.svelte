@@ -1,7 +1,7 @@
 <script>
 	import '../styles.scss';
 
-	import Route from "$components/general/routePreview.svelte"
+	import Route from "$components/general/route.svelte"
 	import Background from "$components/general/background.svelte"
 
 	import Navigation from "$components/general/navigation.svelte"

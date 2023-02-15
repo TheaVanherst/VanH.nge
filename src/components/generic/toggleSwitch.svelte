@@ -3,16 +3,19 @@
     export let label = "";
 </script>
 
-<label class="switch">
-    <input type="checkbox" bind:checked={bool}/>
-    <span class="slider"/>
-</label>
-<label>
-    {label}
-</label>
+<div>
+    <label class="switch" on:click={() => bool = !bool}>
+        <input type="checkbox" bind:checked={bool}/>
+        <span class="slider"/>
+    </label>
+    <label>
+        {label}
+    </label>
+</div>
 
 <style lang="scss">
     label {
+	    font-family:    monospace;
 	    display: inline-block;
     }
 
@@ -20,11 +23,12 @@
 		position: relative;
 		width: 42px;
 		height: 16px;
+		pointer-events: none;
 
         input {
-			opacity: 0;
-			width: 0;
-			height: 0;
+			opacity:    0;
+			width:      0;
+			height:     0;
 
 	        &:checked + .slider {
 		        background-color: var(--accent3);

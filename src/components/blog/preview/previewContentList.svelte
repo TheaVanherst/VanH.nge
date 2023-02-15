@@ -22,6 +22,7 @@
 
 	p {
 		cursor:     alias;
+		color:	 	var(--textColour);
 		font:       15px monospace;
 		padding:    0 0 4px 0;
 
