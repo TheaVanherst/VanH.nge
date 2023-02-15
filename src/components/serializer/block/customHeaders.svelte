@@ -29,5 +29,15 @@
 
 	    padding:	 	0 0 0 20px;
 	    margin:			0 0 var(--contentPaddingY) calc(var(--contentPaddingX) * -1);
+
+	    &:only-child {
+		    line-height: 	100%;
+		    margin:         0 0 5px 0;
+	    }
+
+	    &:not(:only-child) {
+		    line-height: 	120%;
+		    margin:			0 0 var(--contentPaddingY) 0;
+	    }
     }
 </style>

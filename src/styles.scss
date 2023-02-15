@@ -75,6 +75,15 @@ body {
 
 /* style formatting */
 
+a {
+	text-decoration: none;
+	color: var(--accent3);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 p {
 	font-size:      15px;
 	line-height:    15px;
@@ -83,18 +92,14 @@ p {
 	padding: 0;
 }
 
+span {
+	margin: 0;
+}
+
 h1, h2, h3, h4, h5 {
 	text-transform: capitalize;
 	font-family: 	'Oswald', sans-serif;
-
-	&:only-child {
-		line-height: 	100%;
-		margin:         0 0 5px 0;
-	}
-	&:not(:only-child) {
-		line-height: 	120%;
-		margin:			0 0 var(--contentPaddingY) 0;
-	}
+	margin: 0;
 }
 
 h1 {font-size: 2rem;}
@@ -107,38 +112,12 @@ h5 {font-size: 1.1rem;}
 
 strong {
 	color:			var(--accent4);
-	font-weight: 	800;
+	font-weight: 	bolder;
 	line-height: 	100%;
 
 	&::selection {
 		color: 				var(--background);
 		background-color: 	var(--accent4)}
-}
-
-blockquote {
-	padding: 	3px 6px 3px 6px;
-	margin: 	0 5px 10px 5px;
-	font-style: italic;
-	border-radius: 		5px;
-	border: 			1px solid var(--darkAccent1);
-	border-left: 		2px solid var(--accent1);
-	background-color: 	var(--backgroundAccent2);
-
-	&:before {
-		color: 		var(--fadedColourAcc);
-		content: 	open-quote;
-		font-size: 	2em;
-		margin:		0 0.15em 0 -0.15;
-		line-height: 	0.1em;
-		vertical-align:-0.2em;}
-	&:after {
-		margin: 	0.80em 0.00em -0.15em 0.05em;
-		color: 		var(--fadedColourAcc);
-		content: 	close-quote;
-		float: 		right;
-
-		font-size: 		2em;
-		line-height: 	0.05em;}
 }
 
 sub, sup {

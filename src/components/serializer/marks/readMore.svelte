@@ -1,21 +1,41 @@
 <script>
     export let portableText = null;
 
-    let bool = false;
+    let moreBool = false;
     const readMore = () => {
-        bool ^= true;
+        hoverBool = false;
+        moreBool ^= true;
     }
+
+    let hoverBool = false;
 </script>
 
 <readMore>
-    {#if bool}
+    {#if moreBool}
         <p class="more">
             <slot/>
         </p>
+        <p class={hoverBool ? 'label hov show' : 'label show'}
+           on:mouseenter={() => hoverBool = true}
+           on:mouseleave={() => hoverBool = false}
+           on:click={readMore}>
+            Click here to refold.
+        </p>
+    {:else}
+        <p class={hoverBool ? 'label hov hide' : 'label hide'}
+           on:mouseenter={() => hoverBool = true}
+           on:mouseleave={() => hoverBool = false}
+           on:click={readMore}>
+            Click to read more...
+        </p>
     {/if}
 
-    <div class="Pre" on:click={readMore}>
-        {#if !bool}
+    <div class={hoverBool ? 'pre hov' : 'pre'}
+         on:mouseenter={() => hoverBool = true}
+         on:mouseleave={() => hoverBool = false}
+         on:click={readMore}>
+
+        {#if !moreBool}
             <img src="/icons/expand.webp">
         {:else}
             <img src="/icons/fold.webp">
@@ -29,45 +49,59 @@
         display:    block;
         position:   relative;
 
-        .more {
-	        border-left: 1px solid var(--accent4);
-	        padding: 2px 0 0 var(--contentPaddingX);
-            margin-left: -16px;
+        .label {
+	        font-weight: 	bold;
+	        transition:     color 0.3s ease-in-out;
 
-	        &::selection {
-		        color: 				var(--background);
-		        background-color: 	var(--accent4)}
+            &.show {
+	            color:      var(--accent2);
+            }
 
-            ~ div {
-                cursor:             zoom-out;
-                background-color:   var(--accent4);
-	            margin:            -16px 0 0 -25px;
-
-                top: 100%;
-
-	            &:hover {
-		            background-color: var(--darkAccent1);
-	            }
+            &.hide {
+	            color: var(--accent1);
             }
         }
 
+        .more {
+	        border-left:    1px solid var(--accent2);
+	        padding:        0 0 5px var(--contentPaddingX);
+            margin-left:    -16px;
+
+	        &::selection {
+		        color: 				var(--background);
+		        background-color: 	var(--accent2);
+            }
+
+            ~ div {
+                cursor:             zoom-out;
+                background-color:   var(--accent2);
+	            margin:            -16px 0 0 -25px;
+
+                top: 100%;
+            }
+        }
+
+	    .hov {
+		    &.pre {
+			    background-color: var(--accent4);
+		    }
+		    &.label {
+			    color:  var(--accent4);
+		    }
+	    }
+
         div {
-	        display:    inline-flex;
-            overflow:   hidden;
             position:   absolute;
+	        margin:     9px 0 0 -25px;
+	        top:        -12px;
 
-	        border:             2px solid black;
-	        border-radius:      50%;
+	        border:         2px solid black;
+	        border-radius:  50%;
+	        cursor:         zoom-in;
 
-	        width:      15px;
-	        height:     15px;
+	        background:     var(--accent1);
 
-	        cursor:             zoom-in;
-	        background-color:   var(--accent1);
-	        margin:            -6px 0 0 -25px;
-            top:               -12px;
-
-            transition: background-color 0.3s ease-in-out,
+            transition: background 0.3s ease-in-out,
                         margin 0.5s ease-out,
                         top 0.3s ease-out;
 
@@ -78,7 +112,7 @@
             }
 
             &:hover {
-                background-color: var(--darkAccent4);
+                background-color: var(--darkAccent2);
             }
         }
     }

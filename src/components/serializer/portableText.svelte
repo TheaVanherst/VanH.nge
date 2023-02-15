@@ -4,7 +4,6 @@
     /* BLOCKS */
     import CustomText       from './block/customText.svelte';
     import CustomHeading    from './block/customHeaders.svelte';
-    import CustomBlockQuote from './block/customBlockQuote.svelte';
 
     /* TYPES */
     import CodeBlock        from './types/codeBlock.svelte';
@@ -30,7 +29,9 @@
 
     import FloatCenter      from './marks/floatCenter.svelte';
     import FloatRight       from './marks/floatRight.svelte';
+
     import ReadMore         from './marks/readMore.svelte';
+    import Accents          from './marks/accentTones.svelte';
 
     export let postData;
 </script>
@@ -45,6 +46,7 @@
                 image:      ImageBlock,
                 gallery:    ImageGallery,
                 separator:  separator,
+                blockquote: BlockQuote,
             },
             block: {
                 normal:     CustomText,
@@ -52,18 +54,20 @@
                 h2:         CustomHeading,
                 h3:         CustomHeading,
                 h4:         CustomHeading,
-                blockquote: CustomBlockQuote
             },
             marks: {
                 link:           Link,
                 codesnippet:    CodeSnippet,
-                highlight:      Highlight,
+
                 subscript:      Subscript,
                 superscript:    Superscript,
+
                 floatright:     FloatRight,
                 floatcenter:    FloatCenter,
-                blockquote:     BlockQuote,
+
                 readmore:       ReadMore,
+                accent:         Accents,
+                highlight:      Highlight,
             },
             list: {
                 bullet:     Wrapper,
