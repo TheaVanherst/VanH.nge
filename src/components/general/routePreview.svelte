@@ -36,7 +36,7 @@
         </wrapper>
     {/each}
 
-    {#if $loading}
+    {#if !$loading}
         <LoadingBlinking/>
     {/if}
 </div>

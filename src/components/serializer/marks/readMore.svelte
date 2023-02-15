@@ -5,9 +5,10 @@
     const readMore = () => {
         hoverBool = false;
         moreBool ^= true;
-    }
+    };
 
     let hoverBool = false;
+    //there's probably a better way of dealing with this tbh.
 </script>
 
 <readMore>

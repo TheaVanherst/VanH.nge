@@ -1,10 +1,9 @@
 <script>
-    export let portableText = null;
+    export let portableText = "";
 
     let quote = portableText.value.quote;
     let author = portableText.value.author;
     let cite = portableText.value.cite;
-    console.log(portableText);
 </script>
 
 <div class="blockquote">

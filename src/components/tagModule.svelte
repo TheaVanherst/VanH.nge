@@ -13,7 +13,9 @@
 
 <tags>
     {#if relativeTime(new Date(time))}
-        <tag class="new">NEW</tag>
+        <div class="new">
+            <tag>NEW</tag>
+        </div>
     {/if}
     {#each tags as tag, i}
         <tag class:highlight={tagsIds[i] === tagHighlight}>{tag}</tag>
@@ -23,10 +25,14 @@
 <style lang="scss">
     tags {
         width: calc(100% + var(--containerPadding));
-        display:    inline-block;
+	    display:    inline-flex;
 	    font-size: 0;
 
-        > tag {
+        > * {
+	        margin:     0 var(--contentPaddingX) var(--contentPaddingY) 0;
+        }
+
+        tag {
 		    font-family: 	'Lucida Console', sans-serif;
 		    font-size:      12px;
 		    line-height:    12px; /* required because emoji handling lol */
@@ -37,33 +43,43 @@
 
 		    display:    inline-flex;
 		    padding:    7px var(--containerPadding) 4px var(--containerPadding);
-		    margin:     0 var(--contentPaddingX) var(--contentPaddingY) 0;
 		    border:     1px solid var(--accent1);
 
-            &:last-of-type {
-	            margin:    0 var(--contentPaddingX) var(--containerPadding) 0;}
-
 		    &:hover {
-			    cursor:         pointer;
-			    color:          var(--textColourInvert);
-			    background-color: var(--accent1);}
+			    cursor:         pointer;}
 		    &:hover::selection {
-			    color: 				var(--accent1);
-			    background-color: 	var(--background);
+			    color: 		var(--accent1);
+			    background: var(--background);
             }
+        }
+
+        > tag {
+	        &:hover {
+		        color:      var(--textColourInvert);
+		        background: var(--accent1);}
         }
     }
 
     .new {
-        background: linear-gradient(-45deg, var(--accent3), var(--accent4), var(--accent2));
-        background-size: 800% 800%;
-	    border:     1px solid var(--accent3);
+        background: linear-gradient(-45deg, var(--accent2), var(--accent3), var(--accent4));
+        background-size:     800% 800%;
 	    animation:  gradient 15s ease infinite;
+
+        width: min-content;
+        border-radius: calc(var(--innerRaidus) + 1px);
+
+	    border:     none;
+	    padding:    1px;
 
         color:      white;
         font-weight: 800;
 
+        > tag {
+            border: none;
+        }
+
         &:hover {
+            border-color: var(--accent1)!important;
 	        animation:  wiggle 0.5s ease infinite;
         }
     }

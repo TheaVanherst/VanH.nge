@@ -6,14 +6,14 @@
 		animation:      blinkUq .5s calc(0.2s) step-end infinite alternate;
 		border-right:   2px solid var(--textColour);
 
-        height: 35px;
-        margin: 0 0 0 -10px;
-        top:    0;
+		width:  min-content;
+        height: 40px;
+        top:    5px;
+        left:  -10px;
 
         position:       relative;
 		vertical-align: top;
 		overflow:       hidden;
-        width:          min-content;
         display:        inline-block;
 
 		&::selection {
