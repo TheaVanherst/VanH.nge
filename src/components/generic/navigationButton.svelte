@@ -4,16 +4,14 @@
     export let push = null;
 </script>
 
-<div class:clickable={!!push}>
-    <a href={push} on:click={urlChanger(push)}>
-        <p>
-            <slot/>
-        </p>
-    </a>
-</div>
+<a href={push} on:click={urlChanger(push)}>
+    <p>
+        <slot/>
+    </p>
+</a>
 
 <style lang="scss">
-    div {
+    a {
         display:    block;
 
         background-color:   var(--accent1);
@@ -24,15 +22,12 @@
 	    padding:        7px;
         transition:     background .2s ease-in-out;
 
-        > a {
-	        line-height:    12px;
-	        text-align:     center;
-            width: min-content;
-
-            > p {
-	            color:          var(--textColourInvert);
-            }
-        }
+	    > p {
+		    line-height:    12px;
+		    text-align:     center;
+		    width:          100%;
+		    color:          var(--textColourInvert);
+	    }
 
 	    &:not(:last-child){
 		    margin-bottom: 10px;
