@@ -12,31 +12,34 @@
 </script>
 
 <Container hoverBool="{true}">
-    <div class="post" id="post-{post.slug}" on:click={urlChanger("/blog/" + post.slug)}>
-        <div class="readMore">
-            <img src="/icons/downArrowPreview.webp">
+    <a href={'/blog/' + post.slug} on:click={urlChanger("/blog/" + post.slug)}>
+        <div class="post" id="post-{post.slug}">
+            <div class="readMore">
+                <img src="/icons/downArrowPreview.webp">
+            </div>
+            <TitleModule
+                    titleHeader="{post.headerImage}"	title="{post.title}"/>
+            <HeaderModule
+                    createdOn={post._createdAt} 		updatedOn={post._updatedAt}
+                    authorhandle={post.author_handle}   authoruser={post.author_fullName}
+                    editorhandle={post.editor_handle}   editoruser={post.editor_fullName}/>
+            <TagModule
+                    time="{post._createdAt}"
+                    tags={post.catagory_tags}   tagsIds={post.catagory_id} />
+            <div class="nonClickable">
+                <p class="description">
+                    {post?.description}
+                </p>
+                <PostModule
+                        postData="{post?.body}"/>
+            </div>
         </div>
-        <TitleModule
-                titleHeader="{post.headerImage}"	title="{post.title}"/>
-        <HeaderModule
-                createdOn={post._createdAt} 		updatedOn={post._updatedAt}
-                authorhandle={post.author_handle}   authoruser={post.author_fullName}
-                editorhandle={post.editor_handle}   editoruser={post.editor_fullName}/>
-        <TagModule
-                time="{post._createdAt}"
-                tags={post.catagory_tags}   tagsIds={post.catagory_id} />
-        <div class="nonClickable">
-            <p class="description">
-                {post?.description}
-            </p>
-            <PostModule
-                    postData="{post?.body}"/>
-        </div>
-    </div>
+    </a>
 </Container>
 
 <style lang="scss">
 	* {
+        color: white;
 		text-decoration: none!important;
 	}
 
