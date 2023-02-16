@@ -1,6 +1,7 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    export let push
+    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
+    export let push, comments;
 </script>
 
 <div class="dynamicVertical">
@@ -14,6 +15,10 @@
         </div>
     {/each}
 </div>
+
+{#if comments}
+    <CommentBlock push={push} req="dynamicVertical"/>
+{/if}
 
 <style lang="scss">
 	.dynamicVertical {

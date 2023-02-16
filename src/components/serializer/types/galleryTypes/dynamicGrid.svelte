@@ -1,6 +1,7 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    export let push
+    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
+    export let push, comments, type;
 </script>
 
 <div class="dynamicGrid">
@@ -15,27 +16,31 @@
     {/each}
 </div>
 
+{#if comments}
+    <CommentBlock push={push} req="dynamicGrid"/>
+{/if}
+
 <style lang="scss">
 	.dynamicGrid {
 		margin-bottom:  var(--contentPaddingY);
+	}
 
-		.row {
-			display: inline-flex;
-			gap: var(--imageSpacing);
-			vertical-align: bottom;
+	.row {
+		display: inline-flex;
+		gap: var(--imageSpacing);
+		vertical-align: bottom;
 
-            &:not(:last-of-type) {
-	            padding-bottom: var(--imageSpacing);}
+		&:not(:last-of-type) {
+			padding-bottom: var(--imageSpacing);}
 
-			.col {
-				background-color:   var(--backgroundAccent2);
-				border-radius:      var(--innerRaidus);
-				overflow:           hidden;
+		.col {
+			background-color:   var(--backgroundAccent2);
+			border-radius:      var(--innerRaidus);
+			overflow:           hidden;
 
-                &:not(:only-child) {
-	                max-width: 60%;
-                }
-            }
-        }
-    }
+			&:not(:only-child) {
+				max-width: 60%;
+			}
+		}
+	}
 </style>

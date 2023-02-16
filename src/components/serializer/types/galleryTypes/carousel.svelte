@@ -1,5 +1,6 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
+    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
 
     let randomId = Math.floor(Math.random() * 999);
 
@@ -16,7 +17,7 @@
         document.querySelector("#a"+randomId+"-"+(Math.round(x / containerWidth))).classList.add("active");
     }
 
-    export let push
+    export let push, comments;
 </script>
 
 <!-- TODO: something in this document relating to the width / display type
@@ -46,6 +47,10 @@
         {/each}
     </div>
 </div>
+
+{#if comments}
+    <CommentBlock push={push} req="carousel"/>
+{/if}
 
 <style lang="scss">
 	.carousel {

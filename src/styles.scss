@@ -24,7 +24,7 @@ $baseColour: 10px;
 	--textColour: 			#efefef;
 	--textColourInvert:	 	#000;
 
-	--fadedColour: 		#d8d5d5;
+	--fadedColour:      #7e7e7e;
 	--fadedColourAcc: 	#c5c5c5;
 	--dropShadow:       rgba(0, 0, 0, 0.5);
 
@@ -185,6 +185,14 @@ ul {
 		list-style-type: 	lower-latin;
 		&::marker {
 			color: 	var(--accent2);}}
+}
+
+.GalleryCite {
+	margin: 0 var(--contentPaddingX) var(--contentPaddingY) var(--contentPaddingX);
+
+	span {
+		color: var(--fadedColour);
+	}
 }
 
 /* layout animation presetting */

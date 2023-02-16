@@ -1,6 +1,7 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    export let push
+    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
+    export let push, comments;
 </script>
 
 <div class="table">
@@ -12,6 +13,10 @@
         {/each}
     </div>
 </div>
+
+{#if comments}
+    <CommentBlock push={push} req="scroll"/>
+{/if}
 
 <style lang="scss">
 	.table {

@@ -179,10 +179,14 @@ export default defineType({
               validation: Rule => [Rule.max(30).warning('30 characters or less')]
             },{
               name: 'citeURL',  title: 'citation url', type: 'string'
-            },
-
+            }
           ],
         }],
+      },{
+        name: 'comments', title: 'Comments enabled',
+        type: 'boolean',
+        initialValue: false,
+        description: 'Enable comments under the gallery?',
       },{
         name: 'display',  title: 'Display as',
         type: 'string',

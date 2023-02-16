@@ -1,7 +1,10 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    export let push
+    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
+
     let randomId = Math.floor(Math.random() * 999);
+
+    export let push, comments;
 </script>
 
 <div class="dynamicInline" style="--yWid:{push.length}">
@@ -20,6 +23,10 @@
         </label>
     {/each}
 </div>
+
+{#if comments}
+    <CommentBlock push={push} req="dynamicInline"/>
+{/if}
 
 <style lang="scss">
 	.dynamicInline {
