@@ -14,7 +14,7 @@
 
         for (const i in push){
             if (push[i].alt) {
-                commentPush[0][i] = [NumArr[i] + "image: " + push[i].alt, push[i].citeURL];}}};
+                commentPush[0][i] = [NumArr[i] + "image: ", push[i].alt, push[i].citeURL];}}};
 
     const dynamicGrid = () => {
         for (const i in push) {
