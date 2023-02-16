@@ -71,3 +71,11 @@
         {/each}
     </div>
 {/each}
+
+<style lang="scss">
+	a {
+        &:hover {
+	        text-decoration: underline 1px;
+        }
+	}
+</style>
