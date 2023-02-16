@@ -188,6 +188,7 @@ export default defineType({
         type: 'string',
         initialValue:
           { title: 'Stacked',           value: 'vertical'},
+        validation: Rule => Rule.required(),
         options: {
           list: [
             {title: 'Stacked',          value: 'vertical'},
@@ -198,7 +199,6 @@ export default defineType({
             {title: 'Scroll',           value: 'scroll'},
             {title: 'Carousel',         value: 'carousel'},
           ],
-          validation: Rule => Rule.required(),
           layout: 'dropdown',
         },
       },{

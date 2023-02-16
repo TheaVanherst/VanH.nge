@@ -53,7 +53,7 @@
 	            height: 100%;
 	            margin: 0 auto;
 
-	            background:     var(--background);
+	            background:     var(--backgroundAccent2);
 	            border-radius:  var(--innerRaidus);
 	            overflow:       hidden;
 
