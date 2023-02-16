@@ -1,17 +1,19 @@
 <script>
     import {createdPush, updatedPush} from "../../dateBuilder.js"
 
-    export let createdOn = null, updatedOn = null;
+    export let createdOn = null, updatedOn = null, publishedOn = null;
     export let authoruser = null, editoruser = null;
+
+    let publishDate = publishedOn ? publishedOn : createdOn;
 </script>
 
 
 <header>
     <div class="userData">
         {#if updatedOn}
-            <span class="updatedOn">{updatedPush(updatedOn, createdOn)}</span>
+            <span class="updatedOn">{updatedPush(updatedOn, publishDate)}</span>
         {:else}
-            <span class="createdOn">{createdPush(createdOn, "shortDate")}</span>
+            <span class="createdOn">{createdPush(publishDate, "shortDate")}</span>
         {/if}
         <span>by</span>
         {#if editoruser}

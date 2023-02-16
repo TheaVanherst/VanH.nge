@@ -31,8 +31,7 @@ $baseColour: 10px;
 	--maxWidth: 		1080px;
 	--contentPaddingX: 	15px;
 	--contentPaddingY: 	10px;
-	--containerPadding: 15px;
-	--containerPaddingInv: calc(var(--containerPadding) * -1);
+	--containerPadding: 15px;   --containerPaddingInv: -15px;
 
 	--imageSpacing:		5px;
 	--imageBlurring: 	3px;
@@ -88,15 +87,16 @@ p {
 	margin: 		0;
 }
 
-.postBody > *:last-child:not(h1, h2, h3, h4) {
-	padding: 0;
-}
-
 span {
 	font-family:    monospace;
 	font-size:      12px;
+	white-space:    nowrap;
 	line-height:    100%;
 	margin:         0;
+}
+
+.inline {
+	white-space: nowrap!important;
 }
 
 blockQuote {

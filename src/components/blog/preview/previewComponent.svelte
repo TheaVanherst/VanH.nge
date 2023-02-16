@@ -2,7 +2,7 @@
     import HeaderModule from "./previewHeader.svelte"
     import TitleModule from "../postHeader.svelte"
     import PostModule from "../../serializer/portableText.svelte"
-    import TagModule from "../../tagModule.svelte"
+    import TagModule from "../../generic/tagModule.svelte"
 
     import Container from "$components/generic/container.svelte";
 
@@ -20,7 +20,7 @@
             <TitleModule
                     titleHeader="{post.headerImage}"	title="{post.title}"/>
             <HeaderModule
-                    createdOn={post._createdAt} 		updatedOn={post._updatedAt}
+                    createdOn={post._createdAt} 		updatedOn={post._updatedAt}         publishedOn={post.publishedAt}
                     authorhandle={post.author_handle}   authoruser={post.author_fullName}
                     editorhandle={post.editor_handle}   editoruser={post.editor_fullName}/>
             <TagModule

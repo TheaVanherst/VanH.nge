@@ -8,6 +8,7 @@ let query =
         
         _createdAt,
         _updatedAt,
+        publishedAt,
         'catagory_tags': categories[]->title,
         'catagory_id': categories[]->_id,
     

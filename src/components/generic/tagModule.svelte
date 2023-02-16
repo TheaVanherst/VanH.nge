@@ -17,11 +17,9 @@
 <div class="tags {inline ? 'inline' : ''}">
     {#if relativeTime(new Date(time))}
         <div class="tag new">
-            <div class="category">
-                <span>
-                    NEW
-                </span>
-            </div>
+            <span>
+                NEW
+            </span>
         </div>
     {/if}
     {#each tags as tag, i}
@@ -34,14 +32,6 @@
 </div>
 
 <style lang="scss">
-    span {
-	    white-space: nowrap;
-    }
-
-    .inline {
-	    white-space: nowrap!important;
-    }
-
     .tags {
         width:     calc(100% + var(--containerPadding));
 	    white-space: normal;
@@ -49,8 +39,10 @@
 
         .tag {
 	        margin:         0 var(--contentPaddingX) var(--contentPaddingY) 0;
+	        padding:        5px var(--containerPadding);
+	        border-radius:  calc(var(--innerRaidus) - 1px);
 	        display:        inline-flex;
-	        transition:     background 0.5s;
+	        transition:     background 0.3s;
 
 	        font-family:    monospace;
 	        font-size:      12px;
@@ -58,9 +50,7 @@
         }
 
         .category {
-	        padding:        5px var(--containerPadding);
 	        background:     var(--background);
-	        border-radius:  calc(var(--innerRaidus) - 1px);
 
             &.tag {
 	            border: 1px solid var(--accent1);
@@ -81,33 +71,25 @@
     }
 
     .new {
-        background: linear-gradient(-45deg, var(--accent2), var(--accent3), var(--accent4));
-        background-size:     800% 800%;
-	    animation:  gradient 15s ease infinite;
+        background:         linear-gradient(-45deg, var(--accent1), var(--accent3), var(--accent4));
+        background-size:    800% 800%;
+	    animation:          gradient 15s ease infinite;
 
 	    border-radius:  var(--innerRaidus);
-	    border:         none;
-	    padding:        1px;
-
-        > .category {
-            border: none;
-        }
+        color:          var(--textColourInvert);
 
         &:hover {
-            border-color: var(--accent1)!important;
-	        animation:  wiggle 0.5s ease infinite;
+	        animation:      wiggle 0.5s ease infinite, gradient 15s ease infinite;
         }
     }
 
 
     .highlight {
-	    border:     1px solid var(--accent3)!important;
+	    border: 1px solid var(--accent3)!important;
 
         &:hover {
-	         background-color: var(--accent3)!important;
-        }
+	         background-color:  var(--accent3)!important;}
 	    &:hover::selection {
-		    color: 				var(--accent3)!important;
-	    }
+		    color: 				var(--accent3)!important;}
     }
 </style>

@@ -7,6 +7,7 @@ let query =
         
         _createdAt,
         _updatedAt,
+        publishedAt,
     
         'author_fullName': author->fullName,
         'editor_fullName': editor->fullName,

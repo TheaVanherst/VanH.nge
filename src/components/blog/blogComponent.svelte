@@ -1,7 +1,7 @@
 <script>
     import TitleModule from "./postHeader.svelte"
     import PostHeader from "./blogPostHeader.svelte"
-    import TagModule from "../tagModule.svelte"
+    import TagModule from "../generic/tagModule.svelte"
     import PostModule from "../serializer/portableText.svelte"
 
     import Container from "$components/generic/container.svelte";
@@ -14,7 +14,7 @@
         <TitleModule
                 titleHeader="{post.headerImage}"	title="{post.title}"/>
         <PostHeader
-                createdOn="{post._createdAt}" 		updatedOn="{post._updatedAt}"
+                createdOn="{post._createdAt}" 		updatedOn="{post._updatedAt}"       publishedOn={post.publishedAt}
                 editorHandle={post.author_handle} 	editorUser={post.author_fullName}	editorTwitter={post.editor_twitter} 	editorImage={post.author_portrait}
                 authorHandle={post.author_handle} 	authorUser={post.author_fullName}  	authorTwitter={post.author_twitter} 	authorImage={post.author_portrait}
                 title="{post.title}"/>

@@ -1,6 +1,6 @@
 <script>
     import SanityImage  from '../serializer/imageBuilder.svelte'
-    import AuthorTag    from '../authorTag.svelte'
+    import AuthorTag    from '../generic/authorTag.svelte'
 
     export let createdOn = null, updatedOn = null;
     import {createdPush, updatedPush} from "../dateBuilder.js"
