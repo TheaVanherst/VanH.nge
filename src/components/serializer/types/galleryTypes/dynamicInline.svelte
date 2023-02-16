@@ -9,8 +9,13 @@
         <input type="radio" name="radio-{randomId}" checked={e === 0} id="{randomId}-{e}"/>
 
         <label for="{randomId}-{e}">
-            <div class="col">
+            <div class="fade">
                 <SanityImage image={image}/>
+            </div>
+            <div class="wrapper">
+                <div class="col">
+                    <SanityImage image={image}/>
+                </div>
             </div>
         </label>
     {/each}
@@ -18,60 +23,77 @@
 
 <style lang="scss">
 	.dynamicInline {
-		border-radius:  var(--outerRadius);
+		border-radius:  var(--innerRaidus);
+		overflow:           hidden;
+
 		margin-bottom:  var(--contentPaddingY);
 		gap:            var(--imageSpacing);
 
-		overflow:           hidden;
 		vertical-align:     bottom;
 		justify-content:    center;
         display:            flex;
 
         label {
-	        min-width:  calc(100% / var(--yWid));
-	        max-width:  calc(100% / var(--yWid));
+	        height:     500px;
+            position:   relative;
 	        overflow:   hidden;
-	        transition: min-width .4s, max-width .5s, opacity .5s;
+	        transition: min-width .4s ease-in-out, max-width .4s ease-in-out;
 
-	        .col {
-		        background-color:   var(--backgroundAccent1);
-		        border-radius:      var(--innerRaidus);
+	        .fade {
+		        position:   absolute;
+		        width:      500px;
+		        height:     fit-content;
 
-		        filter: blur(var(--imageBlurring));
-		        opacity:    0.6;
-		        scale:      1.025;
+		        opacity:    0.2;
+		        filter:     blur(10px);
+	        }
 
-		        transition:         opacity .6s, filter .4s, scale 2s ease-out;
-		        -webkit-transition: opacity .6s, filter .4s, scale 2s ease-out;
-		        -moz-transition:    opacity .6s, filter .4s, scale 2s ease-out;
-		        -ms-transition:     opacity .6s, filter .4s, scale 2s ease-out;
-		        -o-transition:      opacity .6s, filter .4s, scale 2s ease-out;
+            .wrapper {
+	            width:  100%;
+	            height: 100%;
+	            margin: 0 auto;
 
-		        display:    inline-flex;
-		        width:      100%;
-		        height:     100%;}}
+	            background:     var(--background);
+	            border-radius:  var(--innerRaidus);
+	            overflow:       hidden;
+
+	            .col {
+		            border-radius:      var(--innerRaidus);
+		            overflow:           hidden;
+
+		            display:    block;
+		            margin:     0 auto;
+		            width:      fit-content;
+		            height:     100%;
+	            }
+            }
+        }
 
 		input {
 			position: absolute;
 			opacity: 0;
 
-			&:checked {
-				+ label {
-					min-width:  calc(100% - (12.5% * var(--yWid)));
-					max-width:  calc(100% - (12.5% * var(--yWid)));
+			&:checked + label {
+				min-width:  calc(100% - (10% * var(--yWid)));
+				max-width:  calc(100% - (10% * var(--yWid)));
+				.col {
+					filter: none;
+				}
+
+				opacity: 1;
+            }
+			&:not(:checked) + label {
+				min-width:  100px;
+
+				&:hover {
+					min-width:  30.0%;
+					max-width:  50.0%;
 					.col {
-						opacity:    1;
-						filter:     none}
+						filter:     none;
+					}
+                }
+            }
+        }
 
-					opacity: 1;}}
-			&:not(:checked) {
-				+ label {
-					min-width:  100px;
-
-					&:hover {
-						min-width:  30.0%;
-						max-width:  40.0%;
-						.col {
-							opacity:    0.8;
-							filter:     none}}}}}}
+    }
 </style>

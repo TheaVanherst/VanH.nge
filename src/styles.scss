@@ -85,7 +85,8 @@ p {
 	font-size:      14px;
 	line-height:    100%;
 	color:	 		var(--textColour);
-	margin: 		0;}
+	margin: 		0;
+}
 
 .postBody > *:last-child:not(h1, h2, h3, h4) {
 	padding: 0;
@@ -155,31 +156,32 @@ sub, sup {
 /* list formatting */
 
 ul {
-	margin: 	0;
-	padding: 	0 10px 10px 32px;
 
 	li {
 		padding: 0 0 5px 5px;
-		line-height: 100%;}
-	li::marker {
-		font-weight: 	700;
-		line-height: 	100%;
-		vertical-align: middle;
-		font-size: 	   .85em;
-		width: 			1em;}
+		line-height: 100%;
 
-	&.bullet	li {
+		&::marker {
+			font-weight: 	700;
+			line-height: 	100%;
+			vertical-align: middle;
+			font-size: 	   .85em;
+			width: 			1em;
+		}
+	}
+
+	&.bullet li {
 		&::marker {
 			color: 	var(--accent1);} }
-	&.number 	li {
+	&.number li {
 		list-style-type: 	decimal;
 		&::marker {
 			color: 	var(--accent3);}}
-	&.numeral 	li {
+	&.numeral li {
 		list-style-type: 	lower-roman;
 		&::marker {
 			color: 	var(--accent4);}}
-	&.letter 	li {
+	&.letter li {
 		list-style-type: 	lower-latin;
 		&::marker {
 			color: 	var(--accent2);}}

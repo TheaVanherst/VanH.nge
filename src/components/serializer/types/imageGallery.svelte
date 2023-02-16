@@ -55,7 +55,12 @@
                 break;
             case "vertical":
                 imageArray = value.images
-                returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default;
+                returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
+                break;
+            default:
+                imageArray = value.images
+                returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
+                break;
         }
     });
 </script>

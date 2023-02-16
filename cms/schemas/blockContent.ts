@@ -170,16 +170,24 @@ export default defineType({
           options: {
             hotspot: true,
           },
-          fields: [{
-            name: 'alt',  title: 'Alternative text',
-            type: 'string',
-            validation: Rule => [Rule.max(50).warning('30 characters or less')]
-          }],
+          fields: [
+            {
+              name: 'alt',  title: 'Alternative text', type: 'string',
+              validation: Rule => [Rule.max(50).warning('50 characters or less')]
+            },{
+              name: 'citation',  title: 'citation title', type: 'string',
+              validation: Rule => [Rule.max(30).warning('30 characters or less')]
+            },{
+              name: 'citeURL',  title: 'citation url', type: 'string'
+            },
+
+          ],
         }],
       },{
         name: 'display',  title: 'Display as',
         type: 'string',
-        initialValue: "dynamicvertical",
+        initialValue:
+          { title: 'Stacked',           value: 'vertical'},
         options: {
           list: [
             {title: 'Stacked',          value: 'vertical'},
@@ -190,7 +198,8 @@ export default defineType({
             {title: 'Scroll',           value: 'scroll'},
             {title: 'Carousel',         value: 'carousel'},
           ],
-          layout: 'radio',
+          validation: Rule => Rule.required(),
+          layout: 'dropdown',
         },
       },{
         name: 'zoom',     title: 'Zoom enabled',
