@@ -21,7 +21,7 @@
 
 <page>
 	<main>
-		<div class="col1 col">
+		<div class="nav col">
 			<Navigation data={data}/>
 		</div>
 		<div class="wrapper col">
@@ -59,16 +59,12 @@
 			display:	block;
 			position: 	relative;
 
-			&.col1 {
+			&.nav {
 				width: 		25%;}
-
-			&.col2 {
-				flex-basis: 100%;
-				max-width: 	65%;}
 
 			&.wrapper {
 				z-index: 	2;
-				width: 		75%;}
+				width: 	75%;}
 		}
 	}
 

@@ -48,4 +48,15 @@
          out:transition={{transTimeOut, delayOut, easing, x: direction === 'forwards' ? transX : -transX}}>
         <slot/>
     </div>
+{:else if $navigating}
+    <div>
+
+    </div>
 {/if}
+
+<style>
+    div {
+        position: absolute;
+        width: 100%;
+    }
+</style>

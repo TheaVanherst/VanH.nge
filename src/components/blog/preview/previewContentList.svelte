@@ -2,7 +2,7 @@
     import TitleCard from "$components/generic/containerTitle.svelte"
     import Container from "$components/generic/container.svelte";
 
-    import scrollIntoView from "$lib/scrollHandler.js";
+    import scrollIntoView from "$stores/scrollHandler.js";
     export let list = null;
 </script>
 
