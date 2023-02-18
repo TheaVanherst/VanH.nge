@@ -108,7 +108,7 @@
         color: white;
 
 		> div {
-			max-width:      64px;
+			max-width:      59px;
 			margin:         var(--contentPaddingY);
 
 			border-radius:  var(--innerRaidus);
