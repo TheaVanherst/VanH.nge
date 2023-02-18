@@ -97,7 +97,7 @@
                     <span class="comment">  {comment[1]}</span>
 
                     {#if comment[2] && comment[3]}
-                        <span>Via; {comment[2]}<a href={comment[3]} target="_blank"><sup>[]</sup></a></span>
+                        <span>Via; <a href={comment[3]} target="_blank">{comment[2]}</a></span>
                     {:else if comment[3]}
                         <span><a href={comment[3]} target="_blank"><sup>[]</sup></a></span>
                     {/if}

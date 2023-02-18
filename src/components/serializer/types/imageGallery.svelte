@@ -40,8 +40,9 @@
     }
 
     if (value.images.length <= 1) {
-        value.display = "vertical";
-    }
+        value.display = "vertical";}
+    else if (value.images.length === 2 && value.display === "dynamicvertical") {
+        value.display = "grid";}
 
     onMount(async () => {
         switch (value.display) {
