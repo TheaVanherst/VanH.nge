@@ -33,19 +33,21 @@
 
 <style lang="scss">
     .tags {
-        width:     calc(100% + var(--containerPadding));
 	    white-space: normal;
 	    font-size: 0;
 
 	    &.notInline {
+		    width:     calc(100% + var(--containerPadding));
             .tag {
-	            margin:         0 var(--contentPaddingX) var(--contentPaddingX) 0;
-            }
+	            margin:         0 var(--contentPaddingX) var(--contentPaddingX) 0;}
         }
-        &.inline {
-            margin-bottom: var(--contentPaddingY);
 
-            .tag {
+        &.inline {
+	        width:          calc(100%);
+	        margin-bottom:  var(--contentPaddingY);
+            overflow-x:     hidden;
+
+            > *:not(:last-of-type) {
 	            margin-right: var(--contentPaddingY);
             }
         }
@@ -67,12 +69,12 @@
 	        cursor:         pointer;
 
             &.tag {
-	            border: 1px solid var(--accent1);
+	            border:     1px solid var(--accent1);
 
 	            &:hover {
 		            background: var(--accent1);
 		            span {
-			            color: var(--textColourInvert);
+			            color:  var(--textColourInvert);
 			            &::selection {
 				            color: 		var(--accent1);
 				            background: var(--background);}}}
@@ -94,7 +96,7 @@
 	    animation:          gradient 15s ease infinite;
 
         span {
-            color: var(--textColourInvert);
+            color:  var(--textColourInvert);
 
 	        &::selection {
 		        color: 		var(--accent3);

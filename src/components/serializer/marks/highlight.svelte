@@ -11,9 +11,9 @@
         padding:        0 3px;
         color:          var(--textColourInvert);
         border-radius:  3px;
-        background:     var(--accent2);
+        background:     var(--accent4);
 
         &::selection {
-          background: 	var(--accent2);}
+          background: 	var(--accent4);}
     }
 </style>

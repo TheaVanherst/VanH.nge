@@ -8,7 +8,6 @@
     };
 
     let hoverBool = false;
-    //there's probably a better way of dealing with this tbh.
 </script>
 
 <readMore>
@@ -61,6 +60,10 @@
             &.hide {
 	            color: var(--accent1);
             }
+
+	        &::selection {
+		        background-color: 	var(--accent4)!important;
+	        }
         }
 
         .more {

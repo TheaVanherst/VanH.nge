@@ -114,6 +114,14 @@
         }
 	}
 
+	span {
+		font-family:    monospace;
+
+	    &::selection {
+		    background-color: 	var(--darkAccent1)!important;
+	    }
+    }
+
     .position {
         color: var(--darkAccent1);
     }

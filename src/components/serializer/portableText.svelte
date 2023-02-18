@@ -2,36 +2,36 @@
     import {PortableText} from '@portabletext/svelte'
 
     /* BLOCKS */
-    import CustomText       from './block/customText.svelte';
-    import CustomHeading    from './block/customHeaders.svelte';
+    import CustomText       from '$components/serializer/block/customText.svelte';
+    import CustomHeading    from '$components/serializer/block/customHeaders.svelte';
 
     /* TYPES */
-    import CodeBlock        from './types/codeBlock.svelte';
-    import Link             from './types/linkAppend.svelte';
-    import ImageBlock       from './types/imageBlock.svelte';
-    import ImageGallery     from './types/imageGallery.svelte';
-    import separator        from "./block/separator.svelte";
+    import CodeBlock        from '$components/serializer/types/codeBlock.svelte';
+    import Link             from '$components/serializer/types/linkAppend.svelte';
+    import ImageBlock       from '$components/serializer/types/imageBlock.svelte';
+    import ImageGallery     from '$components/serializer/types/imageGallery.svelte';
+    import separator        from "$components/serializer/block/separator.svelte";
 
     /* LISTS */
-    import Wrapper          from './lists/wrapper.svelte';
-    import Bullet           from './lists/bullet.svelte';
-    import Number           from './lists/number.svelte';
-    import Letter           from './lists/letter.svelte';
-    import Numeral          from './lists/numeral.svelte';
+    import Wrapper          from '$components/serializer/lists/wrapper.svelte';
+    import Bullet           from '$components/serializer/lists/bullet.svelte';
+    import Number           from '$components/serializer/lists/number.svelte';
+    import Letter           from '$components/serializer/lists/letter.svelte';
+    import Numeral          from '$components/serializer/lists/numeral.svelte';
 
     /* MARX [AXAXAX] */
-    import CodeSnippet      from './marks/codeSnippet.svelte';
-    import Highlight        from './marks/highlight.svelte';
+    import CodeSnippet      from '$components/serializer/marks/codeSnippet.svelte';
+    import Highlight        from '$components/serializer/marks/highlight.svelte';
 
-    import Subscript        from './marks/subScript.svelte';
-    import Superscript      from './marks/superScript.svelte';
-    import BlockQuote       from './block/blockQuote.svelte';
+    import Subscript        from '$components/serializer/marks/subScript.svelte';
+    import Superscript      from '$components/serializer/marks/superScript.svelte';
+    import BlockQuote       from '$components/serializer/block/blockQuote.svelte';
 
-    import FloatCenter      from './marks/floatCenter.svelte';
-    import FloatRight       from './marks/floatRight.svelte';
+    import FloatCenter      from '$components/serializer/marks/floatCenter.svelte';
+    import FloatRight       from '$components/serializer/marks/floatRight.svelte';
 
-    import ReadMore         from './marks/readMore.svelte';
-    import Accents          from './marks/accentTones.svelte';
+    import ReadMore         from '$components/serializer/marks/readMore.svelte';
+    import Accents          from '$components/serializer/marks/accentTones.svelte';
 
     export let postData;
 </script>

@@ -1,7 +1,7 @@
 <script>
     import { scrollPos } from "$stores/accessibilityController.js"
 
-    export let min = 47;
+    export let min = 47; //temporary value
     export let max = 65535;
 
     // TODO: There's a better way of handling this properly - please update
@@ -16,7 +16,7 @@
     div {
         &.fixed {
             position: fixed;
-            padding-right: var(--containerPadding);
+            padding-right: var(--containerPadding); // this is dumb
         }
     }
 </style>

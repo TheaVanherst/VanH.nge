@@ -6,8 +6,6 @@
     <slot/>
 </accent>
 
-<style>
-    accent {
-        color: var(--accent2);
-    }
+<style lang="scss">
+
 </style>

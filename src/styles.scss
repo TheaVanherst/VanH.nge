@@ -142,13 +142,20 @@ h5 {font-size: 1.1rem;}
 /* mark formatting */
 
 strong {
-	color:			var(--accent4);
+	color:          var(--accent2);
 	font-weight: 	bolder;
-	line-height: 	100%;
 
 	&::selection {
-		color: 				var(--background);
-		background-color: 	var(--accent4)}
+		background-color: 	var(--accent2)!important;
+	}
+}
+
+accent {
+	color: var(--accent4);
+
+	&::selection {
+		background-color: 	var(--accent4)!important;
+	}
 }
 
 sub, sup {
