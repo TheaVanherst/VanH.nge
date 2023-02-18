@@ -170,6 +170,7 @@ export default defineType({
           options: {
             hotspot: true,
           },
+          validation: Rule => Rule.required(),
           fields: [
             {
               name: 'alt',  title: 'Alternative text', type: 'string',
@@ -192,7 +193,7 @@ export default defineType({
         type: 'string',
         initialValue:
           { title: 'Stacked',           value: 'vertical'},
-        validation: Rule => Rule.required(),
+        validation: Rule => [Rule.required()],
         options: {
           list: [
             {title: 'Stacked',          value: 'vertical'},

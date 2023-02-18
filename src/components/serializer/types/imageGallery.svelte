@@ -1,29 +1,46 @@
 <script>
-    import {onMount} from "svelte";
+    import { onMount } from "svelte";
+
     export let portableText = null;
     let {value} = portableText;
-    let returnSheet, imageArray;
+
+    let returnSheet = null, imageArray = [];
 
     const grid = (item) => {
         let arr = [];
+
         for (let e = 0; e < Math.ceil(item.length / 2); e++) {
             arr[e] = [];
             for (let i = 0; i < 2; i++) {
                 let f = i + (e * 2);
                     if (item[f]) {
-                        arr[e][i] = item[f];}}}
+                        arr[e][i] = item[f];
+                    }
+            }
+        }
+
         return arr;
     }
 
     const verGrid = (item) => {
-        let arr = []
+        let arr = [];
+
         for (let e = 0; e < 2; e++) {
-            arr[e] = []
+            arr[e] = [];
+
             for (let i = 0; i < Math.ceil(item.length / 2); i++) {
                 let f = e + (i * 2);
-                    if (item[f]){
-                        arr[e][i] = item[f];}}}
+                if (item[f]) {
+                    arr[e][i] = item[f];
+                }
+            }
+        }
+
         return arr;
+    }
+
+    if (value.images.length <= 1) {
+        value.display = "vertical";
     }
 
     onMount(async () => {

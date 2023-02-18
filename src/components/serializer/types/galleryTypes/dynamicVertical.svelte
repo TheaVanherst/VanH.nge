@@ -1,6 +1,6 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
+    import CommentBlock from "$components/serializer/types/galleryTypes/citationBlock.svelte";
     export let push, comments;
 </script>
 
@@ -32,15 +32,14 @@
 			width:  50%;
 			gap:    var(--imageSpacing);
 
-			display:        flex;
+			display:        grid;
 			flex-direction: column;
 
 			.col {
-				display:            contents;
-				background-color:   var(--backgroundAccent2);
-
-				overflow:       hidden;
-				border-radius:  var(--innerRaidus);
+				display:    flex;
+				overflow:   hidden;
+				background: var(--backgroundAccent2);
+				border-radius: var(--innerRaidus);
             }
         }
     }

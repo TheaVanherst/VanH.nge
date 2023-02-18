@@ -1,6 +1,8 @@
 <script>
     export let handle = null, linkUrl = null;
     export let content = null;
+
+    //TODO: this needs merging into the link serialiser.
 </script>
 
 <div class="handle">
@@ -27,7 +29,8 @@
         margin:     var(--contentPaddingY) 0;
 
 	    &:not(:first-child){
-		    border-left:    1px solid var(--textColour);}
+		    border-left:    1px solid var(--textColour);
+        }
 
 	    b {
 		    line-height: 100%;
@@ -40,10 +43,13 @@
 		    box-shadow:     inset 0 0 0 0 var(--darkAccent2);
 
 		    &:hover {
-			    box-shadow:     inset 0 0 0 1px var(--accent2);}
+			    box-shadow:     inset 0 0 0 1px var(--accent2);
+            }
 		    &::selection {
 			    color: 				var(--background);
-			    background-color: 	var(--accent2)}}
+			    background-color: 	var(--accent2);
+            }
+        }
 
 	    a {
 		    text-decoration: underline 1px;
@@ -60,8 +66,12 @@
 		    &:hover {
 			    text-decoration:    none;
 			    box-shadow:         inset 0 0 100px 0 var(--accent3);
-			    color:              var(--textColourInvert);}
+			    color:              var(--textColourInvert);
+            }
 		    &::selection {
 			    color: 				var(--background);
-			    background-color: 	var(--accent3);}}}
+			    background-color: 	var(--accent3);
+            }
+        }
+    }
 </style>

@@ -1,7 +1,7 @@
 <script>
     import SanityImage from '../../imageBuilder.svelte'
-    import CommentBlock from "$components/serializer/types/galleryTypes/commentBlock.svelte";
-    export let push, comments, type;
+    import CommentBlock from "$components/serializer/types/galleryTypes/citationBlock.svelte";
+    export let push, comments;
 </script>
 
 <div class="dynamicGrid">
