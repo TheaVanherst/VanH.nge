@@ -2,6 +2,8 @@
 	import BlogComponent  from "$components/blog/blogComponent.svelte"
 	import Contents from '$components/blog/contentList.svelte'
 
+	import PageScrollWrapper from "$lib/handlers/pageScrollWrapper.svelte";
+
 	export let data = null;
 </script>
 
@@ -10,7 +12,9 @@
         <BlogComponent post={data[0]}/>
 	</div>
 	<div class="col3 col">
-		<Contents list={data[0]}/>
+		<PageScrollWrapper>
+			<Contents list={data[0]}/>
+		</PageScrollWrapper>
 	</div>
 </content>
 

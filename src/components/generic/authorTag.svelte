@@ -28,7 +28,7 @@
 		    margin:     0 -.25rem;
 		    padding:    .125rem  .25rem;
 
-		    transition:     color .2s ease-in-out, background .2s ease-in-out;
+		    transition:     color .2s ease-in-out, box-shadow .2s ease-in-out;
 		    border-radius:  var(--innerRaidus);
 
 		    &.nonLink {
@@ -36,8 +36,8 @@
 			    &.preview { color: var(--textColourInvert);}
 
 			    &:hover {
-				    color: var(--textColourInvert);
-				    background: var(--accent2);}
+				    color:      var(--textColourInvert);
+				    box-shadow: inset 0 0 0 1px var(--accent2);}
 			    &::selection {
 				    background: var(--accent2);}}
 		    &.link {
@@ -45,8 +45,8 @@
 			    &.preview { color: var(--textColourInvert);}
 
 			    &:hover {
-				    color: var(--textColourInvert);
-				    background: var(--accent3);}
+				    color:      var(--textColourInvert);
+				    box-shadow: inset 0 0 100px 0 var(--accent3);}
 			    &::selection {
 				    background: var(--accent3);}}
         }
