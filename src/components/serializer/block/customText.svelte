@@ -6,13 +6,16 @@
     <slot/>
 </p>
 
-<style>
+<style lang="scss">
     p {
-        padding:    0 0 10px 0;
         margin:     0;
 
 	    color:      var(--textColour);
         font-weight: 400;
-        line-height: 1rem;
+        line-height: 100%;
+
+        &:not(:last-child){
+	        padding:    0 0 10px 0;
+        }
     }
 </style>

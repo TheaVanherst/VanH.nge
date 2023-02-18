@@ -10,9 +10,8 @@
 
     export let post = null;
 </script>
-
-<Container hoverBool="{true}">
-    <a href={'/blog/' + post.slug} on:click={urlChanger("/blog/" + post.slug)}>
+<a href={'/blog/' + post.slug} on:click={urlChanger("/blog/" + post.slug)}>
+    <Container hoverBool="{true}">
         <div class="post" id="post-{post.slug}">
             <div class="readMore">
                 <img src="/icons/downArrowPreview.webp">
@@ -21,10 +20,10 @@
                     titleHeader="{post.headerImage}"	title="{post.title}"/>
             <HeaderModule
                     createdOn={post._createdAt} 		updatedOn={post._updatedAt}         publishedOn={post.publishedAt}
-                    authorhandle={post.author_handle}   authoruser={post.author_fullName}
-                    editorhandle={post.editor_handle}   editoruser={post.editor_fullName}/>
+                    authorhandle={post.author_handle}   authoruser={post.author_fullName}   authorTwitter={post.author_twitter}
+                    editorhandle={post.editor_handle}   editoruser={post.editor_fullName}   editorTwitter={post.editor_twitter}/>
             <TagModule
-                    time="{post._createdAt}"    inline="{true}"
+                    time="{post._createdAt}"    inline={true}
                     tags={post.catagory_tags}   tagsIds={post.catagory_id} />
             <div class="nonClickable">
                 <p class="description">
@@ -34,19 +33,23 @@
                         postData="{post?.body}"/>
             </div>
         </div>
-    </a>
-</Container>
+    </Container>
+</a>
 
 <style lang="scss">
-	* {
-        color: white;
-		text-decoration: none!important;
+	a:hover {
+        .readMore {
+	        img {
+		        background-color:   var(--accent3);
+	        }
+        }
 	}
 
 	.post {
 		position: relative;
         min-height: 250px;
         max-height: 350px;
+		top:        0px;
 
 		.description {
 			padding-bottom: 10px;
@@ -96,22 +99,16 @@
                 display:    block;
 				text-wrap: none;
 
-				padding:    3px;
+				padding:    4px;
 				width:      16px;
 				height:     16px;
 				margin:     0 auto;
 
-				border-radius:      50%;
+				border-radius:      var(--innerRaidus);
 				background-color:   var(--accent1);
 				color:              black;
 				transition: background-color 0.2s ease-in-out;
 			}
 		}
-
-        &:hover {
-            img {
-                background-color:   var(--accent3);
-            }
-        }
 	}
 </style>

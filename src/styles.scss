@@ -82,7 +82,7 @@ a {
 
 p {
 	font-size:      14px;
-	line-height:    100%;
+	line-height:    120%;
 	color:	 		var(--textColour);
 	margin: 		0;
 }
@@ -90,7 +90,6 @@ p {
 span {
 	font-family:    monospace;
 	font-size:      12px;
-	white-space:    nowrap;
 	line-height:    100%;
 	margin:         0;
 }
@@ -114,9 +113,11 @@ blockQuote {
 cite {
 	font-family:    monospace;
 	font-style:     normal;
-	line-height:    100%;
-	letter-spacing: 0.15em;
 	text-transform: uppercase;
+	letter-spacing: 0.15em;
+
+	font-size:      12px;
+	line-height:    100%;
 }
 
 h1, h2, h3, h4, h5 {
@@ -125,6 +126,7 @@ h1, h2, h3, h4, h5 {
 	font-family: 	'Oswald', sans-serif;
 	line-height:    100%;
 
+	color:          var(--textColour);
 	padding-bottom: var(--containerPadding);
 
 	position:   relative;

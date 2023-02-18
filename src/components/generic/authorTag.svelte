@@ -1,77 +1,62 @@
 <script>
-    export let handle = null, linkUrl = null;
     export let content = null;
-
-    //TODO: this needs merging into the link serialiser.
+    export let linkUrl = null;
+    export let preview = false;
 </script>
 
 <div class="handle">
-    {content}
+    <span>
+        {content}
+    </span>
     {#if linkUrl}
-        <a href="https://twitter.com/{linkUrl}">
-            {handle}
+        <a href="https://twitter.com/{linkUrl}" target="_blank">
+            <span class="wrapper link {preview ? 'preview' : 'post'}"><slot/></span>
         </a>
     {:else}
-        <b>
-            {handle}
-        </b>
+        <span class="wrapper nonLink {preview ? 'preview' : 'post'}"><slot/></span>
     {/if}
 </div>
 
 <style lang="scss">
     .handle {
-        font-size:      13px;
         line-height:    100%;
 
         display:    inline-block;
         width:      min-content;
-        padding:    0 var(--contentPaddingX);
-        margin:     var(--contentPaddingY) 0;
 
-	    &:not(:first-child){
-		    border-left:    1px solid var(--textColour);
-        }
-
-	    b {
-		    line-height: 100%;
-		    color:          var(--accent2);
+	    span.wrapper {
 		    margin:     0 -.25rem;
 		    padding:    .125rem  .25rem;
 
-		    transition:     box-shadow .2s ease-in;
+		    transition:     color .2s ease-in-out, background .2s ease-in-out;
 		    border-radius:  var(--innerRaidus);
-		    box-shadow:     inset 0 0 0 0 var(--darkAccent2);
 
-		    &:hover {
-			    box-shadow:     inset 0 0 0 1px var(--accent2);
-            }
-		    &::selection {
-			    color: 				var(--background);
-			    background-color: 	var(--accent2);
-            }
+		    &.nonLink {
+			    &.post {    color: var(--accent2);}
+			    &.preview { color: var(--textColourInvert);}
+
+			    &:hover {
+				    color: var(--textColourInvert);
+				    background: var(--accent2);}
+			    &::selection {
+				    background: var(--accent2);}}
+		    &.link {
+			    &.post {    color: var(--accent3);}
+			    &.preview { color: var(--textColourInvert);}
+
+			    &:hover {
+				    color: var(--textColourInvert);
+				    background: var(--accent3);}
+			    &::selection {
+				    background: var(--accent3);}}
         }
 
-	    a {
+	    .link {
 		    text-decoration: underline 1px;
-		    font-weight:    600;
-		    color:          var(--accent3);
-
-		    margin:     0 -.25rem;
-		    padding:    .125rem  .25rem;
-
-		    border-radius:  var(--innerRaidus);
 		    box-shadow:     inset 0 0 0 0 var(--darkAccent3);
-		    transition:     color .2s ease-in-out, box-shadow .2s ease-in-out;
 
 		    &:hover {
-			    text-decoration:    none;
-			    box-shadow:         inset 0 0 100px 0 var(--accent3);
-			    color:              var(--textColourInvert);
-            }
-		    &::selection {
-			    color: 				var(--background);
-			    background-color: 	var(--accent3);
-            }
+			    text-decoration: none;}
         }
     }
 </style>

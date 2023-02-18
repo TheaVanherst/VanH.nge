@@ -36,11 +36,9 @@
 <style lang="scss">
 	/* TODO: column management */
 
-	$padding: 15px;
-
 	page {
 		display: 	block;
-		padding: 	$padding;
+		padding: 	var(--containerPadding);
 		margin: 	0 auto;
 
 		max-width:  var(--maxWidth);

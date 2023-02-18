@@ -1,8 +1,9 @@
 <script>
     import {createdPush, updatedPush} from "../../dateBuilder.js"
+    import AuthorTag from "$components/generic/authorTag.svelte";
 
     export let createdOn = null, updatedOn = null, publishedOn = null;
-    export let authoruser = null, editoruser = null;
+    export let authoruser = null, editoruser = null, editorTwitter = null, authorTwitter = null;
 
     let publishDate = publishedOn ? publishedOn : createdOn;
 </script>
@@ -10,16 +11,10 @@
 
 <header>
     <div class="userData">
-        {#if updatedOn}
-            <span class="updatedOn">{updatedPush(updatedOn, publishDate)}</span>
-        {:else}
-            <span class="createdOn">{createdPush(publishDate, "shortDate")}</span>
-        {/if}
-        <span>by</span>
         {#if editoruser}
-            <span>{editoruser}</span>
+            <AuthorTag preview={true} linkUrl="{editorTwitter}" content="{updatedPush(updatedOn, publishDate)} by">{editoruser}</AuthorTag>
         {:else}
-            <span>{authoruser}</span>
+            <AuthorTag preview={true} linkUrl="{authorTwitter}" content="{createdPush(publishDate, 'shortDate')} by">{authoruser}</AuthorTag>
         {/if}
     </div>
 </header>
@@ -29,6 +24,16 @@
 	    > div {
 		    white-space: nowrap;
 		    width: auto;
+	    }
+    }
+
+    span {
+	    line-height: 100%;
+        color:      var(--textColourInvert);
+
+	    &::selection {
+		    color: var(--accent1);
+		    background-color: var(--background);
 	    }
     }
 
@@ -45,16 +50,6 @@
 
 	    div {
 		    padding: var(--contentPaddingY) var(--contentPaddingX);
-
-		    span {
-			    font-size: 11px;
-			    line-height: 100%;
-
-			    &::selection {
-				    color: var(--accent1);
-				    background-color: var(--background);
-			    }
-		    }
 	    }
     }
 </style>

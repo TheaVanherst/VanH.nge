@@ -2,7 +2,8 @@
     import SanityImage  from '../serializer/imageBuilder.svelte'
     import AuthorTag    from '../generic/authorTag.svelte'
 
-    export let createdOn = null, updatedOn = null;
+    export let createdOn = null, updatedOn = null, publishedOn = null;
+    let publishDate = publishedOn ? publishedOn : createdOn;
     import {createdPush, updatedPush} from "../dateBuilder.js"
 
     export let authorHandle = null, authorUser = null, authorTwitter = null, authorImage = null,
@@ -24,29 +25,27 @@
     </div>
 
     <div class="date">
-        <p class="createdOn">{createdPush(createdOn, "shortDate")}</p>
+        <p class="createdOn">{createdPush(publishDate, 'shortDate')}</p>
         {#if updatedOn}
-            <p class="updatedOn">{updatedPush(updatedOn, createdOn)}</p>
+            <p class="updatedOn">{updatedPush(updatedOn, publishDate)}</p>
         {/if}
     </div>
 
     <div class="userData">
-        {#if authorUser === editorUser}
-            <AuthorTag
-                content="Posted & Edited by"
-                linkUrl="{authorTwitter}"
-                handle="{authorHandle}"/>
-        {:else}
-            <AuthorTag
-                content="Posted by"
-                linkUrl="{authorTwitter}"
-                handle="{authorHandle}"/>
-            {#if editorHandle}
-                <AuthorTag
-                    content="Edited by"
-                    linkUrl="{editorTwitter}"
-                    handle="{editorHandle}"/>
+        {#if editorHandle}
+            {#if editorHandle === authorHandle}
+                <AuthorTag content="Posted & Edited by " linkUrl="{authorTwitter}">
+                    {authorHandle}
+                </AuthorTag>
+            {:else}
+                <AuthorTag content="Edited by " linkUrl="{editorTwitter}">
+                    {editorHandle}
+                </AuthorTag>
             {/if}
+        {:else}
+            <AuthorTag content="Posted by " linkUrl="{authorTwitter}">
+                {authorHandle}
+            </AuthorTag>
         {/if}
     </div>
 </header>
@@ -58,34 +57,38 @@
 			width: auto;
 		}
 	}
+
 	.date {
 		background-color: var(--accent1);
 		border-bottom-left-radius:  var(--innerRaidus);
 		border-bottom-right-radius: var(--innerRaidus);
-		overflow: hidden;
-		color: black;
 		padding:
             var(--contentPaddingY) var(--contentPaddingX)
             var(--contentPaddingY) calc(var(--containerPadding) + 34px);
+        overflow: hidden;
 
 		p {
             color:      var(--textColourInvert);
-            display:    block;
             width:      100%;
+
+			&::selection {
+				color: var(--accent1);
+				background-color: var(--background);}
+
 			&.createdOn {
 				font-size:      100%;}
 			&.updatedOn {
 				text-transform: lowercase;
 				font-size:      70%;}
-
-			&::selection {
-				color: var(--accent1);
-				background-color: var(--background);}}
+        }
 	}
+
 	.userData {
 		border-bottom:  var(--border-thickness) solid var(--textColour);
+
 		margin:         0 0 var(--contentPaddingY) 0;
-		padding-left:   calc(var(--contentPaddingY) + 24px);
+        padding:        var(--contentPaddingY) 0 var(--contentPaddingY) calc(var(--contentPaddingY) + 40px);
+
 		width:          auto;
 		font-size:      0;
 		> * {
@@ -101,19 +104,18 @@
 	.profile {
 		margin-left: -35px;
 		box-shadow: var(--dropShadow) 5px 5px;
+
+        color: white;
+
 		> div {
-			max-width:      60px;
+			max-width:      64px;
 			margin:         var(--contentPaddingY);
+
 			border-radius:  var(--innerRaidus);
 			border:     var(--border-thickness) solid var(--accent1);
+
 			position:   absolute;
-			&.author {
-				transition:
-						border 0.5s;
-				&:hover {
-					border-color: var(--accent3);
-				}
-			}
+
 			&.editor {
 				margin-left:    -20px;
 				margin-top:     42px;
@@ -124,11 +126,6 @@
 						transform 0.5s,
 						border 0.5s,
 						border-radius 0.5s;
-				&:hover { // this is kinda lazy
-					border-radius:  var(--innerRaidus);
-					border:         1px solid var(--accent2);
-					transform:      scale(100%);
-				}
 			}
 		}
 	}

@@ -6,7 +6,7 @@ const createdPush = (creationDate, dateLength) => {
 
      updatedPush = (currentDate, creationDate) => {
         let updatedDay = new Date(currentDate)
-        return updatedWhen(updatedDay,creationDate)
+        return updatedWhen(updatedDay, creationDate)
     },
 
     dateTypes = {
@@ -50,8 +50,8 @@ const createdPush = (creationDate, dateLength) => {
     },
 
     updatedWhen = (currentDate, creationDate) => {
-        let createdDay = currentDate
-        let updatedDay =  new Date(creationDate);
+        let createdDay = new Date(creationDate);
+        let updatedDay = currentDate;
 
         let updatedString = "";
             updatedString += createdDay.getHours() !== updatedDay.getHours() ? "↳ 📑 Updated " :  "📰 ";

@@ -14,17 +14,17 @@
         return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
 </script>
 
-<div class="tags {inline ? 'inline' : ''}">
+<div class="tags {inline ? 'inline' : 'notInline'}">
     {#if relativeTime(new Date(time))}
         <div class="tag new">
-            <span>
+            <span class="hov inv">
                 NEW
             </span>
         </div>
     {/if}
     {#each tags as tag, i}
         <div class="tag category {tagsIds[i] === tagHighlight ? 'highlight' : ''}">
-            <span>
+            <span class="hov">
                 {tag}
             </span>
         </div>
@@ -37,10 +37,23 @@
 	    white-space: normal;
 	    font-size: 0;
 
+	    &.notInline {
+            .tag {
+	            margin:         0 var(--contentPaddingX) var(--contentPaddingX) 0;
+            }
+        }
+        &.inline {
+            margin-bottom: var(--contentPaddingY);
+
+            .tag {
+	            margin-right: var(--contentPaddingY);
+            }
+        }
+
         .tag {
-	        margin:         0 var(--contentPaddingX) var(--contentPaddingY) 0;
 	        padding:        5px var(--containerPadding);
-	        border-radius:  calc(var(--innerRaidus) - 1px);
+	        border-radius:  var(--innerRaidus);
+
 	        display:        inline-flex;
 	        transition:     background 0.3s;
 
@@ -51,32 +64,43 @@
 
         .category {
 	        background:     var(--background);
+	        cursor:         pointer;
 
             &.tag {
 	            border: 1px solid var(--accent1);
 
 	            &:hover {
-		            color:      var(--textColourInvert);
 		            background: var(--accent1);
-	            }
-            }
+		            span {
+			            color: var(--textColourInvert);
+			            &::selection {
+				            color: 		var(--accent1);
+				            background: var(--background);}}}
 
-		    &:hover {
-			    cursor:         pointer;}
-		    &:hover::selection {
-			    color: 		var(--accent1);
-			    background: var(--background);
+	            span {
+		            color: var(--textColour);
+		            &::selection {
+			            color: 		var(--background);
+			            background: var(--accent1);}}
             }
         }
     }
 
     .new {
+	    border-radius:      var(--innerRaidus);
+
         background:         linear-gradient(-45deg, var(--accent1), var(--accent3), var(--accent4));
         background-size:    800% 800%;
 	    animation:          gradient 15s ease infinite;
 
-	    border-radius:  var(--innerRaidus);
-        color:          var(--textColourInvert);
+        span {
+            color: var(--textColourInvert);
+
+	        &::selection {
+		        color: 		var(--accent3);
+		        background: var(--background);
+	        }
+        }
 
         &:hover {
 	        animation:      wiggle 0.5s ease infinite, gradient 15s ease infinite;

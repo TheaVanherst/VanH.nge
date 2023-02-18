@@ -9,8 +9,10 @@ let query =
         _updatedAt,
         publishedAt,
     
+        'author_handle': author->handle,
         'author_fullName': author->fullName,
-        'editor_fullName': editor->fullName,
+        'author_twitter': author->twitterURL,
+        'author_portrait': author->userPortrait,
         
         'catagory_tags': categories[]->title,
         'catagory_id': categories[]->_id,
