@@ -44,8 +44,11 @@
 
         &.inline {
 	        width:          calc(100%);
-	        margin-bottom:  var(--contentPaddingY);
             overflow-x:     hidden;
+
+            &:not(:last-child) {
+	            margin-bottom:  var(--contentPaddingY);
+            }
 
             > *:not(:last-of-type) {
 	            margin-right: var(--contentPaddingY);

@@ -1,30 +1,41 @@
 <script>
-    import TagModule from "$components/generic/tagModule.svelte";
-    import Container from "$components/generic/container.svelte";
+    import { createdPush } from "$components/dateBuilder.js";
 
-    import PreviewHeader from "$components/art/preview/previewHeader.svelte";
+    import TagModule from "$components/generic/components/tagModule.svelte";
+    import Container from "$components/generic/containers/container.svelte";
+
+    import AuthorTag from "$components/generic/components/authorTag.svelte";
+    import InvContainer from "$components/generic/containers/invContainer.svelte";
 
     import ImageGallery     from '$components/serializer/types/imageGallery.svelte';
     export let post = null;
 
-    post.gallery._type = "gallery";
-    let object = {"value": post.gallery};
+    const galleryObjectGen = (obj) => {
+        obj.gallery._type = "gallery";
+        obj.gallery.inline = true;
+        return {"value": obj.gallery};
+    }
 
-    console.log(post)
+    let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
+
+    console.log(post.catagory_tags, post.catagory_id)
 </script>
 
 <Container overflowBool="{false}">
-    <ImageGallery portableText="{object}"/>
-    <PreviewHeader
-            createdOn={post._createdAt} 		updatedOn={post._updatedAt}         publishedOn={post.publishedAt}
-            authorhandle={post.author_handle}   authoruser={post.author_fullName}   authorTwitter={post.author_twitter}
-            editorhandle={post.editor_handle}   editoruser={post.editor_fullName}   editorTwitter={post.editor_twitter}/>
+    <ImageGallery portableText="{galleryObjectGen(post)}"/>
+
+    <InvContainer>
+        <AuthorTag preview={true} linkUrl={post.author_twitter} content="{createdPush(publishDate, 'shortDate')} by">{post.author_fullName}</AuthorTag>
+    </InvContainer>
     <TagModule
-            time="{post._createdAt}"    inline={true}
+            time="{publishDate}"        inline={true}
             tags={post.catagory_tags}   tagsIds={post.catagory_id} />
-    <p>
-        {post.briefDesc}
-    </p>
+
+    {#if post.briefDesc}
+        <p>
+            {post.briefDesc}
+        </p>
+    {/if}
 </Container>
 
 <style lang="scss">

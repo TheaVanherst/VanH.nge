@@ -1,7 +1,8 @@
 <script>
     import {createdPush, updatedPush} from "../../dateBuilder.js"
 
-    import AuthorTag from "$components/generic/authorTag.svelte";
+    import InvContainer from "$components/generic/containers/invContainer.svelte";
+    import AuthorTag from "$components/generic/components/authorTag.svelte";
     import TitleModule from "../postHeader.svelte"
 
     export let createdOn = null, updatedOn = null, publishedOn = null;
@@ -15,8 +16,7 @@
 
 <header>
     <TitleModule titleHeader={titleHeader}	title={title}/>
-
-    <div class="userData">
+    <InvContainer overflowBool={false}>
         {#if editoruser}
             <AuthorTag preview={true} linkUrl={editorTwitter} content="{updatedPush(updatedOn, publishDate)} by">{editoruser}</AuthorTag>
         {:else}
@@ -26,7 +26,7 @@
                 <AuthorTag preview={true} linkUrl={authorTwitter} content="{createdPush(publishDate, 'shortDate')} by">{authoruser}</AuthorTag>
             {/if}
         {/if}
-    </div>
+    </InvContainer>
 </header>
 
 <style lang="scss">
@@ -35,17 +35,5 @@
         overflow:       hidden;
 
 	    margin:         0 0 var(--contentPaddingY) 0;
-
-	    .userData {
-		    white-space:    nowrap;
-		    overflow:       hidden;
-
-		    background-color:   var(--accent1);
-		    color:              var(--background);
-
-		    padding:    5px 10px;
-		    width:      auto;
-		    font-size:  13px;
-	    }
     }
 </style>

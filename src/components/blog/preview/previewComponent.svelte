@@ -2,8 +2,8 @@
     import HeaderModule from "./previewHeader.svelte"
     import PostModule from "../../serializer/portableText.svelte"
 
-    import TagModule from "$components/generic/tagModule.svelte";
-    import Container from "$components/generic/container.svelte";
+    import TagModule from "$components/generic/components/tagModule.svelte";
+    import Container from "$components/generic/containers/container.svelte";
 
     import { urlChanger } from '$stores/directoryController.js';
 

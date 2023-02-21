@@ -1,7 +1,7 @@
 
 const createdPush = (creationDate, dateLength) => {
         let createdDay = new Date(creationDate);
-        return "Posted on " + createdDay.toLocaleDateString("en-GB", dateTypes[dateLength]);
+        return "Published " + nth(createdDay, dateLength);
     },
 
      updatedPush = (currentDate, creationDate) => {
@@ -17,6 +17,22 @@ const createdPush = (creationDate, dateLength) => {
 
     relativeTime = (time) => {
         return (+new Date() - time) / 1000;
+    },
+
+    shifter = (d) => {
+        switch (d % 10) {
+            case 1:  return "st";
+            case 2:  return "nd";
+            case 3:  return "rd";
+            default: return "th";
+        }
+
+    },
+
+    nth = (d,l) => {
+        let splitter = d.toLocaleDateString("en-GB", dateTypes[l])
+            splitter = splitter.split(" ");
+        return splitter[1] + " " + splitter[0] + shifter(parseInt(splitter[0])) + ", " + splitter[2];
     },
 
     time_ago = (time) => {

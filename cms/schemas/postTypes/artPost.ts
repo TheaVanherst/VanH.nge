@@ -1,7 +1,5 @@
 
 import { defineField, defineType } from 'sanity'
-import { slugUniqueCheck } from '../components/slugCheck'
-
 import gallery from '../components/blocks/gallery'
 
 export default defineType({
@@ -9,23 +7,6 @@ export default defineType({
   title: 'Art Posts',
   type: 'document',
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: Rule => Rule.required().min(12).max(64)
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      validation: Rule => Rule.required(),
-      options: {
-        source: 'title',
-        maxLength: 96,
-        isUnique: slugUniqueCheck
-      }
-    }),
     defineField({
       name: 'categories',
       title: 'Categories',
@@ -52,27 +33,24 @@ export default defineType({
       }
     }),
     defineField({
-      name: 'editor',
-      title: 'Editor',
-      type: 'reference',
-      to: {
-        type: 'author'
-      }
-    }),
-    defineField({
-      name: 'briefDesc',
-      title: 'Brief Description',
-      type: 'string',
-      validation: Rule => Rule.required().min(24).max(160)
+      name: 'coauthors',
+      title: 'Collaborators',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: {
+          type: 'author'
+        }
+      }]
     }),
 
     gallery,
 
     defineField({
-      name: 'editorNotes',
-      title: 'Editor Notes',
+      name: 'briefDesc',
+      title: 'Brief Description',
       type: 'string',
-      validation: Rule => Rule.min(10).max(160)
+      validation: Rule => Rule.min(24).max(160)
     }),
   ],
 

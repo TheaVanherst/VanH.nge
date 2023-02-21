@@ -1,6 +1,6 @@
 <script>
     import SanityImage  from '../serializer/imageBuilder.svelte'
-    import AuthorTag    from '../generic/authorTag.svelte'
+    import AuthorTag    from '../generic/components/authorTag.svelte'
 
     export let createdOn = null, updatedOn = null, publishedOn = null;
     let publishDate = publishedOn ? publishedOn : createdOn;
