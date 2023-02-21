@@ -3,7 +3,7 @@
     import Container from "$components/generic/containers/container.svelte";
 
     import scrollIntoView from "$stores/scrollHandler.js";
-    export let list = null;
+    export let list = [];
 
     let arr = []
     for (let i = 0; i < list.titles.length; i++) {

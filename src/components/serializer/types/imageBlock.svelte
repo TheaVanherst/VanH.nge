@@ -2,13 +2,10 @@
     import SanityImage from '../imageBuilder.svelte'
 
     export let portableText = null;
-
-    console.log(portableText)
-    let image = portableText.value
 </script>
 
 <div class="solo">
-    <SanityImage image={image}/>
+    <SanityImage image={portableText.value}/>
 </div>
 
 <style lang="scss">

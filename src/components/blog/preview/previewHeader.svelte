@@ -3,7 +3,7 @@
 
     import InvContainer from "$components/generic/containers/invContainer.svelte";
     import AuthorTag from "$components/generic/components/authorTag.svelte";
-    import TitleModule from "../postHeader.svelte"
+    import PostHeader from "../postHeader.svelte"
 
     export let createdOn = null, updatedOn = null, publishedOn = null;
     export let authoruser = null, editoruser = null, authorTwitter = null, editorTwitter = null;
@@ -11,11 +11,12 @@
     export let titleHeader = null, title = null;
 
     let publishDate = publishedOn ? publishedOn : createdOn;
+    console.log(authoruser, editoruser)
 </script>
 
 
 <header>
-    <TitleModule titleHeader={titleHeader}	title={title}/>
+    <PostHeader titleHeader={titleHeader}	title={title}/>
     <InvContainer overflowBool={false}>
         {#if editoruser}
             <AuthorTag preview={true} linkUrl={editorTwitter} content="{updatedPush(updatedOn, publishDate)} by">{editoruser}</AuthorTag>

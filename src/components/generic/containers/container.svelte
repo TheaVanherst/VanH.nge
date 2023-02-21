@@ -1,9 +1,12 @@
 <script>
     export let hoverBool = false;
     export let overflowBool = true;
+
+    export let id = undefined;
 </script>
 
-<div class:hoverable={hoverBool}
+<div id={id}
+     class:hoverable={hoverBool}
      class:overflow={overflowBool}>
     <slot/>
 </div>

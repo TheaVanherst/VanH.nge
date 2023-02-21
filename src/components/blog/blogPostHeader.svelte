@@ -1,16 +1,22 @@
 <script>
     import SanityImage  from '../serializer/imageBuilder.svelte'
-    import AuthorTag    from '../generic/components/authorTag.svelte'
+    import PostHeader   from "$components/blog/postHeader.svelte";
+    import AuthorTag    from "$components/generic/components/authorTag.svelte";
 
     export let createdOn = null, updatedOn = null, publishedOn = null;
     let publishDate = publishedOn ? publishedOn : createdOn;
+
+    export let titleHeader = null, title = null;
+
     import {createdPush, updatedPush} from "../dateBuilder.js"
 
-    export let authorHandle = null, authorUser = null, authorTwitter = null, authorImage = null,
-               editorHandle = null, editorUser = null, editorTwitter = null, editorImage = null;
+    export let authorUser = null, authorTwitter = null, authorImage = null,
+               editorUser = null, editorTwitter = null, editorImage = null;
 </script>
 
 <header>
+    <PostHeader titleHeader="{titleHeader}"	title="{title}"/>
+
     <div class="profile">
         {#if authorImage}
             <div class="author">
@@ -32,31 +38,28 @@
     </div>
 
     <div class="userData">
-        {#if editorHandle}
-            {#if editorHandle === authorHandle}
+        {#if authorUser}
+            {#if authorUser === editorUser}
                 <AuthorTag content="Posted & Edited by " linkUrl="{authorTwitter}">
-                    {authorHandle}
+                    {authorUser}
                 </AuthorTag>
             {:else}
-                <AuthorTag content="Edited by " linkUrl="{editorTwitter}">
-                    {editorHandle}
+                <AuthorTag content="Posted by " linkUrl="{authorTwitter}">
+                    {authorUser}
+                </AuthorTag>
+                <AuthorTag content=", Edited by " linkUrl="{editorTwitter}">
+                    {editorUser}
                 </AuthorTag>
             {/if}
         {:else}
             <AuthorTag content="Posted by " linkUrl="{authorTwitter}">
-                {authorHandle}
+                {authorUser}
             </AuthorTag>
         {/if}
     </div>
 </header>
 
 <style lang="scss">
-	header {
-		> div {
-			white-space: nowrap;
-			width: auto;
-		}
-	}
 
 	.date {
 		background-color: var(--accent1);
@@ -84,41 +87,37 @@
 	}
 
 	.userData {
-		border-bottom:  var(--border-thickness) solid var(--textColour);
+		display: flex;
 
+		border-bottom:  var(--border-thickness) solid var(--textColour);
 		margin:         0 0 var(--contentPaddingY) 0;
         padding:        var(--contentPaddingY) 0 var(--contentPaddingY) calc(var(--contentPaddingY) + 40px);
 
 		width:          auto;
 		font-size:      0;
-		> * {
-			display:        table-cell;
-			width:          min-content;
-			line-height:    normal;
-			font-size:      80%;
-			margin:         0;}
+
 		> *:last-child:not(:first-child) {
 			border-left:   1px solid var(--fadedColourAcc);
 		}
 	}
-	.profile {
-		margin-left: -35px;
-		box-shadow: var(--dropShadow) 5px 5px;
 
-        color: white;
+	.profile {
+		position:   relative;
 
 		> div {
-			max-width:      59px;
+            left:          -35px;
+			max-width:      58px;
 			margin:         var(--contentPaddingY);
 
 			border-radius:  var(--innerRaidus);
-			border:     var(--border-thickness) solid var(--accent1);
+			border:         var(--border-thickness) solid var(--accent1);
 
-			position:   absolute;
+			overflow:       hidden;
+			position:       absolute;
 
 			&.editor {
 				margin-left:    -20px;
-				margin-top:     42px;
+				margin-top:     36px;
 				border:         2px solid var(--accent1);
 				transform:      scale(50%);
 				border-radius:  var(--outerRadius);

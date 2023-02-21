@@ -45,7 +45,6 @@
 
 	.post {
 		position: relative;
-		top:        0px;
 
 		.description {
 			padding-bottom: 10px;

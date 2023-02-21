@@ -19,10 +19,8 @@
 
 <style lang="scss">
     .handle {
-        line-height:    100%;
-
-        display:    inline-block;
-        width:      min-content;
+        width: min-content;
+        white-space: nowrap;
 
 	    span.wrapper {
 		    margin:     0 -.25rem;
@@ -36,24 +34,26 @@
 			    &.preview { color: var(--textColourInvert);}
 
 			    &:hover {
-				    color:      var(--textColourInvert);
-				    box-shadow: inset 0 0 0 1px var(--accent2);}
+				    color:          var(--accent2);
+				    box-shadow:     inset 0 0 0 1px var(--accent2);}
 			    &::selection {
-				    background: var(--accent2);}}
+				    background:     var(--accent2);}}
 		    &.link {
-			    &.post {    color: var(--accent3);}
-			    &.preview { color: var(--textColourInvert);}
+			    &.post {    color:  var(--accent3);}
+			    &.preview { color:  var(--textColourInvert);}
 
 			    &:hover {
-				    color:      var(--textColourInvert);
-				    box-shadow: inset 0 0 100px 0 var(--accent3);}
+				    color:          var(--textColourInvert);
+				    box-shadow:     inset 0 0 100px 0 var(--accent3);}
 			    &::selection {
-				    background: var(--accent3);}}
+				    background:     var(--accent3);
+                }
+            }
         }
 
 	    .link {
-		    text-decoration: underline 1px;
-		    box-shadow:     inset 0 0 0 0 var(--darkAccent3);
+		    text-decoration:        underline 1px;
+		    box-shadow:             inset 0 0 0 0 var(--darkAccent3);
 
 		    &:hover {
 			    text-decoration: none;}

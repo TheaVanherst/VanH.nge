@@ -1,15 +1,13 @@
 
 const createdPush = (creationDate, dateLength) => {
-        let createdDay = new Date(creationDate);
-        return "Published " + nth(createdDay, dateLength);
+        return "Published " + nth(new Date(creationDate), dateLength);
     },
 
      updatedPush = (currentDate, creationDate) => {
-        let updatedDay = new Date(currentDate)
-        return updatedWhen(updatedDay, creationDate)
+        return updatedWhen(currentDate, creationDate)
     },
 
-    dateTypes = {
+    dTypes = {
         fullDate : {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'},
         shortDate : {year: 'numeric', month: 'long', day: 'numeric'},
         tinyDate : {year: 'numeric', month: 'short', day: 'numeric'}
@@ -20,23 +18,22 @@ const createdPush = (creationDate, dateLength) => {
     },
 
     shifter = (d) => {
+        if (d > 3 && d < 21) {
+                        return 'th';}
         switch (d % 10) {
-            case 1:  return "st";
-            case 2:  return "nd";
-            case 3:  return "rd";
-            default: return "th";
-        }
-
+            case 1:     return "st";
+            case 2:     return "nd";
+            case 3:     return "rd";
+            default:    return "th";}
     },
 
     nth = (d,l) => {
-        let splitter = d.toLocaleDateString("en-GB", dateTypes[l])
-            splitter = splitter.split(" ");
-        return splitter[1] + " " + splitter[0] + shifter(parseInt(splitter[0])) + ", " + splitter[2];
+        let spl = d.toLocaleDateString("en-GB", dTypes[l]).split(" ");
+        return spl[1] + " " + spl[0] + shifter(parseInt(spl[0])) + ", " + spl[2];
     },
 
     time_ago = (time) => {
-        let time_formats = [
+        let tFormats = [
             [60, 'seconds', 1],
             [120, '1 minute ago', '1 minute from now'],
             [3600, 'minutes', 60],
@@ -53,27 +50,27 @@ const createdPush = (creationDate, dateLength) => {
             [5806080000, 'Last century', 'Next century'],
             [58060800000, 'centuries', 2903040000]];
 
-        let seconds = relativeTime(time);
-        if (seconds < 120) {
+        let secs = relativeTime(time);
+        if (secs < 120) {
             return 'Just now';
         }
 
-        let i = 0, format;
-        while (format = time_formats[i++]) {
-            if (seconds < format[0]) {
-                return typeof format[2] == 'string' ? format[1] : Math.floor(seconds / format[2]) + ' ' + format[1] + ' ago';}
+        let i = 0, form;
+        while (form = tFormats[i++]) {
+            if (secs < form[0]) {
+                return typeof form[2] == 'string' ? form[1] : Math.floor(secs / form[2]) + ' ' + form[1] + ' ago';}
         }
     },
 
     updatedWhen = (currentDate, creationDate) => {
-        let createdDay = new Date(creationDate);
-        let updatedDay = currentDate;
+        let dUpdated = new Date(currentDate);
+        let dCreated = new Date(creationDate);
 
-        let updatedString = "";
-            updatedString += createdDay.getHours() !== updatedDay.getHours() ? "↳ 📑 Updated " :  "📰 ";
-            updatedString += time_ago(updatedDay);
-            updatedString += 2419200 > relativeTime(updatedDay) ? " at " + updatedDay.toLocaleTimeString('en-US') : "";
-        return updatedString.toLowerCase();
+        let pushStr = "";
+            pushStr += dCreated.getHours() !== dUpdated.getHours() ? "↳ 📑 Updated " :  "📰 ";
+            pushStr += time_ago(dUpdated);
+            pushStr += 2419200 > relativeTime(dUpdated) ? " at " + new Intl.DateTimeFormat('en-GB', { timeStyle: 'short'}).format(dUpdated) : "";
+        return pushStr;
     };
 
-export {createdPush, updatedPush}
+export { createdPush, updatedPush }

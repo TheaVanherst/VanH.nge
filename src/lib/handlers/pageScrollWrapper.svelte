@@ -16,7 +16,7 @@
     div {
         &.fixed {
             position: fixed;
-            padding-right: var(--containerPadding); // this is dumb
+            padding-right: var(--containerPadding); //TODO: this is dumb
         }
     }
 </style>

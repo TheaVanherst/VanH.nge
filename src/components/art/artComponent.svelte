@@ -17,15 +17,17 @@
     }
 
     let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
-
-    console.log(post.catagory_tags, post.catagory_id)
 </script>
 
 <Container overflowBool="{false}">
     <ImageGallery portableText="{galleryObjectGen(post)}"/>
 
     <InvContainer>
-        <AuthorTag preview={true} linkUrl={post.author_twitter} content="{createdPush(publishDate, 'shortDate')} by">{post.author_fullName}</AuthorTag>
+        <AuthorTag
+                preview={true} linkUrl={post.author_twitter}
+                content="{createdPush(publishDate, 'shortDate')} by">
+            {post.author_fullName}
+        </AuthorTag>
     </InvContainer>
     <TagModule
             time="{publishDate}"        inline={true}

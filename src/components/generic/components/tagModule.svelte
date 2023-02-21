@@ -1,35 +1,47 @@
 <script>
-    export let
-        time = null;
+    export let time = null;
+    export let inline = false;
 
-    export let
-        tags = null,
-        tagsIds = "";
+    export let tags = [];
+    export let tagsIds = [];
+
     let tagHighlight = "505b9480-cf02-42f3-902c-0a9c10c2801b";
-
-    export let
-        inline = false;
 
     const relativeTime = (time) => {
         return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
+
+    console.log(tags)
 </script>
 
-<div class="tags {inline ? 'inline' : 'notInline'}">
-    {#if relativeTime(new Date(time))}
-        <div class="tag new">
-            <span class="hov inv">
-                NEW
-            </span>
-        </div>
-    {/if}
-    {#each tags as tag, i}
-        <div class="tag category {tagsIds[i] === tagHighlight ? 'highlight' : ''}">
-            <span class="hov">
-                {tag}
-            </span>
-        </div>
-    {/each}
-</div>
+{#if tags.length !== 0}
+    <div class="tags {inline ? 'inline' : 'notInline'}">
+
+        {#if relativeTime(new Date(time))}
+            <div class="tag new">
+                <span class="hov inv">
+                    NEW
+                </span>
+            </div>
+        {/if}
+
+        {#if tags.length > 1}
+            {#each tags as tag, i}
+                <div class="tag category {tagsIds[i] === tagHighlight ? 'highlight' : ''}">
+                    <span class="hov">
+                        {tag}
+                    </span>
+                </div>
+            {/each}
+        {:else}
+            <div class="tag category {tagsIds[0] === tagHighlight ? 'highlight' : ''}">
+                    <span class="hov">
+                        {tags[0]}
+                    </span>
+            </div>
+        {/if}
+
+    </div>
+{/if}
 
 <style lang="scss">
     .tags {
