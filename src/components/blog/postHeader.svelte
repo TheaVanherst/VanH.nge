@@ -17,8 +17,6 @@
     .title {
         overflow:       hidden;
         width:          100%;
-        border-top-right-radius:    var(--innerRaidus);
-        border-top-left-radius:     var(--innerRaidus);
 
         display:        flex;
         align-items:    center;

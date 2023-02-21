@@ -1,25 +1,23 @@
 <script>
     import HeaderModule from "./previewHeader.svelte"
-    import TitleModule from "../postHeader.svelte"
     import PostModule from "../../serializer/portableText.svelte"
-    import TagModule from "../../generic/tagModule.svelte"
 
+    import TagModule from "$components/generic/tagModule.svelte";
     import Container from "$components/generic/container.svelte";
 
     import { urlChanger } from '$stores/directoryController.js';
 
     export let post = null;
-    console.log(post)
 </script>
+
 <a href={'/blog/' + post.slug} on:click={urlChanger("/blog/" + post.slug)}>
     <Container hoverBool="{true}">
         <div class="post" id="post-{post.slug}">
             <div class="readMore">
                 <img src="/icons/downArrowPreview.webp">
             </div>
-            <TitleModule
-                    titleHeader="{post.headerImage}"	title="{post.title}"/>
             <HeaderModule
+                    titleHeader="{post.headerImage}"	title="{post.title}"
                     createdOn={post._createdAt} 		updatedOn={post._updatedAt}         publishedOn={post.publishedAt}
                     authorhandle={post.author_handle}   authoruser={post.author_fullName}   authorTwitter={post.author_twitter}
                     editorhandle={post.editor_handle}   editoruser={post.editor_fullName}   editorTwitter={post.editor_twitter}/>
@@ -47,7 +45,6 @@
 
 	.post {
 		position: relative;
-        max-height: 350px;
 		top:        0px;
 
 		.description {
@@ -58,6 +55,7 @@
 
         .nonClickable {
 	        pointer-events: none;
+	        max-height:     200px;
         }
 
         &:hover {

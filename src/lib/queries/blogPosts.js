@@ -3,14 +3,13 @@ let query =
     `
         _id,
         'slug': slug.current,
+        
         title,
         'headerImage': mainImage,
         
         _createdAt,
         _updatedAt,
         publishedAt,
-        'catagory_tags': categories[]->title,
-        'catagory_id': categories[]->_id,
     
         'author_handle': author->handle,
         'author_fullName': author->fullName,
@@ -21,6 +20,9 @@ let query =
         'editor_fullName': editor->fullName,
         'editor_twitter': editor->twitterURL,
         'editor_portrait': editor->userPortrait,
+        
+        'catagory_tags': categories[]->title,
+        'catagory_id': categories[]->_id,
     
         body,
         'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]

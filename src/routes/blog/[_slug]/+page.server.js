@@ -1,3 +1,4 @@
+
 import client from "$lib/sanityClient.js";
 import query from "$lib/queries/blogPosts"
 
@@ -5,7 +6,7 @@ import { error } from '@sveltejs/kit';
 
 export const load = async ({params}) => {
     const { _slug } = params
-    const postData = await client.fetch(`*[_type == 'post' && slug.current == '${_slug}']{${query}}`);
+    const postData = await client.fetch(`*[_type == 'blogPost' && slug.current == '${_slug}']{${query}}`);
     if (postData) {
         return postData;
     } else {

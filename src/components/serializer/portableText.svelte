@@ -39,7 +39,7 @@
 <div class="postBody">
     <PortableText
         value={postData}
-        onMissingComponent={false}
+        onMissingComponent={(e) => console.log("Error: ", e)}
         components={{
             types: {
                 code:       CodeBlock,

@@ -1,23 +1,29 @@
 <script>
     import {createdPush, updatedPush} from "../../dateBuilder.js"
+
     import AuthorTag from "$components/generic/authorTag.svelte";
+    import TitleModule from "../postHeader.svelte"
 
     export let createdOn = null, updatedOn = null, publishedOn = null;
-    export let authoruser = null, editoruser = null, editorTwitter = null, authorTwitter = null;
+    export let authoruser = null, editoruser = null, authorTwitter = null, editorTwitter = null;
+
+    export let titleHeader = null, title = null;
 
     let publishDate = publishedOn ? publishedOn : createdOn;
 </script>
 
 
 <header>
+    <TitleModule titleHeader={titleHeader}	title={title}/>
+
     <div class="userData">
         {#if editoruser}
-            <AuthorTag preview={true} linkUrl="{editorTwitter}" content="{updatedPush(updatedOn, publishDate)} by">{editoruser}</AuthorTag>
+            <AuthorTag preview={true} linkUrl={editorTwitter} content="{updatedPush(updatedOn, publishDate)} by">{editoruser}</AuthorTag>
         {:else}
             {#if authoruser === editoruser}
-                <AuthorTag preview={true} linkUrl="{authorTwitter}" content="{updatedPush(updatedOn, publishDate)} by">{authorTwitter}</AuthorTag>
+                <AuthorTag preview={true} linkUrl={authorTwitter} content="{updatedPush(updatedOn, publishDate)} by">{authorTwitter}</AuthorTag>
             {:else}
-                <AuthorTag preview={true} linkUrl="{authorTwitter}" content="{createdPush(publishDate, 'shortDate')} by">{authoruser}</AuthorTag>
+                <AuthorTag preview={true} linkUrl={authorTwitter} content="{createdPush(publishDate, 'shortDate')} by">{authoruser}</AuthorTag>
             {/if}
         {/if}
     </div>
@@ -25,35 +31,21 @@
 
 <style lang="scss">
     header {
-	    > div {
-		    white-space: nowrap;
-		    width: auto;
-	    }
-    }
+        border-radius:  var(--innerRaidus);
+        overflow:       hidden;
 
-    span {
-	    line-height: 100%;
-        color:      var(--textColourInvert);
+	    margin:         0 0 var(--contentPaddingY) 0;
 
-	    &::selection {
-		    color: var(--accent1);
-		    background-color: var(--background);
-	    }
-    }
+	    .userData {
+		    white-space:    nowrap;
+		    overflow:       hidden;
 
-    .userData {
-        background-color: var(--accent1);
-	    color: var(--background);
-        border-bottom-left-radius: var(--innerRaidus);
-	    border-bottom-right-radius: var(--innerRaidus);
+		    background-color:   var(--accent1);
+		    color:              var(--background);
 
-        margin:         0 0 var(--contentPaddingY) 0;
-        padding:    5px 10px;
-        width:          auto;
-        font-size:      13px;
-
-	    div {
-		    padding: var(--contentPaddingY) var(--contentPaddingX);
+		    padding:    5px 10px;
+		    width:      auto;
+		    font-size:  13px;
 	    }
     }
 </style>

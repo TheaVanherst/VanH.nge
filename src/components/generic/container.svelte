@@ -3,12 +3,14 @@
     export let overflowBool = true;
 </script>
 
-<div class:hoverable={hoverBool} class:overflow={overflowBool}>
+<div class:hoverable={hoverBool}
+     class:overflow={overflowBool}>
     <slot/>
 </div>
 
 <style lang="scss">
 	div {
+		break-inside: avoid-column;
 		border-radius: 	var(--outerRadius);
 		background:		var(--backgroundTrans);
 		border:         1px solid var(--accent1);
