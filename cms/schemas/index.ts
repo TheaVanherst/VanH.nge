@@ -1,22 +1,32 @@
 
-import blockContent from './blockContent'
+// TODO: Content Types
+import blockContent from './components/blocks/blockContent'
+import blockGallery from './components/blocks/gallery'
 
-// TODO: Page Types
+// TODO: Post Types
+import artPost from './postTypes/artPost'
+import blogPosts from './postTypes/blogPosts'
+import testPosting from './postTypes/testPosts'
 
-import post from './post'
-import author from './author'
-
-// TODO: Category Types
-
+// TODO: Post catagory data
 import category from './category'
+import author from './author'
 import jobDescription from './jobDescription'
 
 const blogData = [
-  post,
+  //content declarations
+  blockContent,
+  blockGallery,
+
+  //post types
+  artPost,
+  testPosting,
+  blogPosts,
+
+  //post related data
   author,
   jobDescription,
   category,
-  blockContent
 ];
 
-export {blogData};
+export { blogData };

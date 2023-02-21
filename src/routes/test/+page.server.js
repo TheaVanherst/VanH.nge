@@ -1,10 +1,10 @@
 import client from "$lib/sanityClient.js";
-import query from "$lib/queries/blogPreviews"
+import query from "$lib/queries/blogPreviews.js"
 
 import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    const postData = await client.fetch(`*[_type == 'blogPost'] | order(_updatedAt)[0..5] {${query}}`);
+    const postData = await client.fetch(`*[_type == 'post'] | order(_updatedAt)[0..5] {${query}}`);
     if (postData.length > 0) {
         return [postData];
     } else {

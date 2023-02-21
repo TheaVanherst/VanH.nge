@@ -6,7 +6,7 @@
 
     import Container from "$components/generic/container.svelte";
 
-    export let post
+    export let post = null;
 </script>
 
 <Container overflowBool="{false}">

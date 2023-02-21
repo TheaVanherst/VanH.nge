@@ -14,7 +14,11 @@
         {#if editoruser}
             <AuthorTag preview={true} linkUrl="{editorTwitter}" content="{updatedPush(updatedOn, publishDate)} by">{editoruser}</AuthorTag>
         {:else}
-            <AuthorTag preview={true} linkUrl="{authorTwitter}" content="{createdPush(publishDate, 'shortDate')} by">{authoruser}</AuthorTag>
+            {#if authoruser === editoruser}
+                <AuthorTag preview={true} linkUrl="{authorTwitter}" content="{updatedPush(updatedOn, publishDate)} by">{authorTwitter}</AuthorTag>
+            {:else}
+                <AuthorTag preview={true} linkUrl="{authorTwitter}" content="{createdPush(publishDate, 'shortDate')} by">{authoruser}</AuthorTag>
+            {/if}
         {/if}
     </div>
 </header>

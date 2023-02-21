@@ -9,6 +9,7 @@
     import { urlChanger } from '$stores/directoryController.js';
 
     export let post = null;
+    console.log(post)
 </script>
 <a href={'/blog/' + post.slug} on:click={urlChanger("/blog/" + post.slug)}>
     <Container hoverBool="{true}">
@@ -29,8 +30,7 @@
                 <p class="description">
                     {post?.description}
                 </p>
-                <PostModule
-                        postData="{post?.body}"/>
+                <PostModule postData="{post?.body}"/>
             </div>
         </div>
     </Container>
@@ -47,7 +47,6 @@
 
 	.post {
 		position: relative;
-        min-height: 250px;
         max-height: 350px;
 		top:        0px;
 

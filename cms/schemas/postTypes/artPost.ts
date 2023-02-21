@@ -1,10 +1,12 @@
 
 import { defineField, defineType } from 'sanity'
-import { slugUniqueCheck } from './components/slugCheck'
+import { slugUniqueCheck } from '../components/slugCheck'
+
+import gallery from '../components/blocks/gallery'
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
+  name: 'artPost',
+  title: 'Art Posts',
   type: 'document',
   fields: [
     defineField({
@@ -36,14 +38,6 @@ export default defineType({
       }]
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      }
-    }),
-    defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
@@ -71,12 +65,9 @@ export default defineType({
       type: 'string',
       validation: Rule => Rule.required().min(24).max(160)
     }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
-      validation: Rule => Rule.required()
-    }),
+
+    gallery,
+
     defineField({
       name: 'editorNotes',
       title: 'Editor Notes',
@@ -89,14 +80,13 @@ export default defineType({
     select: {
       title: 'title',
       subtitle: 'briefDesc',
-      author: 'author.fullName',
-      media: 'mainImage',
+      media: 'gallery.images[0]',
     },
     prepare(selection) {
-      const {author, title, media} = selection
+      const {title, media, subtitle} = selection
       return {
         title: title,
-        subtitle: `${author} ${title}`,
+        subtitle: subtitle,
         media: media
       }
     }
