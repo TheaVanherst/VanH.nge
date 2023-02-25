@@ -4,126 +4,38 @@
     export let paddingBool = true;
 
     export let colour =     "green";
-
-    export let tab =        false;
-    export let tabColour =  "green";
-
-    export let title =      "NERV:";
-    export let subtitle =   "CODE " + Math.floor(Math.random() * 404);
-
-    export let warningScroll = false;
-    export let warningString = "ACCESS RESTRICTED : NON NERV PERSONNEL"
-
-    export let barBool =        false;
-    export let stripeColour =   "orange";
-
+    export let hoverColour = "green"
     export let id = undefined;
 
 </script>
 
-<div class={colour + " " + ("t" + tabColour)} >
-    {#if tab}
-        <div class="tab">
-            <div class="tilt">
-                <p class="def tabName">
-                    {title}
-                </p>
-            </div>
-            <p class="caption">
-                {subtitle}
-            </p>
-        </div>
-    {/if}
-
-    <div id={id}
-         class="container"
-         class:padding={paddingBool}
-         class:hoverable={hoverBool}
-         class:overflow={overflowBool}>
-
-        {#if barBool & tab}
-            {#if warningScroll}
-                <div class=" bar">
-                    <div class="warning steep {stripeColour}"></div>
-
-                    <div class="emergencyWrapper gap scroll">
-                        <p class="alt">{warningString}</p>
-                    </div>
-
-                    <div class="warning steep {stripeColour}"></div>
-                </div>
-            {:else}
-                <div class="bar warning steep {stripeColour}"></div>
-            {/if}
-        {/if}
-        <slot/>
-
-    </div>
+<div id={id}
+     class={colour + " " + ("h" + hoverColour)}
+     class:padding={paddingBool}
+     class:hoverable={hoverBool}
+     class:overflow={overflowBool}>
+    <slot/>
 </div>
 
 <style lang="scss">
+    .green {    border: 1px solid var(--accent1);}
+    .yellow {   border: 1px solid var(--accent3);}
+    .orange {   border: 1px solid var(--darkAccent3);}
+    .red {      border: 1px solid var(--darkAccent4);}
 
-    @function pow($base, $exponent) {
-        $result: 1;
-        @for $_ from 1 through $exponent {
-            $result: $result * $base;
-        }
-        @return $result;
-    }
+    .hgreen:hover { border: 1px solid var(--accent1);}
+    .hyellow:hover {border: 1px solid var(--accent3);}
+    .horange:hover {border: 1px solid var(--darkAccent3);}
+    .hred:hover {   border: 1px solid var(--darkAccent4);}
 
-    .tgreen {
-        .tabName {color:    var(--accent1);}
-        .caption {color:    var(--accent1);}}
-    .tyellow {
-        .tabName {color:    var(--accent3);}
-        .caption {color:    var(--accent3);}}
-    .torange {
-        .tabName {color:    var(--darkAccent3);}
-        .caption {color:    var(--darkAccent3);}}
-    .tred {
-        .tabName {color:    var(--darkAccent4);}
-        .caption {color:    var(--darkAccent4);}}
-
-    .green {
-        .container {
-            border: 1px solid var(--accent1);}
-        .tab {
-            border-left:    1px solid var(--accent1);
-            .tilt { border-right:   1px solid var(--accent1);
-                border-top:     1px solid var(--accent1);}}}
-    .yellow {
-        .container {
-            border: 1px solid var(--accent3);}
-        .tab {
-            border-left:    1px solid var(--accent3);
-            .tilt { border-right:   1px solid var(--accent3);
-                border-top:     1px solid var(--accent3);}}}
-    .orange {
-        .container {
-            border: 1px solid var(--darkAccent3);}
-        .tab {
-            border-left:    1px solid var(--darkAccent3);
-            .tilt { border-right:   1px solid var(--darkAccent3);
-                border-top:     1px solid var(--darkAccent3);}}}
-    .red {
-        .container {
-            border: 1px solid var(--darkAccent4);}
-        .tab {
-            border-left:    1px solid var(--darkAccent4);
-            .tilt { border-right:   1px solid var(--darkAccent4);
-                border-top:     1px solid var(--darkAccent4);}}}
-
-	.container {
-		break-inside: avoid-column;
-
+	div {
+		break-inside:   avoid-column;
 		border-radius: 	var(--outerRadius);
 		background:		var(--backgroundTrans);
-
         margin-bottom:  var(--containerPadding);
 
         &.padding {
-            padding:    var(--containerPadding);
-        }
+            padding:    var(--containerPadding);}
 
 		&.hoverable {
 			transition: border 0.2s ease-in-out;
