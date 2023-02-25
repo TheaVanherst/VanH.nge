@@ -11,7 +11,6 @@
     export let titleHeader = null, title = null;
 
     let publishDate = publishedOn ? publishedOn : createdOn;
-    console.log(authoruser, editoruser)
 </script>
 
 

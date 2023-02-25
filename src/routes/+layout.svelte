@@ -34,8 +34,6 @@
 </page>
 
 <style lang="scss">
-	/* TODO: column management */
-
 	page {
 		display: 	block;
 		padding: 	var(--containerPadding);

@@ -6,7 +6,7 @@
     import { motion } from '$stores/accessibilityController'
 
     export let data = null;
-    data = data[0][0]
+    data = data[0]
 </script>
 
 <div class="profileGraphic">
@@ -55,7 +55,7 @@
 			padding:    7px 10px;
 			background-color:   var(--background);
 			border-radius:      var(--innerRaidus);
-            border:     1px solid var(--accent1);
+            border:     1px solid var(--darkAccent3);
 		}
 
 		.nameCard {
@@ -77,7 +77,7 @@
 				overflow:       hidden;
 
 				&::selection {
-					color: 				var(--accent1);
+					color: 				var(--darkAccent3);
 					background-color: 	black;}
 			}
 		}

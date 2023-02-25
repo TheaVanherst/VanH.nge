@@ -89,7 +89,7 @@
 	.userData {
 		display: flex;
 
-		border-bottom:  var(--border-thickness) solid var(--textColour);
+		border-bottom:  var(--borderThickness) solid var(--textColour);
 		margin:         0 0 var(--contentPaddingY) 0;
         padding:        var(--contentPaddingY) 0 var(--contentPaddingY) calc(var(--contentPaddingY) + 40px);
 
@@ -110,7 +110,7 @@
 			margin:         var(--contentPaddingY);
 
 			border-radius:  var(--innerRaidus);
-			border:         var(--border-thickness) solid var(--accent1);
+			border:         var(--borderThickness) solid var(--accent1);
 
 			overflow:       hidden;
 			position:       absolute;

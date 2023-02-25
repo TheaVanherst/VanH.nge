@@ -1,5 +1,6 @@
 
 @import 'styles/vansche.scss';
+@import 'styles/evangelion.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Flow+Circular&family=Monda:wght@400;700&family=Press+Start+2P&display=swap');
@@ -8,14 +9,14 @@
 $baseColour: 10px;
 
 :root {
-	--accent1: 		#3aecb4;
-	--darkAccent1: 	#0d503d;
 	--accent2: 		#7553ff;
 	--darkAccent2: 	#261479;
-	--accent3: 		#ff9900;
-	--darkAccent3: 	#734400;
-	--accent4:		#f92672;
-	--darkAccent4: 	#670f30;
+	--darkAccent1: 	#0d503d;
+	--accent1: 		#10ffd6;
+	--accent3: 		#ffac2b;
+	--darkAccent3: 	#e95000;
+	--darkAccent4: 	#d00000;
+	--accent4:		#f11249;
 
 	--background:           #000;
 	--backgroundTrans:      rgba(0, 0, 0, 0.8);
@@ -36,9 +37,14 @@ $baseColour: 10px;
 	--imageSpacing:		5px;
 	--imageBlurring: 	3px;
 
-	--border-thickness: 1px;
-	--innerRaidus: 		4px;
-	--outerRadius: 		8px;
+	--textSpacingThin:  5px;
+	--textSpacingThick: 10px;
+	--textLinesThin:    2px;
+	--textLinesThick:   5px;
+
+	--innerRaidus: 		0px;
+	--outerRadius: 		0px;
+	--accentRadius:     8px;
 }
 
 /* document formatting */
@@ -206,6 +212,7 @@ ul {
 
 /* layout animation presetting */
 
+/* TODO: GENERIC */
 @keyframes gradient {
 	0% {    background-position: 0%   50%;}
 	50% {   background-position: 100% 50%;}
@@ -224,9 +231,9 @@ ul {
 	0% { 	opacity: 1;}
 	100% { 	opacity: 0;}}
 
-@keyframes typing {
-	from {  width: 0;}}
-
-@keyframes blink {
-	0% {    border-right: 9px solid;}
-	50% {   border-color: transparent;}}
+/* TODO: STYLE SPECIFIC */
+@keyframes wave-text{
+	50%{    transform: translateY(0);}
+	60%{    transform: translateY(-5px);}
+	70%{   transform: translateY(0);}
+}

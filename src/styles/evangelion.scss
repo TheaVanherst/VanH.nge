@@ -1,0 +1,186 @@
+
+div.warning {
+	height: 10px;
+
+	&.flashing {
+		animation: flashing 0.5s linear infinite;
+	}
+
+	&.default {
+		&.orange {
+			background-image: repeating-linear-gradient( 45deg,
+				transparent,                transparent 1rem,
+				var(--darkAccent3) 1rem,    var(--darkAccent3) 2rem);}
+		&.red {
+			background-image: repeating-linear-gradient( 45deg,
+				transparent,                transparent 1rem,
+				var(--darkAccent4) 1rem,    var(--darkAccent4) 2rem);}
+	}
+
+	&.steep {
+		&.orange {
+			background-image: repeating-linear-gradient( 70deg,
+				transparent,                transparent 0.5rem,
+				var(--darkAccent3) 0.5rem,  var(--darkAccent3) 1rem);}
+		&.red {
+			background-image: repeating-linear-gradient( 70deg,
+				transparent,                transparent 0.5rem,
+				var(--darkAccent4) 0.5rem,  var(--darkAccent4) 1rem);}
+	}
+
+	background-size: 200% 200%;
+
+	&.scroll {
+		animation: barberPole 10s linear infinite;
+	}
+}
+
+div.emergency {
+	display: 	flex;
+	gap: 		0;
+
+	&.flashing {
+		animation: flashing 0.5s linear infinite;
+	}
+
+	/* TODO: BAR STYLING */
+
+	& > .bars {
+		height: 10px;
+		width:  50%;
+
+		background-size: 150% 150%;
+		&:first-child {    background-position: right;}
+		&:last-child {     background-position: left;}
+	}
+
+	&.orange > .bars {
+		&:first-child {
+			background-image:
+				repeating-linear-gradient( 45deg,
+					var(--darkAccent3),  var(--darkAccent3) 0.75rem,
+					transparent 0.75rem,    transparent 1.5rem);}
+		&:last-child {
+			background-image:
+				repeating-linear-gradient( -45deg,
+					var(--darkAccent3),  var(--darkAccent3) 0.75rem,
+					transparent 0.75rem,    transparent 1.5rem);}
+	}
+
+	&.red > .bars {
+		&:first-child {
+			background-image:
+				repeating-linear-gradient( 45deg,
+					var(--darkAccent4),  var(--darkAccent4) 0.75rem,
+					transparent 0.75rem,    transparent 1.5rem);}
+		&:last-child {
+			background-image:
+				repeating-linear-gradient( -45deg,
+					var(--darkAccent4),  var(--darkAccent4) 0.75rem,
+					transparent 0.75rem,    transparent 1.5rem);}
+	}
+}
+
+div.emergencyWrapper {
+	overflow:   hidden;
+
+	&.gap {
+		margin:     var(--textSpacingThin) 0;}
+
+	&.lines {
+		border-bottom:  var(--textLinesThin) solid var(--darkAccent4);
+		border-top:     var(--textLinesThin) solid var(--darkAccent4);}
+
+	&.flashing {
+		& > * {
+			animation:  flashing 0.5s linear infinite;} }
+	&.scroll {
+		& > * {
+			transform:  translateX(100%);
+			animation:  scrollAnimation 10s linear infinite;}}
+	&.scrollFlash {
+		& > * {
+			transform:  translateX(100%);
+			animation:  flashing 0.5s linear infinite, scrollAnimation 5s linear infinite;}}
+
+
+	& > * {
+		margin:     0 auto;
+
+		> * {
+			margin:     0 auto;
+			width:      100%;}
+	}
+
+	p {
+		display:    block;
+		width:      min-content;
+
+		white-space:    nowrap;
+		text-wrap:      none;
+	}
+}
+
+p.def {
+	color:          var(--darkAccent3);
+	font-size:      36px;
+	font-family:    Arial, sans-serif;
+	line-height:    100%;
+
+	transform:scale(1, 0.8);
+	font-weight:    600;
+}
+
+p.alt {
+	color:          var(--darkAccent4);
+	font-size:      10px;
+	font-family:    Lucida Console, sans-serif;
+
+	line-height:    100%;
+	text-transform: uppercase;
+
+	&.gap {
+		margin:     var(--textSpacingThin) 0;}
+}
+
+.medPad {
+	padding: 6px 6px 0 6px;
+	&:last-child {
+		padding-bottom: 6px;}}
+.defPad {
+	padding: 10px 10px 0 10px;
+	&:last-child {
+		padding-bottom: 10px;}}
+
+p.yellow {  color:    var(--accent3);}
+p.orange {  color:    var(--darkAccent3);}
+p.red {     color:    var(--darkAccent4);}
+p.white {   color:    var(--textColour);}
+
+@keyframes barberPole {
+	0% {    background-position: 100% 100%;}}
+@keyframes flashing {
+	0% {    opacity:    100%;}
+	50% {   opacity:    80%;}
+	100% {  opacity:    0;}}
+
+@keyframes typing {
+	from {  width:      0;}}
+
+@keyframes blink {
+	0% {    border-right: 9px solid;}
+	50% {   border-color: transparent;}}
+
+
+@keyframes scrollAnimation {
+	from {
+		-moz-transform: translateX(100%);
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+	}
+	to {
+		-moz-transform: translateX(-100%);
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+	}
+}

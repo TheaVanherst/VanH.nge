@@ -9,8 +9,6 @@
 
     const relativeTime = (time) => {
         return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
-
-    console.log(tags)
 </script>
 
 {#if tags.length !== 0}

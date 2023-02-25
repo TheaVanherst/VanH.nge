@@ -12,7 +12,7 @@ let query =
 export const load = async () => {
     const userData = await client.fetch(query);
     if (userData) {
-        return [userData];
+        return userData;
     } else {
         throw new error(404, "Page userdata not found!")
     }

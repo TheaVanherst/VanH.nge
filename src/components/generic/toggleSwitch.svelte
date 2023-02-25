@@ -49,16 +49,18 @@
     }
 
 	.slider {
-		position: absolute;
-		cursor: pointer;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		top:        0;
+		left:       0;
+		right:      0;
+		bottom:     0;
+        position:   absolute;
+
+        cursor: pointer;
+        border-radius: var(--innerRaidus);
+
 		background-color: var(--darkAccent1);
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
-		border-radius: 4px;
 
         &:before {
 	        position: absolute;
