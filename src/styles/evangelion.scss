@@ -1,6 +1,8 @@
 
 div.warning {
 	height: 10px;
+	z-index: 10;
+	background: var(--background);
 
 	&.flashing {
 		animation: flashing 0.5s linear infinite;
@@ -123,6 +125,7 @@ div.emergencyWrapper {
 
 p.def {
 	color:          var(--darkAccent3);
+	text-transform: uppercase;
 	font-size:      36px;
 	font-family:    Arial, sans-serif;
 	line-height:    100%;
@@ -137,11 +140,13 @@ p.alt {
 	font-family:    Lucida Console, sans-serif;
 
 	line-height:    100%;
-	text-transform: uppercase;
 
 	&.gap {
 		margin:     var(--textSpacingThin) 0;}
+	&.capital {
+		text-transform: uppercase;}
 }
+
 
 .medPad {
 	padding: 6px 6px 0 6px;
@@ -151,7 +156,12 @@ p.alt {
 	padding: 10px 10px 0 10px;
 	&:last-child {
 		padding-bottom: 10px;}}
+.nutPad {
+	padding: 10px 20px 0 20px;
+	&:last-child {
+		padding-bottom: 10px;}}
 
+p.green {   color:    var(--accent1);}
 p.yellow {  color:    var(--accent3);}
 p.orange {  color:    var(--darkAccent3);}
 p.red {     color:    var(--darkAccent4);}

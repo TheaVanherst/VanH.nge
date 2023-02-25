@@ -1,20 +1,27 @@
 <script>
     import SanityImage from '../serializer/imageBuilder.svelte'
 
-    export let titleHeader = null, title = null;
+    export let titleHeader = undefined, title = undefined;
+
+    let random = Math.floor(Math.random() * 3 + 1);
 </script>
 
-<div class="title">
+<div class="titleCard">
     <div class="headerBackground">
-        <SanityImage image={titleHeader}/>
+        {#if titleHeader}
+            <SanityImage image={titleHeader}/>
+        {:else}
+            <img src="/titleContent{random}.gif">
+        {/if}
     </div>
-    <h1>
-        {title}
-    </h1>
+
+    <div class="title">
+        <h1>{title}</h1>
+    </div>
 </div>
 
 <style lang="scss">
-    .title {
+    .titleCard {
         overflow:       hidden;
         width:          100%;
 
@@ -22,16 +29,25 @@
         align-items:    center;
         position:       relative;
 
-        h1 {
-            z-index:    100;
-            margin:     0;
-            padding:    var(--contentPaddingY) var(--containerPadding);}
+        .title {
+            background-color: var(--background);
+            padding:    5px;
+
+            border: 1px solid var(--accent1);
+
+            h1 {
+                color:      var(--textColour);
+                transform:  scale(1, 0.9);
+                padding:    0 5px;
+                z-index:    100;
+            }
+        }
 
         .headerBackground {
             filter:     blur(var(--imageBlurring));
             display:    block;
             position:   absolute;
             width:      110%;
-            opacity:    0.6;}
+            opacity:    0.5;}
     }
 </style>

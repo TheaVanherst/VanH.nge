@@ -1,23 +1,15 @@
 <script>
-    export let hoverBool = false;
-    export let overflowBool = true;
+    export let hoverBool = false, overflowBool = true;
 
-    export let colour =     "green";
-    export let tabColour =  "green";
-
-    export let title =      "NERV:";
-    export let subtitle =   "CODE " + Math.floor(Math.random() * 404);
-
-    export let warningScroll = false;
-    export let warningString = "ACCESS RESTRICTED : NON NERV PERSONNEL"
-
-    export let barBool =        false;
-    export let stripeColour =   "orange";
+    export let colour = "green", tabColour =  "green", stripeColour =   "orange";
+    export let title = "NERV:", subtitle = "CODE " + Math.floor(Math.random() * 404);
+    export let warning = false, barBool = false, warningString = "ACCESS RESTRICTED : NON NERV PERSONNEL";
 
     export let id = undefined;
 </script>
 
-<div class={"nervWrapper " + colour + " " + ("t" + tabColour)} >
+<div class={"nervWrapper " + colour + " " + ("t" + tabColour)}>
+
 	<div class="tab">
 		<div class="tilt">
 			<p class="def tabName">
@@ -35,7 +27,7 @@
 		 class:overflow={overflowBool}>
 
 		{#if barBool}
-			{#if warningScroll}
+			{#if warning}
 				<div class=" bar">
 					<div class="warning steep {stripeColour}"></div>
 
@@ -51,6 +43,7 @@
 		{/if}
 		<slot/>
 	</div>
+
 </div>
 
 <style lang="scss">
@@ -104,12 +97,7 @@
 
 			border-radius: 	var(--outerRadius);
 			background:		var(--backgroundTrans);
-
 			margin-bottom:  var(--containerPadding);
-
-			&.padding {
-				padding:    var(--containerPadding);
-			}
 
 			&.hoverable {
 				transition: border 0.2s ease-in-out;

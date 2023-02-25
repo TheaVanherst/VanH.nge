@@ -1,18 +1,11 @@
 <script>
-    export let hoverBool = false;
-    export let overflowBool = true;
-    export let paddingBool = true;
-
-    export let colour =     "green";
-    export let hoverColour = "green"
+    export let overflowBool = true, paddingBool = true;
+    export let colour = "green";
     export let id = undefined;
-
 </script>
 
-<div id={id}
-     class={colour + " " + ("h" + hoverColour)}
+<div id={id} class={colour}
      class:padding={paddingBool}
-     class:hoverable={hoverBool}
      class:overflow={overflowBool}>
     <slot/>
 </div>
@@ -23,11 +16,6 @@
     .orange {   border: 1px solid var(--darkAccent3);}
     .red {      border: 1px solid var(--darkAccent4);}
 
-    .hgreen:hover { border: 1px solid var(--accent1);}
-    .hyellow:hover {border: 1px solid var(--accent3);}
-    .horange:hover {border: 1px solid var(--darkAccent3);}
-    .hred:hover {   border: 1px solid var(--darkAccent4);}
-
 	div {
 		break-inside:   avoid-column;
 		border-radius: 	var(--outerRadius);
@@ -37,20 +25,11 @@
         &.padding {
             padding:    var(--containerPadding);}
 
-		&.hoverable {
-			transition: border 0.2s ease-in-out;
-			&:hover {
-				border: 1px solid var(--accent3);
-			}
-		}
-
 		&.overflow {
-            overflow: hidden;
-		}
+            overflow: hidden;}
 
         .bar {
-            margin: 6px 6px 0 6px;
-        }
+            margin: 6px 6px 0 6px;}
 
         & > *:not(.bar):first-child {
             position: relative;
