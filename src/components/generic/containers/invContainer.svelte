@@ -32,13 +32,13 @@
 {/if}
 
 <style lang="scss">
+    .green {background: var(--accent1)}
+    .yellow {background: var(--accent3)}
+    .orange {background: var(--darkAccent3)}
+    .red {background: var(--darkAccent4)}
+
 	div {
 		white-space:    nowrap;
-
-        &.green {    background: var(--accent1);}
-        &.yellow {   background: var(--accent3);}
-        &.orange {   background: var(--darkAccent3);}
-        &.red {      background: var(--darkAccent4);}
 
         &.rounded {
             border-radius: 5px;
@@ -47,7 +47,10 @@
 
 		padding:    5px 10px;
 		width:      auto;
-		font-size:  13px;
+
+		font-size:      13px;
+        font-weight:    800;
+        font-family:    'Arimo', sans-serif;
 
         &.overflow {
 	        border-radius:  var(--innerRaidus);

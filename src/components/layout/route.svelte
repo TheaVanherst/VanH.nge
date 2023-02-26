@@ -39,22 +39,18 @@
 
 <style lang="scss">
     .inline {
-        width: 100%;
-        margin: 0 var(--containerPadding);
+        width:  calc(100% - (var(--containerPadding) * 2));
+        margin:  0 var(--containerPadding) var(--containerPadding);
 
 	    .wrapper {
 		    &:not(:last-child){
-			    padding-right:  10px;
-            }
-        }
+			    padding-right:  10px;}}
 
         .dir {
-		    top:        -4px;
-	    }
+		    top:    -4px;}
 
         h1 {
-	        display:    inline-block;
-        }
+	        display:    inline-block;}
     }
 
     .wrapper {
@@ -67,12 +63,10 @@
 		    opacity: 0.5;
 
 		    &:hover {
-			    opacity: 1;
-		    }
+			    opacity: 1;}
 	    }
 
 	    &.transitioning {
-		    opacity: 0.3;
-	    }
+		    opacity: 0.3;}
     }
 </style>

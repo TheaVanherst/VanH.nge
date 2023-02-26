@@ -25,7 +25,6 @@
 
 <style lang="scss">
     h1, h2, h3, h4 {
-	    border-left: 	5px solid var(--accent1);
 	    padding:	 	0 0 0 20px;
 	    margin:			0 0 var(--contentPaddingY) calc(var(--contentPaddingX) * -1);
     }

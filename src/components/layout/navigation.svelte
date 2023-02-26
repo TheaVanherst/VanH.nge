@@ -6,7 +6,6 @@
     import { motion } from '$stores/accessibilityController'
 
     export let data = null;
-    data = data[0]
 </script>
 
 <div class="profileGraphic">
@@ -15,7 +14,7 @@
 
 <div class="prompt">
     <div class="nameCard">
-        <p style="--stringLength: {data.fullName.length}">{data.fullName} 🦌</p>
+        <p style="--stringLength: {data[0].fullName.length}">{data[0].fullName} 🦌</p>
     </div>
 </div>
 

@@ -1,10 +1,55 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+div.lineScale {
+	position: relative;
+	height: 15px;
+
+	> * {
+		width:      100%;
+		position:   absolute;
+	}
+
+	.small {
+		height:     5px;
+		margin:     5px 0;
+
+		background-image: repeating-linear-gradient( 90deg,
+			transparent,            transparent 4px,
+			var(--accent1) 4px, var(--accent1) 5px);}
+
+	.medium {
+		height:     7px;
+		margin:     4px 0;
+
+		background-image: repeating-linear-gradient( 90deg,
+				transparent,            transparent 14px,
+				var(--accent1) 14px, var(--accent1) 15px);}
+
+	.large {
+		height:     9px;
+		margin:     3px 0;
+
+		background-image: repeating-linear-gradient( 90deg,
+				transparent,            transparent 29px,
+				var(--accent1) 29px, var(--accent1) 30px);}
+
+	.xLarge {
+		height:     13px;
+		margin:     1px 0;
+
+		background-position-x: 0.5px;
+		background-image: repeating-linear-gradient( 90deg,
+				transparent,            transparent 58px,
+				var(--accent1) 58px, var(--accent1) 60px);}
+}
 
 div.lineArr {
 	height: 8px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 
+	&.yellow {
+		background-image: repeating-linear-gradient( 90deg,
+				transparent,                transparent 4px,
+				var(--accent3) 4px, var(--accent3) 5px);}
 	&.orange {
 		background-image: repeating-linear-gradient( 90deg,
 				transparent,                transparent 4px,
@@ -16,11 +61,27 @@ div.lineArr {
 }
 
 div.lineDiv {
-	height: 3px;
+	height: 1px;
 	margin-bottom: 2px;
 
+	&.green {  background-color: var(--accent1);}
+	&.yellow {  background-color: var(--accent3);}
 	&.orange {  background-color: var(--darkAccent3);}
 	&.red {     background-color: var(--darkAccent4);}
+}
+
+div.dogma {
+	border-radius: 5px;
+	padding: 5px;
+
+	font-weight: 800;
+	font-family: "Arimo", sans-serif;
+	text-transform: uppercase;
+	border: 1px solid var(--accent3);
+
+	width: min-content;
+	text-wrap: none;
+
 }
 
 div.warning {
@@ -156,6 +217,10 @@ p.def {
 
 	transform:scale(1, 0.8);
 	font-weight:    600;
+
+	&::selection {
+		color: 				var(--background);
+		background-color: 	var(--darkAccent3)}
 }
 
 p.alt {
@@ -167,8 +232,18 @@ p.alt {
 
 	&.gap {
 		margin:     var(--textSpacingThin) 0;}
+
+	&::selection {
+		color: 				var(--background);
+		background-color: 	var(--darkAccent4)}
 }
 
+.titlecard {
+	font-family:    'Playfair Display', serif;
+	font-weight:    700;
+	line-height:    100%;
+	padding:        0;
+}
 
 .medPad {
 	padding: 6px 6px 0 6px;
@@ -183,11 +258,39 @@ p.alt {
 	&:last-child {
 		padding-bottom: 10px;}}
 
-p.green {   color:    var(--accent1);}
-p.yellow {  color:    var(--accent3);}
-p.orange {  color:    var(--darkAccent3);}
-p.red {     color:    var(--darkAccent4);}
-p.white {   color:    var(--textColour);}
+p.green {   color:    var(--accent1);
+	&::selection {background-color: 	var(--accent1)}}
+p.yellow {  color:    var(--accent3);
+	&::selection {background-color: 	var(--accent3)}}
+p.orange {  color:    var(--darkAccent3);
+	&::selection {background-color: 	var(--darkAccent3)}}
+p.red {     color:    var(--darkAccent4);
+	&::selection {background-color: 	var(--darkAccent4)}}
+p.white {   color:    var(--textColour);
+	&::selection {background-color: 	var(--textColour)}}
+
+p.neon {
+	&:before {
+		content: attr(title);
+		position: absolute;
+		color: transparent;
+
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		background-clip: text;
+	}
+
+	&.orange {
+		&:before {
+			text-shadow: 0px 0px 2px var(--darkAccent3);
+		}
+		text-shadow: var(--darkAccent4) 0px 0px 2px;
+	}
+}
+
+div.neon {
+	filter: drop-shadow(0px 0px 9px var(--darkAccent3));
+}
 
 @keyframes barberPole {
 	0% {    background-position: 100% 100%;}}

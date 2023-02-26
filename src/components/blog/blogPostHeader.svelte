@@ -6,7 +6,7 @@
     export let createdOn = null, updatedOn = null, publishedOn = null;
     let publishDate = publishedOn ? publishedOn : createdOn;
 
-    export let titleHeader = null, title = null;
+    export let titleHeader = null, title = null, subtitle;
 
     import {createdPush, updatedPush} from "../dateBuilder.js"
 
@@ -15,7 +15,7 @@
 </script>
 
 <header>
-    <PostHeader titleHeader="{titleHeader}"	title="{title}"/>
+    <PostHeader titleHeader="{titleHeader}"	title="{title}" subtitle="{subtitle}"/>
 
     <div class="profile">
         {#if authorImage}
@@ -61,7 +61,7 @@
 
 <style lang="scss">
 	.date {
-		background-color: var(--accent1);
+		background-color: var(--darkAccent3);
 		padding:
             var(--contentPaddingY) var(--contentPaddingX)
             var(--contentPaddingY) calc(var(--containerPadding) + 34px);
@@ -72,7 +72,7 @@
             width:      100%;
 
 			&::selection {
-				color: var(--accent1);
+				color: var(--darkAccent3);
 				background-color: var(--background);}
 
 			&.createdOn {
@@ -102,9 +102,7 @@
             left:          -35px;
 			max-width:      58px;
 			margin:         var(--contentPaddingY);
-
-			border-radius:  var(--innerRaidus);
-			border:         var(--borderThickness) solid var(--accent1);
+			border:         1px solid var(--accent3);
 
 			overflow:       hidden;
 			position:       absolute;
@@ -112,9 +110,8 @@
 			&.editor {
 				margin-left:    -20px;
 				margin-top:     36px;
-				border:         2px solid var(--accent1);
+				border:         2px solid var(--accent3);
 				transform:      scale(50%);
-				border-radius:  var(--outerRadius);
 				transition:
 						transform 0.5s,
 						border 0.5s,

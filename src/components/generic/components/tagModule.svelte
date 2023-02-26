@@ -12,13 +12,19 @@
 
 {#if tags.length !== 0}
     <div class="tags">
+
         <div class="lineDiv orange"></div>
-        <div class="lineArr orange"></div>
+        <div class="lineScale">
+            <div class="small"></div>
+            <div class="medium"></div>
+            <div class="large"></div>
+            <div class="xLarge"></div>
+        </div>
 
         {#if relativeTime(new Date(time))}
             <div class="tag new">
                 <span class="hov inv">
-                    NEW
+                    🌈 NEW
                 </span>
             </div>
         {/if}
@@ -33,9 +39,9 @@
             {/each}
         {:else}
             <div class="tag category {tags[0] === tagHighlight ? 'highlight' : ''}">
-                    <span class="hov">
-                        {tags[0]}
-                    </span>
+                <span class="hov">
+                    {tags[0]}
+                </span>
             </div>
         {/if}
     </div>
@@ -47,16 +53,16 @@
 	    white-space:    normal;
 	    font-size:      0;
 
-        width: 100%;
+        width:          100%;
 
         overflow-x:     hidden;
-        margin:         5px 0;
+        margin:         5px 0 var(--containerPadding) 0;
 
         .tag {
             counter-increment: section; /* Increment the value of section counter by 1 */
 
             padding:        5px var(--containerPadding);
-            margin:         8px var(--contentPaddingY) 0 0;
+            margin:         15px var(--contentPaddingY) 0 0;
 
             display:        inline-flex;
             transition:     background 0.3s;
@@ -70,7 +76,7 @@
 
             &:before {
                 position:       absolute;
-                margin:         -20px 0 0 -20px;
+                margin:         -20px 0 0 -21px;
                 padding:        0 0 5px 5px;
 
                 border-left:    1px solid var(--darkAccent3);
@@ -81,7 +87,7 @@
 
             &:after {
                 position:       absolute;
-                margin:         15px 0 0 -20px;
+                margin:         15px 0 0 -21px;
                 padding-left:   5px;
 
                 content:        " ";
@@ -96,24 +102,31 @@
 	        cursor:         pointer;
 
             &.tag {
-                background: var(--darkAccent3);
+                border: 1px solid var(--darkAccent3);
+                color:  var(--darkAccent3);
+
+                ::selection {
+                    background: var(--darkAccent3)!important;}
 
                 &.highlight {
-                    background-color: var(--accent1);}
+                    border: 1px solid var(--accent1);
+                    color:  var(--accent1);
+
+                    ::selection {
+                        background: var(--accent1)!important;}}
 
                 &:hover {
-                    background-color:  var(--accent3)!important;}
-                &:hover::selection {
-                    color: 				var(--accent3)!important;}
-
-	            span {
-		            &::selection {
-			            background: var(--darkAccent3);}}
+                    border: 1px solid var(--accent3);
+                    color:  var(--accent3);}
             }
         }
     }
 
     .new {
-        background-color:   var(--accent1);
+        border: 1px solid var(--accent1);
+        color:  var(--accent1);
+        ::selection {
+            color: 		var(--accent1)!important;
+            background: var(--background)!important;}
     }
 </style>

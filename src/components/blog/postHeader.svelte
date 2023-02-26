@@ -1,22 +1,29 @@
 <script>
-    import SanityImage from '../serializer/imageBuilder.svelte'
+    import SanityImage from '$components/serializer/imageBuilder.svelte'
 
-    export let titleHeader = undefined, title = undefined;
+    export let titleHeader = undefined;
+    export let title = undefined, subtitle = undefined;
 
     let random = Math.floor(Math.random() * 3 + 1);
+    let episode = subtitle.slice(0, 3);
 </script>
 
 <div class="titleCard">
     <div class="headerBackground">
-        {#if titleHeader}
-            <SanityImage image={titleHeader}/>
-        {:else}
-            <img src="/titleContent{random}.gif">
-        {/if}
+        <div>
+            {#if titleHeader}
+                <SanityImage image={titleHeader}/>
+            {:else}
+                <img src="/titleContent{random}.gif">
+            {/if}
+        </div>
     </div>
 
-    <div class="title">
-        <h1 class="capitalize">{title}</h1>
+    <div class="title subCard">
+        <h2 class="capitalize titlecard" title="{title}">{title}</h2>
+        {#if subtitle}
+            <h4 class="capitalize">EPISODE:{episode.charCodeAt(0) - 96 + "" + episode.charCodeAt(1) - 96}</h4>
+        {/if}
     </div>
 </div>
 
@@ -26,28 +33,39 @@
         width:          100%;
 
         display:        flex;
+        column-count:   2;
         align-items:    center;
         position:       relative;
 
+        margin-bottom:  var(--containerPadding);
+
+        > * {
+            display:    inline-block;
+        }
+
         .title {
-            background-color: var(--background);
-            padding:    5px;
+            max-width:  80%;
+            min-width:  50%;
+            width:      min-content;
 
-            border: 1px solid var(--accent1);
+            padding:    6px 10px;
 
-            h1 {
-                color:      var(--textColour);
-                transform:  scale(1, 0.9);
-                padding:    0 5px;
-                z-index:    100;
+            transform:          scale(0.9, 1);
+            transform-origin:   left;
+
+            z-index:    100;
+            background: var(--background);
+
+            h4 {
+                font-family: "Arimo", sans-serif;
+                float:      left;
+                padding:    6px 0 0 0;
             }
         }
 
         .headerBackground {
-            filter:     blur(var(--imageBlurring));
-            display:    block;
+            overflow:   hidden;
             position:   absolute;
-            width:      110%;
-            opacity:    0.5;}
+        }
     }
 </style>

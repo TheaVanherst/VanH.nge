@@ -49,7 +49,7 @@ body {
 	scroll-behavior: 	smooth;
 	cursor: 			crosshair;
 
-	scrollbar-color:    var(--accent1) var(--backgroundAccent2);
+	scrollbar-color:    var(--accent3) var(--backgroundAccent2);
 	scrollbar-width:    thin;
 
 	&::-webkit-scrollbar {
@@ -59,13 +59,13 @@ body {
 	&::-webkit-scrollbar-thumb {
 		border-radius: 	2px;
 		border: 		1px solid var(--background);
-		background: 	var(--accent1);}
+		background: 	var(--accent3);}
 	&::-webkit-scrollbar-thumb:hover {
 		background: 	var(--darkAccent1);}
 
 	::selection {
 		color: 				var(--background);
-		background-color: 	var(--accent1)}
+		background-color: 	var(--accent3)}
 }
 
 /* style formatting */
@@ -116,14 +116,14 @@ cite {
 
 h1, h2, h3, h4, h5 {
 	vertical-align: middle;
-	font-family:    Arial, sans-serif;
+	font-family:    "Playfair Display", serif;
 	line-height:    100%;
 
 	color:          var(--textColour);
-	padding-bottom: var(--containerPadding);
 
 	position:   relative;
 	margin:     0;
+	padding:    0;
 }
 
 h1 {font-size: 2rem;}

@@ -16,7 +16,7 @@
     a {
         display:    block;
 
-        background-color:   var(--accent1);
+        background-color:   var(--darkAccent3);
         border-radius:      var(--innerRaidus);
 
         font: 14px monospace;

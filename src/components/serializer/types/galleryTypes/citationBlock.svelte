@@ -110,19 +110,14 @@
 <style lang="scss">
 	a {
         &:hover {
-	        text-decoration: underline 1px;
-        }
-	}
+	        text-decoration: underline 1px;} }
 
 	span {
 		font-family:    monospace;
 
 	    &::selection {
-		    background-color: 	var(--darkAccent1)!important;
-	    }
-    }
+		    background-color: 	var(--darkAccent1)!important;} }
 
     .position {
-        color: var(--darkAccent1);
-    }
+        color: var(--darkAccent1);}
 </style>

@@ -16,13 +16,13 @@
 <style lang="scss">
     label {
 	    font-family:    monospace;
-	    display: inline-block;
+	    display:        inline-block;
     }
 
 	.switch {
-		position: relative;
-		width: 42px;
-		height: 16px;
+		position:   relative;
+		width:      42px;
+		height:     16px;
 		pointer-events: none;
 
         input {
@@ -31,7 +31,7 @@
 			height:     0;
 
 	        &:checked + .slider {
-		        background-color: var(--accent3);
+		        background-color: var(--accent1);
 	        }
 
 	        &:checked + .slider:before {
@@ -43,11 +43,6 @@
 
 	}
 
-    .disabled {
-        pointer-events: none;
-	    background-color: var(--backgroundAccent2);
-    }
-
 	.slider {
 		top:        0;
 		left:       0;
@@ -55,24 +50,25 @@
 		bottom:     0;
         position:   absolute;
 
-        cursor: pointer;
-        border-radius: var(--innerRaidus);
+        cursor:     pointer;
+        background: var(--darkAccent4);
 
-		background-color: var(--darkAccent1);
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
 
         &:before {
-	        position: absolute;
-	        content: "";
-	        height: 14px;
-	        width: 14px;
-	        left: 1px;
-	        bottom: 1px;
+	        position:   absolute;
+	        content:    "";
+
+	        height:     14px;
+	        width:      14px;
+	        left:       1px;
+	        bottom:     1px;
+
 	        background-color: var(--background);
+
 	        -webkit-transition: 0.4s;
 	        transition: 0.4s;
-	        border-radius: 3px;
         }
 	}
 </style>
