@@ -60,11 +60,8 @@
 </header>
 
 <style lang="scss">
-
 	.date {
 		background-color: var(--accent1);
-		border-bottom-left-radius:  var(--innerRaidus);
-		border-bottom-right-radius: var(--innerRaidus);
 		padding:
             var(--contentPaddingY) var(--contentPaddingX)
             var(--contentPaddingY) calc(var(--containerPadding) + 34px);
@@ -88,10 +85,7 @@
 
 	.userData {
 		display: flex;
-
-		border-bottom:  var(--borderThickness) solid var(--textColour);
-		margin:         0 0 var(--contentPaddingY) 0;
-        padding:        var(--contentPaddingY) 0 var(--contentPaddingY) calc(var(--contentPaddingY) + 40px);
+        padding: var(--contentPaddingY) 0 5px calc(var(--contentPaddingY) + 40px);
 
 		width:          auto;
 		font-size:      0;

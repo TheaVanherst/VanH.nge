@@ -2,12 +2,7 @@
 @import 'styles/vansche.scss';
 @import 'styles/evangelion.scss';
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Flow+Circular&family=Monda:wght@400;700&family=Press+Start+2P&display=swap');
-
 /* Root variables formatting */
-$baseColour: 10px;
-
 :root {
 	--accent2: 		#7553ff;
 	--darkAccent2: 	#261479;
@@ -37,14 +32,8 @@ $baseColour: 10px;
 	--imageSpacing:		5px;
 	--imageBlurring: 	3px;
 
-	--textSpacingThin:  5px;
-	--textSpacingThick: 10px;
-	--textLinesThin:    2px;
-	--textLinesThick:   5px;
-
 	--innerRaidus: 		0px;
 	--outerRadius: 		0px;
-	--accentRadius:     8px;
 }
 
 /* document formatting */
@@ -94,7 +83,6 @@ p {
 }
 
 span {
-	font-family:    monospace;
 	font-size:      12px;
 	line-height:    100%;
 	margin:         0;

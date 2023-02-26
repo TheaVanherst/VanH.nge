@@ -22,7 +22,6 @@ let query =
         'editor_portrait': editor->userPortrait,
         
         'catagory_tags': categories[]->title,
-        'catagory_id': categories[]->_id,
     
         body,
         'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]

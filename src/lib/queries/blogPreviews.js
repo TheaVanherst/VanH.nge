@@ -20,7 +20,6 @@ let query =
         'editor_portrait': editor->userPortrait,
         
         'catagory_tags': categories[]->title,
-        'catagory_id': categories[]->_id,
         
         'description': briefDesc,
         body[0...4],

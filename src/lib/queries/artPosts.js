@@ -11,7 +11,6 @@ let query =
         publishedAt,
         
         'catagory_tags': categories[]->title,
-        'catagory_id': categories[]->_id,
     
         'coauthors_handle': coauthors->handle,
         'coauthors_fullName': coauthors->fullName,

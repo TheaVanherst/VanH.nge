@@ -1,18 +1,19 @@
 <script>
     export let time = null;
-    export let inline = false;
-
     export let tags = [];
-    export let tagsIds = [];
 
-    let tagHighlight = "505b9480-cf02-42f3-902c-0a9c10c2801b";
+    let tagHighlight = "📌 Pinned";
 
     const relativeTime = (time) => {
         return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
+
+    tags.sort((a, b) => a.localeCompare(b));
 </script>
 
 {#if tags.length !== 0}
-    <div class="tags {inline ? 'inline' : 'notInline'}">
+    <div class="tags">
+        <div class="lineDiv orange"></div>
+        <div class="lineArr orange"></div>
 
         {#if relativeTime(new Date(time))}
             <div class="tag new">
@@ -24,57 +25,70 @@
 
         {#if tags.length > 1}
             {#each tags as tag, i}
-                <div class="tag category {tagsIds[i] === tagHighlight ? 'highlight' : ''}">
+                <div class="tag category {tags[i] === tagHighlight ? 'highlight' : ''}">
                     <span class="hov">
                         {tag}
                     </span>
                 </div>
             {/each}
         {:else}
-            <div class="tag category {tagsIds[0] === tagHighlight ? 'highlight' : ''}">
+            <div class="tag category {tags[0] === tagHighlight ? 'highlight' : ''}">
                     <span class="hov">
                         {tags[0]}
                     </span>
             </div>
         {/if}
-
     </div>
 {/if}
 
 <style lang="scss">
     .tags {
-	    white-space: normal;
-	    font-size: 0;
+        color:          var(--textColourInvert);
+	    white-space:    normal;
+	    font-size:      0;
 
-	    &.notInline {
-		    width:     calc(100% + var(--containerPadding));
-            .tag {
-	            margin:         0 var(--contentPaddingX) var(--contentPaddingX) 0;}
-        }
+        width: 100%;
 
-        &.inline {
-	        width:          calc(100%);
-            overflow-x:     hidden;
-
-            &:not(:last-child) {
-	            margin-bottom:  var(--contentPaddingY);
-            }
-
-            > *:not(:last-of-type) {
-	            margin-right: var(--contentPaddingY);
-            }
-        }
+        overflow-x:     hidden;
+        margin:         5px 0;
 
         .tag {
-	        padding:        5px var(--containerPadding);
-	        border-radius:  var(--innerRaidus);
+            counter-increment: section; /* Increment the value of section counter by 1 */
 
-	        display:        inline-flex;
-	        transition:     background 0.3s;
+            padding:        5px var(--containerPadding);
+            margin:         8px var(--contentPaddingY) 0 0;
 
-	        font-family:    monospace;
-	        font-size:      12px;
-	        line-height:    12px;
+            display:        inline-flex;
+            transition:     background 0.3s;
+
+            font-weight:    800;
+            font-family:    'Arimo', sans-serif;
+            font-size:      12px;
+            line-height:    12px;
+
+            border-radius:  5px;
+
+            &:before {
+                position:       absolute;
+                margin:         -20px 0 0 -20px;
+                padding:        0 0 5px 5px;
+
+                border-left:    1px solid var(--darkAccent3);
+                color:          var(--darkAccent3);
+
+                content: "+" counter(section);
+            }
+
+            &:after {
+                position:       absolute;
+                margin:         15px 0 0 -20px;
+                padding-left:   5px;
+
+                content:        " ";
+                height:         3px;
+                border-left:    1px solid var(--darkAccent3);
+                color:          var(--darkAccent3);
+            }
         }
 
         .category {
@@ -82,53 +96,24 @@
 	        cursor:         pointer;
 
             &.tag {
-	            border:     1px solid var(--accent1);
+                background: var(--darkAccent3);
 
-	            &:hover {
-		            background: var(--accent1);
-		            span {
-			            color:  var(--textColourInvert);
-			            &::selection {
-				            color: 		var(--accent1);
-				            background: var(--background);}}}
+                &.highlight {
+                    background-color: var(--accent1);}
+
+                &:hover {
+                    background-color:  var(--accent3)!important;}
+                &:hover::selection {
+                    color: 				var(--accent3)!important;}
 
 	            span {
-		            color: var(--textColour);
 		            &::selection {
-			            color: 		var(--background);
-			            background: var(--accent1);}}
+			            background: var(--darkAccent3);}}
             }
         }
     }
 
     .new {
-	    border-radius:      var(--innerRaidus);
-
-        background:         linear-gradient(-45deg, var(--accent1), var(--accent3), var(--accent4));
-        background-size:    800% 800%;
-	    animation:          gradient 15s ease infinite;
-
-        span {
-            color:  var(--textColourInvert);
-
-	        &::selection {
-		        color: 		var(--accent3);
-		        background: var(--background);
-	        }
-        }
-
-        &:hover {
-	        animation:      wiggle 0.5s ease infinite, gradient 15s ease infinite;
-        }
-    }
-
-
-    .highlight {
-	    border: 1px solid var(--accent3)!important;
-
-        &:hover {
-	         background-color:  var(--accent3)!important;}
-	    &:hover::selection {
-		    color: 				var(--accent3)!important;}
+        background-color:   var(--accent1);
     }
 </style>

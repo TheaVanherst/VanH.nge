@@ -1,7 +1,7 @@
 <script>
     import { urlChanger } from '$stores/directoryController.js';
 
-    export let colour = "orange", hoverColour = "green", highlightColour = "red"
+    export let colour = "orange", hoverColour = "yellow", highlightColour = "red"
     export let id = undefined;
 
     let hover = false, navigating = false;

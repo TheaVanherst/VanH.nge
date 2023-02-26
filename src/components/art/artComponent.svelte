@@ -24,14 +24,13 @@
 
     <InvContainer>
         <AuthorTag
-                preview={true} linkUrl={post.author_twitter}
+                preview={true}      linkUrl={post.author_twitter}
                 content="{createdPush(publishDate, 'shortDate')} by">
             {post.author_fullName}
         </AuthorTag>
     </InvContainer>
     <TagModule
-            time="{publishDate}"        inline={true}
-            tags={post.catagory_tags}   tagsIds={post.catagory_id} />
+            time="{publishDate}"    tags={post.catagory_tags}/>
 
     {#if post.briefDesc}
         <p>
