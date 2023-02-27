@@ -15,7 +15,7 @@
 </script>
 
 <header>
-    <PostHeader titleHeader="{titleHeader}"	title="{title}" subtitle="{subtitle}"/>
+    <PostHeader titleHeader="{titleHeader}"	title="{title}"/>
 
     <div class="profile">
         {#if authorImage}
@@ -73,7 +73,7 @@
 
 			&::selection {
 				color: var(--darkAccent3);
-				background-color: var(--background);}
+				background-color: var(--backgroundTrans);}
 
 			&.createdOn {
 				font-size:      100%;}

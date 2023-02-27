@@ -7,38 +7,69 @@
 <a href={push}
    class:clickable={!!push}
    on:click={urlChanger(push)}>
-    <p>
-        <slot/>
-    </p>
+    <div class="powerBar"><div></div></div>
+    <div class="title neon"><p><slot/></p></div>
 </a>
 
 <style lang="scss">
     a {
-        display:    block;
+        counter-increment: section;
+        margin-bottom: 10px;
+        width: 100%;
+        display: flex;
 
-        background-color:   var(--darkAccent3);
-        border-radius:      var(--innerRaidus);
+        &:before {
+            position:   absolute;
+            font-size:  10px;
+            margin:     -10px 0 0 -10px;
+            content:    "D5" counter(section);
+        }
 
-        font: 14px monospace;
+        > * {
+            display: inline-flex;
+            vertical-align: bottom;
+        }
 
-	    padding:        7px;
-        transition:     background .2s ease-in-out;
+        .powerBar {
+            height:     25px;
+            width:      40%;
+            margin-left:    10px;
 
-	    > p {
-		    line-height:    12px;
-		    text-align:     center;
-		    width:          100%;
-		    color:          var(--textColourInvert);
-	    }
+            background: var(--accent1);
+            overflow: hidden;
 
-	    &:not(:last-child){
-		    margin-bottom: 10px;
-	    }
-    }
+            > div {
+                width:      25px;
+                height:     10px;
+                background: var(--accent3);
+            }
+        }
 
-    .clickable {
-	    &:hover {
-		    background-color:   var(--accent3);
-	    }
+        .title {
+            height:         23px;
+            margin-left:    10px;
+
+            background:     var(--background);
+            border:         1px solid var(--accent3);
+
+            p {
+                margin:     auto 0;
+                padding:    0 5px;
+                transform:  scale(1, 1.2);
+
+                text-transform: uppercase;
+                color:          var(--accent3);
+                font-weight:    800;
+            }
+        }
+
+        &:hover {
+            > .powerBar {
+                background:         var(--darkAccent4);
+                > * {background:    var(--darkAccent3);}}
+            > .title {
+                border:     1px solid var(--darkAccent3);
+                p {color:   var(--darkAccent3);}}
+        }
     }
 </style>

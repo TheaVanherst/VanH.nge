@@ -8,17 +8,17 @@
     <span>
         {content}
     </span>
-    <!--{#if linkUrl}-->
-    <!--    <a href="https://twitter.com/{linkUrl}" target="_blank">-->
-    <!--        <span class="wrapper link {preview ? 'preview' : 'post'}">-->
-    <!--            <slot/>-->
-    <!--        </span>-->
-    <!--    </a>-->
-    <!--{:else}-->
+    {#if linkUrl}
+        <a href="https://twitter.com/{linkUrl}" target="_blank">
+            <span class="wrapper link {preview ? 'preview' : 'post'}">
+                <slot/>
+            </span>
+        </a>
+    {:else}
         <span class="wrapper nonLink {preview ? 'preview' : 'post'}">
             <slot/>
         </span>
-    <!--{/if}-->
+    {/if}
 </div>
 
 <style lang="scss">

@@ -5,7 +5,6 @@
     export let title = undefined, subtitle = undefined;
 
     let random = Math.floor(Math.random() * 3 + 1);
-    let episode = subtitle.slice(0, 3);
 </script>
 
 <div class="titleCard">
@@ -21,9 +20,6 @@
 
     <div class="title subCard">
         <h2 class="capitalize titlecard" title="{title}">{title}</h2>
-        {#if subtitle}
-            <h4 class="capitalize">EPISODE:{episode.charCodeAt(0) - 96 + "" + episode.charCodeAt(1) - 96}</h4>
-        {/if}
     </div>
 </div>
 

@@ -16,9 +16,9 @@
 
 <PreviewContainer hoverBool="{true}" urlDirect={'/blog/' + post.slug}>
     <div class="post" id="post-{post.slug}">
-        <PostHeader titleHeader={post.headerImage}	title={post.title} subtitle="{post._id}"/>
+        <PostHeader titleHeader={post.headerImage}	title={post.title}/>
 
-        <InvContainer overflowBool={false} colour="orange">
+        <InvContainer overflowBool={false} colour="green">
             {#if post.editor_fullName}
                 <AuthorTag preview={true} linkUrl={post.editor_twitter} content="{updatedPush(post._updatedAt, publishDate)} by">{post.editor_fullName}</AuthorTag>
             {:else}

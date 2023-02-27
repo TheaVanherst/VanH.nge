@@ -31,7 +31,7 @@
 			height:     0;
 
 	        &:checked + .slider {
-		        background-color: var(--accent1);
+		        background-color: var(--accent3);
 	        }
 
 	        &:checked + .slider:before {
@@ -51,7 +51,7 @@
         position:   absolute;
 
         cursor:     pointer;
-        background: var(--darkAccent4);
+        background: var(--accent1);
 
 		-webkit-transition: 0.4s;
 		transition: 0.4s;

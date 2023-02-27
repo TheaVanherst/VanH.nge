@@ -12,18 +12,15 @@
     <img src="/profileGraphic.png"/>
 </div>
 
-<div class="prompt">
-    <div class="nameCard">
-        <p style="--stringLength: {data[0].fullName.length}">{data[0].fullName} 🦌</p>
+<div class="buttonWrapper">
+    <div class="wrapperOffset">
+        {#each navigation as item}
+            <Button push="{item.path}">{item.title}</Button>
+        {/each}
     </div>
 </div>
 
-<div class="buttonWrapper">
-    {#each navigation as item}
-        <Button push="{item.path}">{item.title}</Button>
-    {/each}
-    <Switch label="Reduced Motion" bind:bool={$motion}/>
-</div>
+<Switch label="Reduced Motion" bind:bool={$motion}/>
 
 <style lang="scss">
 	.profileGraphic {
@@ -37,49 +34,6 @@
 	        position:   absolute;
 	        animation:  float 6s ease-in-out infinite;
         }
-	}
-
-    .buttonWrapper, .prompt {
-        z-index:    100;
-        position:   relative;
-    }
-
-	.prompt {
-		display:    flex;
-		gap:        10px;
-		margin:     0 0 15px 0;
-
-		> * {
-			font-size:  0;
-			padding:    7px 10px;
-			background-color:   var(--background);
-			border-radius:      var(--innerRaidus);
-            border:     1px solid var(--darkAccent3);
-		}
-
-		.nameCard {
-			p {
-				$stringLength: calc(var(--stringLength) + 3);
-				$timerElement: calc(var(--stringLength) / 10 * 1s);
-
-				font:           14px monospace;
-				line-height:    100%;
-				color:          var(--textColour);
-				white-space:    nowrap;
-
-				width: calc($stringLength * 1ch);
-				animation:
-						typing $timerElement steps($stringLength),
-						blink .5s calc($timerElement + 0.2s) step-end infinite alternate;
-
-				border-right:   2px solid var(--textColour);
-				overflow:       hidden;
-
-				&::selection {
-					color: 				var(--darkAccent3);
-					background-color: 	black;}
-			}
-		}
 	}
 
 	@keyframes float {

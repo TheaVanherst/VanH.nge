@@ -8,12 +8,11 @@
 
 <style lang="scss">
     p {
-	    font-family: 	'Courier New', sans-serif;
+        font-family:    'Arimo', sans-serif;
         margin:         0;
 
 	    color:          var(--textColour);
         font-weight:    400;
-        line-height:    100%;
 
         &:not(:last-child){
 	        padding:    0 0 10px 0;
