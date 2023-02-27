@@ -4,13 +4,17 @@
 
     import client from "$lib/sanityClient.js";
     export let image = null;
+    let imageRef = undefined;
 
-    let imageRef;
     let loaded = false;
+    let NSFW = image.NSFW ? image?.NSFW : false;
+
     onMount(() => {
-        imageRef.onload = () => {
-            loaded = true;
-        };
+        if (imageRef) {
+            imageRef.onload = () => {
+                loaded = true;
+            };
+        }
     });
 
     const urlFor = (source) => {
@@ -18,12 +22,15 @@
     };
 </script>
 
-<div class:loaded class:nsfw={image.NSFW}>
-    <img    loading="lazy"
+{#if image.asset}
+    <div class:loaded
+         class:nsfw={NSFW}>
+        <img loading="lazy"
             src={ urlFor(image).width(1200).fit('fillmax') }
-            alt={ image.alt }
+            alt={ image?.alt }
             bind:this={ imageRef }/>
-</div>
+    </div>
+{/if}
 
 <style lang="scss">
     $backgroundSize: 800px; // pretty sure I don't need this tbh.

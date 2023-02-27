@@ -2,8 +2,8 @@
 import { defineType, defineArrayMember }        from 'sanity'
 
 //TODO: BLOCK
-
-import galleryContentBlock                      from '../blocks/galleryContentBlock'
+import { internalIcon, internalRender }         from '../blocks/internalReference.jsx'
+import galleryContentBlock                      from '../blocks/galleryContentBlock.js'
 
 //TODO: LISTS
 import { letterIcon, letterRender }             from '../lists/letter.jsx'   //letter
@@ -85,14 +85,33 @@ export default defineType({
             icon: readMoreIcon,     component: readMoreRender,
           }
         ],
-        annotations: [{
-          title: 'URL', name: 'link',
-          type: 'object',
-          fields: [{
-            title: 'URL', name: 'href',
-            type: 'url',
-          }],
-        }],
+        annotations: [
+          {
+            title: 'External Link', name: 'link',
+            type: 'object',
+            fields: [
+              {
+                title: 'URL', name: 'href',
+                type: 'url',
+              },{
+                title: 'Open in a new Window?', name: 'blank',
+                type: 'boolean',
+              }
+            ],
+          },{
+            name: 'internalLink', title: 'Internal link',
+            type: 'object',
+            fields: [{
+              name: 'reference', title: 'Reference',
+              type: 'reference',
+              to: [
+                { type: 'post' },
+                { type: 'blogPost' },
+              ]
+            }],
+            icon: internalIcon, component: internalRender,
+          }
+        ],
       },
     }),
     defineArrayMember({

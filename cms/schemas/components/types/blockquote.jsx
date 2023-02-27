@@ -7,4 +7,4 @@ const blockquoteIcon = () => (
   </span>
 );
 
-export {blockquoteIcon}
+export { blockquoteIcon }

@@ -198,11 +198,8 @@ ul {
 }
 
 .nsfw {
+	transition: filter .15s ease-in-out;
 	filter:     blur(25px);
-	transition: filter .3s ease-in-out;
-
-	&:hover {
-		filter:     blur(0);}
 }
 
 /* layout animation presetting */

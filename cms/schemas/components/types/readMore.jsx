@@ -1,20 +1,21 @@
 
-const readMoreIcon = () => (
-  <span>
-    +
-  </span>
-);
+const
+  readMoreIcon = () => (
+    <span>
+      +
+    </span>
+  ),
 
-const readMoreRender = (props) => (
-  <readMore
-    style={{
-      paddingLeft: "10px",
-      borderLeft: "2px solid cyan",
+  readMoreRender = (props) => (
+    <span
+      style={{
+        paddingLeft: "10px",
+        borderLeft: "2px solid cyan",
 
-      opacity: "0.5",
-      display: "block"
-  }}>
-    {props.children}
-  </readMore>);
+        opacity: "0.5",
+        display: "block"}}>
+      {props.children}
+    </span>
+  );
 
-export {readMoreIcon, readMoreRender}
+export { readMoreIcon, readMoreRender }
