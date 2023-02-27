@@ -19,13 +19,13 @@
     let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
 </script>
 
-<Container overflowBool="{false}">
+<Container overflowBool="{false}" colour="orange">
     <ImageGallery portableText="{galleryObjectGen(post)}"/>
 
     <InvContainer>
         <AuthorTag
-                preview={true}      linkUrl={post.author_twitter}
-                content="{createdPush(publishDate, 'shortDate')} by">
+            preview={true}      linkUrl={post.author_twitter}
+            content="{createdPush(publishDate, 'shortDate')} by">
             {post.author_fullName}
         </AuthorTag>
     </InvContainer>
@@ -38,7 +38,3 @@
         </p>
     {/if}
 </Container>
-
-<style lang="scss">
-
-</style>

@@ -18,7 +18,7 @@
     };
 </script>
 
-<div class:loaded>
+<div class:loaded class:nsfw={image.NSFW}>
     <img    loading="lazy"
             src={ urlFor(image).width(1200).fit('fillmax') }
             alt={ image.alt }

@@ -2,6 +2,8 @@
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
     import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
 
+    //TODO: THIS ALL NEEDS REDOING BECAUSE IT'S REALLY BAD
+
     let randomId = Math.floor(Math.random() * 999);
 
     const scrollIntoView = async ({target}) => {
@@ -9,8 +11,7 @@
             document.querySelector(target.getAttribute('href')).offsetLeft;
     }
 
-    let x = 0,
-        containerWidth;
+    let x = 0, containerWidth = 0;
 
     $: if ((x % containerWidth) < 15) {
         document.querySelector(".active")?.classList.remove("active")

@@ -39,13 +39,18 @@ const gallery = {
           validation: Rule => [Rule.max(30).warning('30 characters or less')]
         },{
           name: 'citeURL',  title: 'citation url', type: 'string'
+        },{
+          name: 'NSFW',     title: 'Preview Blur',
+          type: 'boolean',
+          initialValue: false,
+          description: 'Should we blur this images?',
         }
       ],
     }],
   },{
     name: 'comments', title: 'Comments enabled',
     type: 'boolean',
-    initialValue: false,
+    initialValue: true,
     description: 'Enable comments under the gallery?',
   },{
     name: 'display',  title: 'Display as',
@@ -66,7 +71,7 @@ const gallery = {
       layout: 'dropdown',
     },
   },{
-    name: 'zoom',     title: 'Zoom enabled',
+    name: 'zoom',     title: 'Content Zoom',
     type: 'boolean',
     initialValue: false,
     description: 'Should we enable zooming of images?',

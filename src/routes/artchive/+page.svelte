@@ -1,5 +1,5 @@
 <script>
-	import PreviewBlogPost from "$components/art/artComponent.svelte"
+	import ArtPost from "$components/art/artComponent.svelte"
 
 	export let data = null;
 </script>
@@ -8,7 +8,7 @@
 	<div class="col">
 		{#each data[0] as post, i}
 			<div>
-				<PreviewBlogPost post={post}/>
+				<ArtPost post={post}/>
 			</div>
 		{/each}
 	</div>
