@@ -1,6 +1,6 @@
 
 import { defineField, defineType } from 'sanity'
-import gallery from '../components/blocks/gallery'
+import galleryContentBlock from '../components/blocks/galleryContentBlock'
 
 export default defineType({
   name: 'artPost',
@@ -44,7 +44,7 @@ export default defineType({
       }]
     }),
 
-    gallery,
+    galleryContentBlock,
 
     defineField({
       name: 'briefDesc',

@@ -1,13 +1,13 @@
 
-import {defineType, defineArrayMember} from 'sanity'
+import { defineType, defineArrayMember }        from 'sanity'
 
 //TODO: BLOCK
 
-import gallery from './gallery'
+import galleryContentBlock                      from '../blocks/galleryContentBlock'
 
 //TODO: LISTS
-import { letterIcon, letterRender } from '../lists/letter.jsx'   //letter
-import { romanIcon, romanRender }   from '../lists/roman.jsx'   //codesnippets
+import { letterIcon, letterRender }             from '../lists/letter.jsx'   //letter
+import { romanIcon, romanRender }               from '../lists/roman.jsx'   //code snippets
 
 //TODO: MARKS
 import { codeSnippetIcon, codeSnippetRender }   from '../marks/codeSnippet.jsx'     //  code snippet
@@ -16,12 +16,14 @@ import { floatRightIcon, floatRightRender }     from '../marks/floatRight.jsx'  
 import { highlightIcon, highlightRender }       from '../marks/highlight.jsx'       //  highlight
 import { subscriptIcon, subscriptRender }       from '../marks/subScript.jsx'       //  sub script
 import { superscriptIcon, superscriptRender }   from '../marks/superScript.jsx'     //  super script
-import { accentIcon, accentRender }             from '../marks/accentColours.jsx'   //  accent Colours
+import { accentIcon, accentRender }             from '../marks/accentColours.jsx'   //  accent colours
 
 //TODO: MARKS / BLOCK DATA
 import { readMoreIcon, readMoreRender }         from '../types/readMore.jsx'            //superscript
 import { separatorIcon }                        from '../types/separatorsElement.jsx'   //superscript
-import { blockquoteIcon }                        from '../types/blockquote.jsx'
+import { blockquoteIcon }                       from '../types/blockquote.jsx'
+import {altTestBlock, citationBlock, citationURL} from '../libs/citationBlock'
+import nsfwBlock from '../libs/nsfwToggle'          //blockquote
 
 export default defineType({
   title: 'Block Content',
@@ -156,9 +158,15 @@ export default defineType({
       options: {
         hotspot: true
       },
+      fields: [
+        altTestBlock,
+        citationBlock,
+        citationURL,
+        nsfwBlock
+      ],
     }),
 
-    gallery,
+    galleryContentBlock,
 
     defineArrayMember({
       title: 'Code',

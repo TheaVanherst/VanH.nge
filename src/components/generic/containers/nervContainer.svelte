@@ -8,15 +8,15 @@
     export let id = undefined;
 </script>
 
-<div class={"nervWrapper " + colour + " " + ("t" + tabColour)}>
+<div class={"nervWrapper " + colour}>
 
 	<div class="tab">
 		<div class="tilt">
-			<p class="def tabName">
+			<p class="def tabName {tabColour}">
 				{title}
 			</p>
 		</div>
-		<p class="caption">
+		<p class="caption {tabColour}">
 			{subtitle}
 		</p>
 	</div>
@@ -47,19 +47,6 @@
 </div>
 
 <style lang="scss">
-	.tgreen {
-		.tabName {color:    var(--accent1);}
-		.caption {color:    var(--accent1);}}
-	.tyellow {
-		.tabName {color:    var(--accent3);}
-		.caption {color:    var(--accent3);}}
-	.torange {
-		.tabName {color:    var(--darkAccent3);}
-		.caption {color:    var(--darkAccent3);}}
-	.tred {
-		.tabName {color:    var(--darkAccent4);}
-		.caption {color:    var(--darkAccent4);}}
-
 	.green {
 		.container {
 			border: 1px solid var(--accent1);}

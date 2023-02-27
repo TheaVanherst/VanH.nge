@@ -9,7 +9,7 @@ const accentRender = (props) => (
   <span
     style={{color: 'purple'}}>
       {props.children}
-    </span>
+  </span>
 );
 
-export {accentIcon, accentRender}
+export { accentIcon, accentRender }

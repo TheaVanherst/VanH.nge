@@ -1,22 +1,20 @@
 
-const floatCenterIcon = () => (
-  <span>
+const
+  floatCenterIcon = () => (
+    <span>
       ⌧
-  </span>
-);
+    </span>
+  ),
 
-const floatCenterRender = (props) => (
-  <span
-    style={{
+  floatCenterRender = (props) => (
+    <center
+      style={{
         borderRight: "2px dashed yellow",
         borderLeft: "2px dashed yellow",
         paddingRight: "10px",
-        paddingLeft: "10px",
-
-        display: "block",
-        textAlign: "center"}}>
+        paddingLeft: "10px"}}>
       {props.children}
-  </span>
-);
+    </center>
+  );
 
-export {floatCenterIcon, floatCenterRender}
+export { floatCenterIcon, floatCenterRender }

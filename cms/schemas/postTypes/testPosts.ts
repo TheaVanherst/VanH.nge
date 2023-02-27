@@ -4,7 +4,7 @@ import { slugUniqueCheck } from '../components/slugCheck'
 
 export default defineType({
   name: 'post',
-  title: 'post',
+  title: 'TEST DOCUMENTS',
   type: 'document',
   fields: [
     defineField({

@@ -1,12 +1,25 @@
 <script>
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
+    import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
 
-    export let portableText = null;
+    export let portableText = "";
+
+    console.log(portableText);
+    let comments = [
+        undefined,
+        portableText.value.alt,
+        portableText.value.citation,
+        portableText.value.citeURL
+    ]
 </script>
 
 <div class="solo">
     <SanityImage image={portableText.value}/>
 </div>
+
+{#if comments[1]}
+    <CommentBlock push={comments} req="singular"/>
+{/if}
 
 <style lang="scss">
     .solo {

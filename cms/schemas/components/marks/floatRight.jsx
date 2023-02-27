@@ -1,13 +1,14 @@
 
-const floatRightIcon = () => (
-  <span>
-      ⌦
-  </span>
-);
+const
+  floatRightIcon = () => (
+    <span>
+        ⌦
+    </span>
+  ),
 
-const floatRightRender = (props) => (
-  <span
-    style={{
+  floatRightRender = (props) => (
+    <span
+      style={{
         borderRight: "2px dashed yellow",
         paddingRight: "10px",
         marginLeft: "10px",
@@ -16,7 +17,7 @@ const floatRightRender = (props) => (
         display: "block",
         textAlign: "right"}}>
       {props.children}
-  </span>
-);
+    </span>
+  );
 
-export {floatRightIcon, floatRightRender}
+export { floatRightIcon, floatRightRender }

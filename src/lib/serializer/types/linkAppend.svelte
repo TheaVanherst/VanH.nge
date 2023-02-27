@@ -2,9 +2,15 @@
     export let portableText = null;
 </script>
 
-<a href={portableText.value.href} target="_blank" class="yes">
-    <slot />
-</a>
+{#if portableText.value}
+    <a href={portableText.value.href} target="_blank">
+        <slot />
+    </a>
+{:else}
+    <a href={portableText} target="_blank">
+        <slot />
+    </a>
+{/if}
 
 <style lang="scss">
     a {

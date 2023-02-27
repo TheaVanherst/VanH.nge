@@ -14,7 +14,7 @@ const codeSnippetRender = (props) => (
       marginBottom: "15px",
       fontFamily: "monospace" }}>
       {props.children}
-    </span>
+  </span>
 );
 
-export {codeSnippetIcon, codeSnippetRender}
+export { codeSnippetIcon, codeSnippetRender }

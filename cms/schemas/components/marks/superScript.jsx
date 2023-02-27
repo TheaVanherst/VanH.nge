@@ -1,23 +1,18 @@
 
-const superscriptIcon = () => (
-  <span>
-    A
-    <e
-      style={{
-        fontSize: "0.6rem",
-        verticalAlign: "top"}}>
-      2
-    </e>
-  </span>
-);
+const
+  superscriptIcon = () => (
+    <span>
+      A
+      <sup>
+        2
+      </sup>
+    </span>
+  ),
 
-const superscriptRender = (props) => (
-  <span
-    style={{
-      fontSize: "0.6rem",
-      verticalAlign: "top"}}>
-    {props.children}
-  </span>
-);
+  superscriptRender = (props) => (
+    <span>
+      {props.children}
+    </span>
+  );
 
-export {superscriptIcon, superscriptRender}
+export { superscriptIcon, superscriptRender }
