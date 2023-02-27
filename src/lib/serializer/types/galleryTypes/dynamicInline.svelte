@@ -1,6 +1,6 @@
 <script>
-    import SanityImage from '../../imageBuilder.svelte'
-    import CommentBlock from "$components/serializer/types/galleryTypes/citationBlock.svelte";
+    import SanityImage from '$lib/serializer/imageBuilder.svelte'
+    import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
 
     let randomId = Math.floor(Math.random() * 999);
 

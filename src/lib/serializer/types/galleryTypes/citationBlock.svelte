@@ -113,8 +113,6 @@
 	        text-decoration: underline 1px;} }
 
 	span {
-		font-family:    monospace;
-
 	    &::selection {
 		    background-color: 	var(--darkAccent1)!important;} }
 

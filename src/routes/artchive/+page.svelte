@@ -17,17 +17,17 @@
 
 <style lang="scss">
 	content {
-		width: 100%;
-		gap: var(--containerPadding);
-		display: inline-flex;
+		width: 		100%;
+		gap: 		var(--containerPadding);
+		display: 	inline-flex;
 
 		.col {
-			height: max-content;
-			display: block;
-			position: relative;
+			height: 	max-content;
+			display: 	block;
+			position: 	relative;
 
-			width: 100%;
-			gap: var(--containerPadding);
+			width: 	100%;
+			gap: 	var(--containerPadding);
 			column-count: 2;
 		}
 	}

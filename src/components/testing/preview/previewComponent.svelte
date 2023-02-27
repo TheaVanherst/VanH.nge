@@ -7,15 +7,15 @@
 
     import {createdPush, updatedPush} from "$lib/dateBuilder.js"
     import AuthorTag from "$components/generic/components/authorTag.svelte";
-    import PostHeader from "../postHeader.svelte"
+    import PostHeader from "$components/blog/postHeader.svelte"
 
     export let post = null;
 
     let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
 </script>
 
-<PreviewContainer hoverBool="{true}" urlDirect={'/blog/' + post.slug}>
-    <div class="post" id="post-{post.slug}">
+<PreviewContainer hoverBool="{true}" urlDirect={'/test/' + post.slug}>
+    <div class="test" id="test-{post.slug}">
         <PostHeader titleHeader={post.headerImage}	title={post.title}/>
 
         <InvContainer overflowBool={false} colour="green">
@@ -42,7 +42,7 @@
 </PreviewContainer>
 
 <style lang="scss">
-	.post {
+	.test {
         position:   relative;
         display:    contents;
 

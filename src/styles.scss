@@ -31,9 +31,6 @@
 
 	--imageSpacing:		5px;
 	--imageBlurring: 	3px;
-
-	--innerRaidus: 		0px;
-	--outerRadius: 		0px;
 }
 
 /* document formatting */
@@ -65,7 +62,7 @@ body {
 
 	::selection {
 		color: 				var(--background);
-		background-color: 	var(--accent3)}
+		background-color: 	var(--accent1)}
 }
 
 /* style formatting */

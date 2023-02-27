@@ -1,5 +1,5 @@
 <script>
-    import SanityImage from '../imageBuilder.svelte'
+    import SanityImage from '$lib/serializer/imageBuilder.svelte'
 
     export let portableText = null;
 </script>

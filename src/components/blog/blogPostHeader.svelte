@@ -1,5 +1,5 @@
 <script>
-    import SanityImage  from '../serializer/imageBuilder.svelte'
+    import SanityImage  from '$lib/serializer/imageBuilder.svelte'
     import PostHeader   from "$components/blog/postHeader.svelte";
     import AuthorTag    from "$components/generic/components/authorTag.svelte";
 
@@ -8,7 +8,7 @@
 
     export let titleHeader = null, title = null, subtitle;
 
-    import {createdPush, updatedPush} from "../dateBuilder.js"
+    import {createdPush, updatedPush} from "$lib/dateBuilder.js"
 
     export let authorUser = null, authorTwitter = null, authorImage = null,
                editorUser = null, editorTwitter = null, editorImage = null;
@@ -62,20 +62,20 @@
 <style lang="scss">
 	.date {
 		background-color: var(--darkAccent3);
-		padding:
-            var(--contentPaddingY) var(--contentPaddingX)
-            var(--contentPaddingY) calc(var(--containerPadding) + 34px);
-        overflow: hidden;
+
+		padding:    10px 15px 10px 50px;
+        overflow:   hidden;
 
 		p {
             color:      var(--textColourInvert);
             width:      100%;
 
 			&::selection {
-				color: var(--darkAccent3);
-				background-color: var(--backgroundTrans);}
+				color:              var(--darkAccent3);
+				background-color:   var(--backgroundTrans);}
 
 			&.createdOn {
+                font-weight:    800;
 				font-size:      100%;}
 			&.updatedOn {
 				text-transform: lowercase;

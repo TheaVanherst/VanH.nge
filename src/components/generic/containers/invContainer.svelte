@@ -53,7 +53,6 @@
         font-family:    'Arimo', sans-serif;
 
         &.overflow {
-	        border-radius:  var(--innerRaidus);
 	        margin-bottom:  var(--contentPaddingY);
 	        overflow:       hidden;
         }

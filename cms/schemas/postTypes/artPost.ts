@@ -56,15 +56,13 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'briefDesc',
+      title: 'briefDesc',
       media: 'gallery.images[0]',
     },
     prepare(selection) {
-      const {title, media, subtitle} = selection
+      const {title, media} = selection
       return {
         title: title,
-        subtitle: subtitle,
         media: media
       }
     }

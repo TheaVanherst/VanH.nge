@@ -18,7 +18,6 @@
 
 	div {
 		break-inside:   avoid-column;
-		border-radius: 	var(--outerRadius);
 		background:		var(--backgroundTrans);
         margin-bottom:  var(--containerPadding);
 

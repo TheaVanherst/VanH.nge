@@ -24,8 +24,8 @@
 
 <style lang="scss">
 	.blockquote {
-        display: block;
-        position: relative;
+        display:    block;
+        position:   relative;
 		text-align: center;
 
 		margin: 	5px 5px 15px 5px;
@@ -34,9 +34,9 @@
 	        background-image:   linear-gradient(45deg, var(--accent2), var(--accent4));
 	        background-size:    100%;
 
-	        font-family: Georgia, sans-serif!important;
-	        font-size: 24px!important;
-	        font-weight: bolder;
+	        font-family:    Georgia, sans-serif!important;
+	        font-size:      24px!important;
+	        font-weight:    bolder;
 
 	        -webkit-background-clip:    text;
 	        -webkit-text-fill-color:    transparent;
@@ -44,10 +44,10 @@
 	        -moz-text-fill-color:       transparent;
 
 	        &:before {
-		        color: 		var(--textColour)!important;
+		        color: 		var(--textColour);
 		        content: 	open-quote;}
 	        &:after {
-		        color: 		var(--textColour)!important;
+		        color: 		var(--textColour);
 		        content: 	close-quote;}
 
         }
@@ -57,17 +57,15 @@
         }
 
         .line {
-	        width: 100px;
-	        height: 1px;
+	        width:      100px;
+	        height:     1px;
 	        background: #fff;
-	        margin: 0 auto;
+	        margin:     0 auto;
 
             &:first-of-type {
-                margin-bottom: 10px;
-            }
+                margin-bottom:  10px;}
             &:last-of-type {
-	            margin-top: 13px;
-            }
+	            margin-top:     13px;}
         }
 	}
 </style>

@@ -52,7 +52,7 @@ const gallery = {
     type: 'string',
     initialValue:
       { title: 'Stacked',           value: 'vertical'},
-    validation: Rule => [Rule.required()],
+    validation: Rule => Rule.required(),
     options: {
       list: [
         {title: 'Stacked',          value: 'vertical'},

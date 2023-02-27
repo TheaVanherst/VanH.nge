@@ -13,22 +13,20 @@
 
 <style lang="scss">
     a {
-        counter-increment: section;
-        margin-bottom: 10px;
-        width: 100%;
-        display: flex;
+        counter-increment:  section;
+        margin-bottom:      10px;
+        width:              100%;
+        display:            flex;
 
         &:before {
             position:   absolute;
             font-size:  10px;
             margin:     -10px 0 0 -10px;
-            content:    "D5" counter(section);
-        }
+            content:    "D5" counter(section);}
 
         > * {
-            display: inline-flex;
-            vertical-align: bottom;
-        }
+            display:        inline-flex;
+            vertical-align: bottom;}
 
         .powerBar {
             height:     25px;
@@ -41,8 +39,7 @@
             > div {
                 width:      25px;
                 height:     10px;
-                background: var(--accent3);
-            }
+                background: var(--accent3);}
         }
 
         .title {
@@ -59,8 +56,7 @@
 
                 text-transform: uppercase;
                 color:          var(--accent3);
-                font-weight:    800;
-            }
+                font-weight:    800;}
         }
 
         &:hover {

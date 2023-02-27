@@ -7,45 +7,53 @@
     const relativeTime = (time) => {
         return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
 
-    tags.sort((a, b) => a.localeCompare(b));
+    tags.sort((a, b) => a.localeCompare(b)); //this prioritizes unicode.
+
+    function isDoubleByte(str) {
+        for (var i = 0, n = str.length; i < n; i++) {
+            if (str.charCodeAt( i ) > 255) { return true; }
+        }
+        return false;
+    }
 </script>
 
-{#if tags.length !== 0}
-    <div class="tags">
+<div class="tags">
+    <div class="lineDiv orange"></div>
+    <div class="lineScale">
+        <div class="small"></div>
+        <div class="medium"></div>
+        <div class="large"></div>
+        <div class="xLarge"></div>
+    </div>
 
-        <div class="lineDiv orange"></div>
-        <div class="lineScale">
-            <div class="small"></div>
-            <div class="medium"></div>
-            <div class="large"></div>
-            <div class="xLarge"></div>
-        </div>
-
-        {#if relativeTime(new Date(time))}
-            <div class="tag new">
+    {#if relativeTime(new Date(time))}
+        <div class="tag new">
                 <span class="hov inv">
                     🌈 NEW
                 </span>
-            </div>
-        {/if}
+        </div>
+    {/if}
 
+    {#if tags.length !== 0}
         {#if tags.length > 1}
             {#each tags as tag, i}
-                <div class="tag category {tags[i] === tagHighlight ? 'highlight' : ''}">
-                    <span class="hov">
-                        {tag}
-                    </span>
+                <div class:highlight={isDoubleByte(tags[i])}
+                     class="tag category">
+                        <span class="hov">
+                            {tag}
+                        </span>
                 </div>
             {/each}
         {:else}
-            <div class="tag category {tags[0] === tagHighlight ? 'highlight' : ''}">
-                <span class="hov">
-                    {tags[0]}
-                </span>
+            <div class:highlight={isDoubleByte(tags[0])}
+                 class="tag category">
+                    <span class="hov">
+                        {tags[0]}
+                    </span>
             </div>
         {/if}
-    </div>
-{/if}
+    {/if}
+</div>
 
 <style lang="scss">
     .tags {
@@ -119,6 +127,10 @@
                     border: 1px solid var(--accent3);
                     color:  var(--accent3);}
             }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 

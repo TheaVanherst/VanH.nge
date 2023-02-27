@@ -18,8 +18,6 @@
 </Container>
 
 <style lang="scss">
-    $margin: calc(var(--containerPadding) * -1);
-
 	p {
 		cursor:     alias;
 		color:	 	var(--textColour);
@@ -27,7 +25,7 @@
 		padding:    0 0 4px 0;
 
         &:last-of-type {
-            padding: 0 0 0 0;
+            padding: 0;
         }
 	}
 </style>

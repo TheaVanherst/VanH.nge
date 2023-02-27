@@ -32,7 +32,6 @@
 		    padding:    .125rem  .25rem;
 
 		    transition:     color .2s ease-in-out, box-shadow .2s ease-in-out;
-		    border-radius:  var(--innerRaidus);
 
 		    &.nonLink {
 			    &.post {    color: var(--accent2);}
@@ -44,14 +43,14 @@
 			    &::selection {
 				    background:     var(--accent2);}}
 		    &.link {
-			    &.post {    color:  var(--accent1);}
+			    &.post {    color:  var(--accent3);}
 			    &.preview { color:  var(--textColourInvert);}
 
 			    &:hover {
 				    color:          var(--textColourInvert);
-				    box-shadow:     inset 0 0 100px 0 var(--accent1);}
+				    box-shadow:     inset 0 0 100px 0 var(--accent3);}
 			    &::selection {
-				    background:     var(--accent1);
+				    background:     var(--accent3);
                 }
             }
         }

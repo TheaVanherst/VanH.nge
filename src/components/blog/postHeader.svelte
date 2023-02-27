@@ -1,5 +1,5 @@
 <script>
-    import SanityImage from '$components/serializer/imageBuilder.svelte'
+    import SanityImage from '$lib/serializer/imageBuilder.svelte'
 
     export let titleHeader = undefined;
     export let title = undefined, subtitle = undefined;
@@ -50,7 +50,7 @@
             transform-origin:   left;
 
             z-index:    100;
-            background: var(--background);
+            background: var(--backgroundTrans);
 
             h4 {
                 font-family: "Arimo", sans-serif;

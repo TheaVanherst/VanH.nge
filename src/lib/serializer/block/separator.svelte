@@ -12,9 +12,10 @@
 
 <style lang="scss">
 	.divider {
-		display: block;
-		position: relative;
-		width: 100%;
+		display:    block;
+		position:   relative;
+
+		width:          100%;
         margin-bottom: var(--containerPadding);
 	}
 

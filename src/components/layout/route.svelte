@@ -59,14 +59,14 @@
         position:   relative;
 
 	    &.clickable {
-		    cursor: alias;
-		    opacity: 0.5;
+		    cursor:     alias;
+		    opacity:    0.5;
 
 		    &:hover {
 			    opacity: 1;}
 	    }
 
 	    &.transitioning {
-		    opacity: 0.3;}
+		    opacity:    0.3;}
     }
 </style>
