@@ -1,7 +1,7 @@
 
 // TODO: Content Types
-import blockContent   from './components/blocks/textContentBlock'
-import blockGallery   from './components/blocks/galleryContentBlock'
+import blockContent             from './components/blocks/textContentBlock'
+import { galleryContentBlock }  from './components/blocks/galleryContentBlock'
 
 // TODO: Post Types
 import artPost        from './postTypes/artPost'
@@ -16,7 +16,7 @@ import jobDescription from './jobDescription'
 const blogData = [
   //content declarations
   blockContent,
-  blockGallery,
+  galleryContentBlock,
 
   //post types
   artPost,

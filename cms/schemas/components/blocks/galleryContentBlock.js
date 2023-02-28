@@ -1,5 +1,5 @@
 
-import nsfwBlock from '../libs/nsfwToggle.js'
+import { nsfwBlock } from '../libs/nsfwToggle.js'
 import { altTestBlock, citationBlock, citationURL } from '../libs/citationBlock.js'
 
 const
