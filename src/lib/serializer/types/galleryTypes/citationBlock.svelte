@@ -25,7 +25,8 @@
                         </span>
 
                         {#if comment[2] && comment[3]}
-                            <span>Via;
+                            <span>
+                                Via;
                                 <LinkAppend portableText={comment[3]}>
                                     {comment[2]}
                                 </LinkAppend>
