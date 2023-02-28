@@ -2,8 +2,6 @@
     export let time = null;
     export let tags = [];
 
-    let tagHighlight = "📌 Pinned";
-
     const relativeTime = (time) => {
         return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
 
@@ -26,65 +24,68 @@
         <div class="xLarge"></div>
     </div>
 
-    {#if relativeTime(new Date(time))}
-        <div class="tag new">
-                <span class="hov inv">
-                    🌈 NEW
-                </span>
-        </div>
-    {/if}
-
-    {#if tags.length !== 0}
-        {#if tags.length > 1}
-            {#each tags as tag, i}
-                <div class:highlight={isDoubleByte(tags[i])}
-                     class="tag category">
-                        <span class="hov">
-                            {tag}
+    <div class="tagWrapper">
+        <div class="tagSleeve">
+            {#if relativeTime(new Date(time))}
+                <div class="tag new">
+                        <span class="hov inv">
+                            🌈 NEW
                         </span>
                 </div>
-            {/each}
-        {:else}
-            <div class:highlight={isDoubleByte(tags[0])}
-                 class="tag category">
-                    <span class="hov">
-                        {tags[0]}
-                    </span>
-            </div>
-        {/if}
-    {/if}
+            {/if}
+
+            {#if tags.length !== 0}
+                {#if tags.length > 1}
+                    {#each tags as tag, i}
+                        <div class:highlight={isDoubleByte(tags[i])}
+                             class="tag category">
+                                <span class="hov">
+                                    {tag}
+                                </span>
+                        </div>
+                    {/each}
+                {:else}
+                    <div class:highlight={isDoubleByte(tags[0])}
+                         class="tag category">
+                            <span class="hov">
+                                {tags[0]}
+                            </span>
+                    </div>
+                {/if}
+            {/if}
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
+    .tagWrapper {
+        display:    block;
+        overflow:   scroll hidden;
+
+        .tagSleeve {
+            display:    block;
+            width:      max-content;
+        }
+    }
+
     .tags {
-        color:          var(--textColourInvert);
-	    white-space:    normal;
-	    font-size:      0;
-
-        width:          100%;
-
-        overflow-x:     hidden;
-        margin:         5px 0 var(--containerPadding) 0;
+        margin:         5px 0 10px 0;
 
         .tag {
-            counter-increment: section; /* Increment the value of section counter by 1 */
+            counter-increment: section;
+            display:        inline-grid;
+            position:       relative;
 
             padding:        5px var(--containerPadding);
-            margin:         15px var(--contentPaddingY) 0 0;
-
-            display:        inline-flex;
-            transition:     background 0.3s;
+            margin:         16px var(--contentPaddingY) 5px 0;
 
             font-weight:    800;
-            font-family:    'Arimo', sans-serif;
             font-size:      12px;
             line-height:    12px;
 
-            border-radius:  5px;
-
             &:before {
                 position:       absolute;
-                margin:         -20px 0 0 -21px;
+                margin:         -15px 0 0 -6px;
                 padding:        0 0 5px 5px;
 
                 border-left:    1px solid var(--darkAccent3);
@@ -95,7 +96,7 @@
 
             &:after {
                 position:       absolute;
-                margin:         15px 0 0 -21px;
+                margin:         20px 0 0 -6px;
                 padding-left:   5px;
 
                 content:        " ";
@@ -103,10 +104,13 @@
                 border-left:    1px solid var(--darkAccent3);
                 color:          var(--darkAccent3);
             }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
         }
 
         .category {
-	        background:     var(--background);
 	        cursor:         pointer;
 
             &.tag {

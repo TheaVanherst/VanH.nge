@@ -84,4 +84,4 @@ const
     },
   };
 
-export default galleryContentBlock;
+export { galleryContentBlock };

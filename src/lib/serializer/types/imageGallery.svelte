@@ -35,7 +35,10 @@
 						if (value.images[f].alt) {
                             let text = value.images.length === f + 1 && f % 2 === 0 ? sideArr[2] : sideArr[i];
                             commentArray[e][i] = fetch(text + "image: ", f);
-                        }}}}},
+                        }}}
+                if (commentArray[e].length > 0) {
+                    titles[e] = NumArr[e] + "row;";}
+            }},
 
 		dynamicGrid = () => { // Dynamic Vertical
 			for (let e = 0; e < 2; e++) {

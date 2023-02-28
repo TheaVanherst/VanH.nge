@@ -4,7 +4,7 @@ import { defineType, defineArrayMember }        from 'sanity'
 //TODO: BLOCK
 import { internalIcon, internalRender }         from '../blocks/internalReference.jsx'
 import { externalIcon, externalRender }         from '../blocks/externalReference.jsx'
-import galleryContentBlock                      from '../blocks/galleryContentBlock.js'
+import { galleryContentBlock }                  from '../blocks/galleryContentBlock.js'
 
 //TODO: LISTS
 import { letterIcon, letterRender }             from '../lists/letter.jsx'   //letter
@@ -23,8 +23,10 @@ import { accentIcon, accentRender }             from '../marks/accentColours.jsx
 import { readMoreIcon, readMoreRender }         from '../types/readMore.jsx'            //superscript
 import { separatorIcon }                        from '../types/separatorsElement.jsx'   //superscript
 import { blockquoteIcon }                       from '../types/blockquote.jsx'
-import {altTestBlock, citationBlock, citationURL} from '../libs/citationBlock'
-import nsfwBlock from '../libs/nsfwToggle'          //blockquote
+
+//TODO: PREFABS
+import { altTestBlock, citationBlock, citationURL}  from '../libs/citationBlock'            //citationData
+import { nsfwBlock }                                from '../libs/nsfwToggle'               //blockquote
 
 export default defineType({
   title: 'Block Content',

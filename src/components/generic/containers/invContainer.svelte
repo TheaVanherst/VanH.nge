@@ -41,11 +41,10 @@
 		white-space:    nowrap;
 
         &.rounded {
-            border-radius: 5px;
-        }
+            border-radius: 5px;}
 		color:              var(--background);
 
-		padding:    5px 10px;
+		padding:    4px 10px 6px;
 		width:      auto;
 
 		font-size:      13px;

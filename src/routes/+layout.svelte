@@ -56,11 +56,13 @@
 			position: 	relative;
 
 			&.nav {
-				width: 		25%;}
+				min-width: 		25%;
+				max-width: 		25%;}
 
 			&.wrapper {
 				z-index: 	2;
-				width: 	75%;}
+				min-width: 	calc(75% - var(--containerPadding));
+				max-width: 	calc(75% - var(--containerPadding));}
 		}
 	}
 

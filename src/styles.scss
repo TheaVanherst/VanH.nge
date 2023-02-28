@@ -46,7 +46,7 @@ body {
 	scroll-behavior: 	smooth;
 	cursor: 			crosshair;
 
-	scrollbar-color:    var(--accent3) var(--backgroundAccent2);
+	scrollbar-color:    var(--accent1) transparent;
 	scrollbar-width:    thin;
 
 	&::-webkit-scrollbar {

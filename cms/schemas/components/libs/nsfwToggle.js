@@ -4,6 +4,6 @@ const nsfwBlock = {
   type: 'boolean',
   initialValue: false,
   description: 'Should we blur this images?',
-}
+};
 
-export default nsfwBlock;
+export { nsfwBlock };
