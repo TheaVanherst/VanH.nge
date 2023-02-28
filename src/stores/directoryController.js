@@ -3,9 +3,9 @@ import { writable } from 'svelte/store';
 
 // navigation fetch vars
 
-const loading = writable(false);
-const navigating = writable(false);
-const directory = writable("/");
+const loading =     writable(false);
+const navigating =  writable(false);
+const directory =   writable("/");
 
 export { loading, navigating, directory };
 

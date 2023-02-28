@@ -110,11 +110,11 @@
 
         color:          white;
         white-space:    pre-wrap;
-	    font-size: 0;
+	    font-size:      0;
     }
 
     .titleBar {
-        color:      var(--backgroundAccent1);
+        color:          var(--backgroundAccent1);
         border-top:     1px solid var(--backgroundAccent1);
         border-bottom:  1px solid var(--backgroundAccent1);
 

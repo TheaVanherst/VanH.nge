@@ -31,14 +31,12 @@
 			height:     0;
 
 	        &:checked + .slider {
-		        background-color: var(--accent1);
-	        }
+		        background-color: var(--accent1);}
 
 	        &:checked + .slider:before {
 		        -webkit-transform: translateX(26px);
 		        -ms-transform: translateX(26px);
-		        transform: translateX(26px);
-	        }
+		        transform: translateX(26px);}
 		}
 
 	}
@@ -54,7 +52,7 @@
         background: var(--accent3);
 
 		-webkit-transition: 0.4s;
-		transition: 0.4s;
+		transition:         0.4s;
 
         &:before {
 	        position:   absolute;
@@ -65,10 +63,10 @@
 	        left:       1px;
 	        bottom:     1px;
 
-	        background-color: var(--background);
+	        background-color:   var(--background);
 
 	        -webkit-transition: 0.4s;
-	        transition: 0.4s;
+	        transition:         0.4s;
         }
 	}
 </style>

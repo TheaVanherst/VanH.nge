@@ -61,8 +61,8 @@
 
 			&.wrapper {
 				z-index: 	2;
-				min-width: 	calc(75% - var(--containerPadding));
-				max-width: 	calc(75% - var(--containerPadding));}
+				min-width: 	calc(75% - var(--containerPadding));  //TODO: this is dumb
+				max-width: 	calc(75% - var(--containerPadding));} //TODO: this is dumb
 		}
 	}
 

@@ -1,6 +1,6 @@
 <script>
-    import SanityImage from '$lib/serializer/imageBuilder.svelte'
-    import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
+    import SanityImage      from '$lib/serializer/imageBuilder.svelte'
+    import CommentBlock     from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
 
     export let portableText = "";
 
@@ -22,12 +22,10 @@
 
 <style lang="scss">
     .solo {
-        border-radius: var(--innerRaidus);
-        overflow: hidden;
-        display: block;
+        overflow:   hidden;
+        display:    block;
 
         &:not(:last-child) {
-	         margin-bottom: 10px;
-        }
+	         margin-bottom:     10px;}
     }
 </style>

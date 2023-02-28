@@ -1,22 +1,22 @@
 <script>
-    import { navigating, loading } from '$stores/directoryController.js';
-    import { motion } from '$stores/accessibilityController';
+    import { navigating, loading }  from '$stores/directoryController.js';
+    import { motion }               from '$stores/accessibilityController';
 
     import * as transitionFunctions from 'svelte/transition'
-    import * as easingFunctions from 'svelte/easing'
+    import * as easingFunctions     from 'svelte/easing'
 
     import { afterNavigate, beforeNavigate } from '$app/navigation';
 
     afterNavigate(() => {
         loading.set(false);
-    })
+    });
 
     beforeNavigate(() => {
         navigating.set(true);
         setTimeout(() => {
             navigating.set(false);
         }, transTimeOut + 50);
-    })
+    });
 
     // transition types
     export let

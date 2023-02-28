@@ -3,8 +3,6 @@
 
     export let min = 47; //temporary value
     export let max = 65535;
-
-    // TODO: There's a better way of handling this properly - please update
 </script>
 
 <div class="{$scrollPos >= min && $scrollPos < max ? 'fixed' : 'relative'}"
@@ -15,8 +13,7 @@
 <style lang="scss">
     div {
         &.fixed {
-            position: fixed;
-            padding-right: var(--containerPadding); //TODO: this is dumb
-        }
+            position:       fixed;
+            padding-right:  var(--containerPadding);}   //TODO: this is dumb
     }
 </style>
