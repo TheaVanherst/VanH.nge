@@ -3,27 +3,30 @@
     import { urlChanger } from "$stores/directoryController.js";
 
     export let portableText = null;
+    let { value } = portableText;
 
     let url =       undefined;
     let focus =     '_blank';
     let internal =  false;
 
+    console.log(portableText);
+
     const
         search = (slug) => {    return (navigation.find(e => e.local === slug)).path;},
-        target = () => {        return portableText?.value?.blank ? '_blank' : '_self';},
-        reference = () => {     return internal ? urlChanger(url) : null;}
+        target = () => {        return value?.blank ? '_blank' : '_self';},
+        reference = () => {     if (internal && focus === '_self') {urlChanger(url);}};
 
-    if (portableText?.markType) {
-        if (portableText.value._type === "internalLink"){
-            if (portableText.value.postSlug){
+    if (value) {
+        if (value._type === "internalLink"){
+            if (value.postSlug){
                 // Internal URLS;
                 focus = target();
-                url = search(portableText.value?.postFormat) + "/" + portableText.value.postSlug;
+                url = search(value.postFormat) + "/" + value.postSlug;
                 internal = true;}}
-        else if (portableText.value._type === "externalLink") {
+        else if (value._type === "externalLink") {
             // External URLS
             focus = target();
-            url = portableText.value.href;}}
+            url = value.href;}}
     else {
         //manually inserted links
         focus = target();
@@ -31,24 +34,30 @@
     }
 </script>
 
-<a on:click={reference} href={url} target={focus}>
-    <slot />
-</a>
+{#if url}
+    <a class="redirect" on:click={reference} href={url} target={focus}>
+        <slot />
+    </a>
+{:else}
+    <a class="nonClickable">
+        <slot />
+    </a>
+{/if}
 
 <style lang="scss">
     a {
         text-decoration: underline 1px;
         font-weight: 600;
-        color: var(--accent3);
         position: relative;
 
         margin: 0 -.25rem;
         padding: 0 .25rem;
 
-        border-radius: var(--innerRaidus);
-        box-shadow: inset 0 0 0 0 var(--darkAccent3);
         transition: color .2s ease-in-out,
                     box-shadow .2s ease-in-out;
+
+        box-shadow: inset 0 0 0 0 var(--darkAccent3);
+        color: var(--accent3);
 
         &:hover {
             text-decoration: none;
@@ -56,7 +65,7 @@
             color: var(--textColourInvert);
         }
 
-	    &::selection {
+        &::selection {
             color: var(--background);
             background-color: var(--accent3)
         }

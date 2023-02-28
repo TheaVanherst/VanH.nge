@@ -55,7 +55,6 @@ const
       options: {
         list: [
           {title: 'Stacked',          value: 'vertical'},
-          {title: 'Dynamic Inline',   value: 'dynamicinline'},
           {title: 'Dynamic Vertical', value: 'dynamicvertical'},
           {title: 'Dynamic Grid',     value: 'dynamicgrid'},
           {title: 'Grid',             value: 'grid'},
@@ -72,7 +71,8 @@ const
     }],
     preview: {
       select: {
-        images: 'images', image: 'images'},
+        images: 'images', image: 'images',
+      },
       prepare(selection) {
         const { images, image } = selection;
         return {

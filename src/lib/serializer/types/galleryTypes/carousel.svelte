@@ -1,7 +1,5 @@
 <script>
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
-    import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
-
     //TODO: THIS ALL NEEDS REDOING BECAUSE IT'S REALLY BAD
 
     let randomId = Math.floor(Math.random() * 999);
@@ -18,11 +16,8 @@
         document.querySelector("#a"+randomId+"-"+(Math.round(x / containerWidth))).classList.add("active");
     }
 
-    export let push, comments;
+    export let push;
 </script>
-
-<!-- TODO: something in this document relating to the width / display type
-     TODO: is forcing the container to be bigger than it should be. FIX IT. -->
 
 <div class="carousel" id="a{randomId}"
      bind:clientWidth={containerWidth}
@@ -49,14 +44,9 @@
     </div>
 </div>
 
-{#if comments}
-    <CommentBlock push={push} req="carousel"/>
-{/if}
-
 <style lang="scss">
 	.carousel {
 		margin-bottom:  var(--contentPaddingY);
-		border-radius:  var(--outerRadius);
 		overflow:       scroll hidden;
 		background:     var(--backgroundAccent2);
 

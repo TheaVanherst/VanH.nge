@@ -4,12 +4,12 @@
 
     export let portableText = "";
 
-    let comments = [
+    let comments = [[
         undefined,
         portableText.value.alt,
         portableText.value.citation,
         portableText.value.citeURL
-    ]
+    ]];
 </script>
 
 <div class="solo">
@@ -17,7 +17,7 @@
 </div>
 
 {#if comments[1]}
-    <CommentBlock push={comments} req="singular"/>
+    <CommentBlock push={comments}/>
 {/if}
 
 <style lang="scss">

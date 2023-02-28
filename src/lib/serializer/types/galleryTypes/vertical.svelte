@@ -1,7 +1,6 @@
 <script>
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
-    import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
-    export let push, comments;
+    export let push;
 </script>
 
 <div class="table vertical">
@@ -12,16 +11,11 @@
     {/each}
 </div>
 
-{#if comments}
-    <CommentBlock push={push} req="vertical"/>
-{/if}
-
 <style lang="scss">
 	.table {
 		margin-bottom:  var(--contentPaddingY);
 
         > div {
-	        border-radius:  var(--innerRaidus);
 	        overflow:       hidden;
 
             &:not(:last-of-type){

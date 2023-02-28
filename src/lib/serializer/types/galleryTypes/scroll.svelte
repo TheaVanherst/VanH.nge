@@ -1,11 +1,10 @@
 <script>
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
-    import CommentBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
-    export let push, comments;
+    export let push;
 </script>
 
 <div class="table">
-    <div>
+    <div class="row">
         {#each push as image}
             <div class="col">
                 <SanityImage image={image}/>
@@ -14,18 +13,11 @@
     </div>
 </div>
 
-{#if comments}
-    <CommentBlock push={push} req="scroll"/>
-{/if}
-
 <style lang="scss">
 	.table {
-		border-radius:  var(--innerRaidus);
 		margin-bottom:  var(--contentPaddingY);
 
-		overflow:   scroll hidden;
 		position:   relative;
-		display:    grid;
 
 		scrollbar-width:            thin;
 		-webkit-overflow-scrolling: touch;
@@ -46,16 +38,22 @@
 		&::-webkit-scrollbar-thumb:hover {
 			background: 	var(--darkAccent1);}
 
-		div {
+		.row {
             gap:        var(--imageSpacing);
-            display:    inline-flex;
+            display:    block;
+            overflow:   scroll;
+            position:   relative;
+
+            white-space: nowrap;
 
 	        .col {
 		        background-color:   var(--backgroundAccent2);
-		        border-radius:      var(--innerRaidus);
 
+                display: inline-block;
 		        overflow:   hidden;
 		        height:     400px;
-		        width:      max-content;}}
+		        width:      100%;
+            }
+        }
     }
 </style>

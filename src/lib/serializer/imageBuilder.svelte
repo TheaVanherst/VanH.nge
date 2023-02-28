@@ -7,8 +7,6 @@
     let imageRef = undefined;
 
     let loaded = false;
-    let NSFW = image.NSFW ? image?.NSFW : false;
-
     onMount(() => {
         if (imageRef) {
             imageRef.onload = () => {
@@ -24,9 +22,9 @@
 
 {#if image.asset}
     <div class:loaded
-         class:nsfw={NSFW}>
+         class:nsfw={image?.NSFW}>
         <img loading="lazy"
-            src={ urlFor(image).width(1200).fit('fillmax') }
+            src={ urlFor(image).width(1200) }
             alt={ image?.alt }
             bind:this={ imageRef }/>
     </div>

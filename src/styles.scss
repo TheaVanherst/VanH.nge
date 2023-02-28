@@ -190,16 +190,12 @@ ul {
 			color: 	var(--accent2);}}
 }
 
-.GalleryCite {
-	margin: 0 var(--contentPaddingX) var(--contentPaddingY) var(--contentPaddingX);
-
-	span {
-		color: var(--fadedColour);}
-}
-
 .nsfw {
 	transition: filter .15s ease-in-out;
 	filter:     blur(25px);
+
+	&:hover {
+		filter: blur(0);}
 }
 
 /* layout animation presetting */
