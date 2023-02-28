@@ -61,7 +61,7 @@
 
 <style lang="scss">
 	.date {
-		background-color: var(--darkAccent3);
+		background-color: var(--accent1);
 
 		padding:    10px 15px 10px 50px;
         overflow:   hidden;
@@ -71,8 +71,8 @@
             width:      100%;
 
 			&::selection {
-				color:              var(--darkAccent3);
-				background-color:   var(--backgroundTrans);}
+				color:              var(--accent1);
+				background-color:   var(--background);}
 
 			&.createdOn {
                 font-weight:    800;
