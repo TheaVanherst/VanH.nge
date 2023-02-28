@@ -4,7 +4,6 @@
 
     export let portableText = "";
 
-    console.log(portableText);
     let comments = [
         undefined,
         portableText.value.alt,

@@ -1,16 +1,39 @@
 <script>
+    import navigation from "$stores/navigationDirectories.js";
+    import { urlChanger } from "$stores/directoryController.js";
+
     export let portableText = null;
+
+    let url =       undefined;
+    let focus =     '_blank';
+    let internal =  false;
+
+    const
+        search = (slug) => {    return (navigation.find(e => e.local === slug)).path;},
+        target = () => {        return portableText?.value?.blank ? '_blank' : '_self';},
+        reference = () => {     return internal ? urlChanger(url) : null;}
+
+    if (portableText?.markType) {
+        if (portableText.value._type === "internalLink"){
+            if (portableText.value.postSlug){
+                // Internal URLS;
+                focus = target();
+                url = search(portableText.value?.postFormat) + "/" + portableText.value.postSlug;
+                internal = true;}}
+        else if (portableText.value._type === "externalLink") {
+            // External URLS
+            focus = target();
+            url = portableText.value.href;}}
+    else {
+        //manually inserted links
+        focus = target();
+        url = portableText;
+    }
 </script>
 
-{#if portableText.value}
-    <a href={portableText.value.href} target="_blank">
-        <slot />
-    </a>
-{:else}
-    <a href={portableText} target="_blank">
-        <slot />
-    </a>
-{/if}
+<a on:click={reference} href={url} target={focus}>
+    <slot />
+</a>
 
 <style lang="scss">
     a {

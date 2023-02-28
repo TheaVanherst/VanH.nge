@@ -23,7 +23,18 @@ let query =
         
         'catagory_tags': categories[]->title,
     
-        body,
+        body[]{
+            ...,
+            markDefs[]{
+                ...,
+                _type == "internalLink" => {
+                    ...,
+                    "postSlug": @.reference->slug.current,
+                    "postFormat": @.reference->_type
+                }
+            }
+        },
+        
         'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]
     `
 

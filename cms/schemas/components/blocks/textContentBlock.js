@@ -3,6 +3,7 @@ import { defineType, defineArrayMember }        from 'sanity'
 
 //TODO: BLOCK
 import { internalIcon, internalRender }         from '../blocks/internalReference.jsx'
+import { externalIcon, externalRender }         from '../blocks/externalReference.jsx'
 import galleryContentBlock                      from '../blocks/galleryContentBlock.js'
 
 //TODO: LISTS
@@ -87,7 +88,7 @@ export default defineType({
         ],
         annotations: [
           {
-            title: 'External Link', name: 'link',
+            title: 'External Link', name: 'externalLink',
             type: 'object',
             fields: [
               {
@@ -95,20 +96,26 @@ export default defineType({
                 type: 'url',
               },{
                 title: 'Open in a new Window?', name: 'blank',
-                type: 'boolean',
+                type: 'boolean', initialValue: false,
               }
             ],
+            icon: externalIcon, component: externalRender,
           },{
-            name: 'internalLink', title: 'Internal link',
+            title: 'Internal link', name: 'internalLink',
             type: 'object',
-            fields: [{
-              name: 'reference', title: 'Reference',
-              type: 'reference',
-              to: [
-                { type: 'post' },
-                { type: 'blogPost' },
-              ]
-            }],
+            fields: [
+              {
+                name: 'reference', title: 'Reference',
+                type: 'reference',
+                to: [
+                  { type: 'post' },
+                  { type: 'blogPost' },
+                ]
+              },{
+                title: 'Open in a new Window?', name: 'blank',
+                type: 'boolean', initialValue: false,
+              }
+            ],
             icon: internalIcon, component: internalRender,
           }
         ],

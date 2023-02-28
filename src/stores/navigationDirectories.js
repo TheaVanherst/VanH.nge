@@ -1,9 +1,9 @@
 
 const navigation = [
-    { title: "Home",            path: "/" },
-    { title: "Stress Tests",    path: "/test" },
-    { title: "Blog",            path: "/blog" },
-    { title: "Artchive",        path: "/artchive" },
+    { title: "Home",            path: "/",          local: ""},
+    { title: "Stress Tests",    path: "/test",      local: "post"},
+    { title: "Blog",            path: "/blog",      local: "blogPost"},
+    { title: "Artchive",        path: "/artchive",  local: "artPost"},
 ];
 
 export default navigation;

@@ -56,7 +56,8 @@
                 h4:         CustomHeading,
             },
             marks: {
-                link:           Link,
+                externalLink:   Link,
+                internalLink:   Link,
                 codesnippet:    CodeSnippet,
 
                 subscript:      Subscript,
