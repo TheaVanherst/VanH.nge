@@ -4,8 +4,6 @@ const
       type: 'string',
       validation: Rule => Rule.max(50).warning('50 characters or less'),
     },
-
-
     citationBlock = {
       name: 'citation',  title: 'citation title',
       type: 'string',
@@ -21,8 +19,6 @@ const
       initialValue: true,
       description: 'Show comments under the gallery as citation?',
     },
-
-
     nsfwBlock = {
       name: 'NSFW',     title: 'Preview Blur',
       type: 'boolean',

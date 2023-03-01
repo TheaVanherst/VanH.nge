@@ -1,10 +1,11 @@
 
-import { defineField, defineType } from 'sanity'
-import { slugUniqueCheck } from '../components/slugCheck'
+import { defineField, defineType }  from 'sanity'
+import { slugUniqueCheck }          from '../components/slugCheck'
+import { PackageIcon }              from '@sanity/icons'
 
 export default defineType({
   name: 'post',
-  title: 'TEST DOCUMENTS',
+  title: 'test documents',
   type: 'document',
   fields: [
     defineField({
@@ -85,6 +86,7 @@ export default defineType({
     }),
   ],
 
+  icon: PackageIcon,
   preview: {
     select: {
       title: 'title',

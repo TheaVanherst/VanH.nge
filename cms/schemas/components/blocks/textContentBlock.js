@@ -22,8 +22,6 @@ import { accentIcon, accentRender }             from '../marks/accentColours.jsx
 import { readMoreIcon, readMoreRender }         from '../types/readMore.jsx'            //superscript
 import { separatorIcon }                        from '../types/separatorsElement.jsx'   //superscript
 import { blockquoteIcon }                       from '../types/blockquote.jsx'
-import { altTestBlock, citationBlock, citationRender,
-         citationURL, nsfwBlock, zoomEnabled }  from '../../libs/imageSettings'
 
 const blockContent = defineType({
   title: 'Block Content', name: 'blockContent',
@@ -179,25 +177,61 @@ const blockContent = defineType({
     }),
 
     defineField({
-      name: 'image', title: 'image',
+      name: 'image',    title: 'Image',
       type: 'image',
       options: {
         hotspot: true
       },
+    }),
+
+    defineField({
+      name: 'imageUpload', title: 'imageData',
+      type: 'object',
+      groups: [ // TODO: default currently doesnt' work, via; https://github.com/sanity-io/sanity/pull/4173
+        { name: 'citationData', title: 'Citation Data', default: true }, // todo: <---------------- this
+        { name: 'settings',     title: 'Settings' }
+      ],
       fields: [
-        altTestBlock,
-        citationBlock,
-        citationURL,
-        citationRender,
-        zoomEnabled,
-        nsfwBlock,
+        {
+          name: 'ImageUp',  title: 'Image',
+          type: 'image',    group: ['citationData','settings'],
+          options: {
+            hotspot: true
+          },
+        },{
+          name: 'alt',      title: 'Alternative text',
+          type: 'string',   group: 'citationData',
+          validation: Rule => Rule.max(50).warning('50 characters or less'),
+        },{
+          name: 'citation', title: 'citation title',
+          type: 'string',   group: 'citationData',
+          validation: Rule => Rule.max(30).warning('30 characters or less'),
+        },{
+          name: 'citeURL',  title: 'citation url',
+          type: 'string',   group: 'citationData',
+        },{
+          name: 'comments', title: 'Comments enabled',
+          type: 'boolean',  group: 'citationData',
+          initialValue: false,
+          description: 'Show comments under the gallery as citation?',
+        },{
+          name: 'NSFW',     title: 'Preview Blur',
+          type: 'boolean',  group: 'settings',
+          initialValue: false,
+          description: 'Should we blur this images?',
+        },{
+          name: 'zoom',     title: 'Content Zoom',
+          type: 'boolean',  group: 'settings',
+          initialValue: false,
+          description: 'Should we enable zooming of images?',
+        }
       ],
     }),
 
     defineField({
       name: 'gallery', title: 'gallery',
       type: 'blockGallery',
-      validation: Rule => Rule.required()
+      validation: Rule => Rule.required(),
     }),
 
     defineArrayMember({

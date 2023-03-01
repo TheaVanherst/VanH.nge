@@ -1,6 +1,7 @@
 
-import {defineType} from 'sanity'
-import { altTestBlock, citationBlock, citationURL, citationRender, nsfwBlock, zoomEnabled } from '../../libs/imageSettings.js'
+import { defineType }                       from 'sanity'
+import { altTestBlock, citationBlock, citationURL,
+  citationRender, nsfwBlock, zoomEnabled }  from '../../libs/imageSettings.js'
 
 const
   altTextRequest = (obj) => {

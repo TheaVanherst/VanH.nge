@@ -9,9 +9,9 @@ import blogPosts      from './postTypes/blogPosts'
 import testPosting    from './postTypes/testPosts'
 
 // TODO: Post catagory data
-import category       from './category'
-import author         from './author'
-import jobDescription from './jobDescription'
+import category       from './tagData/category'
+import author         from './tagData/author'
+import jobDescription from './tagData/jobDescription'
 
 const blogData = [
   //content declarations
@@ -26,7 +26,7 @@ const blogData = [
   //post related data
   author,
   jobDescription,
-  category,
+  category
 ];
 
-export { blogData };
+export default blogData;

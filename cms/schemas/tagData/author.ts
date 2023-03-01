@@ -1,4 +1,6 @@
-import {defineField, defineType} from 'sanity'
+
+import { defineField, defineType }  from 'sanity'
+import { UserIcon }                 from '@sanity/icons'
 
 export default defineType({
   name: 'author',
@@ -32,8 +34,6 @@ export default defineType({
         }]
       }]
     }),
-
-    // TODO: Profile Data
     defineField({
       name: 'userPortrait',
       title: 'User Portrait',
@@ -50,8 +50,6 @@ export default defineType({
         hotspot: true,
       },
     }),
-
-    // TODO: About
     defineField({
       name: 'role',
       title: 'roles',
@@ -65,7 +63,7 @@ export default defineType({
     }),
   ],
 
-  // TODO: Preview Render
+  icon: UserIcon,
   preview: {
     select: {
       title: 'fullName',
