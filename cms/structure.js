@@ -4,7 +4,6 @@ const structure = (S) =>
     .title('Base')
     .items([
 
-
       S.listItem()
         .title('Filtered Posts')
         .child(

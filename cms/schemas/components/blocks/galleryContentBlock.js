@@ -1,5 +1,5 @@
 
-import { defineType }                       from 'sanity'
+import { defineType } from 'sanity'
 import { altTestBlock, citationBlock, citationURL,
   citationRender, nsfwBlock, zoomEnabled }  from '../../libs/imageSettings.js'
 
