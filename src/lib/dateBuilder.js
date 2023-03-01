@@ -39,15 +39,15 @@ const createdPush = (creationDate, dateLength) => {
             [3600, 'minutes', 60],
             [7200, '1 hour ago', '1 hour from now'],
             [86400, 'hours', 3600],
-            [172800, 'Yesterday', 'Tomorrow'],
+            [172800, 'yesterday', 'tomorrow'],
             [604800, 'days', 86400],
-            [1209600, 'Last week', 'Next week'],
+            [1209600, 'last week', 'next week'],
             [2419200, 'weeks', 604800],
-            [4838400, 'Last month', 'Next month'],
+            [4838400, 'last month', 'next month'],
             [29030400, 'months', 2419200],
-            [58060800, 'Last year', 'Next year'],
+            [58060800, 'last year', 'Next year'],
             [2903040000, 'years', 29030400],
-            [5806080000, 'Last century', 'Next century'],
+            [5806080000, 'last century', 'next century'],
             [58060800000, 'centuries', 2903040000]];
 
         let secs = relativeTime(time);

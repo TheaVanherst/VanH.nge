@@ -1,7 +1,7 @@
 <div>
-    <h4>
+    <p>
         <slot/>
-    </h4>
+    </p>
 </div>
 
 <style lang="scss">
@@ -10,9 +10,12 @@
 	    width:      calc(100% + var(--containerPadding) + var(--containerPadding));
 	    background: var(--accent1);
 
-	    h4 {
+	    p {
+            font-family: "Arimo", sans-serif;
 		    padding:    10px 15px 10px 15px;
 		    color:      black;
+            font-weight: 800;
+            font-size: 16px;
 	    }
     }
 </style>

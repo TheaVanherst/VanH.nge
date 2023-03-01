@@ -17,8 +17,8 @@
         placementArr[i] = placement;
         if (arr[i] < arr[i + 1]){
             placement++;
-        } else if (arr[i] > arr[i + 1]){
-            for (let e = 0; e <= arr[i] - arr[i + 1]; e++){
+        } else if (arr[i] >= arr[i + 1]){
+            for (let e = 0; e < arr[i] - arr[i + 1]; e++){
                 if (placement > 0){
                     placement--;}}
         } else if (arr[i] === arr[i - 1]) {

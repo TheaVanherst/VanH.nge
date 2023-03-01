@@ -19,18 +19,30 @@
         <PostHeader titleHeader={post.headerImage}	title={post.title}/>
 
         <InvContainer overflowBool={false} colour="green">
-            {#if post.editor_fullName}
-                <AuthorTag preview={true} linkUrl={post.editor_twitter} content="{updatedPush(post._updatedAt, publishDate)} by">{post.editor_fullName}</AuthorTag>
+            {#if post.editor}
+                <AuthorTag
+                        preview={true} social={post.editor.socialMedia}
+                        content="{updatedPush(post._updatedAt, publishDate)} by">
+                    {post.editor.handle}
+                </AuthorTag>
             {:else}
-                {#if post.author_fullName === post.editor_fullName}
-                    <AuthorTag preview={true} linkUrl={post.author_twitter} content="{updatedPush(post._updatedAt, publishDate)} by">{post.author_fullName}</AuthorTag>
+                {#if post.author === post.editor}
+                    <AuthorTag
+                            preview={true} social={post.author.socialMedia}
+                            content="{updatedPush(post._updatedAt, publishDate)} by">
+                        {post.author.handle}
+                    </AuthorTag>
                 {:else}
-                    <AuthorTag preview={true} linkUrl={post.author_twitter} content="{createdPush(publishDate, 'shortDate')} by">{post.author_fullName}</AuthorTag>
+                    <AuthorTag
+                            preview={true} social={post.author.socialMedia}
+                            content="{createdPush(publishDate, 'shortDate')} by">
+                        {post.author.handle}
+                    </AuthorTag>
                 {/if}
             {/if}
         </InvContainer>
 
-        <TagModule time="{post._createdAt}"    tags={post.catagory_tags}/>
+<!--        <TagModule time="{post._createdAt}"    tags={post.catagory_tags}/>-->
 
         <div class="nonClickable">
             <p class="description">

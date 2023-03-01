@@ -1,15 +1,15 @@
 <script>
     export let content = null;
-    export let linkUrl = null;
     export let preview = false;
+    export let social = null;
 </script>
 
 <div class="handle">
     <span>
         {content}
     </span>
-    {#if linkUrl}
-        <a href="https://twitter.com/{linkUrl}" target="_blank">
+    {#if social}
+        <a href="https://twitter.com/{social.url}" target="_blank">
             <span class="wrapper link {preview ? 'preview' : 'post'}">
                 <slot/>
             </span>

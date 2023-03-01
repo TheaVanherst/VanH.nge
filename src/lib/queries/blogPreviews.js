@@ -11,13 +11,20 @@ let query =
         _updatedAt,
         publishedAt,
     
-        'author_fullName': author->fullName,
-        'author_twitter': author->twitterURL,
-        'author_portrait': author->userPortrait,
-        
-        'editor_fullName': editor->fullName,
-        'editor_twitter': editor->twitterURL,
-        'editor_portrait': editor->userPortrait,
+        editor-> {
+            _id,
+            fullName,
+            handle,
+            twitterUrl,
+            socialMedia[0],
+        },
+        author-> {
+            _id,
+            fullName,
+            handle,
+            twitterUrl,
+            socialMedia[0],
+        },
         
         'catagory_tags': categories[]->title,
         

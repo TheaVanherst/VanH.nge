@@ -11,14 +11,12 @@
     export let post = null;
 
     const galleryObjectGen = (obj) => {
-        obj.gallery._type = "gallery";
-        obj.gallery.inline = true;
+        obj.gallery._type =     "gallery";
+        obj.gallery.inline =    true;
         return {"value": obj.gallery};
     }
 
     let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
-
-    console.log(post);
 </script>
 
 <Container overflowBool="{false}" colour="orange">
@@ -26,13 +24,12 @@
 
     <InvContainer>
         <AuthorTag
-            preview={true}      linkUrl={post.author_twitter}
+            preview={true}  social={post.author.socialMedia}
             content="{createdPush(publishDate, 'shortDate')} by">
-            {post.author_fullName}
+            {post.author.handle}
         </AuthorTag>
     </InvContainer>
-    <TagModule
-            time="{publishDate}"    tags={post.catagory_tags}/>
+    <TagModule time="{publishDate}" tags={post.catagory_tags}/>
 
     {#if post.briefDesc}
         <p>

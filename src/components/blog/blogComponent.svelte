@@ -10,10 +10,9 @@
 
 <Container overflowBool="{false}" id="post-{post.slug}" colour="orange">
     <HeaderModule
-            titleHeader="{post.headerImage}"	title="{post.title}"                subtitle={post._id}
-            createdOn="{post._createdAt}" 		updatedOn="{post._updatedAt}"       publishedOn={post.publishedAt}
-            editorHandle={post.editor_handle} 	editorUser={post.editor_fullName}	editorTwitter={post.editor_twitter} 	editorImage={post.editor_portrait}
-            authorHandle={post.author_handle} 	authorUser={post.author_fullName}  	authorTwitter={post.author_twitter} 	authorImage={post.author_portrait}/>
+            titleHeader={post.headerImage}	title={post.title}          subtitle={post._id}
+            createdOn={post._createdAt}		updatedOn={post._updatedAt} publishedOn={post.publishedAt}
+            editor={post.editor}            author={post.author}/>
     <TagModule
             time="{post._createdAt}" tags="{post.catagory_tags}" />
     <PostModule

@@ -10,16 +10,23 @@ let query =
         _createdAt,
         _updatedAt,
         publishedAt,
-    
-        'author_handle': author->handle,
-        'author_fullName': author->fullName,
-        'author_twitter': author->twitterURL,
-        'author_portrait': author->userPortrait,
-        
-        'editor_handle': editor->handle,
-        'editor_fullName': editor->fullName,
-        'editor_twitter': editor->twitterURL,
-        'editor_portrait': editor->userPortrait,
+  
+        editor-> {
+            _id,
+            fullName,
+            handle,
+            twitterUrl,
+            socialMedia[0],
+            userPortrait
+        },
+        author-> {
+            _id,
+            fullName,
+            handle,
+            twitterUrl,
+            socialMedia[0],
+            userPortrait
+        },
         
         'catagory_tags': categories[]->title,
     

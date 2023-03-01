@@ -5,6 +5,7 @@
 	import PageScrollWrapper from "$lib/handlers/pageScrollWrapper.svelte";
 
 	export let data = null;
+    console.log(data)
 </script>
 
 <content>

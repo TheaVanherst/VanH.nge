@@ -3,29 +3,27 @@
     import PostHeader   from "$components/blog/postHeader.svelte";
     import AuthorTag    from "$components/generic/components/authorTag.svelte";
 
+    import { createdPush, updatedPush } from "$lib/dateBuilder.js"
+
     export let createdOn = null, updatedOn = null, publishedOn = null;
     let publishDate = publishedOn ? publishedOn : createdOn;
 
     export let titleHeader = null, title = null, subtitle;
-
-    import {createdPush, updatedPush} from "$lib/dateBuilder.js"
-
-    export let authorUser = null, authorTwitter = null, authorImage = null,
-               editorUser = null, editorTwitter = null, editorImage = null;
+    export let author = null, editor;
 </script>
 
 <header>
     <PostHeader titleHeader="{titleHeader}"	title="{title}"/>
 
     <div class="profile">
-        {#if authorImage}
+        {#if author && author.userPortrait}
             <div class="author">
-                <SanityImage image={authorImage}/>
+                <SanityImage image={author.userPortrait}/>
             </div>
         {/if}
-        {#if authorUser !== editorUser && editorImage}
+        {#if editor && author !== editor && editor.userPortrait}
             <div class="editor">
-                <SanityImage image={editorImage}/>
+                <SanityImage image={editor.userPortrait}/>
             </div>
         {/if}
     </div>
@@ -38,23 +36,23 @@
     </div>
 
     <div class="userData">
-        {#if authorUser}
-            {#if authorUser === editorUser}
-                <AuthorTag content="Posted & Edited by " linkUrl="{authorTwitter}">
-                    {authorUser}
+        {#if editor}
+            <AuthorTag social={editor.socialMedia}
+                    content="{updatedPush(createdOn, publishDate)} by ">
+                {editor.handle}
+            </AuthorTag>
+        {:else}
+            {#if author === editor}
+                <AuthorTag social={author.socialMedia}
+                        content="{updatedPush(createdOn, publishDate)} by ">
+                    {author.handle}
                 </AuthorTag>
             {:else}
-                <AuthorTag content="Posted by " linkUrl="{authorTwitter}">
-                    {authorUser}
-                </AuthorTag>
-                <AuthorTag content=", Edited by " linkUrl="{editorTwitter}">
-                    {editorUser}
+                <AuthorTag social={author.socialMedia}
+                        content="{createdPush(publishDate, 'shortDate')} by ">
+                     {author.handle}
                 </AuthorTag>
             {/if}
-        {:else}
-            <AuthorTag content="Posted by " linkUrl="{authorTwitter}">
-                {authorUser}
-            </AuthorTag>
         {/if}
     </div>
 </header>
@@ -78,7 +76,6 @@
                 font-weight:    800;
 				font-size:      100%;}
 			&.updatedOn {
-				text-transform: lowercase;
 				font-size:      70%;}
         }
 	}

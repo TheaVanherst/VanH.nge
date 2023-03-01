@@ -12,22 +12,20 @@ let query =
         
         'catagory_tags': categories[]->title,
     
-        'coauthors_handle': coauthors->handle,
-        'coauthors_fullName': coauthors->fullName,
-        'coauthors_twitter': coauthors->twitterURL,
-        'coauthors_portrait': coauthors->userPortrait,
-        
-        author->{
+        coauthors-> {
             _id,
             fullName,
             handle,
             twitterUrl,
+            socialMedia[0],
         },
-        "blankAuthor": author->,
-        'author_handle': author->handle,
-        'author_fullName': author->fullName,
-        'author_twitter': author->twitterURL,
-        'author_portrait': author->userPortrait,
+        author-> {
+            _id,
+            fullName,
+            handle,
+            twitterUrl,
+            socialMedia[0],
+        },
         
         briefDesc,
         gallery,
