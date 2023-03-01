@@ -4,31 +4,24 @@
 	export let data = null;
 </script>
 
-<content>
-	<div class="col">
-		{#each data[0] as post, i}
-			<div>
-				<ArtPost post={post}/>
-			</div>
-		{/each}
-	</div>
-</content>
+<div class="content">
+	{#each data[0] as post, i}
+		<div>
+			<ArtPost post={post}/>
+		</div>
+	{/each}
+</div>
 
 
 <style lang="scss">
-	content {
-		width: 		100%;
+	.content {
+		max-width: 	calc(100% - var(--containerPadding)); /* TODO: this is stupid */
 		gap: 		var(--containerPadding);
-		display: 	inline-flex;
+		column-count: 2;
+		box-sizing: border-box;
 
-		.col {
-			height: 	max-content;
-			display: 	block;
-			position: 	relative;
-
-			width: 	100%;
-			gap: 	var(--containerPadding);
-			column-count: 2;
+		> * {
+			display: block;
 		}
 	}
 </style>

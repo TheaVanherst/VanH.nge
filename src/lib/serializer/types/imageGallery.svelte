@@ -108,7 +108,7 @@
     });
 </script>
 
-{#if !returnSheet}
+{#if returnSheet}
 	<svelte:component this={returnSheet} push="{imageArray}"/>
 {:else}
 	<div class="imagePreview gen{Math.floor(Math.random() * 3)}">
@@ -117,7 +117,7 @@
 {/if}
 
 {#if commentArray}
-	{#if !commentSheet}
+	{#if commentSheet}
 		<CitationBlock push={commentArray} titles={titles}/>
 	{:else}
 		<div class="citePreview gen{Math.floor(Math.random() * 2)}"></div>
