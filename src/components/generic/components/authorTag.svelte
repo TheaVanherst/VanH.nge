@@ -1,7 +1,7 @@
 <script>
-    export let content = null;
-    export let preview = false;
-    export let social = null;
+    export let content =    null;   // published / edited when
+    export let preview =    false;  // render type
+    export let social =     null;   // first of social media
 </script>
 
 <div class="handle">
@@ -9,7 +9,7 @@
         {content}
     </span>
     {#if social}
-        <a href="https://twitter.com/{social.url}" target="_blank">
+        <a href="{social.url}" target="_blank">
             <span class="wrapper link {preview ? 'preview' : 'post'}">
                 <slot/>
             </span>
@@ -23,15 +23,16 @@
 
 <style lang="scss">
     .handle {
-        width: min-content;
-        white-space: nowrap;
-        position: relative;
+        width:          min-content;
+        white-space:    nowrap;
+        position:       relative;
 
 	    span.wrapper {
 		    margin:     0 -.25rem;
 		    padding:    .125rem  .25rem;
 
-		    transition:     color .2s ease-in-out, box-shadow .2s ease-in-out;
+            text-decoration:    underline 1px;
+		    transition:         color .2s ease-in-out, box-shadow .2s ease-in-out;
 
 		    &.nonLink {
 			    &.post {    color: var(--accent2);}
@@ -56,11 +57,7 @@
         }
 
 	    .link {
-		    text-decoration:        underline 1px;
 		    box-shadow:             inset 0 0 0 0 var(--darkAccent3);
-
-		    &:hover {
-			    text-decoration: none;}
         }
     }
 </style>
