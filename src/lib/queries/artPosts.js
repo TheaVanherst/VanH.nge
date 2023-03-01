@@ -16,7 +16,14 @@ let query =
         'coauthors_fullName': coauthors->fullName,
         'coauthors_twitter': coauthors->twitterURL,
         'coauthors_portrait': coauthors->userPortrait,
-    
+        
+        author->{
+            _id,
+            fullName,
+            handle,
+            twitterUrl,
+        },
+        "blankAuthor": author->,
         'author_handle': author->handle,
         'author_fullName': author->fullName,
         'author_twitter': author->twitterURL,

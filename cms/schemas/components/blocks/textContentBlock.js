@@ -1,10 +1,9 @@
 
-import { defineType, defineArrayMember }        from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 
 //TODO: BLOCK
-import { internalIcon, internalRender }         from '../blocks/internalReference.jsx'
-import { externalIcon, externalRender }         from '../blocks/externalReference.jsx'
-import { galleryContentBlock }                  from '../blocks/galleryContentBlock.js'
+import { internalIcon, internalRender }         from './internalReference'  // internal links
+import { externalIcon, externalRender }         from './externalReference'  // external links
 
 //TODO: LISTS
 import { letterIcon, letterRender }             from '../lists/letter.jsx'   //letter
@@ -23,14 +22,11 @@ import { accentIcon, accentRender }             from '../marks/accentColours.jsx
 import { readMoreIcon, readMoreRender }         from '../types/readMore.jsx'            //superscript
 import { separatorIcon }                        from '../types/separatorsElement.jsx'   //superscript
 import { blockquoteIcon }                       from '../types/blockquote.jsx'
+import { altTestBlock, citationBlock, citationRender,
+         citationURL, nsfwBlock, zoomEnabled }  from '../../libs/imageSettings'
 
-//TODO: PREFABS
-import { altTestBlock, citationBlock, citationURL}  from '../libs/citationBlock'            //citationData
-import { nsfwBlock }                                from '../libs/nsfwToggle'               //blockquote
-
-export default defineType({
-  title: 'Block Content',
-  name: 'blockContent',
+const blockContent = defineType({
+  title: 'Block Content', name: 'blockContent',
   type: 'array',
   of: [
     defineArrayMember({
@@ -181,7 +177,9 @@ export default defineType({
         },
       },
     }),
-    defineArrayMember({
+
+    defineField({
+      name: 'image', title: 'image',
       type: 'image',
       options: {
         hotspot: true
@@ -190,11 +188,17 @@ export default defineType({
         altTestBlock,
         citationBlock,
         citationURL,
-        nsfwBlock
+        citationRender,
+        zoomEnabled,
+        nsfwBlock,
       ],
     }),
 
-    galleryContentBlock,
+    defineField({
+      name: 'gallery', title: 'gallery',
+      type: 'blockGallery',
+      validation: Rule => Rule.required()
+    }),
 
     defineArrayMember({
       title: 'Code',
@@ -212,3 +216,5 @@ export default defineType({
     }),
   ],
 })
+
+export default blockContent;

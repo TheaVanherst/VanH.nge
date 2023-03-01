@@ -1,6 +1,6 @@
 
-import { nsfwBlock } from '../libs/nsfwToggle.js'
-import { altTestBlock, citationBlock, citationURL } from '../libs/citationBlock.js'
+import {defineType} from 'sanity'
+import { altTestBlock, citationBlock, citationURL, citationRender, nsfwBlock, zoomEnabled } from '../../libs/imageSettings.js'
 
 const
   altTextRequest = (obj) => {
@@ -13,62 +13,59 @@ const
     }
 
     if(arr.length > 1) {
-      return "Alt texts: [" + arr + "]"
-    } else if (arr.length === 1) {
-      return "Alt text: [" + arr + "]"
-    } if (arr.length === 0) {
-      return "No alternative text provided."
+      return "Alt texts: [" + arr + "]";
+    }
+    else if (arr.length === 1) {
+      return "Alt text: [" + arr + "]";
+    }
+    else if (arr.length === 0) {
+      return "No alternative text provided.";
     }
   },
 
-  galleryContentBlock = {
-    name: 'gallery',    title: 'Gallery',
+  blockGallery = defineType({
+    name: 'blockGallery',    title: 'Block Gallery',
     type: 'object',
-    fields: [{
-      name: 'images',   title: 'Images',
-      type: 'array',
-      of: [{
-        name: 'image',  title: 'Image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
+    fields: [
+      {
+        name: 'images',   title: 'Images',
+        type: 'array',
+        of: [{
+          name: 'image',  title: 'Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          validation: Rule => Rule.required(),
+          fields: [
+            altTestBlock,
+            citationBlock,
+            citationURL,
+            nsfwBlock,
+          ],
+        }],
+      }, {
+        name: 'display',  title: 'Display as',
+        type: 'string',
+        initialValue:
+          { title: 'Stacked',           value: 'vertical'},
         validation: Rule => Rule.required(),
-        fields: [
-          altTestBlock,
-          citationBlock,
-          citationURL,
-          nsfwBlock
-        ],
-      }],
-    },{
-      name: 'comments', title: 'Comments enabled',
-      type: 'boolean',
-      initialValue: true,
-      description: 'Enable comments under the gallery?',
-    },{
-      name: 'display',  title: 'Display as',
-      type: 'string',
-      initialValue:
-        { title: 'Stacked',           value: 'vertical'},
-      validation: Rule => Rule.required(),
-      options: {
-        list: [
-          {title: 'Stacked',          value: 'vertical'},
-          {title: 'Dynamic Vertical', value: 'dynamicvertical'},
-          {title: 'Dynamic Grid',     value: 'dynamicgrid'},
-          {title: 'Grid',             value: 'grid'},
-          {title: 'Scroll',           value: 'scroll'},
-          {title: 'Carousel',         value: 'carousel'},
-        ],
-        layout: 'dropdown',
+        options: {
+          list: [
+            {title: 'Stacked',          value: 'vertical'},
+            {title: 'Dynamic Vertical', value: 'dynamicvertical'},
+            {title: 'Dynamic Grid',     value: 'dynamicgrid'},
+            {title: 'Grid',             value: 'grid'},
+            {title: 'Scroll',           value: 'scroll'},
+            {title: 'Carousel',         value: 'carousel'},
+          ],
+          layout: 'dropdown',
+        },
       },
-    },{
-      name: 'zoom',     title: 'Content Zoom',
-      type: 'boolean',
-      initialValue: false,
-      description: 'Should we enable zooming of images?',
-    }],
+      citationRender,
+      zoomEnabled,
+    ],
+
     preview: {
       select: {
         images: 'images', image: 'images',
@@ -82,6 +79,6 @@ const
         };
       },
     },
-  };
+  });
 
-export { galleryContentBlock };
+export default blockGallery;

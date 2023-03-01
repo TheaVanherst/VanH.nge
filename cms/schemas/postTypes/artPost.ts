@@ -1,6 +1,5 @@
 
 import { defineField, defineType }  from 'sanity'
-import { galleryContentBlock }      from '../components/blocks/galleryContentBlock'
 
 export default defineType({
   name: 'artPost',
@@ -28,7 +27,11 @@ export default defineType({
       }]
     }),
 
-    galleryContentBlock,
+    defineField({
+      name: 'gallery', title: 'gallery',
+      type: 'blockGallery',
+      validation: Rule => Rule.required()
+    }),
 
     defineField({
       name: 'categories',

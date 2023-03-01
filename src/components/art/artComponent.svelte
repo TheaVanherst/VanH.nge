@@ -17,6 +17,8 @@
     }
 
     let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
+
+    console.log(post);
 </script>
 
 <Container overflowBool="{false}" colour="orange">
