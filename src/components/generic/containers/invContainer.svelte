@@ -9,6 +9,7 @@
 
     export let colour = "green"
     export let roundedBool = false;
+    export let padding = "30px"
 </script>
 
 {#if !push}

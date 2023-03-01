@@ -19,50 +19,39 @@
 <svelte:window bind:scrollY={$scrollPos} />
 <Background/>
 
-<page>
-	<main>
-		<div class="nav col">
-			<Navigation data={data}/>
-		</div>
-		<div class="wrapper col">
-			<Route/>
-			<Transition>
-				<slot/>
-			</Transition>
-		</div>
-	</main>
-</page>
+<div class="layout">
+	<div class="nav">
+		<Navigation data={data}/>
+	</div>
+	<div class="page">
+		<Route/>
+		<Transition>
+			<slot/>
+		</Transition>
+	</div>
+</div>
 
 <style lang="scss">
-	page {
-		display: 	block;
-		padding: 	var(--containerPadding);
+	.layout {
 		margin: 	0 auto;
+		padding: 	var(--containerPadding);
+		gap: 		var(--containerPadding);
 
 		max-width:  var(--maxWidth);
 		width: 		100%;
 
-		box-sizing: border-box;
-	}
+		box-sizing: 	border-box;
+		display: 		flex;
 
-	main {
-		width: 		100%;
-		gap: 		var(--containerPadding);
-		display: 	flex;
-
-		.col {
-			height: 	max-content;
-			display:	block;
-			position: 	relative;
+		> * {
+			position:	relative;
 
 			&.nav {
-				min-width: 		25%;
-				max-width: 		25%;}
+				max-width: 25%;
+				min-width: 25%;}
 
-			&.wrapper {
-				z-index: 	2;
-				min-width: 	calc(75% - var(--containerPadding));  //TODO: this is dumb
-				max-width: 	calc(75% - var(--containerPadding));} //TODO: this is dumb
+			&.page {	//kinda lazy
+				width: 75%;}
 		}
 	}
 

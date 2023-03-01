@@ -5,11 +5,19 @@
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 
-    export let createdOn = null, updatedOn = null, publishedOn = null;
-    let publishDate = publishedOn ? publishedOn : createdOn;
+    export let
+            createdOn =     null,
+            updatedOn =     null,
+            publishedOn =   null;
+    export let
+            titleHeader =   null,
+            title =         null,
+            subtitle =      null;
+    export let
+            author =        null,
+            editor =        null;
 
-    export let titleHeader = null, title = null, subtitle;
-    export let author = null, editor;
+    let publishDate = publishedOn ? publishedOn : createdOn;
 </script>
 
 <header>
@@ -21,7 +29,7 @@
                 <SanityImage image={author.userPortrait}/>
             </div>
         {/if}
-        {#if editor && author !== editor && editor.userPortrait}
+        {#if editor && author.handle !== editor.handle && editor.userPortrait}
             <div class="editor">
                 <SanityImage image={editor.userPortrait}/>
             </div>
@@ -37,22 +45,28 @@
 
     <div class="userData">
         {#if editor}
-            <AuthorTag social={editor.socialMedia}
-                    content="{updatedPush(createdOn, publishDate)} by ">
-                {editor.handle}
-            </AuthorTag>
-        {:else}
-            {#if author === editor}
-                <AuthorTag social={author.socialMedia}
-                        content="{updatedPush(createdOn, publishDate)} by ">
+            {#if author.handle === editor.handle}
+                <AuthorTag
+                        social={author.socialMedia}
+                        content="Edited & published by ">
                     {author.handle}
                 </AuthorTag>
             {:else}
+                <AuthorTag
+                        social={editor.socialMedia}
+                        content="Edited by ">
+                    {editor.handle}
+                </AuthorTag>
                 <AuthorTag social={author.socialMedia}
-                        content="{createdPush(publishDate, 'shortDate')} by ">
-                     {author.handle}
+                           content=", Published by ">
+                    {author.handle}
                 </AuthorTag>
             {/if}
+        {:else}
+            <AuthorTag social={author.socialMedia}
+                       content="Published by ">
+                {author.handle}
+            </AuthorTag>
         {/if}
     </div>
 </header>
@@ -96,23 +110,22 @@
 		position:   relative;
 
 		> div {
-            left:          -35px;
+            left:          -25px;
 			max-width:      58px;
-			margin:         var(--contentPaddingY);
-			border:         1px solid var(--accent3);
 
 			overflow:       hidden;
 			position:       absolute;
 
+            &.author {
+                margin-top: var(--contentPaddingY);
+                border:     1px solid var(--accent3);
+            }
+
 			&.editor {
-				margin-left:    -20px;
+				margin-left:    -30px;
 				margin-top:     36px;
-				border:         2px solid var(--accent3);
+				border:         2px solid var(--accent2);
 				transform:      scale(50%);
-				transition:
-						transform 0.5s,
-						border 0.5s,
-						border-radius 0.5s;
 			}
 		}
 	}

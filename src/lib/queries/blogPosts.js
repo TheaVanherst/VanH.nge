@@ -7,6 +7,11 @@ let query =
         title,
         'headerImage': mainImage,
         
+        "createdWhen": 
+             select(
+                defined(publishedAt) => publishedAt,
+                defined(publishedAt) => _createdAt
+             ),
         _createdAt,
         _updatedAt,
         publishedAt,

@@ -1,8 +1,8 @@
 <script>
-    import TitleCard from "$components/generic/components/containerTitle.svelte"
-    import Container from "$components/generic/containers/container.svelte";
+    import TitleCard        from "$components/generic/components/containerTitle.svelte"
+    import Container        from "$components/generic/containers/container.svelte";
 
-    import scrollIntoView from "$stores/scrollHandler.js";
+    import scrollIntoView   from "$stores/scrollHandler.js";
     export let list = null;
 </script>
 
@@ -24,7 +24,7 @@
 		padding:    0 0 10px 0;
 
         &:last-of-type {
-            padding: 0;
+            padding:    0;
         }
 	}
 </style>

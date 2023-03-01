@@ -1,13 +1,14 @@
 <script>
-    import PostModule from "$lib/serializer/portableText.svelte"
+    import PostModule       from "$lib/serializer/portableText.svelte"
 
-    import TagModule from "$components/generic/components/tagModule.svelte";
+    import TagModule        from "$components/generic/components/tagModule.svelte";
     import PreviewContainer from "$components/generic/containers/prevContainer.svelte";
-    import InvContainer from "$components/generic/containers/invContainer.svelte";
+    import InvContainer     from "$components/generic/containers/invContainer.svelte";
 
-    import {createdPush, updatedPush} from "$lib/dateBuilder.js"
-    import AuthorTag from "$components/generic/components/authorTag.svelte";
-    import PostHeader from "$components/blog/postHeader.svelte"
+    import AuthorTag        from "$components/generic/components/authorTag.svelte";
+    import PostHeader       from "$components/blog/postHeader.svelte"
+
+    import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 
     export let post = null;
 
@@ -42,7 +43,7 @@
             {/if}
         </InvContainer>
 
-<!--        <TagModule time="{post._createdAt}"    tags={post.catagory_tags}/>-->
+        <TagModule time="{post._createdAt}"    tags={post.catagory_tags}/>
 
         <div class="nonClickable">
             <p class="description">

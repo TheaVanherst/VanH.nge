@@ -6,7 +6,7 @@
 	export let data = null;
 </script>
 
-<content>
+<div class="content">
 	<div class="col2 col">
         <BlogComponent post={data[0]}/>
 	</div>
@@ -15,29 +15,22 @@
 			<Contents list={data[0]}/>
 		</PageScrollWrapper>
 	</div>
-</content>
+</div>
 
 
 <style lang="scss">
-	content {
+	.content {
 		width: 		100%;
 		gap: 		var(--containerPadding);
 		display: 	inline-flex;
 
 		.col {
 			height: 	max-content;
-			width: 		inherit;
 			display: 	block;
+			position: 	relative;
 
-			> .wrapper {
-				width: 	100%;}
-
-			&.col2 {
-				flex-basis: 100%;
-				max-width: 	65%;}
-			&.col3 {
-				margin-left: 	auto;
-				width: 			35%;}
+			&.col2 { width:	70%;}
+			&.col3 { width: 30%;}
 		}
 	}
 </style>
