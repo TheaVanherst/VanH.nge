@@ -69,7 +69,8 @@ const
 
     preview: {
       select: {
-        images: 'images', image: 'images',
+        images: 'images',
+        image: 'images',
       },
       prepare(selection) {
         const { images, image } = selection;

@@ -1,7 +1,7 @@
 
 const structure = (S) =>
   S.list()
-    .title('Base')
+    .title('Content Types')
     .items([
 
       S.listItem()
@@ -23,9 +23,9 @@ const structure = (S) =>
                     )
                 ),
               S.listItem()
-                .title('Posts By category')
+                .title('Posts By design Categories')
                 .child(
-                  S.documentTypeList('category')
+                  S.documentTypeList('designCategory')
                     .title('Posts by Category')
                     .child(categoryId =>
                       S.documentList()
@@ -41,7 +41,14 @@ const structure = (S) =>
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['blogPost', 'post', 'artPost', 'category'].includes(listItem.getId())
+          (listItem) => ['blogPost', 'post', 'artPost'].includes(listItem.getId())
+        ),
+
+      S.divider(), // TODO: --------- CATAGORY DATA
+
+      ...S.documentTypeListItems()
+        .filter(
+          (listItem) => ['designCategory', 'artCategory', 'genericCategory', 'category'].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: --------- CATAGORY DATA

@@ -1,7 +1,7 @@
 
 import { defineField, defineType }  from 'sanity'
 import { slugUniqueCheck }          from '../components/slugCheck'
-import { PackageIcon }              from '@sanity/icons'
+import { PresentationIcon }              from '@sanity/icons'
 
 export default defineType({
   name: 'post',
@@ -29,12 +29,17 @@ export default defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{
-        type: 'reference',
-        to: {
-          type: 'category'
-        }
-      }]
+      of: [
+        { name: 'genericCategory', type: 'reference',
+          validation: Rule => Rule.required(),
+          to: {type: 'genericCategory'}},
+        { name: 'artCategory', type: 'reference',
+          validation: Rule => Rule.required(),
+          to: {type: 'artCategory'}},
+        { name: 'designCategory', type: 'reference',
+          validation: Rule => Rule.required(),
+          to: {type: 'designCategory'}},
+      ]
     }),
     defineField({
       name: 'mainImage',
@@ -86,7 +91,7 @@ export default defineType({
     }),
   ],
 
-  icon: PackageIcon,
+  icon: PresentationIcon,
   preview: {
     select: {
       title: 'title',

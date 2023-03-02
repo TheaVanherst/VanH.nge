@@ -51,12 +51,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'role',
-      title: 'roles',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'role'}}],
-    }),
-    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'blockContent',

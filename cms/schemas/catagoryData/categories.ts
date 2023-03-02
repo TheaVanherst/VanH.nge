@@ -1,11 +1,11 @@
 
 import { defineField, defineType }  from 'sanity'
-import { UlistIcon }                from '@sanity/icons'
+import { EditIcon }                from '@sanity/icons'
 
 const
-  category = defineType({
+  categories = defineType({
     name: 'category',
-    title: 'Category',
+    title: 'Highlight Catagories',
     type: 'document',
     fields: [
       defineField({
@@ -19,7 +19,7 @@ const
         type: 'text',
       }),
     ],
-    icon: UlistIcon,
+    icon: EditIcon,
   });
 
-export default category;
+export default categories;

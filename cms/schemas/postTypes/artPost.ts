@@ -1,6 +1,6 @@
 
 import { defineField, defineType }  from 'sanity'
-import { ImageIcon }                from '@sanity/icons'
+import { ImagesIcon }                from '@sanity/icons'
 
 const
   artPost = defineType({
@@ -10,19 +10,20 @@ const
     fields: [
       defineField({
         name: 'author',
-        title: 'Author',
-        type: 'reference',
+        title: 'Authors',
         validation: Rule => Rule.required(),
+        type: 'reference',
         to: {
           type: 'author'
         }
       }),
       defineField({
-        name: 'coauthors',
+        name: 'collaborators',
         title: 'Collaborators',
         type: 'array',
         of: [{
           type: 'reference',
+          validation: Rule => Rule.required(),
           to: {
             type: 'author'
           }
@@ -39,12 +40,20 @@ const
         name: 'categories',
         title: 'Categories',
         type: 'array',
-        of: [{
-          type: 'reference',
-          to: {
-            type: 'category'
-          }
-        }]
+        of: [
+          { type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'category'}},
+          { name: 'genericCategory', type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'genericCategory'}},
+          { name: 'artCategory', type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'artCategory'}},
+          { name: 'designCategory', type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'designCategory'}},
+        ],
       }),
 
       defineField({
@@ -61,17 +70,25 @@ const
       }),
     ],
 
-    icon: ImageIcon,
+    icon: ImagesIcon,
     preview: {
       select: {
         title: 'briefDesc',
         media: 'gallery.images[0]',
+        author0: 'author.fullName',
+        author1: 'collaborators.0.fullName',
+        author2: 'collaborators.1.fullName',
       },
       prepare(selection) {
-        const {title, media} = selection
+        const {title, author0, author1, author2, media} = selection;
+
+        const authors = [author0, author1, author2].filter(Boolean);
+        const subtitle = authors.length > 0 ? `By ${authors.join(', ')}` : '';
+
         return {
-          title: title,
-          media: media
+          title:    title,
+          subtitle: subtitle,
+          media:    media,
         }
       }
     }

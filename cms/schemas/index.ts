@@ -1,17 +1,21 @@
 
 // TODO: Content Types
-import blockContent   from './components/blocks/textContentBlock'
-import blockGallery   from './components/blocks/galleryContentBlock'
+import blockContent   from './components/blocks/textContentBlock';
+import blockGallery   from './components/blocks/galleryContentBlock';
 
 // TODO: Post Types
-import artPost        from './postTypes/artPost'
-import blogPosts      from './postTypes/blogPosts'
-import testPosting    from './postTypes/testPosts'
+import artPost        from './postTypes/artPost';
+import blogPosts      from './postTypes/blogPosts';
+import testPosting    from './postTypes/testPosts';
 
 // TODO: Post catagory data
-import category       from './tagData/category'
-import author         from './tagData/author'
-import jobDescription from './tagData/jobDescription'
+import designCategories   from './catagoryData/designCategories';
+import artCategories      from './catagoryData/artCatagories';
+import genericCategories  from './catagoryData/genericTags';
+import categories         from './catagoryData/categories'
+
+// TODO: Author data
+import author         from './authorData/author';
 
 const blogData = [
   //content declarations
@@ -25,8 +29,11 @@ const blogData = [
 
   //post related data
   author,
-  jobDescription,
-  category
+
+  designCategories,
+  artCategories,
+  genericCategories,
+  categories
 ];
 
 export default blogData;

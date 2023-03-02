@@ -1,7 +1,7 @@
 
 import { defineField, defineType }  from 'sanity'
 import { slugUniqueCheck }          from '../components/slugCheck'
-import { TerminalIcon }             from '@sanity/icons'
+import { ComposeIcon }             from '@sanity/icons'
 
 const
   blogpost = defineType({
@@ -30,12 +30,17 @@ const
         name: 'categories',
         title: 'Categories',
         type: 'array',
-        of: [{
-          type: 'reference',
-          to: {
-            type: 'category'
-          }
-        }]
+        of: [
+          { name: 'genericCategory', type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'genericCategory'}},
+          { name: 'artCategory', type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'artCategory'}},
+          { name: 'designCategory', type: 'reference',
+            validation: Rule => Rule.required(),
+            to: {type: 'designCategory'}},
+        ]
       }),
       defineField({
         name: 'mainImage',
@@ -87,7 +92,7 @@ const
       }),
     ],
 
-    icon: TerminalIcon,
+    icon: ComposeIcon,
     preview: {
       select: {
         title: 'title',
