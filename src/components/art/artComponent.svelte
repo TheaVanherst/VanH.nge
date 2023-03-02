@@ -17,6 +17,7 @@
     }
 
     let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
+    console.log(post)
 </script>
 
 <Container overflowBool="{false}" colour="orange">
@@ -29,11 +30,27 @@
             {post.author.handle}
         </AuthorTag>
     </InvContainer>
-    <TagModule time="{publishDate}" tags={post.catagory_tags}/>
+
+    <TagModule time="{publishDate}" tags={post.categories}/>
+
+    {#if post.collaborators}
+        <p class="collaborators">
+            A collaboration effort with
+            {#each post.collaborators as artist}
+                {artist.fullName}
+            {/each}
+        </p>
+    {/if}
 
     {#if post.briefDesc}
-        <p>
+        <p class="description">
             {post.briefDesc}
         </p>
     {/if}
 </Container>
+
+<style lang="scss">
+    .collaborators {
+        margin-bottom: 5px;
+    }
+</style>

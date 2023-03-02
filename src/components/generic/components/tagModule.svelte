@@ -1,18 +1,11 @@
 <script>
+    import { relativeTime } from "$lib/dateBuilder.js";
+
     export let time = null;
     export let tags = [];
 
-    const relativeTime = (time) => {
-        return ((new Date() - new Date(time)) / (1000 * 3600 * 24) < 8);}
-
-    tags.sort((a, b) => a.localeCompare(b)); //this prioritizes unicode.
-
-    function isDoubleByte(str) {
-        for (var i = 0, n = str.length; i < n; i++) {
-            if (str.charCodeAt( i ) > 255) { return true; }
-        }
-        return false;
-    }
+    const regex = /\p{Extended_Pictographic}/ug
+    tags.sort(a => a.title.match(!regex)); //this prioritizes unicode.
 </script>
 
 <div class="tags">
@@ -26,7 +19,7 @@
 
     <div class="tagWrapper">
         <div class="tagSleeve">
-            {#if relativeTime(new Date(time))}
+            {#if relativeTime(new Date(time)) / 86400 < 14}
                 <div class="tag new">
                         <span class="hov inv">
                             🌈 NEW
@@ -37,19 +30,19 @@
             {#if tags.length !== 0}
                 {#if tags.length > 1}
                     {#each tags as tag, i}
-                        <div class:highlight={isDoubleByte(tags[i])}
+                        <div class:highlight={tag._type === "category"}
                              class="tag category">
                                 <span class="hov">
-                                    {tag}
+                                    {tag.title}
                                 </span>
                         </div>
                     {/each}
                 {:else}
-                    <div class:highlight={isDoubleByte(tags[0])}
+                    <div class:highlight={tags[0]._type === "category"}
                          class="tag category">
-                            <span class="hov">
-                                {tags[0]}
-                            </span>
+                        <span class="hov">
+                            {tags[0].title}
+                        </span>
                     </div>
                 {/if}
             {/if}
