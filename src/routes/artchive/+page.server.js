@@ -5,7 +5,13 @@ import query from "$lib/queries/artPosts"
 import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    const postData = await client.fetch(`*[_type == 'artPost'] | order(_createdAt)[0..10] {${query}}`);
+    const postData = await client.fetch(
+        `*[_type == 'artPost'] | order(select(
+            defined(publishedAt) => publishedAt,
+            defined(_createdAt) => _createdAt
+        ))[0..20] {
+            ${query}
+        }`);
     if (postData.length > 0) {
         return [postData];
     } else {
