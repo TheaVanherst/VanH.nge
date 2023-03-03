@@ -1,6 +1,6 @@
 <script>
-    import Container from "$components/generic/containers/container.svelte";
-    import NervContainer from "$components/generic/containers/nervContainer.svelte";
+    import Container from "$components/globals/containers/container.svelte";
+    import NervContainer from "$components/globals/containers/nervContainer.svelte";
 </script>
 
 <Container colour={"red"} paddingBool="{false}">

@@ -4,7 +4,7 @@
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc
     export let tags = [];   // forms array as a fallback to check the length of later
 
-    const regex = /\p{Extended_Pictographic}/ug
+    const regex = /\p{Extended_Pictographic}/ug;
     if (tags > 0) { //causes errors on reload if you don't have this
         tags.sort(a => a.title.match(!regex)); //this prioritizes unicode [Emojis],
             // aka. puts them at the forefront of the array [unicode -> (everything else)]
@@ -13,6 +13,7 @@
 
 <div class="tags">
     <div class="lineDiv orange"></div>
+
     <div class="lineScale">
         <div class="small"></div>
         <div class="medium"></div>
@@ -31,24 +32,22 @@
                 </div>
             {/if}
 
-            {#if tags.length > 0}
-                {#if tags.length > 1}
-                    {#each tags as tag, i}
-                        <div class:highlight={tag._type === "category"}
-                             class="tag category">
+            {#if tags.length > 1}
+                {#each tags as tag, i}
+                    <div class:highlight={tag._type === "category"}
+                         class="tag category">
                                 <span class="hov">
                                     {tag.title}
                                 </span>
-                        </div>
-                    {/each}
-                {:else}
-                    <div class:highlight={tags[0]._type === "category"}
-                         class="tag category">
+                    </div>
+                {/each}
+            {:else if tags.length === 1}
+                <div class:highlight={tags[0]._type === "category"}
+                    class="tag category">
                         <span class="hov">
                             {tags[0].title}
                         </span>
-                    </div>
-                {/if}
+                </div>
             {/if}
 
         </div>

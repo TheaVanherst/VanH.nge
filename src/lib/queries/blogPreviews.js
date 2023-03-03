@@ -17,14 +17,18 @@ let query =
         editor-> {
             _id,
             fullName,
-            handle,
+            "handle": select(
+                defined(handle) => handle,
+                defined(fullName) =>  fullName),
             twitterUrl,
             socialMedia[0],
         },
         author-> {
             _id,
             fullName,
-            handle,
+            "handle": select(
+                defined(handle) => handle,
+                defined(fullName) =>  fullName),
             twitterUrl,
             socialMedia[0],
         },

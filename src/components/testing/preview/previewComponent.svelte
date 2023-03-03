@@ -1,12 +1,12 @@
 <script>
     import PostModule       from "$lib/serializer/portableText.svelte"
 
-    import TagModule        from "$components/generic/components/tagModule.svelte";
-    import PreviewContainer from "$components/generic/containers/prevContainer.svelte";
-    import InvContainer     from "$components/generic/containers/invContainer.svelte";
+    import TagModule        from "$components/generic/tagModule.svelte";
+    import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
+    import InvContainer     from "$components/globals/containers/invContainer.svelte";
 
-    import AuthorTag        from "$components/generic/components/authorTag.svelte";
-    import PostHeader       from "$components/blog/postHeader.svelte"
+    import AuthorTag        from "$components/globals/authorTag.svelte";
+    import PostHeader       from "$components/blog/postTitleCard.svelte"
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 

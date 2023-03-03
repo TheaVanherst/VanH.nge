@@ -1,11 +1,11 @@
 <script>
     import { createdPush } from "$lib/dateBuilder.js";
 
-    import TagModule    from "$components/generic/components/tagModule.svelte";
-    import Container    from "$components/generic/containers/container.svelte";
+    import TagModule    from "$components/generic/tagModule.svelte";
+    import Container    from "$components/globals/containers/container.svelte";
 
-    import AuthorTag    from "$components/generic/components/authorTag.svelte";
-    import InvContainer from "$components/generic/containers/invContainer.svelte";
+    import AuthorTag    from "$components/globals/authorTag.svelte";
+    import InvContainer from "$components/globals/containers/invContainer.svelte";
 
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
     export let post = null;

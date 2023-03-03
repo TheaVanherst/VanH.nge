@@ -1,7 +1,7 @@
 <script>
     import SanityImage  from '$lib/serializer/imageBuilder.svelte'
-    import PostHeader   from "$components/blog/postHeader.svelte";
-    import AuthorTag    from "$components/generic/components/authorTag.svelte";
+    import PostHeader   from "$components/blog/postTitleCard.svelte";
+    import AuthorTag    from "$components/globals/authorTag.svelte";
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 
@@ -45,27 +45,27 @@
 
     <div class="userData">
         {#if editor}
-            {#if author.handle === editor.handle}
+            {#if author.fullName === editor.fullName}
                 <AuthorTag
-                        social={author.socialMedia}
+                        social={author?.socialMedia}
                         content="Edited & published by ">
-                    {author.handle}
+                    {author?.handle}
                 </AuthorTag>
             {:else}
                 <AuthorTag
-                        social={editor.socialMedia}
+                        social={editor?.socialMedia}
                         content="Edited by ">
-                    {editor.handle}
+                    {editor?.handle}
                 </AuthorTag>
-                <AuthorTag social={author.socialMedia}
+                <AuthorTag social={author?.socialMedia}
                            content=", Published by ">
-                    {author.handle}
+                    {author?.handle}
                 </AuthorTag>
             {/if}
         {:else}
-            <AuthorTag social={author.socialMedia}
+            <AuthorTag social={author?.socialMedia}
                        content="Published by ">
-                {author.handle}
+                {author?.handle}
             </AuthorTag>
         {/if}
     </div>

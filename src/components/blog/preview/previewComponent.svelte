@@ -1,13 +1,13 @@
 <script>
     import PostModule       from "$lib/serializer/portableText.svelte"
 
-    import TagModule        from "$components/generic/components/tagModule.svelte";
-    import PreviewContainer from "$components/generic/containers/prevContainer.svelte";
-    import InvContainer     from "$components/generic/containers/invContainer.svelte";
+    import TagModule        from "$components/generic/tagModule.svelte";
+    import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
+    import InvContainer     from "$components/globals/containers/invContainer.svelte";
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
-    import AuthorTag                    from "$components/generic/components/authorTag.svelte";
-    import PostHeader                   from "../postHeader.svelte"
+    import AuthorTag                    from "$components/globals/authorTag.svelte";
+    import PostHeader                   from "$components/blog/postTitleCard.svelte";
 
     export let post = null;
 </script>
@@ -19,20 +19,20 @@
         <InvContainer overflowBool={false} colour="green">
             {#if post.editor}
                 <AuthorTag
-                        preview={true} social={post.editor.socialMedia}
+                        preview={true} social={post.editor?.socialMedia}
                         content="{updatedPush(post._updatedAt, post.createdWhen)} by">
                     {post.editor.handle}
                 </AuthorTag>
             {:else}
                 {#if post.author === post.editor}
                     <AuthorTag
-                            preview={true} social={post.author.socialMedia}
+                            preview={true} social={post.author?.socialMedia}
                             content="{updatedPush(post._updatedAt, post.createdWhen)} by">
                         {post.author.handle}
                     </AuthorTag>
                 {:else}
                     <AuthorTag
-                            preview={true} social={post.author.socialMedia}
+                            preview={true} social={post.author?.socialMedia}
                             content="{createdPush(post.createdWhen, 'shortDate')} by">
                         {post.author.handle}
                     </AuthorTag>

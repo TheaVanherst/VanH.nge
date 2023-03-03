@@ -1,6 +1,6 @@
 <script>
-    import TitleCard from "$components/generic/components/containerTitle.svelte"
-    import Container from "$components/generic/containers/container.svelte";
+    import TitleCard from "$components/globals/containerTitle.svelte"
+    import Container from "$components/globals/containers/container.svelte";
 
     import scrollIntoView from "$stores/scrollHandler.js";
     export let list = [];

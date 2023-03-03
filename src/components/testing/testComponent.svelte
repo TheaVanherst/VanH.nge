@@ -1,9 +1,9 @@
 <script>
-    import HeaderModule from "$components/blog/postHeader.svelte"
-    import TagModule from "$components/generic/components/tagModule.svelte"
+    import HeaderModule from "$components/blog/postTitleCard.svelte"
+    import TagModule from "$components/generic/tagModule.svelte"
     import PostModule from "$lib/serializer/portableText.svelte"
 
-    import Container from "$components/generic/containers/container.svelte";
+    import Container from "$components/globals/containers/container.svelte";
 
     export let post = null;
 </script>

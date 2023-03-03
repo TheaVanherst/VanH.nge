@@ -1,7 +1,7 @@
 <script>
     export let content =    null;   // published / edited when
     export let preview =    false;  // render type
-    export let social =     null;   // first of social media
+    export let social =     undefined;   // first of social media
 </script>
 
 <div class="handle">
