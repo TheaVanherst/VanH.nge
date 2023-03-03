@@ -73,4 +73,4 @@ const createdPush = (creationDate, dateLength) => {
         return pushStr;
     };
 
-export { createdPush, updatedPush }
+export { createdPush, updatedPush, relativeTime }

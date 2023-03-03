@@ -7,9 +7,12 @@ let query =
         title,
         'headerImage': mainImage,
         
-        _createdAt,
+        "createdWhen": 
+             select(
+                defined(publishedAt) => publishedAt,
+                defined(_createdAt) =>  _createdAt
+             ),
         _updatedAt,
-        publishedAt,
     
         editor-> {
             _id,
@@ -26,7 +29,11 @@ let query =
             socialMedia[0],
         },
         
-        'catagory_tags': categories[]->title,
+        categories[]->{
+            _ref,
+            _type,
+            title,
+        },
         
         'description': briefDesc,
         body[0...4],

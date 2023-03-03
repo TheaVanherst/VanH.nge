@@ -10,11 +10,9 @@ let query =
         "createdWhen": 
              select(
                 defined(publishedAt) => publishedAt,
-                defined(publishedAt) => _createdAt
+                defined(_createdAt) =>  _createdAt
              ),
-        _createdAt,
         _updatedAt,
-        publishedAt,
   
         editor-> {
             _id,
@@ -33,7 +31,11 @@ let query =
             userPortrait
         },
         
-        'catagory_tags': categories[]->title,
+        categories[]->{
+            _ref,
+            _type,
+            title,
+        },
     
         body[]{
             ...,

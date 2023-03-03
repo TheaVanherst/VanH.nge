@@ -1,9 +1,11 @@
 <script>
-	import CitationBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
     import { onMount } from "svelte";
+    import CitationBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
 
+    // this checks if it's a portable text comp or a manual request from a component -
+	// and streamlines it into the same type of data, so it can be requested at will.
     export let portableText = null;
-    let { value } = portableText;
+    let value = portableText?.value ? portableText?.value : portableText;
 
     const sideArr    = ["Left ","Right ","Centre "];
     const NumArr     = ["First ","Second ","Third ","Fourth ","Fifth ","Sixth ","Seventh ","Eighth ","Ninth ","Tenth "];
@@ -29,82 +31,99 @@
 					commentArray[0][i] = fetch(NumArr[i] + "image: ",i);
                 }}},
 
-    	regularGrid = () => { // Dynamic Grid, Grid
-			for (let e = 0; e < Math.ceil(value.images.length / 2); e++) {
-				imageArray[e] = [];
-				commentArray[e] = [];
-				for (let i = 0; i < 2; i++) {
-					let f = i + (e * 2);
+    	regularGrid = (width) => { // Dynamic Grid, Grid
+            // splits into a grid format, and goes left to right.
+            if (!width) {
+                width = 2; //fallback if no column count is not declared.
+            }
+
+			for (let e = 0; e < Math.ceil(value.images.length / width); e++) {
+                imageArray[e] = 	[];
+                commentArray[e] = 	[]; // establishes 2d arrs
+
+				for (let i = 0; i < width; i++) {
+					let f = i + (e * width);
+
 					if (value.images[f]) {
 						imageArray[e][i] = value.images[f];
+
 						if (value.images[f].alt) {
-                            let text = value.images.length === f + 1 && f % 2 === 0 ? sideArr[2] : sideArr[i];
+                            let text = value.images.length === f + 1 && f % width === 0 ? sideArr[2] : sideArr[i];
                             commentArray[e][i] = fetch(text + "image: ", f);
                         }}}
-                if (commentArray[e].length > 0) {
-                    titles[e] = NumArr[e] + "row;";
-                }}
+
+                if (commentArray[e].length > 0) { //if the column includes citation, declare which column it's in.
+                    titles[e] = NumArr[e] + "row;";}
+            }
+
             if (titles && titles.length <= 1){
-                titles = [];
-			}
+                titles = [];}
         },
 
-		dynamicGrid = () => { // Dynamic Vertical
-			for (let e = 0; e < 2; e++) {
-				imageArray[e] = [];
-				commentArray[e] = [];
+		dynamicGrid = (width) => { // Dynamic Vertical
+        	// splits into columns, and goes downwards.
+			if (!width) {
+                width = 2; //fallback if no column count is not declared.
+            }
 
-				for (let i = 0; i < Math.ceil(value.images.length / 2); i++) {
-					let f = e + (i * 2);
-					if (value.images[f]) {
-						imageArray[e][i] = value.images[f];
-                        if (value.images[f].alt) {
-                            commentArray[i][i] = fetch(NumArr[e] + "image: ",f);
+			for (let e = 0; e < width; e++) {
+				imageArray[e] = 	[];
+				commentArray[e] = 	[]; // establishes 2d arrs
+
+				for (let i = 0; i < Math.ceil(value.images.length / width); i++) {
+					let f = e + (i * width); // calculated vertical placement in row
+
+					if (value.images[f]) { //checks if image exists
+						imageArray[e][i] = value.images[f]; //assigns image to 2d arr
+                        if (value.images[f].alt) { //checks for citation
+                            commentArray[e][i] = fetch(NumArr[e] + "image: ",f); //adds citation accordance of image arr
                         }}}
 
-                if (commentArray[e].length > 0) {
-                    titles[e] = sideArr[e] + "column;";
-                }}
+                if (commentArray[e].length > 0) { //if the column includes citation, declare which column it's in.
+                    titles[e] = sideArr[e] + "column;";}
+            }
 		};
 
     if (value.images.length <= 1) {
-        value.display = "vertical";}
+        value.display = "vertical";} // prevents scroll / carousel being used for 1 image cases.
     else if (value.images.length === 2 && value.display === "dynamicvertical") {
-        value.display = "grid";}
+        value.display = "grid";} // prevents flex containers ruining images for a single row.
 
     onMount(async () => {
         switch (value.display) {
             case "carousel":
-                horizontalRow(value.images);
+                horizontalRow();
                 returnSheet = (await import(`./galleryTypes/carousel.svelte`)).default;
                 break;
             case "dynamicgrid":
-                regularGrid(value.images);
+                regularGrid();
                 returnSheet = (await import(`./galleryTypes/dynamicGrid.svelte`)).default;
                 break;
             case "dynamicvertical":
-                dynamicGrid(value.images);
+                dynamicGrid();
                 returnSheet = (await import(`./galleryTypes/dynamicVertical.svelte`)).default;
                 break;
             case "grid":
-                regularGrid(value.images);
+                regularGrid();
                 returnSheet = (await import(`./galleryTypes/grid.svelte`)).default;
                 break;
             case "scroll":
-                horizontalRow(value.images);
+                horizontalRow();
                 returnSheet = (await import(`./galleryTypes/scroll.svelte`)).default;
                 break;
             case "vertical":
-                horizontalRow(value.images);
+                horizontalRow();
                 returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
                 break;
             default:
-                horizontalRow(value.images);
+                horizontalRow();
                 returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
                 break;
         }
 
-        commentSheet = (await import(`./galleryTypes/vertical.svelte`)).default
+        // to add to this, copy and paste and pick how you want it to be divided through a function call
+		// then add the return sheet via; /lib/serializer/gallerytypes/[galleryFormat].svelte
+		// the case HAS to be equal to what the name is in the CMS.
     });
 </script>
 
@@ -117,15 +136,15 @@
 {/if}
 
 {#if commentArray}
-	{#if commentSheet}
+	{#if returnSheet}
 		<CitationBlock push={commentArray} titles={titles}/>
 	{:else}
-		<div class="citePreview gen{Math.floor(Math.random() * 2)}"></div>
+		<div class="citePreview"></div>
 	{/if}
 {/if}
 
 <style lang="scss">
-	$backgroundSize: 800px; // pretty sure I don't need this tbh.
+	$backgroundSize: 800px;
 
 	.shimmer {
 		animation-duration: 	2s;

@@ -6,20 +6,26 @@ let query =
         
         title,
         
-        _createdAt,
+        "createdWhen": 
+             select(
+                defined(publishedAt) => publishedAt,
+                defined(_createdAt) =>  _createdAt
+             ),
         _updatedAt,
-        publishedAt,
         
-        'catagory_tags': categories[]->title,
-    
-        coauthors-> {
+        categories[]->{
+            _ref,
+            _type,
+            title,
+        },
+        author-> {
             _id,
             fullName,
             handle,
             twitterUrl,
             socialMedia[0],
         },
-        author-> {
+        collaborators[]-> {
             _id,
             fullName,
             handle,
