@@ -9,29 +9,20 @@
 
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
     export let post = null;
-
-    const galleryObjectGen = (obj) => {
-        obj.gallery._type =     "gallery";
-        obj.gallery.inline =    true;
-        return {"value": obj.gallery};
-    }
-
-    let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
-    console.log(post)
 </script>
 
 <Container overflowBool="{false}" colour="orange">
-    <ImageGallery portableText="{galleryObjectGen(post)}"/>
+    <ImageGallery  portableText={post.gallery}/>
 
     <InvContainer>
         <AuthorTag
             preview={true}  social={post.author.socialMedia}
-            content="{createdPush(publishDate, 'shortDate')} by">
+            content="{createdPush(post.createdWhen, 'shortDate')} by">
             {post.author.handle}
         </AuthorTag>
     </InvContainer>
 
-    <TagModule time="{publishDate}" tags={post.categories}/>
+    <TagModule time="{post.createdWhen}" tags={post.categories}/>
 
     {#if post.collaborators}
         <p class="collaborators">

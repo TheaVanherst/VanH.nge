@@ -10,8 +10,6 @@
     import PostHeader                   from "../postHeader.svelte"
 
     export let post = null;
-
-    let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
 </script>
 
 <PreviewContainer hoverBool="{true}" urlDirect={'/blog/' + post.slug}>
@@ -22,27 +20,27 @@
             {#if post.editor}
                 <AuthorTag
                         preview={true} social={post.editor.socialMedia}
-                        content="{updatedPush(post._updatedAt, publishDate)} by">
+                        content="{updatedPush(post._updatedAt, post.createdWhen)} by">
                     {post.editor.handle}
                 </AuthorTag>
             {:else}
                 {#if post.author === post.editor}
                     <AuthorTag
                             preview={true} social={post.author.socialMedia}
-                            content="{updatedPush(post._updatedAt, publishDate)} by">
+                            content="{updatedPush(post._updatedAt, post.createdWhen)} by">
                         {post.author.handle}
                     </AuthorTag>
                 {:else}
                     <AuthorTag
                             preview={true} social={post.author.socialMedia}
-                            content="{createdPush(publishDate, 'shortDate')} by">
+                            content="{createdPush(post.createdWhen, 'shortDate')} by">
                         {post.author.handle}
                     </AuthorTag>
                 {/if}
             {/if}
         </InvContainer>
 
-        <TagModule time="{post._createdAt}"tags={post.catagory_tags}/>
+        <TagModule time="{post._createdAt}" tags={post.categories}/>
 
         <div class="nonClickable">
             <p class="description">
