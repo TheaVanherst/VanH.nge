@@ -1,11 +1,14 @@
 <script>
     import { relativeTime } from "$lib/dateBuilder.js";
 
-    export let time = null;
-    export let tags = [];
+    export let time = 0;    // so it doesn't cause errors with time relativity in the calc
+    export let tags = [];   // forms array as a fallback to check the length of later
 
     const regex = /\p{Extended_Pictographic}/ug
-    tags.sort(a => a.title.match(!regex)); //this prioritizes unicode.
+    if (tags > 0) { //causes errors on reload if you don't have this
+        tags.sort(a => a.title.match(!regex)); //this prioritizes unicode [Emojis],
+            // aka. puts them at the forefront of the array [unicode -> (everything else)]
+    }
 </script>
 
 <div class="tags">
@@ -19,6 +22,7 @@
 
     <div class="tagWrapper">
         <div class="tagSleeve">
+
             {#if relativeTime(new Date(time)) / 86400 < 14}
                 <div class="tag new">
                         <span class="hov inv">
@@ -27,7 +31,7 @@
                 </div>
             {/if}
 
-            {#if tags.length !== 0}
+            {#if tags.length > 0}
                 {#if tags.length > 1}
                     {#each tags as tag, i}
                         <div class:highlight={tag._type === "category"}
@@ -46,6 +50,7 @@
                     </div>
                 {/if}
             {/if}
+
         </div>
     </div>
 </div>
@@ -122,7 +127,10 @@
 
                 &:hover {
                     border: 1px solid var(--accent3);
-                    color:  var(--accent3);}
+                    color:  var(--accent3);
+
+                    ::selection {
+                        background: var(--accent3)!important;}}
             }
         }
 
