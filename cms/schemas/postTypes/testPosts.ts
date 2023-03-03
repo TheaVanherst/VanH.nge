@@ -30,6 +30,9 @@ export default defineType({
       title: 'Categories',
       type: 'array',
       of: [
+        { type: 'reference',
+          validation: Rule => Rule.required(),
+          to: {type: 'category'}},
         { name: 'genericCategory', type: 'reference',
           validation: Rule => Rule.required(),
           to: {type: 'genericCategory'}},

@@ -18,20 +18,20 @@ const structure = (S) =>
                     .child(authorId =>
                       S.documentList()
                         .title('Blog Posts')
-                        .filter('_type == "blogPost" && $authorId == author._ref')
+                        .filter('$authorId == author._ref')
                         .params({ authorId })
                     )
                 ),
               S.listItem()
                 .title('Posts By design Categories')
                 .child(
-                  S.documentTypeList('designCategory')
-                    .title('Posts by Category')
-                    .child(categoryId =>
+                  S.documentTypeList('category')
+                    .title('Search by Category')
+                    .child(category =>
                       S.documentList()
-                        .title('Blog Posts')
-                        .filter('_type == "blogPost" && $categoryId == categories[]._ref')
-                        .params({ categoryId })
+                        .title('filtered posts')
+                        .filter('$category == categories[]._ref')
+                        .params({ category })
                     )
                 ),
             ])
