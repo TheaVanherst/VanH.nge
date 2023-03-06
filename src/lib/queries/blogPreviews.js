@@ -38,7 +38,6 @@ let query =
             _type,
             title,
         },
-        
         'description': briefDesc,
         body[0...4],
     `

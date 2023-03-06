@@ -39,8 +39,7 @@ let query =
             _ref,
             _type,
             title,
-        },
-    
+        },   
         body[]{
             ...,
             markDefs[]{

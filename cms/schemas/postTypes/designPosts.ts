@@ -74,19 +74,25 @@ const
     preview: {
       select: {
         title: 'briefDesc',
+        title0: 'gallery.images[0]',
+        title1: 'gallery.images[1]',
+        title2: 'gallery.images[2]',
+
         media: 'gallery.images[0]',
         author0: 'author.fullName',
         author1: 'collaborators.0.fullName',
         author2: 'collaborators.1.fullName',
       },
       prepare(selection) {
-        const {title, author0, author1, author2, media} = selection;
+        const { title, title0, title1, title2,
+          author0, author1, author2, media } = selection;
 
         const authors = [author0, author1, author2].filter(Boolean);
         const subtitle = authors.length > 0 ? `By ${authors.join(', ')}` : '';
+        const rTitle = title ? title : (title0?.alt ? title0.alt : (title1?.alt ? title1.alt : title2?.alt ? title2.alt : "Untitled"));
 
         return {
-          title:    title,
+          title:    rTitle,
           subtitle: subtitle,
           media:    media,
         }

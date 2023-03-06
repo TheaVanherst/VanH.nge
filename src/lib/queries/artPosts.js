@@ -19,21 +19,17 @@ let query =
             title,
         },
         author-> {
-            _id,
-            fullName,
+            ...,
             "handle": select(
-                defined(handle) => handle,
-                defined(fullName) =>  fullName),
-            twitterUrl,
+                defined(handle) =>   handle,
+                defined(fullName) => fullName),
             socialMedia[0],
         },
         collaborators[]-> {
-            _id,
-            fullName,
+            ...,
             "handle": select(
                 defined(handle) => handle,
                 defined(fullName) =>  fullName),
-            twitterUrl,
             socialMedia[0],
         },
         
