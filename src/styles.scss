@@ -63,13 +63,18 @@ body {
 	::selection {
 		color: 				var(--background);
 		background-color: 	var(--accent1);}
+
+	.selectionInv::selection {
+		color: var(--accent1);
+		background-color: var(--background);
+	}
 }
 
 /* style formatting */
 
 a {
 	text-decoration: none;
-	color: var(--accent3);
+	color: initial; // prevents colour changing on page load
 }
 
 p {
@@ -79,6 +84,13 @@ p {
 	margin: 		0;
 }
 
+pant {
+	font-size:      14px;
+	line-height:    100%;
+	color:	 		var(--textColour);
+	margin: 		0;
+	display:        inline-block;
+}
 span {
 	font-size:      12px;
 	line-height:    100%;

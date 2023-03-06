@@ -1,10 +1,10 @@
 <script>
 	import '../styles.scss';
 
-	import Route from "$components/layout/route.svelte"
+	import Route from "$components/navigation/route.svelte"
 	import Background from "$components/layout/background.svelte"
 
-	import Navigation from "$components/layout/navigation.svelte"
+	import Navigation from "$components/navigation/navigation.svelte"
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	import { scrollPos } from '$stores/accessibilityController';

@@ -1,10 +1,11 @@
 <script>
     export let portableText = null;
+    let style = portableText?.value?.style ? portableText.value.style : portableText;
 </script>
 
-{#if portableText.value.style === "wave"}
+{#if style === "wave"}
     <div class="divider wave"></div>
-{:else if portableText.value.style === "normal"}
+{:else if style === "normal"}
     <div class="divider line"></div>
 {:else}
     <div class="divider line"></div>

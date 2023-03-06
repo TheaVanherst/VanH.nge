@@ -44,16 +44,16 @@
 
 <style lang="scss">
     a {
-        position:       relative;
-
-        margin:     0 -.25rem;
-        padding:    0 .25rem;
+        position:   relative;
 
         transition: color .2s ease-in-out,
                     box-shadow .2s ease-in-out;
 
-        text-decoration: underline 1px;
-        font-weight:    600;
+        text-decoration:    underline 1px;
+        font-weight:        600;
+
+        margin:         0 -.25rem;
+        padding:        0 .25rem;
         box-shadow:     inset 0 0 0 0 var(--darkAccent3);
         color:          var(--accent3);
 

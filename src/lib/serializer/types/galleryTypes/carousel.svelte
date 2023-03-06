@@ -1,6 +1,6 @@
 <script>
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
-    //TODO: THIS ALL NEEDS REDOING BECAUSE IT'S REALLY BAD
+    //TODO: THIS ALL NEEDS RE-DOING BECAUSE IT'S REALLY BAD
 
     let randomId = Math.floor(Math.random() * 999);
 
@@ -36,9 +36,11 @@
                         href="#a{randomId}-{(e !== 0 ? e - 1 : push.length - 1)}">
                     &#x2039;
                 </label>
+
                 <container>
                     <SanityImage image={image}/>
                 </container>
+
             </div>
         {/each}
     </div>
