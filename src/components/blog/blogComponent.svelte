@@ -1,6 +1,6 @@
 <script>
     import HeaderModule from "$components/blog/blogPostHeader.svelte"
-    import TagModule    from "$components/generic/tagModule.svelte"
+    import TagModule    from "$components/globals/tagModule.svelte"
     import PostModule   from "$lib/serializer/portableText.svelte"
 
     import Container    from "$components/globals/containers/container.svelte";
@@ -13,8 +13,7 @@
             titleHeader={post.headerImage}	title={post.title}  subtitle={post._id}
             createdOn={post.createdWhen}	updatedOn={post._updatedAt}
             editor={post.editor}            author={post.author}/>
-    <TagModule
-            time="{post._createdAt}"        tags="{post.categories}" />
+    <TagModule time="{post._createdAt}" tags={post.categories}/>
     <PostModule
             postData="{post.body}"/>
 </Container>

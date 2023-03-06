@@ -1,14 +1,15 @@
 <script>
     import SanityImage  from '$lib/serializer/imageBuilder.svelte'
+
     import PostHeader   from "$components/blog/postTitleCard.svelte";
+    import InvContainer from "$components/globals/containers/invContainer.svelte";
     import AuthorTag    from "$components/globals/authorTag.svelte";
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 
     export let
             createdOn =     null,
-            updatedOn =     null,
-            publishedOn =   null;
+            updatedOn =     null;
     export let
             titleHeader =   null,
             title =         null,
@@ -16,8 +17,6 @@
     export let
             author =        null,
             editor =        null;
-
-    let publishDate = publishedOn ? publishedOn : createdOn;
 </script>
 
 <header>
@@ -37,9 +36,9 @@
     </div>
 
     <div class="date">
-        <p class="createdOn">{createdPush(publishDate, 'shortDate')}</p>
+        <p class="createdOn">{createdPush(createdOn)}</p>
         {#if updatedOn}
-            <p class="updatedOn">{updatedPush(updatedOn, publishDate)}</p>
+            <p class="updatedOn">{updatedPush(updatedOn, createdOn)}</p>
         {/if}
     </div>
 
@@ -90,6 +89,7 @@
                 font-weight:    800;
 				font-size:      100%;}
 			&.updatedOn {
+                margin-left:    25px;
 				font-size:      70%;}
         }
 	}
@@ -111,20 +111,18 @@
 
 		> div {
             left:          -25px;
-			max-width:      58px;
+			max-width:      60px;
 
 			overflow:       hidden;
 			position:       absolute;
 
             &.author {
                 margin-top: var(--contentPaddingY);
-                border:     1px solid var(--accent3);
             }
 
 			&.editor {
 				margin-left:    -30px;
 				margin-top:     36px;
-				border:         2px solid var(--accent2);
 				transform:      scale(50%);
 			}
 		}

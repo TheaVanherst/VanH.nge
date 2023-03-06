@@ -1,11 +1,14 @@
 <script>
-    export let overflowBool = true, paddingBool = true;
+    export let
+            overflowBool =  true,
+            paddingBool =   true;
+
     export let colour = "green";
     export let id = undefined;
 </script>
 
-<div id={id} class={colour}
-     class:padding={paddingBool}
+<div id={id} class= {colour}
+     class:padding= {paddingBool}
      class:overflow={overflowBool}>
     <slot/>
 </div>

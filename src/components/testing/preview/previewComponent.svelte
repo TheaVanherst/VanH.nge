@@ -1,7 +1,7 @@
 <script>
     import PostModule       from "$lib/serializer/portableText.svelte"
 
-    import TagModule        from "$components/generic/tagModule.svelte";
+    import TagModule        from "$components/globals/tagModule.svelte";
     import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
     import InvContainer     from "$components/globals/containers/invContainer.svelte";
 
@@ -11,8 +11,6 @@
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 
     export let post = null;
-
-    let publishDate = post.publishedAt ? post.publishedAt : post._createdAt;
 </script>
 
 <PreviewContainer hoverBool="{true}" urlDirect={'/test/' + post.slug}>
@@ -21,29 +19,29 @@
 
         <InvContainer overflowBool={false} colour="green">
             {#if post.editor}
-                <AuthorTag
-                        preview={true} social={post.editor.socialMedia}
-                        content="{updatedPush(post._updatedAt, publishDate)} by">
-                    {post.editor.handle}
-                </AuthorTag>
-            {:else}
                 {#if post.author === post.editor}
                     <AuthorTag
                             preview={true} social={post.author.socialMedia}
-                            content="{updatedPush(post._updatedAt, publishDate)} by">
+                            content="{updatedPush(post._updatedAt, post.createdWhen)} by">
                         {post.author.handle}
                     </AuthorTag>
                 {:else}
                     <AuthorTag
-                            preview={true} social={post.author.socialMedia}
-                            content="{createdPush(publishDate, 'shortDate')} by">
-                        {post.author.handle}
+                            preview={true} social={post.editor.socialMedia}
+                            content="{updatedPush(post._updatedAt, post.createdWhen)} by">
+                        {post.editor.handle}
                     </AuthorTag>
                 {/if}
+            {:else}
+                <AuthorTag
+                        preview={true} social={post.author.socialMedia}
+                        content="{createdPush(post.createdWhen)} by">
+                    {post.author.handle}
+                </AuthorTag>
             {/if}
         </InvContainer>
 
-        <TagModule time="{post._createdAt}"    tags={post.catagory_tags}/>
+        <TagModule time="{post._createdAt}" tags={post.categories}/>
 
         <div class="nonClickable">
             <p class="description">

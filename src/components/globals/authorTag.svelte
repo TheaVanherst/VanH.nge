@@ -5,7 +5,7 @@
 </script>
 
 <div class="handle">
-    <span>
+    <span class="selectionInv">
         {content}
     </span>
     {#if social}

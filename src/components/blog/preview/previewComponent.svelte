@@ -1,7 +1,7 @@
 <script>
     import PostModule       from "$lib/serializer/portableText.svelte"
 
-    import TagModule        from "$components/generic/tagModule.svelte";
+    import TagModule        from "$components/globals/tagModule.svelte";
     import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
     import InvContainer     from "$components/globals/containers/invContainer.svelte";
 

@@ -1,13 +1,15 @@
 <script>
     import { createdPush } from "$lib/dateBuilder.js";
 
-    import TagModule    from "$components/generic/tagModule.svelte";
+    import TagModule    from "$components/globals/tagModule.svelte";
     import Container    from "$components/globals/containers/container.svelte";
 
     import AuthorTag    from "$components/globals/authorTag.svelte";
     import InvContainer from "$components/globals/containers/invContainer.svelte";
 
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
+    import Separator    from "$lib/serializer/block/separator.svelte";
+
     export let post = null;
 </script>
 
@@ -24,13 +26,23 @@
 
     <TagModule time="{post.createdWhen}" tags={post.categories}/>
 
-    {#if post.collaborators}
+    {#if post?.collaborators?.length > 0}
         <p class="collaborators">
-            A collaboration effort with
-            {#each post.collaborators as artist}
-                {artist.fullName}
+            A collaboration effort with:
+            {#each post.collaborators as artist, i}
+                <pant>
+                    {artist.fullName}
+                </pant>
+
+                {#if post.collaborators > 1 && i < post.collaborators.length}
+                    <pant>
+                        ,
+                    </pant>
+                {/if}
+
             {/each}
         </p>
+        <Separator portableText="wave"/>
     {/if}
 
     {#if post.briefDesc}
@@ -42,6 +54,6 @@
 
 <style lang="scss">
     .collaborators {
-        margin-bottom: 5px;
+        margin-bottom:  var(--containerPadding);
     }
 </style>

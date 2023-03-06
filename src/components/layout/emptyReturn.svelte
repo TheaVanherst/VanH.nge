@@ -1,46 +1,93 @@
 
-<div class="flexContainer">
-    <div class="pony">
+<script>
+    import Container from "$components/globals/containers/container.svelte";
+
+    export let errorType = 404;
+    let errorMessage = "";
+
+    switch (errorType) {
+        case 400:
+            errorMessage = "A major case of the bad request.";
+            break;
+        case 401:
+            errorMessage = "You can't come in here.";
+            break;
+        case 403:
+            errorMessage = "You shouldn't be here!";
+            break;
+        case 404:
+            errorMessage = "Nothing was found, sorry!";
+            break;
+        case 500:
+            errorMessage = "Server error? Yikes.";
+            break;
+        case 502:
+            errorMessage = "A major case of the bad request.";
+            break;
+        case 503:
+            errorMessage = "Seems like a skill issue going on here.";
+            break;
+        case 504:
+            errorMessage = "Request time out! Try again later.";
+            break;
+        default:
+            errorMessage = "idk wtf happened here lol";
+            break;
+    }
+</script>
+
+<Container>
+    <div class="col">
         <img src="/error.png"/>
     </div>
-    <div>
-        <h1>Nothing!</h1>
-        <p>There's nothing here but us deer.</p>
+    <div class="col content">
+        <h1>
+            {errorType}
+        </h1>
+        <p class="defaultMessage">
+            {errorMessage}
+        </p>
+
+        <p class="customMessage">
+            <slot/>
+        </p>
     </div>
-</div>
+</Container>
 
 <style lang="scss">
-	.flexContainer {
-		display: flex;
-		gap:     30px;
+    .col {
+        display: table-cell;
+        height: 100%;
+        vertical-align: top;
 
-		padding:    var(--containerPadding);
+        > * {
+            display: block;
+        }
 
-		background-color:   var(--backgroundTrans);
-		border-radius:      var(--outerRadius);
-		border:             1px solid var(--accent1);
+        &.content {
+            padding: var(--containerPadding);
+            width: 100%;
+        }
+    }
 
-		font-size:  14px;
+    img {
+        width: 200px;
+        height: 100%;
+    }
 
-		img {
-			width: 200px;
-			height: 100%;
-		}
+    h1 {
+        font-size:      65px;
+        padding-bottom: 20px;
+    }
 
-		h1 {
-			font-size:      65px;
-			border-left: 	5px solid var(--accent1);
+    p {
+        width: max-content;
+        margin-bottom: var(--containerPadding);
 
-			padding:	 	0 0 0 20px;
-			margin:			0 0 var(--contentPaddingY) calc(var(--contentPaddingX) * -1);
-		}
-
-		p {
-			border-right: 9px solid var(--textColour);
-			width: max-content;
-			$borderColour: white;
-			animation:
-					blink .5s step-end infinite alternate;
-		}
-	}
+        &.customMessage {
+            border-right: 9px solid var(--textColour);
+            animation:
+                    blink .5s step-end infinite alternate;
+        }
+    }
 </style>
