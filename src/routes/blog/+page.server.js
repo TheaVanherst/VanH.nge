@@ -4,7 +4,10 @@ import query from "$lib/queries/blogPreviews"
 import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    const postData = await client.fetch(`*[_type == 'blogPost'] | order(_updatedAt)[0..5] {${query}}`);
+    const postData = await client.fetch(`*[_type == 'blogPost']  | order(select(
+            defined(publishedAt) => publishedAt,
+            defined(_createdAt) => _createdAt
+        ) desc)[0..5] {${query}}`);
     if (postData.length > 0) {
         return [postData];
     } else {

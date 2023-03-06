@@ -5,7 +5,10 @@ import query from "$lib/queries/blogPreviews.js"
 import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    const postData = await client.fetch(`*[_type == "blogPost" && "📌 Pinned" in categories[] -> title]{${query}}`);
+    const postData = await client.fetch(`*[_type == "blogPost" && "📌 Pinned" in categories[] -> title] | order(select(
+            defined(publishedAt) => publishedAt,
+            defined(_createdAt) => _createdAt
+        ) desc){${query}}`);
 
     if (postData.length > 0) {
         return [postData];

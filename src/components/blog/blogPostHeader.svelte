@@ -2,7 +2,6 @@
     import SanityImage  from '$lib/serializer/imageBuilder.svelte'
 
     import PostHeader   from "$components/blog/postTitleCard.svelte";
-    import InvContainer from "$components/globals/containers/invContainer.svelte";
     import AuthorTag    from "$components/globals/authorTag.svelte";
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"

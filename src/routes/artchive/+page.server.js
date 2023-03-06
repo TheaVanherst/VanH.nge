@@ -9,7 +9,7 @@ export const load = async () => {
         `*[_type == 'artPost'] | order(select(
             defined(publishedAt) => publishedAt,
             defined(_createdAt) => _createdAt
-        ))[0..20] {
+        ) desc)[0..20] {
             ${query}
         }`);
     if (postData.length > 0) {
