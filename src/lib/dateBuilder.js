@@ -1,10 +1,19 @@
 
+const
+    publishedEmoji = "📰",
+    EditedEmoji = "📑"
+
 const createdPush = (creationDate, dateLength) => {
-        return "Published " + nth(new Date(creationDate), dateLength);
+        return `${publishedEmoji} Published ${nth(new Date(creationDate), dateLength ? dateLength : "shortDate")}`;
     },
 
-     updatedPush = (currentDate, creationDate) => {
-        return updatedWhen(currentDate, creationDate)
+     updatedPush = (updatedDate) => {
+         updatedDate = new Date(updatedDate);
+
+         return `↳ ${EditedEmoji} Edited ${time_ago(updatedDate)}
+             ${2419200 > relativeTime(updatedDate) ? 
+                ` at ${new Intl.DateTimeFormat('en-GB', {timeStyle: 'short'}).format(updatedDate)}` : 
+                `` }`;
     },
 
     dTypes = {
@@ -35,9 +44,9 @@ const createdPush = (creationDate, dateLength) => {
     time_ago = (time) => {
         let tFormats = [
             [60, 'seconds', 1],
-            [120, '1 minute ago', '1 minute from now'],
+            [120, 'a minute ago', 'a minute from now'],
             [3600, 'minutes', 60],
-            [7200, '1 hour ago', '1 hour from now'],
+            [7200, 'an hour ago', 'an hour from now'],
             [86400, 'hours', 3600],
             [172800, 'yesterday', 'tomorrow'],
             [604800, 'days', 86400],
@@ -51,26 +60,14 @@ const createdPush = (creationDate, dateLength) => {
             [58060800000, 'centuries', 2903040000]];
 
         let secs = relativeTime(time);
+
         if (secs < 120) {
-            return 'Just now';
-        }
+            return 'Just now';}
 
         let i = 0, form;
         while (form = tFormats[i++]) {
             if (secs < form[0]) {
-                return typeof form[2] == 'string' ? form[1] : Math.floor(secs / form[2]) + ' ' + form[1] + ' ago';}
-        }
-    },
-
-    updatedWhen = (currentDate, creationDate) => {
-        let dUpdated = new Date(currentDate);
-        let dCreated = new Date(creationDate);
-
-        let pushStr = "";
-            pushStr += dCreated.getHours() !== dUpdated.getHours() ? "↳ 📑 Updated " :  "📰 ";
-            pushStr += time_ago(dUpdated);
-            pushStr += 2419200 > relativeTime(dUpdated) ? " at " + new Intl.DateTimeFormat('en-GB', { timeStyle: 'short'}).format(dUpdated) : "";
-        return pushStr;
-    };
+                return typeof form[2] == 'string' ? form[1] : Math.floor(secs / form[2]) + ' ' + form[1] + ' ago';}}
+    }
 
 export { createdPush, updatedPush, relativeTime }
