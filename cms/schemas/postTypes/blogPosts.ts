@@ -83,7 +83,7 @@ const
         name: 'briefDesc',
         title: 'Brief Description',
         type: 'string',
-        validation: Rule => Rule.required().min(24).max(160)
+        validation: Rule => Rule.required().min(12).max(160)
       }),
       defineField({
         name: 'body',
@@ -95,7 +95,7 @@ const
         name: 'editorNotes',
         title: 'Editor Notes',
         type: 'string',
-        validation: Rule => Rule.min(10).max(160)
+        validation: Rule => Rule.min(12).max(160)
       }),
     ],
 

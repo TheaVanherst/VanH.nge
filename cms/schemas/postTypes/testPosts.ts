@@ -4,7 +4,7 @@ import { slugUniqueCheck }          from '../components/slugCheck'
 import { PresentationIcon }              from '@sanity/icons'
 
 export default defineType({
-  name: 'post', title: 'test documents',
+  name: 'post', title: 'Test Documents',
   type: 'document',
   fields: [
     defineField({
@@ -69,7 +69,7 @@ export default defineType({
     defineField({
       name: 'briefDesc', title: 'Brief Description',
       type: 'string',
-      validation: Rule => Rule.required().min(24).max(160)
+      validation: Rule => Rule.required().min(12).max(160)
     }),
     defineField({
       name: 'body', title: 'Body',
@@ -79,7 +79,7 @@ export default defineType({
     defineField({
       name: 'editorNotes', title: 'Editor Notes',
       type: 'string',
-      validation: Rule => Rule.min(10).max(160)
+      validation: Rule => Rule.min(12).max(160)
     }),
   ],
 

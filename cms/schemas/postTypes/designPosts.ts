@@ -60,7 +60,7 @@ const
         name: 'briefDesc',
         title: 'Brief Description',
         type: 'string',
-        validation: Rule => Rule.min(24).max(160)
+        validation: Rule => Rule.min(16).max(160)
       }),
 
       defineField({

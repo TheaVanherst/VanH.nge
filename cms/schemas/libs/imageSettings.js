@@ -2,12 +2,12 @@ const
     altTestBlock = {
       name: 'alt', title: 'Alternative text',
       type: 'string',
-      validation: Rule => Rule.max(50).warning('50 characters or less'),
+      validation: Rule => Rule.max(64).warning('64 characters or less'),
     },
     citationBlock = {
       name: 'citation',  title: 'citation title',
       type: 'string',
-      validation: Rule => Rule.max(30).warning('30 characters or less'),
+      validation: Rule => Rule.min(12).warning('16 characters or more'),
     },
     citationURL = {
       name: 'citeURL',  title: 'citation url',
