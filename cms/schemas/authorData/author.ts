@@ -1,10 +1,10 @@
 
 import { defineField, defineType }  from 'sanity'
-import { UserIcon }                 from '@sanity/icons'
+import { UsersIcon }                 from '@sanity/icons'
 
 export default defineType({
   name: 'author',
-  title: 'Author',
+  title: 'Authors',
   type: 'document',
   fields: [
     // TODO: User Data
@@ -57,7 +57,7 @@ export default defineType({
     }),
   ],
 
-  icon: UserIcon,
+  icon: UsersIcon,
   preview: {
     select: {
       title: 'fullName',

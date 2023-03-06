@@ -1,10 +1,10 @@
 
 import { defineField, defineType }  from 'sanity'
-import { DashboardIcon }                from '@sanity/icons'
+import { StarIcon }                from '@sanity/icons'
 
 const
-  designCategories = defineType({
-    name: 'designCategory', title: 'Design Tags',
+  highlightTags = defineType({
+    name: 'category', title: 'Highlight Tags',
     type: 'document',
     fields: [
       defineField({
@@ -17,7 +17,7 @@ const
         type: 'text',
       }),
     ],
-    icon: DashboardIcon,
+    icon: StarIcon,
   });
 
-export default designCategories;
+export default highlightTags;

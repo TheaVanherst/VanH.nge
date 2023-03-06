@@ -17,21 +17,9 @@ const structure = (S) =>
                     .title('Posts by Author')
                     .child(authorId =>
                       S.documentList()
-                        .title('Blog Posts')
+                        .title('filtered posts')
                         .filter('$authorId == author._ref')
                         .params({ authorId })
-                    )
-                ),
-              S.listItem()
-                .title('Posts By design Categories')
-                .child(
-                  S.documentTypeList('category')
-                    .title('Search by Category')
-                    .child(category =>
-                      S.documentList()
-                        .title('filtered posts')
-                        .filter('$category == categories[]._ref')
-                        .params({ category })
                     )
                 ),
             ])
@@ -41,21 +29,21 @@ const structure = (S) =>
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['blogPost', 'post', 'artPost'].includes(listItem.getId())
+          (listItem) => ['blogPost', 'post', 'artPost', 'designPost'].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: --------- CATAGORY DATA
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['designCategory', 'artCategory', 'genericCategory', 'category'].includes(listItem.getId())
+          (listItem) => ['programingTags','designCategory', 'artCategory', 'genericCategory', 'category'].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: --------- CATAGORY DATA
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['author', 'role'].includes(listItem.getId())
+          (listItem) => ['author', 'internalTags'].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: ---------

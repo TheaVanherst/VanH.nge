@@ -1,7 +1,7 @@
 
 import { defineField, defineType }  from 'sanity'
 import { slugUniqueCheck }          from '../components/slugCheck'
-import { ComposeIcon }             from '@sanity/icons'
+import { BlockContentIcon }             from '@sanity/icons'
 
 const
   blogpost = defineType({
@@ -16,8 +16,7 @@ const
         validation: Rule => Rule.required().min(12).max(64)
       }),
       defineField({
-        name: 'slug',
-        title: 'Slug',
+        name: 'slug', title: 'Slug',
         type: 'slug',
         validation: Rule => Rule.required(),
         options: {
@@ -27,8 +26,7 @@ const
         }
       }),
       defineField({
-        name: 'categories',
-        title: 'Categories',
+        name: 'categories', title: 'Categories',
         type: 'array',
         of: [
           { type: 'reference',
@@ -45,22 +43,28 @@ const
             to: {type: 'designCategory'}},
         ]
       }),
+
       defineField({
-        name: 'mainImage',
-        title: 'Main image',
+        name: 'internalTags', title: 'internal Tags',
+        type: 'reference',
+        to: {
+          type: 'internalTags'
+        },
+      }),
+
+      defineField({
+        name: 'mainImage', title: 'Main image',
         type: 'image',
         options: {
           hotspot: true,
         }
       }),
       defineField({
-        name: 'publishedAt',
-        title: 'Published at',
+        name: 'publishedAt', title: 'Published at',
         type: 'datetime',
       }),
       defineField({
-        name: 'author',
-        title: 'Author',
+        name: 'author', title: 'Author',
         type: 'reference',
         validation: Rule => Rule.required(),
         to: {
@@ -95,7 +99,7 @@ const
       }),
     ],
 
-    icon: ComposeIcon,
+    icon: BlockContentIcon,
     preview: {
       select: {
         title: 'title',

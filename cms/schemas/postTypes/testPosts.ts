@@ -4,19 +4,16 @@ import { slugUniqueCheck }          from '../components/slugCheck'
 import { PresentationIcon }              from '@sanity/icons'
 
 export default defineType({
-  name: 'post',
-  title: 'test documents',
+  name: 'post', title: 'test documents',
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'title', title: 'Title',
       type: 'string',
       validation: Rule => Rule.required().min(12).max(64)
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
+      name: 'slug', title: 'Slug',
       type: 'slug',
       validation: Rule => Rule.required(),
       options: {
@@ -26,8 +23,7 @@ export default defineType({
       }
     }),
     defineField({
-      name: 'categories',
-      title: 'Categories',
+      name: 'categories', title: 'Categories',
       type: 'array',
       of: [
         { type: 'reference',
@@ -45,21 +41,18 @@ export default defineType({
       ]
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'mainImage', title: 'Main image',
       type: 'image',
       options: {
         hotspot: true,
       }
     }),
     defineField({
-      name: 'publishedAt',
-      title: 'Published at',
+      name: 'publishedAt', title: 'Published at',
       type: 'datetime',
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
+      name: 'author', title: 'Author',
       type: 'reference',
       validation: Rule => Rule.required(),
       to: {
@@ -67,28 +60,24 @@ export default defineType({
       }
     }),
     defineField({
-      name: 'editor',
-      title: 'Editor',
+      name: 'editor', title: 'Editor',
       type: 'reference',
       to: {
         type: 'author'
       }
     }),
     defineField({
-      name: 'briefDesc',
-      title: 'Brief Description',
+      name: 'briefDesc', title: 'Brief Description',
       type: 'string',
       validation: Rule => Rule.required().min(24).max(160)
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'body', title: 'Body',
       type: 'blockContent',
       validation: Rule => Rule.required()
     }),
     defineField({
-      name: 'editorNotes',
-      title: 'Editor Notes',
+      name: 'editorNotes', title: 'Editor Notes',
       type: 'string',
       validation: Rule => Rule.min(10).max(160)
     }),
@@ -97,10 +86,8 @@ export default defineType({
   icon: PresentationIcon,
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'briefDesc',
-      author: 'author.fullName',
-      media: 'mainImage',
+      title: 'title', subtitle: 'briefDesc',
+      author: 'author.fullName', media: 'mainImage',
     },
     prepare(selection) {
       const {author, title, media} = selection

@@ -1,11 +1,11 @@
 
 import { defineField, defineType }  from 'sanity'
-import { ImagesIcon }                from '@sanity/icons'
+import { DesktopIcon }                from '@sanity/icons'
 
 const
-  artPost = defineType({
-    name: 'artPost',
-    title: 'Art Posts',
+  artPosts = defineType({
+    name: 'designPost',
+    title: 'Design Posts',
     type: 'document',
     fields: [
       defineField({
@@ -70,7 +70,7 @@ const
       }),
     ],
 
-    icon: ImagesIcon,
+    icon: DesktopIcon,
     preview: {
       select: {
         title: 'briefDesc',
@@ -94,4 +94,4 @@ const
     }
   });
 
-export default artPost
+export default artPosts

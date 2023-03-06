@@ -1,25 +1,23 @@
 
 import { defineField, defineType }  from 'sanity'
-import { InfoOutlineIcon }                from '@sanity/icons'
+import { TagIcon }                from '@sanity/icons'
 
 const
   genericCategories = defineType({
-    name: 'genericCategory',
-    title: 'Generic Tags',
+    name: 'genericCategory', title: 'Generic Tags',
     type: 'document',
     fields: [
       defineField({
-        name: 'title',
-        title: 'Title',
+        name: 'title', title: 'Title',
         type: 'string',
       }),
       defineField({
-        name: 'description',
-        title: 'Description',
+        name: 'description', title: 'Description',
+        description: 'this will only be shown when filtered',
         type: 'text',
       }),
     ],
-    icon: InfoOutlineIcon,
+    icon: TagIcon,
   });
 
 export default genericCategories;
