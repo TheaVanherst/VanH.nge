@@ -40,10 +40,11 @@
 		max-width:  var(--maxWidth);
 		width: 		100%;
 
-		box-sizing: 	border-box;
-		display: 		flex;
+		box-sizing: border-box;
+		display: 	inline-flex;
 
 		> * {
+			display: 	block;
 			position:	relative;
 
 			&.nav {

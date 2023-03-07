@@ -77,7 +77,7 @@
 				border-top:     1px solid var(--darkAccent4);}}}
 
 	.nervWrapper {
-		display: inline;
+		display: grid;
 
 		.container {
 			break-inside: avoid-column;

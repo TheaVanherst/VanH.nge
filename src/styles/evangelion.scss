@@ -64,10 +64,10 @@ div.lineDiv {
 	height: 1px;
 	margin-bottom: 2px;
 
-	&.green {  background-color: var(--accent1);}
-	&.yellow {  background-color: var(--accent3);}
-	&.orange {  background-color: var(--darkAccent3);}
-	&.red {     background-color: var(--darkAccent4);}
+	&.green {  background-color:    var(--accent1);}
+	&.yellow {  background-color:   var(--accent3);}
+	&.orange {  background-color:   var(--darkAccent3);}
+	&.red {     background-color:   var(--darkAccent4);}
 }
 
 div.dogma {
@@ -121,12 +121,67 @@ div.warning {
 	}
 }
 
+.h1 {font-size: 2rem;}
+.h2 {font-size: 1.75rem;}
+.h3 {font-size: 1.5rem;}
+.h4 {font-size: 1.25rem;}
+.h5 {font-size: 1.1rem;}
+
+div.header {
+	margin-bottom: var(--containerPadding);
+	width:      auto;
+	display:    flex;
+
+	@mixin rtl($colour){
+		> .bar {    background:     $colour;}
+		> .title {  border-color:   $colour;
+			> p {   color:          $colour;}}}
+	&.green {   @include rtl(var(--accent1));}
+	&.yellow {  @include rtl(var(--accent3));}
+	&.orange {  @include rtl(var(--darkAccent3));}
+	&.red {     @include rtl(var(--darkAccent4));}
+
+	> .bar {
+		width: 6px;
+	}
+
+	> .title {
+		padding: 10px 5px;
+		margin: 0 10px;
+
+		font-size: 2rem;
+		background: var(--backgroundTrans);
+
+		border-style: solid;
+		border-width: 1px 3px;
+
+		> p {
+			@extend .orange;
+
+			font-size:      36px;
+			line-height:    100%;
+			transform:      scale(1, 1.5);
+			font-weight:    600;
+		}
+	}
+}
+
 div.emergency {
 	display: 	flex;
 	gap: 		0;
 
-	&.flashing {
-		animation: flashing 0.5s linear infinite;
+	&.inline {
+		padding-bottom: var(--containerPadding);
+
+		> *:first-child {
+			margin-right: var(--containerPadding);
+		}
+
+		> .bars {
+			display: flex;
+			height: auto;
+			width: 100%;
+		}
 	}
 
 	/* TODO: BAR STYLING */
@@ -164,6 +219,10 @@ div.emergency {
 				repeating-linear-gradient( -45deg,
 					var(--darkAccent4),  var(--darkAccent4) 0.75rem,
 					transparent 0.75rem,    transparent 1.5rem);}
+	}
+
+	&.flashing {
+		animation: flashing 0.5s linear infinite;
 	}
 }
 
@@ -314,7 +373,12 @@ p.neon {
 }
 
 div.neon {
-	filter: drop-shadow(0px 0px 1px var(--accent3));
+	&.yellow {
+		filter: drop-shadow(0px 0px 1px var(--accent3));
+	}
+	&.orange {
+		filter: drop-shadow(0px 0px 1px var(--darkAccent3));
+	}
 }
 
 @keyframes barberPole {
