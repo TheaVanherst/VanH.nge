@@ -33,6 +33,6 @@ export const load = async () => {
     if (blogData.length > 0 || artData.length > 0) {
         return [artData, blogData];
     } else {
-        throw new error(404, "No return searches found.")
+        throw new error(404, "There was an searching for featured posts.")
     }
 }
