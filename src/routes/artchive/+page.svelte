@@ -1,7 +1,7 @@
 <script>
 	import ArtPost from "$components/generic/galleryComponent.svelte"
 
-	export let data = null;
+	export let data = [];
 </script>
 
 <div class="content">
@@ -15,13 +15,7 @@
 
 <style lang="scss">
 	.content {
-		max-width: 	calc(100% - var(--containerPadding)); /* TODO: this is stupid */
-		gap: 		var(--containerPadding);
-		column-count: 2;
-		box-sizing: border-box;
-
-		> * {
-			display: block;
-		}
+		gap: 			var(--containerPadding);
+		column-count: 	2;	//fuck this tbh.
 	}
 </style>

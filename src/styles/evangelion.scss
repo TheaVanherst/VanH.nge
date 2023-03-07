@@ -6,65 +6,62 @@ div.lineScale {
 	> * {
 		width:      100%;
 		position:   absolute;
+		background-position-x: var(--xPos);
 	}
+
+	@mixin cgm($colour, $lineWidth, $width){
+		$offset: $width - $lineWidth;
+		background-image: repeating-linear-gradient( 90deg,
+				transparent 0px, transparent $offset,
+				$colour $offset, $colour $width);}
+
+	@mixin bsm($colour){
+		.small {@include cgm($colour, 1px, 5px);}
+		.medium {@include cgm($colour, 1px, 15px);}
+		.large {@include cgm($colour, 1px, 30px);}
+		.xLarge {@include cgm($colour, 3px, 60px);}}
+
+	&.green {    @include bsm(var(--accent1));}
+	&.yellow {   @include bsm(var(--accent3));}
+	&.orange {   @include bsm(var(--darkAccent3));}
+	&.red {      @include bsm(var(--darkAccent4));}
 
 	.small {
 		height:     5px;
-		margin:     5px 0;
-
-		background-image: repeating-linear-gradient( 90deg,
-			transparent,            transparent 4px,
-			var(--accent1) 4px, var(--accent1) 5px);}
+		margin:     5px 0;}
 
 	.medium {
 		height:     7px;
-		margin:     4px 0;
-
-		background-image: repeating-linear-gradient( 90deg,
-				transparent,            transparent 14px,
-				var(--accent1) 14px, var(--accent1) 15px);}
+		margin:     4px 0;}
 
 	.large {
 		height:     9px;
-		margin:     3px 0;
-
-		background-image: repeating-linear-gradient( 90deg,
-				transparent,            transparent 29px,
-				var(--accent1) 29px, var(--accent1) 30px);}
+		margin:     3px 0;}
 
 	.xLarge {
 		height:     13px;
-		margin:     1px 0;
-
-		background-position-x: 0.5px;
-		background-image: repeating-linear-gradient( 90deg,
-				transparent,            transparent 58px,
-				var(--accent1) 58px, var(--accent1) 60px);}
+		margin:     1px 0 1px 1px;}
 }
 
 div.lineArr {
 	height: 8px;
 	margin-bottom: 5px;
 
-	&.yellow {
+	@mixin cgm($colour){
 		background-image: repeating-linear-gradient( 90deg,
-				transparent,                transparent 4px,
-				var(--accent3) 4px, var(--accent3) 5px);}
-	&.orange {
-		background-image: repeating-linear-gradient( 90deg,
-				transparent,                transparent 4px,
-				var(--darkAccent3) 4px, var(--darkAccent3) 5px);}
-	&.red {
-		background-image: repeating-linear-gradient( 45deg,
-				transparent,                transparent 4px,
-				var(--darkAccent4) 4px, var(--darkAccent4) 5px);}
+			transparent 0px, transparent 4px,
+			$colour     4px, $colour     5px);}
+	.green {   @include cgm(var(--accent1));}
+	.yellow {  @include cgm(var(--accent3));}
+	.orange {  @include cgm(var(--darkAccent3));}
+	.red {     @include cgm(var(--darkAccent4));}
 }
 
 div.lineDiv {
 	height: 1px;
 	margin-bottom: 2px;
 
-	&.green {  background-color:    var(--accent1);}
+	&.green {   background-color:   var(--accent1);}
 	&.yellow {  background-color:   var(--accent3);}
 	&.orange {  background-color:   var(--darkAccent3);}
 	&.red {     background-color:   var(--darkAccent4);}
@@ -92,26 +89,23 @@ div.warning {
 		animation: flashing 0.5s linear infinite;
 	}
 
+	@mixin cgm($colour, $angle){
+		background-image: repeating-linear-gradient( $angle,
+				transparent 0.0rem, transparent 0.5rem,
+				$colour     0.5rem, $colour     1.0rem);}
+
 	&.default {
-		&.orange {
-			background-image: repeating-linear-gradient( 45deg,
-				transparent,                transparent 1rem,
-				var(--darkAccent3) 1rem,    var(--darkAccent3) 2rem);}
-		&.red {
-			background-image: repeating-linear-gradient( 45deg,
-				transparent,                transparent 1rem,
-				var(--darkAccent4) 1rem,    var(--darkAccent4) 2rem);}
+		&.green {   @include cgm(var(--accent1), 45deg);}
+		&.yellow {  @include cgm(var(--accent3), 45deg);}
+		&.orange {  @include cgm(var(--darkAccent3), 45deg);}
+		&.red {     @include cgm(var(--darkAccent4), 45deg);}
 	}
 
 	&.steep {
-		&.orange {
-			background-image: repeating-linear-gradient( 70deg,
-				transparent,                transparent 0.5rem,
-				var(--darkAccent3) 0.5rem,  var(--darkAccent3) 1rem);}
-		&.red {
-			background-image: repeating-linear-gradient( 70deg,
-				transparent,                transparent 0.5rem,
-				var(--darkAccent4) 0.5rem,  var(--darkAccent4) 1rem);}
+		&.green {   @include cgm(var(--accent1), 70deg);}
+		&.yellow {  @include cgm(var(--accent3), 70deg);}
+		&.orange {  @include cgm(var(--darkAccent3), 70deg);}
+		&.red {     @include cgm(var(--darkAccent4), 70deg);}
 	}
 
 	background-size: 200% 200%;
@@ -121,47 +115,52 @@ div.warning {
 	}
 }
 
-.h1 {font-size: 2rem;}
-.h2 {font-size: 1.75rem;}
-.h3 {font-size: 1.5rem;}
-.h4 {font-size: 1.25rem;}
-.h5 {font-size: 1.1rem;}
-
 div.header {
-	margin-bottom: var(--containerPadding);
-	width:      auto;
-	display:    flex;
+	margin-bottom:  var(--containerPadding);
+	width:          min-content;
+	white-space:    nowrap;
 
-	@mixin rtl($colour){
+	border-width: 0 10px;
+	border-style: solid;
+
+	@mixin cgm($colour){
+		& {         border-color:   $colour;}
 		> .bar {    background:     $colour;}
 		> .title {  border-color:   $colour;
 			> p {   color:          $colour;}}}
-	&.green {   @include rtl(var(--accent1));}
-	&.yellow {  @include rtl(var(--accent3));}
-	&.orange {  @include rtl(var(--darkAccent3));}
-	&.red {     @include rtl(var(--darkAccent4));}
+	&.green {   @include cgm(var(--accent1));}
+	&.yellow {  @include cgm(var(--accent3));}
+	&.orange {  @include cgm(var(--darkAccent3));}
+	&.red {     @include cgm(var(--darkAccent4));}
+
+	@mixin chm($colour){
+		& {         border-color:   $colour;}
+		> .bar {    background:     $colour;}
+		> .title {  border-color:   $colour;
+			> p {   color:          $colour;}}}
+	&.hovGreen {   @include cgm(var(--accent1));}
+	&.hovYellow {  @include cgm(var(--accent3));}
+	&.hovOrange {  @include cgm(var(--darkAccent3));}
+	&.hovRed {     @include cgm(var(--darkAccent4));}
 
 	> .bar {
 		width: 6px;
 	}
 
 	> .title {
-		padding: 10px 5px;
-		margin: 0 10px;
+		margin:     0 var(--containerPadding);;
 
-		font-size: 2rem;
+		font-size:  2rem;
 		background: var(--backgroundTrans);
 
 		border-style: solid;
 		border-width: 1px 3px;
 
 		> p {
-			@extend .orange;
-
+			padding:    10px 5px;
 			font-size:      36px;
-			line-height:    100%;
 			transform:      scale(1, 1.5);
-			font-weight:    600;
+			font-weight:    700;
 		}
 	}
 }

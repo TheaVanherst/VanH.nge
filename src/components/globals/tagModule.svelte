@@ -9,20 +9,25 @@
         tags.sort(a => a.title.match(!regex)); //this prioritizes unicode [Emojis],
             // aka. puts them at the forefront of the array [unicode -> (everything else)]
     }
+
+    let carousel;
+    let x;
 </script>
 
 <div class="tags">
     <div class="lineDiv orange"></div>
 
-    <div class="lineScale">
-        <div class="small"></div>
-        <div class="medium"></div>
-        <div class="large"></div>
-        <div class="xLarge"></div>
-    </div>
 
-    <div class="tagWrapper">
+    <div class="tagWrapper"
+         bind:this={carousel}
+         on:scroll={() => x=carousel.scrollLeft}>
         <div class="tagSleeve">
+            <div class="lineScale green" style="--xPos:{x / 0.5 + 'px'}">
+                <div class="small"></div>
+                <div class="medium"></div>
+                <div class="large"></div>
+                <div class="xLarge"></div>
+            </div>
 
             {#if relativeTime(new Date(time)) / 86400 < 14}
                 <div class="tag new">
@@ -62,6 +67,8 @@
         .tagSleeve {
             display:    block;
             width:      max-content;
+            min-width:  calc(100% - 1px); // this causes scroll overflow,
+                // and I don't have time to fix it.
         }
     }
 

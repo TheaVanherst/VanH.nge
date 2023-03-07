@@ -41,7 +41,7 @@
 		width: 		100%;
 
 		box-sizing: border-box;
-		display: 	inline-flex;
+		display: 	flex;
 
 		> * {
 			display: 	block;

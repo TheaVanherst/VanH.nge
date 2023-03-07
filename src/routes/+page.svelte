@@ -10,12 +10,10 @@
 <content>
 	<div class="col2 col">
 		{#if data[0]}
-			<div class="header green">
-				<div class="bar"></div>
+			<div class="header yellow hovGreen">
 				<div class="title">
 					<p>FEATURED ART</p>
 				</div>
-				<div class="bar"></div>
 			</div>
 
 			{#each data[0] as post}

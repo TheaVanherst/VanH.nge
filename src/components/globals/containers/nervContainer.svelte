@@ -47,34 +47,18 @@
 </div>
 
 <style lang="scss">
-	.green {
+	@mixin cgm($colour){
 		.container {
-			border: 1px solid var(--accent1);}
+			border: 	1px solid $colour;}
 		.tab {
-			border-left:    1px solid var(--accent1);
-			.tilt { border-right:   1px solid var(--accent1);
-				border-top:     1px solid var(--accent1);}}}
-	.yellow {
-		.container {
-			border: 1px solid var(--accent3);}
-		.tab {
-			border-left:    1px solid var(--accent3);
-			.tilt { border-right:   1px solid var(--accent3);
-				border-top:     1px solid var(--accent3);}}}
-	.orange {
-		.container {
-			border: 1px solid var(--darkAccent3);}
-		.tab {
-			border-left:    1px solid var(--darkAccent3);
-			.tilt { border-right:   1px solid var(--darkAccent3);
-				border-top:     1px solid var(--darkAccent3);}}}
-	.red {
-		.container {
-			border: 1px solid var(--darkAccent4);}
-		.tab {
-			border-left:    1px solid var(--darkAccent4);
-			.tilt { border-right:   1px solid var(--darkAccent4);
-				border-top:     1px solid var(--darkAccent4);}}}
+			border-left: 	1px solid $colour;
+			.tilt {
+				border-right:	1px solid $colour;
+				border-top:     1px solid $colour;}}}
+	.green {   @include cgm(var(--accent1));}
+	.yellow {  @include cgm(var(--accent3));}
+	.orange {  @include cgm(var(--darkAccent3));}
+	.red {     @include cgm(var(--darkAccent4));}
 
 	.nervWrapper {
 		display: grid;
@@ -89,23 +73,18 @@
 			&.hoverable {
 				transition: border 0.2s ease-in-out;
 				&:hover {
-					border: 1px solid var(--accent3);
-				}
-			}
+					border: 1px solid var(--accent3);}}
 
 			&.overflow {
-				overflow: hidden;
-			}
+				overflow: hidden;}
 
 			.bar {
-				margin: 6px 6px 0 6px;
-			}
+				margin: 6px 6px 0 6px;}
 
 			& > *:not(.bar):first-child {
-				position: relative;
-				display: block;
-				margin: 17px 0 0 0;
-			}
+				position: 	relative;
+				display: 	block;
+				margin: 	17px 0 0 0;}
 		}
 	}
 
@@ -118,13 +97,13 @@
 
 		display:        inline-flex;
 		vertical-align: bottom;
-		width:  100%;
+		width:  		100%;
 
 		.caption {
 			padding:    4px 4px 5px 4px;
 			margin:     auto auto 0 -5px;
 
-			background:     var(--background);
+			background: var(--background);
 
 			display:    block;
 			position:   relative;
