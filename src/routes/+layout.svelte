@@ -51,7 +51,7 @@
 				min-width: 25%;}
 
 			&.page {	//kinda lazy
-				width: 75%;}
+				width: calc(75% - var(--containerPadding));}
 		}
 	}
 

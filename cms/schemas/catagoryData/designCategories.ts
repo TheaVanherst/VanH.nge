@@ -1,6 +1,6 @@
 
 import { defineField, defineType }  from 'sanity'
-import { DashboardIcon }                from '@sanity/icons'
+import { DashboardIcon }            from '@sanity/icons'
 
 const
   designCategories = defineType({

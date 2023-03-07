@@ -1,5 +1,6 @@
 <script>
 	import BlogPostPreview from "$components/blog/preview/previewComponent.svelte"
+	import GalleryComponent from "$components/generic/galleryComponent.svelte";
 	import SideBar from "$components/layout/sideBar.svelte"
 
 	export let data = null;
@@ -7,11 +8,24 @@
 
 <content>
 	<div class="col2 col">
-		<div class="wrapper">
-			{#each data[0] as post}
-				<BlogPostPreview post={post}/>
-			{/each}
-		</div>
+		{#if data[0]}
+			<div class="wrapper">
+				<h1>ART POSTS</h1>
+				{#each data[0] as post}
+					<GalleryComponent post={post}/>
+				{/each}
+			</div>
+		{/if}
+
+		{#if data[1]}
+			<div class="wrapper">
+				<h1>BLOG POSTS</h1>
+				{#each data[1] as post}
+					<BlogPostPreview post={post}/>
+				{/each}
+			</div>
+		{/if}
+
 	</div>
 	<div class="col3 col">
 		<SideBar/>
@@ -19,6 +33,11 @@
 </content>
 
 <style lang="scss">
+
+	h1 {
+		padding: 0 20px 20px 20px;
+	}
+
 	content {
 		width: 100%;
 		gap: var(--containerPadding);
@@ -34,11 +53,9 @@
 			}
 
 			&.col2 {
-				flex-basis: 100%;
 				max-width: 65%;}
 			&.col3 {
-				margin-left: auto;
-				width: 35%;}
+				max-width: calc(35%);}
 		}
 	}
 
