@@ -1,11 +1,14 @@
 <script>
-    import { urlChanger } from '$stores/directoryController.js';
-
+    import { urlChanger, directory } from '$stores/directoryController.js';
     export let push = null;
+
+    // TODO: For some stange reason, .active doesn't work on the "artchive" page.
+    // TODO: It only works on page update, but cancels without it - I really don't know why.
 </script>
 
 <a href={push}
    class:clickable={!!push}
+   class:active={$directory === push}
    on:click={urlChanger(push)}>
     <div class="powerBar">
         <div class="left">
@@ -51,12 +54,12 @@
             margin-left:    10px;
             overflow:       hidden;
 
-            transition: width .05s ease-in-out;
+            transition: width .05s .5s ease-in-out, margin-left .05s ease-in-out;
 
             > div {
                 background: var(--accent1);
                 width:      50%;
-                transition: margin-right .05s ease-in-out;
+                transition: margin-right .05s .5s ease-in-out;
 
                 .highlight {
                     width:      25px;
@@ -84,11 +87,21 @@
         }
 
         &:hover {
+            > .powerBar {
+                margin-left:    5px;
+                > div {
+                    background: var(--darkAccent3);
+                }
+            }
+        }
+
+        &.active {
             &::before {
                 color: var(--darkAccent3);}
 
             > .powerBar {
                 width: calc(40% + 10px);
+                margin-left:    5px;
                 > div {
                     background:  var(--darkAccent4);
                     &.left {
@@ -99,11 +112,6 @@
                         background:    var(--darkAccent3);
                     }
                 }
-            }
-            > .title {
-                border:     1px solid var(--darkAccent3);
-                p {
-                    color:   var(--darkAccent3);}
             }
         }
     }

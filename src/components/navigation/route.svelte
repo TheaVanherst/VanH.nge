@@ -27,7 +27,12 @@
              class:transitioning={$loading}
              class:clickable={i < previewRoute.length - 1}>
             <div on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-                <h1 class="dir">}</h1> <h1>{router}</h1>
+                <h1 class="dir">
+                    }
+                </h1>
+                <h1>
+                    {router}
+                </h1>
             </div>
         </div>
     {/each}

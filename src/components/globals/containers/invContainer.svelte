@@ -8,12 +8,12 @@
     export let centreBool = false;
 
     export let colour = "green"
-    export let roundedBool = false;
-    export let padding = "30px"
+    export let margin = 10;
 </script>
 
 {#if !push}
     <div class={colour}
+         style="margin-bottom: {margin}px"
          class:centre={centreBool}
          class:overflow={overflowBool}>
         <slot/>
@@ -24,7 +24,7 @@
        target="{targetBool ? '_blank' : '_self'}">
         <div
             class={colour}
-            class:rounded={roundedBool}
+            style="margin-bottom: {margin}px"
             class:centre={centreBool}
             class:overflow={overflowBool}>
             <slot/>

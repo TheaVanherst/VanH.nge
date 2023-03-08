@@ -1,42 +1,44 @@
 <script>
     export let
-            overflowBool =  true,
-            paddingBool =   true;
+        overflowBool =  true,
+        id =            undefined;
 
-    export let colour = "green";
-    export let id = undefined;
+    export let
+        padding =   10,
+        colour =    "green";
 </script>
 
-<div id={id} class= {colour}
-     class:padding= {paddingBool}
+<div id={id}
+     class= {colour}
+     style="padding: {padding}px"
      class:overflow={overflowBool}>
     <slot/>
 </div>
 
 <style lang="scss">
-    .green {    border: 1px solid var(--accent1);}
-    .yellow {   border: 1px solid var(--accent3);}
-    .orange {   border: 1px solid var(--darkAccent3);}
-    .red {      border: 1px solid var(--darkAccent4);}
+
+    @mixin cgm($colour){    border: 1px solid $colour;}
+
+    .green {   @include cgm(var(--accent1));}
+    .yellow {  @include cgm(var(--accent3));}
+    .orange {  @include cgm(var(--darkAccent3));}
+    .red {     @include cgm(var(--darkAccent4));}
 
 	div {
 		break-inside:   avoid-column;
 		background:		var(--backgroundTrans);
         margin-bottom:  var(--containerPadding);
 
-        &.padding {
-            padding:    var(--containerPadding);}
-
-		&.overflow {
-            overflow: hidden;}
+        &.padding {     padding:    var(--containerPadding);}
+		&.overflow {    overflow:   hidden;}
 
         .bar {
             margin: 6px 6px 0 6px;}
 
         & > *:not(.bar):first-child {
-            position: relative;
-            display: block;
-            margin: 17px 0 0 0;
+            position:   relative;
+            display:    block;
+            margin:     17px 0 0 0;
         }
 	}
 
@@ -46,16 +48,16 @@
         white-space:    nowrap;
 
         margin-bottom: -24px;
+        width:          100%;
 
         display:        inline-flex;
         vertical-align: bottom;
-        width:  100%;
 
         .caption {
             padding:    4px 4px 5px 4px;
             margin:     auto auto 0 -5px;
 
-            background:     var(--background);
+            background: var(--background);
 
             display:    block;
             position:   relative;

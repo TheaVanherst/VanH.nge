@@ -17,12 +17,11 @@
 <div class="tags">
     <div class="lineDiv orange"></div>
 
-
     <div class="tagWrapper"
          bind:this={carousel}
          on:scroll={() => x=carousel.scrollLeft}>
         <div class="tagSleeve">
-            <div class="lineScale green" style="--xPos:{x / 0.5 + 'px'}">
+            <div class="lineScale green" style="--xPos:{x / 0.4 + 'px'}">
                 <div class="small"></div>
                 <div class="medium"></div>
                 <div class="large"></div>
@@ -81,7 +80,7 @@
             position:       relative;
 
             padding:        5px var(--containerPadding);
-            margin:         16px var(--contentPaddingY) 5px 0;
+            margin:         16px var(--contentPaddingY) 0 0;
 
             font-weight:    800;
             font-size:      12px;

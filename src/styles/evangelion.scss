@@ -29,15 +29,12 @@ div.lineScale {
 	.small {
 		height:     5px;
 		margin:     5px 0;}
-
 	.medium {
 		height:     7px;
 		margin:     4px 0;}
-
 	.large {
 		height:     9px;
 		margin:     3px 0;}
-
 	.xLarge {
 		height:     13px;
 		margin:     1px 0 1px 1px;}
@@ -120,8 +117,13 @@ div.header {
 	width:          min-content;
 	white-space:    nowrap;
 
-	border-width: 0 10px;
-	border-style: solid;
+	&.borders {
+		border-style: solid;
+		border-width: 0 10px;
+
+		> .title {
+			white-space: nowrap;
+			margin:     0 var(--containerPadding);} }
 
 	@mixin cgm($colour){
 		& {         border-color:   $colour;}
@@ -133,24 +135,11 @@ div.header {
 	&.orange {  @include cgm(var(--darkAccent3));}
 	&.red {     @include cgm(var(--darkAccent4));}
 
-	@mixin chm($colour){
-		& {         border-color:   $colour;}
-		> .bar {    background:     $colour;}
-		> .title {  border-color:   $colour;
-			> p {   color:          $colour;}}}
-	&.hovGreen {   @include cgm(var(--accent1));}
-	&.hovYellow {  @include cgm(var(--accent3));}
-	&.hovOrange {  @include cgm(var(--darkAccent3));}
-	&.hovRed {     @include cgm(var(--darkAccent4));}
-
-	> .bar {
-		width: 6px;
-	}
-
 	> .title {
-		margin:     0 var(--containerPadding);;
+		&.small > p {   font-size:  24px;}
+		&.medium > p {  font-size:  30px;}
+		&.large > p {   font-size:  36px;}
 
-		font-size:  2rem;
 		background: var(--backgroundTrans);
 
 		border-style: solid;
@@ -158,7 +147,6 @@ div.header {
 
 		> p {
 			padding:    10px 5px;
-			font-size:      36px;
 			transform:      scale(1, 1.5);
 			font-weight:    700;
 		}
@@ -173,56 +161,38 @@ div.emergency {
 		padding-bottom: var(--containerPadding);
 
 		> *:first-child {
-			margin-right: var(--containerPadding);
-		}
+			margin-right: var(--containerPadding);}
 
-		> .bars {
+		.bars {
 			display: flex;
 			height: auto;
-			width: 100%;
-		}
-	}
+			width: 100%;}}
 
-	/* TODO: BAR STYLING */
-
-	& > .bars {
+	.bars {
 		height: 10px;
 		width:  50%;
 
 		background-size: 150% 150%;
 		&:first-child {    background-position: right;}
-		&:last-child {     background-position: left;}
-	}
+		&:last-child {     background-position: left;} }
 
-	&.orange > .bars {
-		&:first-child {
-			background-image:
-				repeating-linear-gradient( 45deg,
-					var(--darkAccent3),  var(--darkAccent3) 0.75rem,
-					transparent 0.75rem,    transparent 1.5rem);}
-		&:last-child {
-			background-image:
-				repeating-linear-gradient( -45deg,
-					var(--darkAccent3),  var(--darkAccent3) 0.75rem,
-					transparent 0.75rem,    transparent 1.5rem);}
-	}
+	@mixin cgm($colour, $angle){
+		background-image:
+			repeating-linear-gradient( $angle,
+				$colour 0.00rem,        $colour 0.75rem,
+				transparent 0.75rem,    transparent 1.50rem);}
 
-	&.red > .bars {
-		&:first-child {
-			background-image:
-				repeating-linear-gradient( 45deg,
-					var(--darkAccent4),  var(--darkAccent4) 0.75rem,
-					transparent 0.75rem,    transparent 1.5rem);}
-		&:last-child {
-			background-image:
-				repeating-linear-gradient( -45deg,
-					var(--darkAccent4),  var(--darkAccent4) 0.75rem,
-					transparent 0.75rem,    transparent 1.5rem);}
-	}
+	@mixin chm($colour){
+		.bars:first-child {   @include cgm($colour, 45deg);}
+		.bars:last-child {    @include cgm($colour, -45deg);} }
+
+	&.green {   @include chm(var(--accent1));}
+	&.yellow {  @include chm(var(--accent3));}
+	&.orange {  @include chm(var(--darkAccent3));}
+	&.red {     @include chm(var(--darkAccent4));}
 
 	&.flashing {
-		animation: flashing 0.5s linear infinite;
-	}
+		animation: flashing 0.5s linear infinite;}
 }
 
 div.emergencyWrapper {
@@ -341,16 +311,18 @@ p.bod {
 	}
 }
 
-p.green {   color:    var(--accent1);
-	&::selection {background-color: 	var(--accent1)}}
-p.yellow {  color:    var(--accent3);
-	&::selection {background-color: 	var(--accent3)}}
-p.orange {  color:    var(--darkAccent3);
-	&::selection {background-color: 	var(--darkAccent3)}}
-p.red {     color:    var(--darkAccent4);
-	&::selection {background-color: 	var(--darkAccent4)}}
-p.white {   color:    var(--textColour);
-	&::selection {background-color: 	var(--textColour)}}
+@mixin tcr($colour){
+	color: $colour;
+	&::selection {
+		background: $colour;}}
+
+p.green {    @include tcr(var(--accent1));}
+p.yellow {   @include tcr(var(--accent3));}
+p.orange {   @include tcr(var(--darkAccent3));}
+p.red {      @include tcr(var(--darkAccent4));}
+p.white {    @include tcr(var(--textColour));}
+
+
 
 p.neon {
 	&:before {
@@ -372,13 +344,15 @@ p.neon {
 }
 
 div.neon {
-	&.yellow {
-		filter: drop-shadow(0px 0px 1px var(--accent3));
-	}
-	&.orange {
-		filter: drop-shadow(0px 0px 1px var(--darkAccent3));
-	}
+	@mixin cgm($colour){
+		filter: drop-shadow(0px 0px 1px $colour);}
+
+	&.green {   @include cgm(var(--accent1));}
+	&.yellow {  @include cgm(var(--accent3));}
+	&.orange {  @include cgm(var(--darkAccent3));}
+	&.red {     @include cgm(var(--darkAccent4));}
 }
+
 
 @keyframes barberPole {
 	0% {    background-position: 100% 100%;}}
