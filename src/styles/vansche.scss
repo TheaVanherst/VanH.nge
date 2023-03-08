@@ -5,7 +5,7 @@
     &:before {
         color:      #00ff3a;
         position:   absolute;
-        left:      -32px;
+        left:      -26px;
         padding:    0 3px;
         content:    counter(section);
     }
@@ -13,34 +13,8 @@
     .highlight {
         width: 100%;
         display: inline-block;
-        background-color: rgba(24, 24, 24, 0.5);
+        background-color: var(--backgroundAccent2);
     }
-}
-
-/* TODO: Beforehand styling */
-
-.indent {
-    content:    "|";
-    position:   absolute;
-    left:      -36px;
-
-    font-family:    'Oswald', sans-serif;
-    opacity:        0.5;
-    line-height:    100%;}
-
-.language-css           .hljs-selector-tag::before{
-    @extend .indent;    color: #a59f85;}
-.language-typescript    .hljs-keyword::before{
-    @extend .indent;    color: #a6e22e;}
-.language-javascript    .hljs-title.function_::before {
-    @extend .indent;    color: #a17cff;}
-.language-html {
-    .hljs-built_in::before {
-        @extend .indent;
-        color: #65d8ec;}
-    .hljs-selector-pseudo::before {
-        @extend .indent;
-        color: #a17cff;}
 }
 
 /* TODO: Generic styling */
@@ -65,11 +39,13 @@
 .hljs-literal {			color: #a17cff;}
 .hljs-comment {			color: #33333a;}
 .hljs-variable {		color: #ff8000;}
-.hljs-doctag {          color: #39ff00;} // for firefox;
-.hljs-comment:has(> .hljs-doctag) {
-                        color: #39ff00!important;}
-
 .hljs-built_in {	    color: #e77cff;}
+
+.hljs-doctag {          color: #4aa92d;} // for firefox;
+.hljs-comment:has(> .hljs-doctag) {      // for everything else;
+                        color: #4aa92d !important;}
+.highlight .hljs-comment {
+                        color: #39ff00!important;}
 
 /* TODO: html specific styling */
 
@@ -78,7 +54,7 @@
     .hljs-keyword {	    color: #e77cff;}
     .hljs-attr {		color: #65d8ec;}}
 
-    /* TODO: javascript specific styling */
+/* TODO: javascript specific styling */
 
 .language-typescript {
     .hljs-keyword {	    color: #7339ff;}
