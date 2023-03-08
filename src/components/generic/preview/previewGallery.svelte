@@ -10,9 +10,3 @@
     <ImageGallery margin={5} portableText={post.gallery}/>
     <TagModule time="{post.createdWhen}" tags={post.categories}/>
 </Container>
-
-<style lang="scss">
-    .collaborators {
-        margin-bottom:  var(--containerPadding);
-    }
-</style>

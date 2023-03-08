@@ -66,7 +66,8 @@
         .tagSleeve {
             display:    block;
             width:      max-content;
-            min-width:  calc(100% - 1px); // this causes scroll overflow,
+            min-width:  calc(100% - 1px);
+                // this causes scroll overflow,
                 // and I don't have time to fix it.
         }
     }
