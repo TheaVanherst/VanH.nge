@@ -1,33 +1,19 @@
 <script>
 	import BlogPostPreview from "$components/blog/preview/previewComponent.svelte"
-	import GalleryComponent from "$components/generic/galleryComponent.svelte";
+	import GalleryComponent from "$components/generic/preview/previewGallery.svelte";
     import Container from "$components/globals/containers/container.svelte";
     import NervContainer from "$components/globals/containers/nervContainer.svelte";
 
 	export let data = null;
 </script>
 
-<content>
+<div class="content">
 	<div class="col2 col">
-		{#if data[0]}
-			<div class="header yellow hovGreen">
-				<div class="title">
-					<p>FEATURED ART</p>
-				</div>
-			</div>
-
-			{#each data[0] as post}
-				<GalleryComponent post={post}/>
-			{/each}
-		{/if}
-
 		{#if data[1]}
-			<div class="header green">
-				<div class="bar"></div>
-				<div class="title">
+			<div class="header green borders">
+				<div class="title large">
 					<p>LATEST BLOGS</p>
 				</div>
-				<div class="bar"></div>
 			</div>
 
 			{#each data[1] as post}
@@ -37,7 +23,7 @@
 
 	</div>
 	<div class="col3 col">
-		<Container colour={"red"} paddingBool="{false}">
+		<Container colour={"red"} padding="{0}">
 			<div class="emergency red flashing">
 				<div class="bars"></div>
 				<div class="bars"></div>
@@ -56,25 +42,39 @@
 		</Container>
 
 		<NervContainer
-				colour={"orange"}
-				tab={true} subtitle="CODE 202" tabColour={"orange"}
-				stripeColour={"red"} barBool={true} warning={true}>
+				subtitle="CODE 202"
+				colour={"orange"} tabColour={"orange"} stripeColour={"red"}
+				barBool={true} warning={true}>
 
 			<p class="defPad bod orange">
 				This site is currently in development. please do not take what you see as a true representation of the final site.</p>
-			<p class="defPad bod orange">
-				NERV is an international organization with their center of operation located in the city of Tokyo-3, Japan. More specifically, they run the majority of their research and operations out of NERV Headquarters, a large facility located in the GeoFront. Outside of their main operation in Japan, NERV also has operations in the United States, Germany and possibly more. </p>
-			<p class="nutPad bod green">
-				01101110 01101111 01110100 00100000 01100101 01101110 01101111 01110101 01100111 01101000 00100000 01110000 01111001 01101100 01101111 01101110 01110011 00100000 01101110 01101111 01110100 00100000 01100101 01101110 01101111 01110101 01100111 01101000 00100000 01110000 01111001 01101100 01101111 01101110 01110011</p>
-			<p class="defPad bod orange">
-				NERV (German for "nerve") is a special organization that was put together to combat the Angels after the Second Impact and is the organization responsible for the creation of the Evangelions.</p>
 		</NervContainer>
+
+		{#if data[0]}
+			<div class="header green">
+				<div class="title small">
+					<p>FEATURED ART</p>
+				</div>
+			</div>
+
+			{#each data[0] as post}
+				<div class="artCell">
+					<GalleryComponent post={post}/>
+				</div>
+			{/each}
+		{/if}
 	</div>
-</content>
+</div>
 
 <style lang="scss">
-	content {
-		width: 100%;
+
+	.artWrapper {
+		column-count: 2;
+		overflow-x: scroll;
+	}
+
+	.content {
+		width: calc(100% - var(--containerPadding));
 		gap: var(--containerPadding);
 		display: inline-flex;
 

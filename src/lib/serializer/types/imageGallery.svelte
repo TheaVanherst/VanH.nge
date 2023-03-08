@@ -8,8 +8,13 @@
     export let margin = 10;
     let value = portableText?.value ? portableText?.value : portableText;
 
-    const sideArr    = ["Left ","Right ","Centre "];
-    const NumArr     = ["First ","Second ","Third ","Fourth ","Fifth ","Sixth ","Seventh ","Eighth ","Ninth ","Tenth "];
+    const sideArr = [
+        "Left ",	"Right ",	"Centre "];
+    const NumArr = [
+        "First ",	"Second ",	"Third ",
+		"Fourth ",	"Fifth ",	"Sixth ",
+		"Seventh ",	"Eighth ",	"Ninth ",
+		"Tenth "];
 
     let returnSheet = 	null;
 
@@ -88,9 +93,11 @@
 		};
 
     if (value.images.length <= 1) {
-        value.display = "vertical";} // prevents scroll / carousel being used for 1 image cases.
-    else if (value.images.length === 2 && value.display === "dynamicvertical") {
-        value.display = "grid";} // prevents flex containers ruining images for a single row.
+        	value.display = "vertical";} // prevents scroll / carousel being used for 1 image cases.
+    else if (
+        value.images.length === 2 &&
+		value.display === "dynamicvertical") {
+        	value.display = "grid";} // prevents flex containers ruining images for a single row.
 
     onMount(async () => {
         switch (value.display) {
@@ -118,7 +125,7 @@
                 horizontalRow();
                 returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
                 break;
-            default:
+			default: //fallback, "JUST INCASE".
                 horizontalRow();
                 returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
                 break;

@@ -1,5 +1,5 @@
 <script>
-	import ArtPost from "$components/generic/galleryComponent.svelte"
+	import ArtPost from "$components/generic/generalGallery.svelte"
 
 	export let data = [];
 </script>
