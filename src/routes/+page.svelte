@@ -5,18 +5,19 @@
     import NervContainer from "$components/globals/containers/nervContainer.svelte";
 
 	export let data = null;
+    console.log(data);
 </script>
 
 <div class="content">
 	<div class="col2 col">
-		{#if data[1]}
+		{#if data.featuredBlogPosts}
 			<div class="header green borders">
 				<div class="title large">
 					<p>LATEST BLOGS</p>
 				</div>
 			</div>
 
-			{#each data[1] as post}
+			{#each data.featuredBlogPosts as post}
 				<BlogPostPreview post={post}/>
 			{/each}
 		{/if}
@@ -50,14 +51,14 @@
 				This site is currently in development. please do not take what you see as a true representation of the final site.</p>
 		</NervContainer>
 
-		{#if data[0]}
+		{#if data.featuredProject}
 			<div class="header green">
 				<div class="title small">
 					<p>FEATURED ART</p>
 				</div>
 			</div>
 
-			{#each data[0] as post}
+			{#each data.featuredProject as post}
 				<div class="artCell">
 					<GalleryComponent post={post}/>
 				</div>
