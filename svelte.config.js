@@ -16,7 +16,10 @@ const config = {
 			$cms:			path.resolve('./cms'),
 			$root: 			path.resolve('./src'),
 		}
-	}
+	},
+	optimizeDeps: {
+		exclude: ['svelte-bricks']
+	},
 };
 
 export default config;

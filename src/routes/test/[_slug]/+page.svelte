@@ -1,19 +1,44 @@
 <script>
 	import BlogComponent  		from "$components/blog/blogComponent.svelte"
-	import Contents 			from '$components/blog/contentList.svelte'
+    import GalleryComponent from "$components/generic/preview/previewGallery.svelte";
 
+    import Contents 			from '$components/blog/contentList.svelte'
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollWrapper.svelte";
 
 	export let data = null;
+    let h = 0, w = 0;
 </script>
 
 <div class="content">
-	<div class="col2">
-        <BlogComponent post={data[0]}/>
+	<div class="left">
+        <BlogComponent post={data.requestedProject[0]}/>
 	</div>
-	<div class="col3">
+
+	<div class="right"
+		 bind:clientWidth={w}
+		 bind:clientHeight={h}>
 		<PageScrollWrapper>
-			<Contents list={data[0]}/>
+			<Contents list={data.requestedProject[0]}/>
+
+			{#if data.requestedProject[0]}
+				<div class="header green">
+					<div class="title small">
+						<p>FEATURED ART</p>
+					</div>
+				</div>
+
+				{#if data.featuredProject.length > 1}
+					{#each data.featuredProject as post}
+						<div class="artCell">
+							<GalleryComponent post={post}/>
+						</div>
+					{/each}
+				{:else}
+					<div class="artCell">
+						<GalleryComponent post={data.featuredProject[0]}/>
+					</div>
+				{/if}
+			{/if}
 		</PageScrollWrapper>
 	</div>
 </div>
@@ -30,8 +55,8 @@
 			display: 	block;
 			position: 	relative;
 
-			&.col2 { width:	70%;}
-			&.col3 { width: 30%;}
+			&.left { width:	70%;}
+			&.right { width: 30%;}
 		}
 	}
 </style>

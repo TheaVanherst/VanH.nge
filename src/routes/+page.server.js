@@ -18,6 +18,7 @@ export const load = async () => {
             ${artQuery}
         }
     `);
+
     const blogData = await client.fetch(`
         *[_type == "blogPost" && 
           "📌 Pinned" in categories[] -> title

@@ -10,7 +10,7 @@
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
     import Separator    from "$lib/serializer/block/separator.svelte";
 
-    export let post = null;
+    export let post;
 </script>
 
 <Container overflowBool="{false}" colour="orange">

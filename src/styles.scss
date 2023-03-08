@@ -34,6 +34,10 @@
 
 /* document formatting */
 
+.flex {
+	gap: unset!important; //this is already done with my own containers.
+}
+
 body {
 	min-height: 100vh;
 	margin: 	0;

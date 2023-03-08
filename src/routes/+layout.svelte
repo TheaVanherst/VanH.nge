@@ -52,7 +52,7 @@
 				min-width: 25%;}
 
 			&.page {	//kinda lazy
-				width: calc(75% - var(--containerPadding));}
+				width: 75%;}
 		}
 	}
 

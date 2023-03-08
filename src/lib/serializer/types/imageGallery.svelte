@@ -160,8 +160,8 @@
 {#if displayBool}
 	{#if returnSheet}
 		<CitationBlock push={commentArray} titles={titles}/>
-	{:else}
-		<div class="citePreview"></div>
+	<!--{:else}-->
+	<!--	<div class="citePreview"></div>-->
 	{/if}
 {/if}
 

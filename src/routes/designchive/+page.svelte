@@ -1,27 +1,19 @@
 <script>
-	import ArtPost from "$components/generic/generalGallery.svelte"
+	import DesignPost from "$components/generic/generalGallery.svelte";
+    import Masonry from 'svelte-bricks'; // THIS IS SO FUCKING GOOD.
 
-	export let data = null;
+    export let data = [];
 </script>
 
 <div class="content">
-	{#each data[0] as post, i}
-		<div>
-			<ArtPost post={post}/>
-		</div>
-	{/each}
+	<Masonry
+		items=	{data[0]}
+		gap=	{15}
+		idKey=	{`_id`}
+
+		animate=		{true}
+		columnClass=	"flex"
+		let:item>
+		<DesignPost post={item}/>
+	</Masonry>
 </div>
-
-
-<style lang="scss">
-	.content {
-		max-width: 	calc(100% - var(--containerPadding)); /* TODO: this is stupid */
-		gap: 		var(--containerPadding);
-		column-count: 2;
-		box-sizing: border-box;
-
-		> * {
-			display: block;
-		}
-	}
-</style>

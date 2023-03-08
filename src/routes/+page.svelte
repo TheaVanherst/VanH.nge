@@ -69,34 +69,34 @@
 <style lang="scss">
 
 	.artWrapper {
-		column-count: 2;
-		overflow-x: scroll;
+		column-count: 	2;
+		overflow-x: 	scroll;
 	}
 
 	.content {
-		width: calc(100% - var(--containerPadding));
-		gap: var(--containerPadding);
-		display: inline-flex;
+		width: 		100%;
+		gap: 		var(--containerPadding);
+		display: 	inline-flex;
 
 		.col {
-			height: max-content;
-			width: inherit;
-			display: block;
+			height: 	max-content;
+			width: 		inherit;
+			display: 	block;
 
 			> .wrapper {
-				width: 100%;
+				width: 	100%;
 			}
 
 			&.col2 {
 				max-width: 65%;}
 			&.col3 {
-				max-width: calc(35%);}
+				max-width: 35%;}
 		}
 	}
 
 	.contentList {
-		max-width: 100%;
-		padding: var(--containerPadding);
+		max-width: 	100%;
+		padding: 	var(--containerPadding);
 
 		background-color:   var(--backgroundTrans);
 		border-radius:      var(--outerRadius);

@@ -28,31 +28,39 @@
     placementArr = placementArr.map(i => 'e' + i);
 </script>
 
-<Container>
+<Container padding={0}>
     <TitleCard link="#post-{list.slug.current}">
         {list.title}
     </TitleCard>
 
-    {#each list.titles as title, i}
-        <p href="#header-{title._key}"
-           class="{placementArr[i]}"
-           on:click|preventDefault={scrollIntoView}>
-            {#if title.children.length > 1}
-                {#each title.children as child}
-                    {child.text}
-                {/each}
-            {:else}
-                {title.children[0].text}
-            {/if}
-        </p>
-    {/each}
+
+    <div>
+        {#each list.titles as title, i}
+            <p href="#header-{title._key}"
+               class="{placementArr[i]}"
+               on:click|preventDefault={scrollIntoView}>
+                {#if title.children.length > 1}
+                    {#each title.children as child}
+                        {child.text}
+                    {/each}
+                {:else}
+                    {title.children[0].text}
+                {/if}
+            </p>
+        {/each}
+    </div>
 </Container>
 
 <style lang="scss">
+    div {
+        padding: var(--containerPadding);
+    }
+
     p {
 	    cursor:     alias;
 	    color:      var(--textColour);
-	    padding:    0 0 4px 0;
+
+        padding-bottom: 5px;
 
 	    &:last-of-type {
 		    padding: 0 0 0 0;
