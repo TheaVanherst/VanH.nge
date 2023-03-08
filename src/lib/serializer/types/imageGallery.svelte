@@ -5,20 +5,23 @@
     // this checks if it's a portable text comp or a manual request from a component -
 	// and streamlines it into the same type of data, so it can be requested at will.
     export let portableText = null;
+    export let margin = 10;
     let value = portableText?.value ? portableText?.value : portableText;
 
     const sideArr    = ["Left ","Right ","Centre "];
     const NumArr     = ["First ","Second ","Third ","Fourth ","Fifth ","Sixth ","Seventh ","Eighth ","Ninth ","Tenth "];
 
-    let returnSheet = 	null,
-		commentSheet = 	null;
+    let returnSheet = 	null;
 
 	let imageArray = 	[],
 		commentArray = 	[],
 		titles = 		[];
 
 	const fetch = (cite,i) => {
-        return [cite, value.images[i].alt, value.images[i].citation, value.images[i].citeURL];
+        return [cite,
+				value.images[i].alt,
+				value.images[i].citation,
+				value.images[i].citeURL];
     };
 
     const
@@ -76,7 +79,7 @@
 					if (value.images[f]) { //checks if image exists
 						imageArray[e][i] = value.images[f]; //assigns image to 2d arr
                         if (value.images[f].alt) { //checks for citation
-                            commentArray[e][i] = fetch(NumArr[e] + "image: ",f); //adds citation accordance of image arr
+                            commentArray[e][i] = fetch(NumArr[i] + "image: ",f); //adds citation accordance of image arr
                         }}}
 
                 if (commentArray[e].length > 0) { //if the column includes citation, declare which column it's in.
@@ -125,17 +128,29 @@
 		// then add the return sheet via; /lib/serializer/gallerytypes/[galleryFormat].svelte
 		// the case HAS to be equal to what the name is in the CMS.
     });
+
+    // this all checks to see if any content is in the array,
+	// if there's no content, don't display the citation block.
+    let displayBool = false;
+    () => {
+        for (let key in commentArray) {
+            if (commentArray[key].length > 0){
+                displayBool = true;
+                return;}}
+    };
 </script>
 
 {#if returnSheet}
-	<svelte:component this={returnSheet} push="{imageArray}"/>
+	<div style="margin-bottom:{margin}px">
+		<svelte:component this={returnSheet} push="{imageArray}"/>
+	</div>
 {:else}
 	<div class="imagePreview gen{Math.floor(Math.random() * 3)}">
 		<div></div>
 	</div>
 {/if}
 
-{#if commentArray}
+{#if displayBool}
 	{#if returnSheet}
 		<CitationBlock push={commentArray} titles={titles}/>
 	{:else}
@@ -145,6 +160,16 @@
 
 <style lang="scss">
 	$backgroundSize: 800px;
+
+	@mixin cgm($aspect, $cols, $height){
+		aspect-ratio: 	$aspect;
+		column-count: 	$cols;
+		> * {
+			height: 	$height;}}
+
+	.gen0 {@include cgm(1/1, 1, 100%);}
+	.gen1 {@include cgm(1/0.5, 2, 200%);}
+	.gen2 {@include cgm(1/0.3, 3, 300%);}
 
 	.shimmer {
 		animation-duration: 	2s;
@@ -169,25 +194,6 @@
 			@extend .shimmer;
 			width: 		100%;
 			display: 	flex;
-		}
-
-		&.gen0 {
-			aspect-ratio: 1/1;
-			column-count: 1;
-			> * {
-				height: 100%;}
-		}
-		&.gen1 {
-			aspect-ratio: 1/0.5;
-			column-count: 2;
-			> * {
-				height: 200%;}
-		}
-		&.gen2 {
-			aspect-ratio: 1/0.3;
-			column-count: 3;
-			> * {
-				height: 300%;}
 		}
 	}
 

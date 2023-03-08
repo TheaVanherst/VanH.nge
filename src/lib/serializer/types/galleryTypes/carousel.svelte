@@ -48,7 +48,6 @@
 
 <style lang="scss">
 	.carousel {
-		margin-bottom:  var(--contentPaddingY);
 		overflow:       scroll hidden;
 		background:     var(--backgroundAccent2);
 

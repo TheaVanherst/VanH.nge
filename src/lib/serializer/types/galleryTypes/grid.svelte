@@ -17,8 +17,6 @@
 
 <style lang="scss">
 	.grid {
-	    margin-bottom:  var(--contentPaddingY);
-
         .row {
 	        vertical-align: bottom;
 	        display: inline-flex;

@@ -13,8 +13,6 @@
 
 <style lang="scss">
 	.table {
-		margin-bottom:  var(--contentPaddingY);
-
         > div {
 	        overflow:       hidden;
 

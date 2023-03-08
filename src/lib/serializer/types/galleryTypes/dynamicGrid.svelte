@@ -16,10 +16,6 @@
 </div>
 
 <style lang="scss">
-	.dynamicGrid {
-		margin-bottom:  var(--contentPaddingY);
-	}
-
 	.row {
 		display: inline-flex;
 		gap: var(--imageSpacing);

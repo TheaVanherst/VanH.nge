@@ -15,8 +15,6 @@
 
 <style lang="scss">
 	.table {
-		margin-bottom:  var(--contentPaddingY);
-
 		position:   relative;
 
 		scrollbar-width:            thin;

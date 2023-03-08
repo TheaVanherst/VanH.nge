@@ -18,8 +18,6 @@
 
 <style lang="scss">
 	.dynamicVertical {
-		margin-bottom: var(--contentPaddingY);
-
 		column-count:   2;
 		gap:            var(--imageSpacing);
 		display:        flex;
