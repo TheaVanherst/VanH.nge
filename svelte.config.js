@@ -14,6 +14,7 @@ const config = {
 			$stores: 		path.resolve('./src/stores'),
 
 			$cms:			path.resolve('./cms'),
+			$root: 			path.resolve('./src'),
 		}
 	}
 };

@@ -7,6 +7,8 @@
     import json             from 'highlight.js/es/languages/JSON';
     import typescript       from 'highlight.js/es/languages/typescript';
 
+    import styles           from "$root/styles/vansche.scss";
+
     export let portableText = [];
     let language = portableText.value.language;
 
