@@ -17,17 +17,18 @@
 <div class="tags">
     <div class="lineDiv orange"></div>
 
+    <div class="lineScale green" style="--xPos:{x / 0.6 + 'px'}">
+        <div class="small"></div>
+        <div class="medium"></div>
+        <div class="large"></div>
+        <div class="xLarge"></div>
+    </div>
+
     <div class="tagWrapper"
          bind:this={carousel}
          on:scroll={() => x=carousel.scrollLeft}>
-        <div class="tagSleeve">
-            <div class="lineScale green" style="--xPos:{x / 0.4 + 'px'}">
-                <div class="small"></div>
-                <div class="medium"></div>
-                <div class="large"></div>
-                <div class="xLarge"></div>
-            </div>
 
+        <div class="tagSleeve">
             {#if relativeTime(new Date(time)) / 86400 < 14}
                 <div class="tag new">
                         <span class="hov inv">
@@ -60,12 +61,13 @@
 
 <style lang="scss">
     .tagWrapper {
-        display:    block;
-        overflow:   scroll hidden;
+        display: grid;
+        overflow-x: scroll;
+        width: 100%;
 
         .tagSleeve {
-            display:    block;
-            width:      max-content;
+            display:        inline-block;
+            white-space:    nowrap;
             min-width:  calc(100% - 1px);
                 // this causes scroll overflow,
                 // and I don't have time to fix it.
