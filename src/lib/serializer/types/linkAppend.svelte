@@ -1,6 +1,6 @@
 <script>
-    import navigation       from "$stores/navigationDirectories.js";
-    import { urlChanger }   from "$stores/directoryController.js";
+    import navigation       from "$lib/stores/navigationDirectories.js";
+    import { urlChanger }   from "$lib/stores/directoryController.js";
 
     export let portableText = null;
     let { value } = portableText;
