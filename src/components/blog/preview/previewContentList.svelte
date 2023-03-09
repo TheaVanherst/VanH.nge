@@ -2,22 +2,28 @@
     import TitleCard        from "$components/globals/containerTitle.svelte"
     import Container        from "$components/globals/containers/container.svelte";
 
-    import scrollIntoView   from "$stores/scrollHandler.js";
+    import scrollIntoView   from "$lib/stores/scrollHandler.js";
     export let list = null;
 </script>
 
-<Container>
+<Container padding={0}>
     <TitleCard>
         Contents:
     </TitleCard>
-    {#each list as data}
-        <p href="#post-{data.slug}" on:click|preventDefault={scrollIntoView}>
-            {data.title}
-        </p>
-    {/each}
+    <div>
+        {#each list as data}
+            <p href="#post-{data.slug}" on:click|preventDefault={scrollIntoView}>
+                {data.title}
+            </p>
+        {/each}
+    </div>
 </Container>
 
 <style lang="scss">
+    div {
+        padding: var(--containerPadding);
+    }
+
 	p {
 		cursor:     alias;
 		color:	 	var(--textColour);

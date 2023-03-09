@@ -19,17 +19,16 @@
 	--textColour: 			#efefef;
 	--textColourInvert:	 	#000;
 
-	--fadedColour:      #7e7e7e;
-	--fadedColourAcc: 	#c5c5c5;
-	--dropShadow:       rgba(0, 0, 0, 0.5);
-
 	--maxWidth: 		1080px;
 	--contentPaddingX: 	15px;
 	--contentPaddingY: 	10px;
-	--containerPadding: 15px;   --containerPaddingInv: -15px;
+	--containerPadding: 15px;
 
 	--imageSpacing:		5px;
 	--imageBlurring: 	3px;
+
+	--textPaddingAccent:    3px;
+	--textRadiusAccent:     3px;
 }
 
 /* document formatting */
@@ -64,12 +63,12 @@ body {
 		background: 	var(--darkAccent1);}
 
 	::selection {
-		color: 				var(--background);
+		color:              var(--textColourInvert);
 		background-color: 	var(--accent1);}
 
 	.selectionInv::selection {
-		color: var(--accent1);
-		background-color: var(--background);
+		color:              var(--accent1);
+		background-color:   var(--textColourInvert);
 	}
 }
 
@@ -96,7 +95,6 @@ pant {
 }
 span {
 	font-size:      12px;
-	line-height:    100%;
 	margin:         0;
 }
 
@@ -150,22 +148,17 @@ h5 {font-size: 1.1rem;}
 
 /* mark formatting */
 
-strong {
-	color:          var(--accent2);
-	font-weight: 	bolder;
-
+@mixin customFontColour($colour){
+	color:          $colour;
 	&::selection {
-		background-color: 	var(--accent2)!important;
-	}
-}
+		background-color: 	$colour!important;}}
+
+strong {
+	font-weight: 	bolder;
+	@include customFontColour(var(--accent2));}
 
 accent {
-	color: var(--accent4);
-
-	&::selection {
-		background-color: 	var(--accent4)!important;
-	}
-}
+	@include customFontColour(var(--accent4));}
 
 sub, sup {
 	font-size: 0.6em;
@@ -184,7 +177,6 @@ ul {
 			line-height: 	100%;
 			vertical-align: middle;
 			font-size: 	   .85em;
-			width: 			1em;
 		}
 	}
 

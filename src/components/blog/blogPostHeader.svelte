@@ -95,7 +95,7 @@
 
 	.userData {
 		display: flex;
-        padding: var(--contentPaddingY) 0 5px calc(var(--contentPaddingY) + 40px);
+        padding: 8px 0 4px calc(var(--contentPaddingY) + 40px);
 
 		width:          auto;
 		font-size:      0;

@@ -2,7 +2,7 @@
     import TitleCard from "$components/globals/containerTitle.svelte"
     import Container from "$components/globals/containers/container.svelte";
 
-    import scrollIntoView from "$stores/scrollHandler.js";
+    import scrollIntoView from "$lib/stores/scrollHandler.js";
     export let list = [];
 
     let arr = []
