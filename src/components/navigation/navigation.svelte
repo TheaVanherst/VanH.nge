@@ -1,9 +1,9 @@
 <script>
-    import navigation from '$stores/navigationDirectories.js'
+    import navigation from '$lib/stores/navigationDirectories.js'
     import Button from '$components/navigation/navButton.svelte';
     import Switch from '$components/globals/toggleSwitch.svelte'
 
-    import { motion } from '$stores/accessibilityController.js'
+    import { motion } from '$lib/stores/accessibilityController.js'
 
     export let data = null;
 </script>

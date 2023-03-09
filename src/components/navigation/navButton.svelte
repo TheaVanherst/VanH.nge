@@ -1,14 +1,15 @@
 <script>
-    import { urlChanger, directory } from '$stores/directoryController.js';
+    import { urlChanger, urlStoreArr, directionY } from '$lib/stores/directoryController.js';
+    import navigation from "$lib/stores/navigationDirectories.js";
     export let push = null;
 
-    // TODO: For some stange reason, .active doesn't work on the "artchive" page.
-    // TODO: It only works on page update, but cancels without it - I really don't know why.
+    $: console.log($urlStoreArr);
+    $: directionY
 </script>
 
 <a href={push}
    class:clickable={!!push}
-   class:active={$directory === push}
+   class:active={$urlStoreArr[1] === push}
    on:click={urlChanger(push)}>
     <div class="powerBar">
         <div class="left">
@@ -87,32 +88,19 @@
         }
 
         &:hover {
-            > .powerBar {
+            .powerBar {
                 margin-left:    5px;
-                > div {
-                    background: var(--darkAccent3);
-                }
-            }
-        }
+                > div {     background: var(--darkAccent3);} } }
 
         &.active {
-            &::before {
-                color: var(--darkAccent3);}
-
-            > .powerBar {
-                width: calc(40% + 10px);
+            .powerBar {
+                width:          calc(40% + 10px);
                 margin-left:    5px;
-                > div {
-                    background:  var(--darkAccent4);
-                    &.left {
-                        margin-right: 10px;
-                    }
 
-                    .highlight {
-                        background:    var(--darkAccent3);
-                    }
-                }
-            }
+                > div {     background:     var(--darkAccent4);}
+                .left {     margin-right:   10px;}
+                .highlight {background:     var(--darkAccent3);}}
+            &::before {     color:          var(--darkAccent3);}
         }
     }
 </style>

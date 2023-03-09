@@ -1,15 +1,28 @@
 <script>
-    import { scrollPos } from "$stores/accessibilityController.js"
+    import { scrollPos } from "$lib/stores/accessibilityController.js"
 
-    export let min = 47; //temporary value
     export let max = 65535;
+    export let min = 0;
+
+    // atm this is only a good solution for elements in relation to the slot itself.
+    // TODO: add a system to detect the next child.
+
+    let element;
+    $: min = element?.offsetParent?.offsetTop
 
     let pos = 0;
-    $: pos = $scrollPos >= min ? $scrollPos < max ? ($scrollPos - min) + 'px' : max : 'unset'; //lazy
+    $: pos =
+        $scrollPos >= min ?
+            $scrollPos < max ?
+                ($scrollPos - min) + 'px'
+                : max
+            : 'unset';
 </script>
 
-<div style="margin-top: {pos}">
-    <slot/>
+<div
+    bind:this={element}
+    style="margin-top: {pos}">
+        <slot/>
 </div>
 
 <style lang="scss">

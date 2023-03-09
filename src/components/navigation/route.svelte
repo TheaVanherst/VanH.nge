@@ -1,8 +1,8 @@
 <script>
     import LoadingBlinking from '$lib/handlers/loadingBlinking.svelte'
 
-    import { directory, loading } from '$stores/directoryController.js';
-    import { urlChanger } from '$stores/directoryController.js';
+    import { directory, loading } from '$lib/stores/directoryController.js';
+    import { urlChanger } from '$lib/stores/directoryController.js';
 
     let localRoute; //backend management url string
     $: localRoute = $directory.split("/");

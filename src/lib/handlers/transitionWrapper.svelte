@@ -1,6 +1,6 @@
 <script>
-    import { navigating, loading }  from '$stores/directoryController.js';
-    import { motion }               from '$stores/accessibilityController';
+    import { navigating, loading, directionX, directionY, urlChanger, directory }  from '$lib/stores/directoryController.js';
+    import { motion }               from '$lib/stores/accessibilityController';
 
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions     from 'svelte/easing'
@@ -24,9 +24,6 @@
         easingName = "easeInOut";
 
     // transition position vars
-    let direction = 'back';
-    $: direction;
-
     let transition
     $: transition = !$motion ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
     let easing = easingFunctions[easingName];
@@ -39,13 +36,15 @@
         delayIn = 0,
         delayOut = 0;
 
-    export let transX = 30;
+    export let
+        transX = 30,
+        transY = 30;
 </script>
 
 {#if !$navigating && !$loading}
     <div class="transitionWrapper"
-         in:transition={{transTimeIn, delayIn, easing, x: direction === 'forwards' ? transX : -transX}}
-         out:transition={{transTimeOut, delayOut, easing, x: direction === 'forwards' ? transX : -transX}}>
+         in:transition={{transTimeIn, delayIn, easing, x: transX * -$directionX, y: transY * -$directionY}}
+         out:transition={{transTimeOut, delayOut, easing, x: transX * $directionX, y: transY * $directionY}}>
         <slot/>
     </div>
 {/if}
