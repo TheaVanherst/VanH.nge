@@ -61,16 +61,13 @@
 
 <style lang="scss">
     .tagWrapper {
-        display: grid;
+        display:    grid;
         overflow-x: scroll;
-        width: 100%;
 
         .tagSleeve {
             display:        inline-block;
             white-space:    nowrap;
-            min-width:  calc(100% - 1px);
-                // this causes scroll overflow,
-                // and I don't have time to fix it.
+            min-width:      100%;
         }
     }
 
@@ -89,7 +86,10 @@
             font-size:      12px;
             line-height:    12px;
 
+
+
             &:before {
+                font-weight:    400;
                 position:       absolute;
                 margin:         -15px 0 0 -6px;
                 padding:        0 0 5px 5px;
@@ -103,7 +103,6 @@
             &:after {
                 position:       absolute;
                 margin:         20px 0 0 -6px;
-                padding-left:   5px;
 
                 content:        " ";
                 height:         3px;

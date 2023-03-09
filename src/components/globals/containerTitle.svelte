@@ -1,4 +1,8 @@
-<div>
+<script>
+    export let colour = "green"
+</script>
+
+<div class="{colour}">
     <p>
         <slot/>
     </p>
@@ -6,16 +10,19 @@
 
 <style lang="scss">
     div {
-	    width:      calc(100% + var(--containerPadding) + var(--containerPadding));
-	    background: var(--accent1);
+	    width:      100%;
+
+        &.green {   background: var(--accent1);}
+        &.yellow {  background: var(--accent3);}
+        &.orange {  background: var(--darkAccent3);}
+        &.red {     background: var(--darkAccent4);}
 
 	    p {
             font-family: "Arimo", sans-serif;
 		    padding:    10px 15px 10px 15px;
 
-		    color:          black;
+		    color:          var(--textColourInvert);
             font-weight:    800;
-            font-size:      16px;
 	    }
     }
 </style>
