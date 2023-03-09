@@ -8,7 +8,7 @@
 
 <div class="content">
 	<div class="col2">
-		{#each data[0] as post, i}
+		{#each data.postData as post, i}
 			<div>
 				<PreviewBlogPost post={post}/>
 			</div>
@@ -16,7 +16,7 @@
 	</div>
 	<div class="col3">
 		<PageScrollWrapper>
-			<TitleList list={data[0]}/>
+			<TitleList list={data.postData}/>
 		</PageScrollWrapper>
 	</div>
 </div>

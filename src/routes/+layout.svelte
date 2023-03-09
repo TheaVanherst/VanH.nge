@@ -7,8 +7,8 @@
 	import Navigation from "$components/navigation/navigation.svelte"
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
-	import { scrollPos } from '$stores/accessibilityController';
-	import { directory } from "$stores/directoryController.js";
+	import { scrollPos } from '$lib/stores/accessibilityController';
+	import { directory } from "$lib/stores/directoryController.js";
 
 	import { page } from '$app/stores';
 	$directory = $page.url.pathname
@@ -21,7 +21,7 @@
 
 <div class="layout">
 	<div class="nav">
-		<Navigation data={data}/>
+		<Navigation data={data.userData}/>
 	</div>
 	<div class="page">
 		<Route/>
