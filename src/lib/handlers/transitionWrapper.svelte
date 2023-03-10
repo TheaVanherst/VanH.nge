@@ -1,5 +1,5 @@
 <script>
-    import { navigating, loading, directionX, directionY, urlChanger, directory }  from '$lib/stores/directoryController.js';
+    import { navigating, loading, directionX, directionY }  from '$lib/stores/directoryController.js';
     import { motion }               from '$lib/stores/accessibilityController';
 
     import * as transitionFunctions from 'svelte/transition'
@@ -25,7 +25,7 @@
 
     // transition position vars
     let transition
-    $: transition = !$motion ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
+    $:  transition = !$motion ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
     let easing = easingFunctions[easingName];
 
     // transition timeout vars
@@ -43,14 +43,22 @@
 
 {#if !$navigating && !$loading}
     <div class="transitionWrapper"
-         in:transition={{transTimeIn, delayIn, easing, x: transX * -$directionX, y: transY * -$directionY}}
-         out:transition={{transTimeOut, delayOut, easing, x: transX * $directionX, y: transY * $directionY}}>
+        in:transition={{
+            transTimeIn, delayIn, easing,
+            x: transX * -$directionX,
+            y: transY * $directionY}}
+        out:transition={{
+            transTimeOut, delayOut, easing,
+            x: transX * $directionX,
+            y: transY * -$directionY}}>
         <slot/>
     </div>
 {/if}
 
 <style>
     div {
+        min-width: 100%;
+        max-width: 100%;
         width: 100%;
     }
 </style>

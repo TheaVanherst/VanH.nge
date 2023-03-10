@@ -1,15 +1,10 @@
 <script>
-    import { urlChanger, urlStoreArr, directionY } from '$lib/stores/directoryController.js';
-    import navigation from "$lib/stores/navigationDirectories.js";
-    export let push = null;
-
-    $: console.log($urlStoreArr);
-    $: directionY
+    import { urlChanger, urlStoreArr } from '$lib/stores/directoryController.js';
+    export let push = "";
 </script>
 
 <a href={push}
-   class:clickable={!!push}
-   class:active={$urlStoreArr[1] === push}
+   class:active={"/" + $urlStoreArr[1] === push}
    on:click={urlChanger(push)}>
     <div class="powerBar">
         <div class="left">
