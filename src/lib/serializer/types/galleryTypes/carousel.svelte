@@ -9,21 +9,13 @@
             document.querySelector(target.getAttribute('href')).offsetLeft;
     }
 
-    let x = 0, containerWidth = 0;
-
-    $: if ((x % containerWidth) < 15) {
-        document.querySelector(".active")?.classList.remove("active")
-        document.querySelector("#a"+randomId+"-"+(Math.round(x / containerWidth))).classList.add("active");
-    }
-
+    let x = 0;
     export let push;
 </script>
 
 <div class="carousel" id="a{randomId}"
-     bind:clientWidth={containerWidth}
      on:scroll={({target}) => {x = target.scrollLeft}}>
     <div class="row" style="--yWid: {push.length}">
-
         {#each push as image, e}
             <div class="{e === 0 ? 'image active' : 'image'}" id="a{randomId}-{e}">
                 <label  class="next"
@@ -101,24 +93,6 @@
 				    border-radius:  0 5px 5px 0;}
 			    &:hover {
 				    background: rgba(0, 0, 0, 1);
-                }
-            }
-
-		    container {
-			    transition:         opacity .6s, filter .4s;
-			    -webkit-transition: opacity .6s, filter .4s;
-			    -moz-transition:    opacity .6s, filter .4s;
-			    -ms-transition:     opacity .6s, filter .4s;
-			    -o-transition:      opacity .6s, filter .4s;
-
-			    opacity:    0.6;
-			    filter:     blur(var(--imageBlurring));
-            }
-
-		    &.active {
-			    container {
-				    filter:     none;
-				    opacity:    1 !important;
                 }
             }
         }
