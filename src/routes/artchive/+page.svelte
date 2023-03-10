@@ -7,11 +7,11 @@
 
 <div class="content">
 	<Masonry
-		items=	{data[0]}
+		items=	{data.postRequests}
 		gap=	{15}
 		idKey=	{`_id`}
 
-		animate=		{true}
+		animate=		{false}
 		columnClass=	"flex"
 		let:item>
 		<ArtPost post={item}/>

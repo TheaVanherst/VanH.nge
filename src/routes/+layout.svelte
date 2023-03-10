@@ -2,9 +2,9 @@
 	import '../styles.scss';
 
 	import Route from "$components/navigation/route.svelte"
+	import ProfileBar from "$components/navigation/profileBar.svelte";
 	import Background from "$components/layout/background.svelte"
 
-	import Navigation from "$components/navigation/navigation.svelte"
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	import { scrollPos } from '$lib/stores/accessibilityController';
@@ -17,7 +17,7 @@
 
 <div class="layout">
 	<div class="nav">
-		<Navigation data={data.userData}/>
+		<ProfileBar/>
 	</div>
 	<div class="page">
 		<Route/>
@@ -52,5 +52,4 @@
 				width: 75%;}
 		}
 	}
-
 </style>
