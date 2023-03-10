@@ -16,20 +16,14 @@ let directoryString; // god i hate this
 
 import navigation from "$lib/stores/navigationDirectories.js";
 
-let urlStoreArr =   writable([]); // handles the transition direction
+let urlStoreArr =   writable(["",""]); // handles the transition direction
 let directionX =     writable(0); // handles the transition direction
 let directionY =     writable(0); // handles the transition direction
 
-const urlArray = (url) => {
-    const arr = url.split("/")
-          arr[1] = arr[1] === "" ? "home" : arr[1]
-    return arr;
-}
-
 const directionProcessing = (p,c) => {
     let xOffset = 0; // debugging purposes
-    let pfr = urlArray(p)
-    let cfr = urlArray(c)
+    let pfr = p?.split("/")
+    let cfr = c?.split("/")
 
     if (cfr.length ^ pfr.length) {
         // calculates which direction it should move horizontally
@@ -51,6 +45,8 @@ const directionProcessing = (p,c) => {
             yOffset = -1;}
     } else {
         yOffset = 0;}
+
+    cfr[0] === cfr[1] ? cfr.shift() : null;
 
     directionY.set(yOffset);
     directionX.set(xOffset);

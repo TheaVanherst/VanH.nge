@@ -8,10 +8,6 @@
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	import { scrollPos } from '$lib/stores/accessibilityController';
-	import { directory } from "$lib/stores/directoryController.js";
-
-	import { page } from '$app/stores';
-	$directory = $page.url.pathname
 
 	export let data = null;
 </script>
