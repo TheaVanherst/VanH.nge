@@ -1,6 +1,7 @@
 <script>
     import { urlChanger, urlStoreArr } from '$lib/stores/directoryController.js';
     export let push = "";
+    $: push;
 </script>
 
 <a href={push}
@@ -81,6 +82,11 @@
                 color:          var(--accent3);
                 font-weight:    800;}
         }
+
+        @mixin cgm($colour){
+            .powerBar {
+                margin-left:    5px;
+                > div {     background: var(--darkAccent3);}}}
 
         &:hover {
             .powerBar {

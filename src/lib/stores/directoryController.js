@@ -67,22 +67,19 @@ const fetchData = (url) => {
 
 const urlChanger = async (url) => {
     event.preventDefault();
-    url = !url ? "/" : url  //god I hate this, but I legit can't find an alternative.
-        // basically, to fetch the homepage ("/"), you HAVE to specify "/".
+    url = !url ? "/" : url //god I hate this so much, but the tldr is;
+
+        // to fetch the homepage ("https://*website*"), you HAVE to specify "/" when redirecting.
+        // the problem is, that the way how the url builders work is that doing it any other way
+        // either breaks the directory router or breaks the url router.
+
+    // Just leave it, I promise it's for the greater good.
 
     // url handling
     if(directoryString !== url) {
         await directionProcessing(directoryString, url);
         await fetchData(url);
     }
-
-    // scroll handler
-
-    // window.scrollTo({
-    //     top: 0,
-    //     behavior: 'smooth'
-    // });
-    // localScroll = 0;
 };
 
 export { urlChanger };
