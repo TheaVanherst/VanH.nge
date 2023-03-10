@@ -4,11 +4,13 @@
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc
     export let tags = [];   // forms array as a fallback to check the length of later
 
-    const regex = /\p{Extended_Pictographic}/ug;
-    if (tags > 0) { //causes errors on reload if you don't have this
-        tags.sort(a => a.title.match(!regex)); //this prioritizes unicode [Emojis],
-            // aka. puts them at the forefront of the array [unicode -> (everything else)]
-    }
+    if (tags.length > 0) { //causes errors on reload if you don't have this
+        for (let i in tags){
+            if (tags[i]._type === "category"){ //this is dumb, but it "works".
+                tags.unshift(tags.splice(i, 1)[0]);}
+        }}
+    // TODO: rewrite this to prioritize unicode.
+    // this took 3 hours and I cannot be fucked to find another solution.
 
     let carousel;
     let x;
@@ -80,39 +82,35 @@
             position:       relative;
 
             padding:        5px var(--containerPadding);
-            margin:         16px var(--contentPaddingY) 0 0;
+            margin:         16px 10px 0 0;
 
             font-weight:    800;
             font-size:      12px;
             line-height:    12px;
 
-
-
-            &:before {
+            @mixin log($colour){
                 font-weight:    400;
                 position:       absolute;
-                margin:         -15px 0 0 -6px;
+                margin-left:   -6px;
+                border-left:    1px solid $colour;
+                color:          $colour;}
+
+            &:before {
+                @include log(var(--darkAccent3));
+
+                margin-top:    -15px;
                 padding:        0 0 5px 5px;
-
-                border-left:    1px solid var(--darkAccent3);
-                color:          var(--darkAccent3);
-
-                content: "+" counter(section);
-            }
+                content:        "+" counter(section);}
 
             &:after {
-                position:       absolute;
-                margin:         20px 0 0 -6px;
+                @include log(var(--darkAccent3));
 
+                margin-top:     20px;
                 content:        " ";
-                height:         3px;
-                border-left:    1px solid var(--darkAccent3);
-                color:          var(--darkAccent3);
-            }
+                height:         3px;}
 
             &:last-of-type {
-                margin-right: 0;
-            }
+                margin-right: 0;}
         }
 
         .category {

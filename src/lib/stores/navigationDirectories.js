@@ -4,7 +4,7 @@ const navigation = [
     { title: "Home",            path: "/",              local: "" },
     { title: "Blog",            path: "/blog",          local: "blogPost" },
 
-    { title: "pisscore",        path: "/artchive",      local: "artPost" },
+    { title: "Artchive",        path: "/artchive",      local: "artPost" },
     { title: "Designchive",     path: "/designchive",   local: "designPost" },
     { title: "Testing",         path: "/test",          local: "post" },
 ];

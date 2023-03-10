@@ -24,12 +24,16 @@
 
 <style lang="scss">
 	.profileGraphic {
-        height:         500px;
-        margin-bottom:  var(--containerPadding);
+        height: 500px;
+        width:  100%;
+        margin: 0 0 var(--containerPadding) 0;
+
+        display:            flex;
+        justify-content:    center;
 
         > img {
             height:     550px;
-            margin:     -20px 0 0 -105%;
+            margin:     0 auto;
 
 	        position:   absolute;
 	        animation:  float 6s ease-in-out infinite;

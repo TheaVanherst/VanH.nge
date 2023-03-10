@@ -33,7 +33,7 @@
 		padding: 	var(--containerPadding);
 		gap: 		var(--containerPadding);
 
-		max-width:  var(--maxWidth);
+		max-width:  1080px; // temporary
 		width: 		100%;
 
 		box-sizing: border-box;
@@ -44,8 +44,9 @@
 			position:	relative;
 
 			&.nav {
-				max-width: 25%;
-				min-width: 25%;}
+				max-width: 	300px;
+				width: 		25%;
+				min-width: 	220px;}
 
 			&.page {	//kinda lazy
 				width: 75%;}
