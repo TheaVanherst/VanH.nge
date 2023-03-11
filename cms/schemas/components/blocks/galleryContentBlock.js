@@ -1,7 +1,9 @@
 
 import { defineType } from 'sanity'
-import { altTestBlock, citationBlock, citationURL,
-  citationRender, nsfwBlock, zoomEnabled }  from '../../libs/imageSettings.js'
+import {
+  altTestBlock, citationBlock, citationURL,
+  citationRender, nsfwBlock, zoomEnabled,
+  newPage }           from '../../libs/imageSettings.js'
 
 const
   altTextRequest = (obj) => {
@@ -43,6 +45,7 @@ const
             citationBlock,
             citationURL,
             nsfwBlock,
+            newPage,
           ],
         }],
       }, {

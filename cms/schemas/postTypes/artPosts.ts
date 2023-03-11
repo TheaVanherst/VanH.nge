@@ -63,6 +63,7 @@ const
       defineField({
         name: 'publishedAt', title: 'Published at',
         type: 'datetime',
+        validation: Rule => Rule.required(),
         initialValue: (new Date()).toISOString()
       }),
     ],

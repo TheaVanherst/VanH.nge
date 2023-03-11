@@ -1,12 +1,14 @@
 <script>
     import { onMount } from "svelte";
-    import CitationBlock from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
+    import CitationBlock from "$lib/serializer/types/citationBlock.svelte";
 
     // this checks if it's a portable text comp or a manual request from a component -
 	// and streamlines it into the same type of data, so it can be requested at will.
     export let portableText = null;
     export let margin = 10;
     let value = portableText?.value ? portableText?.value : portableText;
+
+    console.log(portableText);
 
     const sideArr = [
         "Left ",	"Right ",	"Centre "];
@@ -26,7 +28,8 @@
         return [cite,
 				value.images[i].alt,
 				value.images[i].citation,
-				value.images[i].citeURL];
+				value.images[i].citeURL,
+				value.images[i].blank];
     };
 
     const

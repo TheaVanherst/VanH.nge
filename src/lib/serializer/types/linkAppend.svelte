@@ -9,10 +9,16 @@
     let focus =     '_blank';
     let internal =  false;
 
+    console.log(value);
+
     const
-        search = (slug) => {    return (navigation.find(e => e.local === slug)).path;},
-        target = () => {        return value?.blank ? '_blank' : '_self';},
-        reference = () => {     if (internal && focus === '_self') {urlChanger(url);}};
+        search = (slug) => {
+            return (navigation.find(e => e.local === slug)).path;},
+        target = () => {
+            return value?.blank ? '_blank' : '_self';},
+        reference = () => {
+            if (internal && focus === '_self') {
+                urlChanger(url);}};
 
     if (value) {
         if (value._type === "internalLink"){
@@ -27,8 +33,8 @@
             url = value.href;}}
     else {
         //manually inserted links
-        focus = target();
-        url = portableText;
+        url =   portableText[0];
+        focus = portableText[1] ? '_blank' : '_self';
     }
 </script>
 

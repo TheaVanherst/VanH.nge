@@ -34,13 +34,11 @@
                                 </LinkAppend>
                             </span>
                         {:else if comment[3]}
-                            <span>
-                                <LinkAppend portableText={comment[3]}>
-                                    <sup>
-                                        [ref]
-                                    </sup>
+                            <sup>
+                                <LinkAppend portableText={[comment[3], comment[4]]}>
+                                    [ ]
                                 </LinkAppend>
-                            </span>
+                            </sup>
                         {/if}
                     </div>
                 {/if}
@@ -51,8 +49,11 @@
 
 <style lang="scss">
 
-    * {
+    span {
         font-size:      12px;
+    }
+
+    * {
         ::selection {
             background-color: 	var(--darkAccent1)!important;}
     }
@@ -62,8 +63,15 @@
 
         .GalleryCite {
             margin: 5px 0 5px 5px;
+            display: table;
 
             .citation {
+                display: table-row;
+
+                > * {
+                    vertical-align: top;
+                }
+
                 .position {
                     color: var(--darkAccent1);}
                 .comment {

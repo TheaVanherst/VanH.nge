@@ -1,6 +1,6 @@
 <script>
     import SanityImage      from '$lib/serializer/imageBuilder.svelte'
-    import CommentBlock     from "$lib/serializer/types/galleryTypes/citationBlock.svelte";
+    import CommentBlock     from "$lib/serializer/types/citationBlock.svelte";
 
     export let portableText = "";
 

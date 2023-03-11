@@ -30,8 +30,14 @@ const
       type: 'boolean',
       initialValue: false,
       description: 'Should we enable zooming of images?',
-    };
+    },
+    newPage = {
+      name: 'blank',     title: 'Open in new page',
+      type: 'boolean',
+      initialValue: true,
+      description: 'Should we open a new page on link click?',
+    }
 
-export { nsfwBlock, zoomEnabled };
+export { nsfwBlock, zoomEnabled, newPage };
 export { altTestBlock, citationBlock, citationURL };
 export { citationRender }
