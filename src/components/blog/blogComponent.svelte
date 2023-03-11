@@ -11,9 +11,9 @@
 <Container overflowBool="{false}" id="post-{post.slug}" colour="orange">
     <HeaderModule
             titleHeader={post.headerImage}	title={post.title}  subtitle={post._id}
-            createdOn={post.createdWhen}	updatedOn={post._updatedAt}
+            createdOn={post.publishedAt}	updatedOn={post._updatedAt}
             editor={post.editor}            author={post.author}/>
-    <TagModule time="{post._createdAt}" tags={post.categories}/>
+    <TagModule time="{post.publishedAt}"    tags={post.categories}/>
     <PostModule
             postData="{post.body}"/>
 </Container>

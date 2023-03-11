@@ -4,7 +4,7 @@
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc
     export let tags = [];   // forms array as a fallback to check the length of later
 
-    if (tags.length > 0) { //causes errors on reload if you don't have this
+    if (tags.length > 1) { //causes errors on reload if you don't have this
         for (let i in tags){
             if (tags[i]._type === "category"){ //this is dumb, but it "works".
                 tags.unshift(tags.splice(i, 1)[0]);}
@@ -28,7 +28,7 @@
 
     <div class="tagWrapper"
          bind:this={carousel}
-         on:scroll={() => x=carousel.scrollLeft}>
+         on:scroll={() => x = carousel.scrollLeft}>
 
         <div class="tagSleeve">
             {#if relativeTime(new Date(time)) / 86400 < 14}
@@ -39,24 +39,25 @@
                 </div>
             {/if}
 
-            {#if tags.length > 1}
-                {#each tags as tag, i}
-                    <div class:highlight={tag._type === "category"}
-                         class="tag category">
-                                <span class="hov">
-                                    {tag.title}
-                                </span>
+            {#if tags?.[0] !== undefined} <!-- prevents errors, lol -->
+                {#if tags.length > 1}
+                    {#each tags as tag, i}
+                        <div class:highlight={tag._type === "category"}
+                             class="tag category">
+                            <span class="hov">
+                                {tag.title}
+                            </span>
+                        </div>
+                    {/each}
+                {:else}
+                    <div class:highlight={tags[0]._type === "category"}
+                        class="tag category">
+                            <span class="hov">
+                                {tags[0].title}
+                            </span>
                     </div>
-                {/each}
-            {:else if tags.length === 1}
-                <div class:highlight={tags[0]._type === "category"}
-                    class="tag category">
-                        <span class="hov">
-                            {tags[0].title}
-                        </span>
-                </div>
+                {/if}
             {/if}
-
         </div>
     </div>
 </div>

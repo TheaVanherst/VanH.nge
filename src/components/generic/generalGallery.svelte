@@ -19,12 +19,12 @@
     <InvContainer>
         <AuthorTag
             preview={true}  social={post.author.socialMedia}
-            content="{createdPush(post.createdWhen, 'shortDate')} by">
+            content="{createdPush(post.publishedAt, 'shortDate')} by">
             {post.author.handle}
         </AuthorTag>
     </InvContainer>
 
-    <TagModule time="{post.createdWhen}" tags={post.categories}/>
+    <TagModule time="{post.publishedAt}" tags={post.categories}/>
 
     {#if post?.collaborators?.length > 0}
         <p class="collaborators">

@@ -6,11 +6,7 @@ let query =
         
         title,
         
-        "createdWhen": 
-             select(
-                defined(publishedAt) => publishedAt,
-                defined(_createdAt) =>  _createdAt
-             ),
+        publishedAt,
         _updatedAt,
         
         categories[]->{

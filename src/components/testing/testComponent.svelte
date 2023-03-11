@@ -9,12 +9,7 @@
 </script>
 
 <Container overflowBool="{false}" id="post-{post.slug}" colour="orange">
-    <HeaderModule
-            titleHeader={post.headerImage}	title={post.title}          subtitle={post._id}
-            createdOn={post._createdAt}		updatedOn={post._updatedAt} publishedOn={post.publishedAt}
-            editor={post.editor}            author={post.author}/>
-    <TagModule
-            time="{post._createdAt}" tags="{post.catagory_tags}" />
-    <PostModule
-            postData="{post.body}"/>
+    <HeaderModule   titleHeader={post.headerImage}	title={post.title}/>
+    <TagModule      time="{post.publishedAt}"       tags="{post.catagory_tags}" />
+    <PostModule     postData="{post.body}"/>
 </Container>

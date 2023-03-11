@@ -7,11 +7,7 @@ let query =
         title,
         'headerImage': mainImage,
         
-        "createdWhen": 
-             select(
-                defined(publishedAt) => publishedAt,
-                defined(_createdAt) =>  _createdAt
-             ),
+        publishedAt,
         _updatedAt,
   
         editor-> {

@@ -8,5 +8,5 @@
 
 <Container colour="yellow" padding={5}>
     <ImageGallery margin={5} portableText={post.gallery}/>
-    <TagModule time="{post.createdWhen}" tags={post.categories}/>
+    <TagModule time="{post.publishedAt}" tags={post.categories}/>
 </Container>

@@ -20,20 +20,20 @@
             {#if post.editor}
                 <AuthorTag
                         preview={true} social={post.editor?.socialMedia}
-                        content="{updatedPush(post._updatedAt, post.createdWhen)} by">
+                        content="{updatedPush(post._updatedAt, post.publishedAt)} by">
                     {post.editor.handle}
                 </AuthorTag>
             {:else}
                 {#if post.author === post.editor}
                     <AuthorTag
                             preview={true} social={post.author?.socialMedia}
-                            content="{updatedPush(post._updatedAt, post.createdWhen)} by">
+                            content="{updatedPush(post._updatedAt, post.publishedAt)} by">
                         {post.author.handle}
                     </AuthorTag>
                 {:else}
                     <AuthorTag
                             preview={true} social={post.author?.socialMedia}
-                            content="{createdPush(post.createdWhen, 'shortDate')} by">
+                            content="{createdPush(post.publishedAt, 'shortDate')} by">
                         {post.author.handle}
                     </AuthorTag>
                 {/if}

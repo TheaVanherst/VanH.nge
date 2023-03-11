@@ -2,7 +2,7 @@
     import SanityImage from '$lib/serializer/imageBuilder.svelte'
 
     export let titleHeader = undefined;
-    export let title = undefined, subtitle = undefined;
+    export let title = undefined;
 
     let random = Math.floor(Math.random() * 3 + 1);
 </script>
