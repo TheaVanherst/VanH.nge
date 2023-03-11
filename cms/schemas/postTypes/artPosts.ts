@@ -2,6 +2,8 @@
 import { defineField, defineType }  from 'sanity'
 import { ImagesIcon }                from '@sanity/icons'
 
+import { publishDateAsc, publishDateDesc } from '../libs/sortOrder';
+
 const
   artPosts = defineType({
     name: 'artPost', title: 'Art Posts',
@@ -61,7 +63,13 @@ const
       defineField({
         name: 'publishedAt', title: 'Published at',
         type: 'datetime',
+        initialValue: (new Date()).toISOString()
       }),
+    ],
+
+    orderings: [
+      publishDateAsc,
+      publishDateDesc
     ],
 
     icon: ImagesIcon,
@@ -79,7 +87,7 @@ const
       },
       prepare(selection) {
         const { title, title0, title1, title2,
-                author0, author1, author2, media } = selection;
+                author0, author1, author2, media} = selection;
 
         const authors = [author0, author1, author2].filter(Boolean);
         const subtitle = authors.length > 0 ? `By ${authors.join(', ')}` : '';

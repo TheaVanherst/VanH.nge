@@ -1,7 +1,9 @@
 
 import { defineField, defineType }  from 'sanity'
 import { slugUniqueCheck }          from '../components/slugCheck'
-import { BlockContentIcon }             from '@sanity/icons'
+import { BlockContentIcon }         from '@sanity/icons'
+
+import { publishDateAsc, publishDateDesc }  from '../libs/sortOrder'
 
 const
   blogpost = defineType({
@@ -97,6 +99,11 @@ const
         type: 'string',
         validation: Rule => Rule.min(12).max(160)
       }),
+    ],
+
+    orderings: [
+      publishDateAsc,
+      publishDateDesc
     ],
 
     icon: BlockContentIcon,

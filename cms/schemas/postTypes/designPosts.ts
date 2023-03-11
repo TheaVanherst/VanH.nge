@@ -1,6 +1,7 @@
 
 import { defineField, defineType }  from 'sanity'
-import { DesktopIcon }                from '@sanity/icons'
+import { DesktopIcon }              from '@sanity/icons'
+import { publishDateAsc, publishDateDesc }  from '../libs/sortOrder'
 
 const
   artPosts = defineType({
@@ -68,6 +69,11 @@ const
         title: 'Published at',
         type: 'datetime',
       }),
+    ],
+
+    orderings: [
+      publishDateAsc,
+      publishDateDesc
     ],
 
     icon: DesktopIcon,

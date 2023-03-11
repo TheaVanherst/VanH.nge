@@ -1,7 +1,9 @@
 
 import { defineField, defineType }  from 'sanity'
 import { slugUniqueCheck }          from '../components/slugCheck'
-import { PresentationIcon }              from '@sanity/icons'
+import { PresentationIcon }         from '@sanity/icons'
+
+import { publishDateAsc, publishDateDesc }  from '../libs/sortOrder'
 
 export default defineType({
   name: 'post', title: 'Test Documents',
@@ -81,6 +83,11 @@ export default defineType({
       type: 'string',
       validation: Rule => Rule.min(12).max(160)
     }),
+  ],
+
+  orderings: [
+    publishDateAsc,
+    publishDateDesc
   ],
 
   icon: PresentationIcon,
