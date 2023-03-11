@@ -4,7 +4,7 @@
         id =            undefined;
 
     export let
-        padding =   10,
+        padding =   15,
         colour =    "green";
 </script>
 

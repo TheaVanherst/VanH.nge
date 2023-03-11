@@ -28,7 +28,9 @@
                             <span class="cite">
                                 Via;
                                 <LinkAppend portableText={comment[3]}>
-                                    {comment[2]}
+                                    <sup>
+                                        {comment[2]}
+                                    </sup>
                                 </LinkAppend>
                             </span>
                         {:else if comment[3]}
@@ -56,7 +58,7 @@
     }
 
     .parentCite {
-        margin-bottom: var(--containerPadding);
+        margin-bottom: 10px;
 
         .GalleryCite {
             margin: 5px 0 5px 5px;

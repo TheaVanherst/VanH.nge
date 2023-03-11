@@ -135,16 +135,6 @@
 		// then add the return sheet via; /lib/serializer/gallerytypes/[galleryFormat].svelte
 		// the case HAS to be equal to what the name is in the CMS.
     });
-
-    // this all checks to see if any content is in the array,
-	// if there's no content, don't display the citation block.
-    let displayBool = false;
-    () => {
-        for (let key in commentArray) {
-            if (commentArray[key].length > 0){
-                displayBool = true;
-                return;}}
-    };
 </script>
 
 {#if returnSheet}
@@ -157,12 +147,10 @@
 	</div>
 {/if}
 
-{#if displayBool}
-	{#if returnSheet}
-		<CitationBlock push={commentArray} titles={titles}/>
-	<!--{:else}-->
-	<!--	<div class="citePreview"></div>-->
-	{/if}
+{#if returnSheet}
+	<CitationBlock push={commentArray} titles={titles}/>
+{:else}
+	<div class="citePreview"></div>
 {/if}
 
 <style lang="scss">
