@@ -8,6 +8,7 @@
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	import { scrollPos } from '$lib/stores/accessibilityController';
+    import PageScrollWrapper 	from "$lib/handlers/pageScrollWrapper.svelte";
 
 	export let data = null;
 </script>
@@ -31,25 +32,32 @@
 	.layout {
 		margin: 	0 auto;
 		padding: 	var(--containerPadding);
-		gap: 		var(--containerPadding);
 
 		max-width:  1080px; // temporary
 		width: 		100%;
-
-		box-sizing: border-box;
 		display: 	flex;
+
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: 	border-box; /* Firefox, other Gecko */
+		box-sizing: 		border-box; /* Opera/IE 8+ */
 
 		> * {
 			display: 	block;
 			position:	relative;
 
-			&.nav {
-				max-width: 	300px;
-				width: 		25%;
-				min-width: 	220px;}
+			-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+			-moz-box-sizing: 	border-box; /* Firefox, other Gecko */
+			box-sizing: 		border-box; /* Opera/IE 8+ */
 
-			&.page {	//kinda lazy
-				width: 75%;}
+			&.nav {
+				max-width: 	25%;
+				width: 		25%;
+				min-width: 	25%;}
+			&.page {
+				padding-left: var(--containerPadding);
+
+				max-width: 	75%;
+				width: 		75%;}
 		}
 	}
 </style>

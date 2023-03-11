@@ -24,23 +24,23 @@
 
 	</div>
 	<div class="col3 col">
-		<Container colour={"red"} padding="{0}">
-			<div class="emergency red flashing">
-				<div class="bars"></div>
-				<div class="bars"></div>
-			</div>
+<!--		<Container colour={"red"} padding="{0}">-->
+<!--			<div class="emergency red flashing">-->
+<!--				<div class="bars"></div>-->
+<!--				<div class="bars"></div>-->
+<!--			</div>-->
 
-			<div class="emergencyWrapper flashing">
-				<div>
-					<p class="def red">EMERGENCY</p>
-				</div>
-			</div>
+<!--			<div class="emergencyWrapper flashing">-->
+<!--				<div>-->
+<!--					<p class="def red">EMERGENCY</p>-->
+<!--				</div>-->
+<!--			</div>-->
 
-			<div class="emergency red flashing">
-				<div class="bars"></div>
-				<div class="bars"></div>
-			</div>
-		</Container>
+<!--			<div class="emergency red flashing">-->
+<!--				<div class="bars"></div>-->
+<!--				<div class="bars"></div>-->
+<!--			</div>-->
+<!--		</Container>-->
 
 		<NervContainer
 				subtitle="CODE 202"

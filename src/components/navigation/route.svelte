@@ -20,38 +20,48 @@
     }
 </script>
 
-<div class="inline">
-    {#each $urlStoreArr as route, i}
-        <div class="wrapper"
-             class:transitioning={$loading}
-             class:clickable={i < $urlStoreArr.length - 1}>
-            <div class={$urlStoreArr[i]}
-                 on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-                {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                    <h1 class="dir">
-                        }
-                    </h1>
-                    <h1>
-                        {serializer(route)}
-                    </h1>
-                {:else}
-                    <h1>
-                        Vanh.art
-                    </h1>
-                {/if}
+<div class="router">
+    <div class="padding">
+        {#each $urlStoreArr as route, i}
+            <div class="wrapper"
+                 class:transitioning={$loading}
+                 class:clickable={i < $urlStoreArr.length - 1}>
+                <div class={$urlStoreArr[i]}
+                     on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+                    {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                        <h1 class="dir">
+                            }
+                        </h1>
+                        <h1>
+                            {serializer(route)}
+                        </h1>
+                    {:else}
+                        <h1>
+                            Vanh.art
+                        </h1>
+                    {/if}
+                </div>
             </div>
-        </div>
-    {/each}
+        {/each}
 
-    {#if $loading}
-        <LoadingBlinking/>
-    {/if}
+        {#if $loading}
+            <LoadingBlinking/>
+        {/if}
+    </div>
 </div>
 
 <style lang="scss">
-    .inline {
-        width:  calc(100% - (var(--containerPadding) * 2));
-        margin:  0 var(--containerPadding) var(--containerPadding);
+    .router {
+        width: 		100%;
+
+        margin:     0 0 var(--containerPadding);
+        background: var(--backgroundTrans);
+        overflow-x: scroll;
+
+        .padding {
+            padding:        10px;
+            white-space:    nowrap;
+        }
 
 	    .wrapper {
 		    &:not(:last-child){

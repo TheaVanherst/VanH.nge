@@ -5,8 +5,8 @@
 </script>
 
 <a href={push}
-   class:active={"/" + $urlStoreArr[1] === push}
-   on:click={urlChanger(push)}>
+   class:curRoot={"/" + $urlStoreArr[1] === push}
+   on:click={urlChanger("/" + $urlStoreArr[1] === push ? "/" : push)}>
     <div class="powerBar">
         <div class="left">
             <div class="highlight">
@@ -28,6 +28,16 @@
 </a>
 
 <style lang="scss">
+    $width: 40%;
+
+    @mixin cgm($colour, $highlight){
+        &:before {      color:      $highlight;}
+        .powerBar {
+            > div {     background: $colour;}
+            .highlight {background: $highlight;}}
+        .title {        border:     1px solid $highlight;
+            p {         color:      $highlight;}}}
+
     a {
         counter-increment:  section;
         padding-bottom:      10px;
@@ -38,7 +48,6 @@
             margin:    -10px 0 0 -10px;
 
             font-size:  10px;
-            color:      var(--accent3);
             content:    "D5" counter(section);
         }
 
@@ -47,31 +56,25 @@
             vertical-align: bottom;}
 
         .powerBar {
-            width:          40%;
+            width:          $width;
             margin-left:    10px;
-            overflow:       hidden;
-
-            transition: width .05s .5s ease-in-out, margin-left .05s ease-in-out;
+            transition:
+                width .05s .5s ease-in-out,
+                margin-left .05s ease-in-out;
 
             > div {
-                background: var(--accent1);
-                width:      50%;
+                width:      calc(100% - $width);
                 transition: margin-right .05s .5s ease-in-out;
 
                 .highlight {
                     width:      25px;
-                    height:     10px;
-                    background: var(--accent3);
-                }
-            }
-        }
+                    height:     10px;}}}
 
         .title {
             height:         23px;
             margin-left:    10px;
 
             background:     var(--background);
-            border:         1px solid var(--accent3);
 
             p {
                 margin:     auto 0;
@@ -79,29 +82,18 @@
                 transform:  scale(1, 1.2);
 
                 text-transform: uppercase;
-                color:          var(--accent3);
-                font-weight:    800;}
-        }
+                font-weight:    800;}}
 
-        @mixin cgm($colour){
-            .powerBar {
-                margin-left:    5px;
-                > div {     background: var(--darkAccent3);}}}
+        @include cgm(var(--accent1), var(--accent3));
 
-        &:hover {
-            .powerBar {
-                margin-left:    5px;
-                > div {     background: var(--darkAccent3);} } }
+        &:hover {       margin-left:    -5px;
+            @include cgm(var(--accent3), var(--darkAccent3));}
 
-        &.active {
-            .powerBar {
-                width:          calc(40% + 10px);
-                margin-left:    5px;
-
-                > div {     background:     var(--darkAccent4);}
-                .left {     margin-right:   10px;}
-                .highlight {background:     var(--darkAccent3);}}
-            &::before {     color:          var(--darkAccent3);}
-        }
+        &.curRoot {     margin-left:    -5px;
+            @include cgm(var(--darkAccent4), var(--darkAccent3));
+            .powerBar { width:          calc($width + 10px);
+                .left { margin-right:   10px;}}
+            &:hover {   margin-left:    0;
+                @include cgm(var(--accent3), var(--darkAccent3));}}
     }
 </style>
