@@ -36,7 +36,7 @@
                         {:else if comment[3]}
                             <sup>
                                 <LinkAppend portableText={[comment[3], comment[4]]}>
-                                    [ ]
+                                    []
                                 </LinkAppend>
                             </sup>
                         {/if}
@@ -50,8 +50,10 @@
 <style lang="scss">
 
     span {
-        font-size:      12px;
-    }
+        font-size:      12px;}
+    sup {
+        padding-left: 3px;
+        display: inherit;}
 
     * {
         ::selection {
@@ -66,7 +68,7 @@
             display: table;
 
             .citation {
-                display: table-row;
+                display: flex;
 
                 > * {
                     vertical-align: top;

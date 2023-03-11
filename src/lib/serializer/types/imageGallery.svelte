@@ -8,8 +8,6 @@
     export let margin = 10;
     let value = portableText?.value ? portableText?.value : portableText;
 
-    console.log(portableText);
-
     const sideArr = [
         "Left ",	"Right ",	"Centre "];
     const NumArr = [
@@ -24,7 +22,12 @@
 		commentArray = 	[],
 		titles = 		[];
 
+	let length = 		0;
+
 	const fetch = (cite,i) => {
+        if (value.images[i].alt[value.images[i].alt.length-1] === ".") {
+            value.images[i].alt = value.images[i].alt.slice(0,-1);} //removes fullstops at the end of the citation.
+
         return [cite,
 				value.images[i].alt,
 				value.images[i].citation,
@@ -39,6 +42,7 @@
 
 			for (let i in value.images) {
 				if (value.images[i].alt) {
+                    length++;
 					commentArray[0][i] = fetch(NumArr[i] + "image: ",i);
                 }}},
 
@@ -59,6 +63,7 @@
 						imageArray[e][i] = value.images[f];
 
 						if (value.images[f].alt) {
+                            length++;
                             let text = value.images.length === f + 1 && f % width === 0 ? sideArr[2] : sideArr[i];
                             commentArray[e][i] = fetch(text + "image: ", f);
                         }}}
@@ -87,6 +92,7 @@
 					if (value.images[f]) { //checks if image exists
 						imageArray[e][i] = value.images[f]; //assigns image to 2d arr
                         if (value.images[f].alt) { //checks for citation
+                            length++;
                             commentArray[e][i] = fetch(NumArr[i] + "image: ",f); //adds citation accordance of image arr
                         }}}
 
@@ -150,10 +156,12 @@
 	</div>
 {/if}
 
-{#if returnSheet}
+{#if returnSheet && length > 0}
+	{#if returnSheet}
 	<CitationBlock push={commentArray} titles={titles}/>
-{:else}
-	<div class="citePreview"></div>
+	{:else}
+		<div class="citePreview"></div>
+	{/if}
 {/if}
 
 <style lang="scss">

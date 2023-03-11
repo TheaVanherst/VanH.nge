@@ -58,8 +58,8 @@
         text-decoration:    underline 1px;
         font-weight:        600;
 
-        margin:         0 -.25rem;
-        padding:        0 .25rem;
+        margin:         0 -.15rem;
+        padding:        0 .15rem;
         box-shadow:     inset 0 0 0 0 var(--darkAccent3);
         color:          var(--accent3);
 

@@ -8,7 +8,6 @@
 	import Transition from "$lib/handlers/transitionWrapper.svelte";
 
 	import { scrollPos } from '$lib/stores/accessibilityController';
-    import PageScrollWrapper 	from "$lib/handlers/pageScrollWrapper.svelte";
 
 	export let data = null;
 </script>
