@@ -2,7 +2,7 @@
 	import PreviewBlogPost 		from "$components/testing/preview/previewComponent.svelte"
 	import TitleList 			from "$components/blog/preview/previewContentList.svelte"
 
-	import PageScrollWrapper 	from "$lib/handlers/pageScrollWrapper.svelte";
+	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;
 </script>

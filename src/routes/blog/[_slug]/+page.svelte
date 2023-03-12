@@ -1,7 +1,7 @@
 <script>
 	import BlogComponent  		from "$components/blog/blogComponent.svelte";
 	import Contents 			from '$components/blog/contentList.svelte';
-	import PageScrollWrapper 	from "$lib/handlers/pageScrollWrapper.svelte";
+	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;
 </script>

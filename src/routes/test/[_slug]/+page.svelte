@@ -3,7 +3,7 @@
     import GalleryComponent from "$components/generic/preview/previewGallery.svelte";
 
     import Contents 			from '$components/blog/contentList.svelte'
-	import PageScrollWrapper 	from "$lib/handlers/pageScrollWrapper.svelte";
+	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;
     let h = 0, w = 0;

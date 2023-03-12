@@ -26,19 +26,21 @@
 
                         {#if comment[2] && comment[3]}
                             <span class="cite">
-                                Via;
-                                <LinkAppend portableText={comment[3]}>
-                                    <sup>
-                                        {comment[2]}
-                                    </sup>
-                                </LinkAppend>
+                                , Via;
                             </span>
-                        {:else if comment[3]}
-                            <sup>
-                                <LinkAppend portableText={[comment[3], comment[4]]}>
-                                    []
+                            <sup class="referral">
+                                <LinkAppend portableText={comment[3]}>
+                                    {comment[2]}
                                 </LinkAppend>
                             </sup>
+                        {:else if comment[3]}
+                            <span class="cite">
+                                <sup class="referral">
+                                    <LinkAppend portableText={[comment[3], comment[4]]}>
+                                        [via]
+                                    </LinkAppend>
+                                </sup>
+                            </span>
                         {/if}
                     </div>
                 {/if}
@@ -69,17 +71,21 @@
 
             .citation {
                 display: flex;
-
                 > * {
                     vertical-align: top;
                 }
 
                 .position {
+                    white-space: nowrap;
+                    padding-right: 3px;
                     color: var(--darkAccent1);}
                 .comment {
                     color: var(--backgroundAccent1);}
                 .cite {
                     color: var(--backgroundAccent1);}
+                .referral {
+                    white-space: nowrap;
+                    padding-left: 5px;}
 
                 &:hover {
                     .position {
