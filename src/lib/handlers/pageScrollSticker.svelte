@@ -7,7 +7,7 @@
     let parent, element;
     let offset = undefined;
 
-    $: $scrollPos && !offset && element?.offsetParent ? reCalc() : undefined
+    $: element?.offsetParent && !offset && $scrollPos ? reCalc() : undefined
         // this jank as fuck and I can't think of an alternative.
         // I've spent 4 hours on this.
 
