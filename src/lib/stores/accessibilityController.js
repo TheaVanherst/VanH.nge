@@ -10,6 +10,3 @@ export { motion };
 
 const scrollPos = writable(0);
 export { scrollPos };
-
-const scrollOffset = writable(0);
-export { scrollOffset };

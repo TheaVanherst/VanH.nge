@@ -13,10 +13,13 @@
 
     beforeNavigate(() => {
         navigating.set(true);
+
         setTimeout(() => {
             navigating.set(false);
-        }, transTimeOut + 50);
+        }, transTimeOut + 150);
     });
+    // these are jank solutions, but generally work for the time being.
+    // this all needs being replaced with a history scraper.
 
     // transition types
     export let
@@ -57,8 +60,8 @@
 
 <style>
     div {
-        min-width: 100%;
-        max-width: 100%;
-        width: 100%;
+        min-width:  100%;
+        max-width:  100%;
+        width:      100%;
     }
 </style>

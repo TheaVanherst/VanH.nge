@@ -9,8 +9,6 @@
     let focus =     '_blank';
     let internal =  false;
 
-    console.log(value);
-
     const
         search = (slug) => {
             return (navigation.find(e => e.local === slug)).path;},
