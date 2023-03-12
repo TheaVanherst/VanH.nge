@@ -5,15 +5,20 @@
     export let max = 65535; //fallback (basically, infinite)
 
     let parent, element;
+    let offset = undefined;
 
-    $: element?.offsetParent ? reCalc() : undefined;
+    $: $scrollPos && !offset && element?.offsetParent ? reCalc() : undefined
+        // this jank as fuck and I can't think of an alternative.
+        // I've spent 4 hours on this.
+
     const reCalc = () => { //updates on element load.
-        let val = element?.offsetParent?.offsetTop + element?.parentNode?.offsetTop;
-            max = parseInt(max) + parseInt(val);
-            min = val;
-    };
+        let val = element?.offsetParent?.offsetTop;
+        max = parseInt(max) + val;
+        min = val;
+        offset = val;
 
-    $: console.log(min, max)
+        console.log(min)
+    };
 
     let sticky =    false; // sticks itself to the page
     let stuck =     false;  // sticks itself at the specified vertical offset
