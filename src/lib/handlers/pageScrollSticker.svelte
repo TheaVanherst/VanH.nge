@@ -1,20 +1,20 @@
 <script>
     import { scrollPos } from "$lib/stores/accessibilityController.js"
 
-    export let min = 0;
+    export let min = undefined;
     export let max = 65535; //fallback (basically, infinite)
 
     let parent;
     let w;
+    let bool = false;
 
-    $: parent ? reCalc() : undefined;
-        // I can't think of an alternative.
-        // I've spent 4 hours on this and don't want to spend more time.
+    $: !bool && !!parent?.offsetTop && $scrollPos ? reCalc() : undefined;
 
     const reCalc = () => { //updates on element load.
         let val = parent.offsetTop; // TODO: this MIGHT need fixing at a later date.
         max = parseInt(max) + val;
         min = val;
+        bool = true;
     };
 
     let sticky =    false; // sticks itself to the page
@@ -26,7 +26,7 @@
     } else if ($scrollPos > min && $scrollPos < (max + min)) {
         stuck =     false;
         sticky =    true;
-    } else {
+    } else if ($scrollPos > (max + min)) {
         stuck =     true;
         sticky =    false;
     }
@@ -47,6 +47,7 @@
     .scroller {
         width:      inherit;
         position:   absolute;
+        top:        0;
 
         &.sticky {
             position:       fixed;
