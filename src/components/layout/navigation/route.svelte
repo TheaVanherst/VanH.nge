@@ -4,8 +4,6 @@
     import navigation from "$lib/stores/navigationDirectories.js";
 
     let parent;
-    let fadeBool = false;
-
     let pw = 0, cw = 0, uw = undefined;
 
     const scrollToRight = async (node) => {
@@ -14,11 +12,9 @@
 
             setTimeout(() => {
                 uw = cw - 20;
-                fadeBool = false;
             }, 1000);}
         else {
-            uw = cw;
-            fadeBool = true;
+            uw = cw - 20;
 
             node.scroll({ left: uw, behavior: 'smooth' });
         }
@@ -43,7 +39,6 @@
 
 <div class="router">
     <div class="wrapper"
-         class:faded={pw < cw}
          bind:clientWidth={pw}
          bind:this={parent}>
 
@@ -107,7 +102,9 @@
         position:   relative;
         width:      min-content;
         padding:    10px;
-    }
+
+        .routeWidth {
+            width:  min-content;}}
 
 
     .router {
