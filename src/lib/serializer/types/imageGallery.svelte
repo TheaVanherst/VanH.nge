@@ -162,7 +162,7 @@
 			<CitationBlock push={commentArray} titles={titles}/>
 		</div>
 	{:else}
-		<div style="margin-bottom:{margin}px"
+		<div style="margin-bottom:{margin - 2}px"
 			 class="citePreview"></div>
 	{/if}
 {/if}

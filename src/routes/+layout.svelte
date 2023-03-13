@@ -30,6 +30,12 @@
 </div>
 
 <style lang="scss">
+	* {
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: 	border-box; /* Firefox, other Gecko */
+		box-sizing: 		border-box; /* Opera/IE 8+ */
+	}
+
 	.layout {
 		margin: 	0 auto;
 		padding: 	var(--containerPadding);
@@ -38,19 +44,11 @@
 		width: 		100%;
 		display: 	flex;
 
-		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-		-moz-box-sizing: 	border-box; /* Firefox, other Gecko */
-		box-sizing: 		border-box; /* Opera/IE 8+ */
-
 		gap: 15px;
 
 		> * {
 			display: 	block;
 			position:	relative;
-
-			-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-			-moz-box-sizing: 	border-box; /* Firefox, other Gecko */
-			box-sizing: 		border-box; /* Opera/IE 8+ */
 
 			&.nav {
 				max-width: 	25%;

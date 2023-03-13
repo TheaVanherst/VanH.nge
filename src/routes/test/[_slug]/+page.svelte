@@ -19,9 +19,7 @@
         <BlogComponent post={data.requestedProject[0]}/>
 	</div>
 
-	<div class="contents"
-		 bind:clientWidth={w}
-		 bind:clientHeight={h}>
+	<div class="contents">
 		<PageScrollWrapper>
 			<Contents list={data.requestedProject[0]}/>
 

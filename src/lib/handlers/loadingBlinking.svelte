@@ -1,17 +1,27 @@
 
-<div></div>
+<div class="loadingHolder">
+	<div class="loading">
+
+	</div>
+</div>
 
 <style lang="scss">
-	div {
+
+	.loadingHolder {
+		display: contents;
+		height: inherit;
+	}
+
+	.loading {
 		animation:      blinkUq .5s calc(0.2s) step-end infinite alternate;
 		vertical-align: top;
 		overflow:       hidden;
-        display:        inline-block;
+		display:        inline-block;
 		position:       relative;
-		border-right:   2px solid var(--textColour);
 
 		width:  min-content;
-		height: 32px;
+		height: calc(100% - 10px);
+		margin: 6px 0 4px 5px;
 		top:    -0px;
 		left:  -16px;
 	}

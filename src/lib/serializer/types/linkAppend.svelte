@@ -50,8 +50,8 @@
 {/if}
 
 <style lang="scss">
-    @mixin cgm($colour, $background){
-        box-shadow:     inset 0 0 0 0 $background;
+    @mixin cgm($size, $colour, $background){
+        box-shadow:     inset $size $size 0 0 $background;
         color:          $colour;}
 
     a {
@@ -66,13 +66,13 @@
         margin:         0 -2px;
         padding:        0 2px 0 1px;
 
-            @include cgm(var(--accent3), var(--darkAccent3));
+            @include cgm(0, var(--accent3), var(--darkAccent3));
 
         &:hover {
             text-decoration:    none;
-            @include cgm(var(--textColourInvert), var(--accent3));}
+            @include cgm(100px, var(--textColourInvert), var(--accent3));}
 
         &::selection {
-            @include cgm(var(--textColourInvert), var(--accent3));}
+            @include cgm(100px, var(--textColourInvert), var(--accent3));}
     }
 </style>
