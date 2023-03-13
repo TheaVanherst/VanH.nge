@@ -47,7 +47,6 @@
     .scroller {
         width:      inherit;
         position:   absolute;
-        top:        0;
 
         &.sticky {
             position:       fixed;

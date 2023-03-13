@@ -1,9 +1,30 @@
 <script>
-    import LoadingBlinking from '$lib/handlers/loadingBlinking.svelte'
-
     import { loading, urlStoreArr } from '$lib/stores/directoryController.js';
     import { urlChanger } from '$lib/stores/directoryController.js';
     import navigation from "$lib/stores/navigationDirectories.js";
+
+    let parent;
+    let fadeBool = false;
+
+    let pw = 0, cw = 0, uw = undefined;
+
+    const scrollToRight = async (node) => {
+        if (pw < uw) {
+            node.scroll({ left: 0, behavior: 'smooth' });
+
+            setTimeout(() => {
+                uw = cw;
+                fadeBool = false;
+            }, 1000);}
+        else {
+            uw = cw;
+            fadeBool = true;
+
+            node.scroll({ left: uw, behavior: 'smooth' });
+        }
+    };
+
+    $: cw !== uw && parent ? scrollToRight(parent) : undefined
 
     const serializer = (r) => {
         // this just calculates the publicly named directory via the sidebar names.
@@ -20,56 +41,76 @@
     }
 </script>
 
-<div class="content">
-    <div class="wrapper">
-        <div class="sleeve">
-            {#each $urlStoreArr as route, i}
-                <div class="routeBlock"
-                     class:transitioning={$loading}
-                     class:clickable={i < $urlStoreArr.length - 1}>
-                    <div class="{$urlStoreArr[i]} cell"
-                         on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-                        {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                            <h1 class="dir">
-                                }
-                            </h1>
-                            <h1>
-                                {serializer(route).replaceAll("-"," ")}
-                            </h1>
-                        {:else}
-                            <h1>
-                                Vanh.art
-                            </h1>
-                        {/if}
-                    </div>
-                </div>
-            {/each}
+<div class="router">
+    <div class="wrapper"
+         class:faded={pw < cw}
+         bind:clientWidth={pw}
+         bind:this={parent}>
 
-            {#if $loading}
-                <LoadingBlinking/>
-            {/if}
+        <div class="sleeve"
+             style="width: {uw}px">
+            <div class="routeWidth"
+                 bind:clientWidth={cw}>
+
+                {#each $urlStoreArr as route, i}
+                    <div class="routeBlock"
+                         class:transitioning={$loading}
+                         class:clickable={i < $urlStoreArr.length - 1}>
+                        <div class="{$urlStoreArr[i]} cell"
+                             on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+
+                            {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                                <h1 class="dir">
+                                    }
+                                </h1>
+                                <h1>
+                                    {serializer(route).replaceAll("-"," ")}
+                                </h1>
+                            {:else}
+                                <h1>
+                                    Vanh.art
+                                </h1>
+                            {/if}
+
+                        </div>
+                    </div>
+                {/each}
+
+            </div>
         </div>
+
     </div>
 </div>
 
 <style lang="scss">
     h1 {
         padding-right:  10px;
-        line-height: inherit;
-        display:    inline-block;}
+        line-height:    inherit;
+        display:        inline-block;}
 
     /* Scrollbar overflow preset */
-    .content {
+    .router {
         display:        grid;
+
+        //-webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 20%);
+
         .wrapper {
-            display:        grid;
-            overflow-x:     scroll;
-            white-space:    nowrap;
+            white-space:        nowrap;
+            overflow-x:         scroll;
 
-            .sleeve {
-                padding: 10px;}}}
+            -ms-overflow-style: none;       /* IE and Edge */
+            scrollbar-width:    none;       /* Firefox */
+            ::-webkit-scrollbar {
+                display:        none;}}}    /* Chrome, Safari and Opera */
 
-    .content {
+    .sleeve {
+        position:   relative;
+        width:      min-content;
+        padding:    10px;
+    }
+
+
+    .router {
         width:          100%;
         margin:         0 0 var(--containerPadding);
         background:     var(--backgroundTrans);
@@ -88,11 +129,13 @@
 
             &.clickable {
                 cursor:     alias;
-                opacity:    0.5;
-
-                &:hover {
-                    opacity: 1;}}
-
-            &.transitioning {
-                opacity:    0.3;}}}
+                                opacity:    0.5;
+                &:hover {       opacity:    1;}}
+            &.transitioning {   opacity:    0.3;}
+            &:not(.clickable) {
+                position: relative;
+                z-index: 99;
+            }
+        }
+    }
 </style>
