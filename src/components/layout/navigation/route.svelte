@@ -13,7 +13,7 @@
             node.scroll({ left: 0, behavior: 'smooth' });
 
             setTimeout(() => {
-                uw = cw;
+                uw = cw - 20;
                 fadeBool = false;
             }, 1000);}
         else {
