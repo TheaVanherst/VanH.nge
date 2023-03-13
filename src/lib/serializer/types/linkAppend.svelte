@@ -9,30 +9,36 @@
     let focus =     '_blank';
     let internal =  false;
 
+    // this is all a bit of a mess, and needs a recode tbh.
+    // imo, I would just separate the portable text link appender from the regular ref appender.
+
     const
-        search = (slug) => {
-            return (navigation.find(e => e.local === slug)).path;},
-        target = () => {
-            return value?.blank ? '_blank' : '_self';},
+        target = (r) => {
+            return r ? '_blank' : '_self';},
         reference = () => {
-            if (internal && focus === '_self') {
+            if (internal || focus === '_self') {
                 urlChanger(url);}};
 
     if (value) {
-        if (value._type === "internalLink"){
+        // checks if import is the serializer
+
+        if (value._type === "internalLink") {
+            // Internal URLS;
             if (value.postSlug){
-                // Internal URLS;
-                focus = target();
-                url = search(value.postFormat) + "/" + value.postSlug;
+                focus = target(value.blank);
+                url = (navigation.find(e => e.local === value.postFormat)).path + "/" + value.postSlug;
                 internal = true;}}
+
         else if (value._type === "externalLink") {
             // External URLS
-            focus = target();
-            url = value.href;}}
+            focus = target(value.blank);
+            url = value.href;
+        }}
+
     else {
         //manually inserted links
         url =   portableText[0];
-        focus = portableText[1] ? '_blank' : '_self';
+        focus = target(portableText[1]);
     }
 </script>
 
@@ -40,7 +46,7 @@
     <a class="redirect" on:click={reference} href={url} target={focus}>
         <slot />
     </a>
-{:else}
+{:else} <!-- this will appear on post previews -->
     <a class="nonClickable">
         <slot />
     </a>

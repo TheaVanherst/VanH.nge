@@ -147,7 +147,7 @@
 </script>
 
 {#if returnSheet}
-	<div style="margin-bottom:{margin}px">
+	<div style="margin-bottom:{length > 0 ? `${margin - 1}px` : '3px' }">
 		<svelte:component this={returnSheet} push="{imageArray}"/>
 	</div>
 {:else}
@@ -181,6 +181,8 @@
 	.gen2 {@include cgm(1/0.3, 3, 300%);}
 
 	.shimmer {
+		width: 	100%;
+
 		animation-duration: 	2s;
 		animation-fill-mode: 	forwards;
 		animation-name: 		placeHolderShimmer;
@@ -201,7 +203,6 @@
 
 		> * {
 			@extend .shimmer;
-			width: 		100%;
 			display: 	flex;
 		}
 	}
@@ -209,7 +210,6 @@
 	.citePreview {
 		@extend .shimmer;
 
-		width: 	100%;
 		height: 20px;
 		margin: var(--imageSpacing) 0;
 	}

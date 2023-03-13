@@ -6,7 +6,7 @@
 <div class="parentCite">
     {#each push as row, i}
         {#if titles[i] !== undefined}
-            <span>
+            <span class="title">
                 {titles[i]}
             </span>
         {/if}
@@ -66,37 +66,41 @@
         vertical-align: bottom;
         display: grid;
 
+        .title {
+            &:first-of-type {
+                margin-top: 5px;}}
+
         .GalleryCite {
             margin: 5px 0 5px 5px;
             display: table;
+        }
+    }
 
-            .citation {
-                display: flex;
-                > * {
-                    vertical-align: top;
-                }
+    .citation {
+        display: flex;
+        > * {
+            vertical-align: top;
+        }
 
-                .position {
-                    white-space: nowrap;
-                    padding-right: 3px;
-                    color: var(--darkAccent1);}
-                .comment {
-                    color: var(--backgroundAccent1);}
-                .cite {
-                    color: var(--backgroundAccent1);}
-                .referral {
-                    white-space: nowrap;
-                    padding-left: 5px;}
+        .position {
+            white-space: nowrap;
+            padding-right: 3px;
+            color: var(--darkAccent1);}
+        .comment {
+            color: var(--backgroundAccent1);}
+        .cite {
+            color: var(--backgroundAccent1);}
+        .referral {
+            white-space: nowrap;
+            padding-left: 5px;}
 
-                &:hover {
-                    .position {
-                        color: var(--accent1);}
-                    .comment {
-                        color: var(--textColour);}
-                    .cite {
-                        color: var(--accent1);}
-                }
-            }
+        &:hover {
+            .position {
+                color: var(--accent1);}
+            .comment {
+                color: var(--textColour);}
+            .cite {
+                color: var(--accent1);}
         }
     }
 </style>
