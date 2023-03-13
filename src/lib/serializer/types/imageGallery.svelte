@@ -5,7 +5,7 @@
     // this checks if it's a portable text comp or a manual request from a component -
 	// and streamlines it into the same type of data, so it can be requested at will.
     export let portableText = null;
-    export let margin = 10;
+    export let margin = 5;
     let value = portableText?.value ? portableText?.value : portableText;
 
     const sideArr = [
@@ -158,9 +158,12 @@
 
 {#if returnSheet && length > 0}
 	{#if returnSheet}
-	<CitationBlock push={commentArray} titles={titles}/>
+		<div style="margin-bottom:{margin}px">
+			<CitationBlock push={commentArray} titles={titles}/>
+		</div>
 	{:else}
-		<div class="citePreview"></div>
+		<div style="margin-bottom:{margin}px"
+			 class="citePreview"></div>
 	{/if}
 {/if}
 

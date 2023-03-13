@@ -19,7 +19,7 @@
 <div class="tags">
     <div class="lineDiv orange"></div>
 
-    <div class="lineScale green" style="--xPos:{x / 0.6 + 'px'}">
+    <div class="lineScale green" style="--xPos:{x / 0.6 + 'px'}">  <!-- scroll offset calc -->
         <div class="small"></div>
         <div class="medium"></div>
         <div class="large"></div>
@@ -31,11 +31,11 @@
          on:scroll={() => x = carousel.scrollLeft}>
 
         <div class="tagSleeve">
-            {#if relativeTime(new Date(time)) / 86400 < 14}
-                <div class="tag new">
-                        <span class="hov inv">
-                            🌈 NEW
-                        </span>
+            {#if relativeTime(new Date(time)) / 86400 < 14}  <!-- two weeks -->
+                <div class="tag category new">
+                    <span class="hov">
+                        🌈 NEW
+                    </span>
                 </div>
             {/if}
 
@@ -52,9 +52,9 @@
                 {:else}
                     <div class:highlight={tags[0]._type === "category"}
                         class="tag category">
-                            <span class="hov">
-                                {tags[0].title}
-                            </span>
+                        <span class="hov">
+                            {tags[0].title}
+                        </span>
                     </div>
                 {/if}
             {/if}
@@ -75,7 +75,11 @@
     }
 
     .tags {
-        margin:         5px 0 10px 0;
+        margin:     5px 0 10px 0;
+        font-size:  0;
+
+        vertical-align: top;
+        display:        grid;
 
         .tag {
             counter-increment: section;
@@ -85,9 +89,17 @@
             padding:        5px var(--containerPadding);
             margin:         16px 10px 0 0;
 
-            font-weight:    800;
+            //font-weight:    800;
             font-size:      12px;
             line-height:    12px;
+
+            //cursor:         pointer;
+
+            @mixin cgm($color) {
+                border:     1px solid $color;
+                color:      $color;
+                ::selection {
+                    background: $color!important;}}
 
             @mixin log($colour){
                 font-weight:    400;
@@ -96,16 +108,18 @@
                 border-left:    1px solid $colour;
                 color:          $colour;}
 
-            &:before {
-                @include log(var(--darkAccent3));
+                            @include cgm(var(--darkAccent3));
 
+            &.new {         @include cgm(var(--accent2));}
+            &.highlight {   @include cgm(var(--accent1));}
+            &:hover {       @include cgm(var(--accent3));}
+
+            &:before {      @include log(var(--darkAccent3));
                 margin-top:    -15px;
                 padding:        0 0 5px 5px;
                 content:        "+" counter(section);}
 
-            &:after {
-                @include log(var(--darkAccent3));
-
+            &:after {       @include log(var(--darkAccent3));
                 margin-top:     20px;
                 content:        " ";
                 height:         3px;}
@@ -114,42 +128,7 @@
                 margin-right: 0;}
         }
 
-        .category {
-	        cursor:         pointer;
-
-            &.tag {
-                border: 1px solid var(--darkAccent3);
-                color:  var(--darkAccent3);
-
-                ::selection {
-                    background: var(--darkAccent3)!important;}
-
-                &.highlight {
-                    border: 1px solid var(--accent1);
-                    color:  var(--accent1);
-
-                    ::selection {
-                        background: var(--accent1)!important;}}
-
-                &:hover {
-                    border: 1px solid var(--accent3);
-                    color:  var(--accent3);
-
-                    ::selection {
-                        background: var(--accent3)!important;}}
-            }
-        }
-
         &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    .new {
-        border: 1px solid var(--accent1);
-        color:  var(--accent1);
-        ::selection {
-            color: 		var(--accent1)!important;
-            background: var(--background)!important;}
+            margin-bottom: 0;}
     }
 </style>

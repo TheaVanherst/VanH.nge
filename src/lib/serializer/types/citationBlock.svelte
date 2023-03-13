@@ -63,7 +63,8 @@
     }
 
     .parentCite {
-        margin-bottom: 10px;
+        vertical-align: bottom;
+        display: grid;
 
         .GalleryCite {
             margin: 5px 0 5px 5px;

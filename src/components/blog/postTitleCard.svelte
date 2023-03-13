@@ -33,7 +33,7 @@
         align-items:    center;
         position:       relative;
 
-        margin-bottom:  var(--containerPadding);
+        //margin-bottom:  var(--containerPadding);
 
         > * {
             display:    inline-block;
