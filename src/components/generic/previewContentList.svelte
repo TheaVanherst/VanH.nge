@@ -12,7 +12,7 @@
     </TitleCard>
     <div>
         {#each list as data}
-            <p href="#post-{data.slug}" on:click|preventDefault={scrollIntoView}>
+            <p href="#{data.slug}" on:click|preventDefault={scrollIntoView}>
                 {data.title}
             </p>
         {/each}

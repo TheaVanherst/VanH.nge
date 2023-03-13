@@ -4,12 +4,18 @@ import query from "$lib/queries/blogPreviews"
 import { error } from '@sveltejs/kit';
 
 export const load = async () => {
-    const postData = await client.fetch(`*[_type == 'post'] | order(select(
-            defined(publishedAt) => publishedAt,
-            defined(_createdAt) => _createdAt
-        ) desc)[0..5] {${query}}`);
-    if (postData.length > 0) {
-        return [postData];
+    const allQueries = await client.fetch(`{
+        "postData":
+            *[  _type == 'post'
+            ]  | 
+            order (publishedAt desc )
+            [0..5]{
+                ${query}
+            }
+        }`);
+
+    if (allQueries.postData) {
+        return allQueries;
     } else {
         throw new error(404, "No return searches found.")
     }

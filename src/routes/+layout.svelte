@@ -1,11 +1,11 @@
 <script>
 	import '../styles.scss';
 
-	import Route from "$components/navigation/route.svelte"
-	import ProfileBar from "$components/navigation/profileBar.svelte";
-	import Background from "$components/layout/background.svelte"
+	import Route from 		"$components/layout/navigation/route.svelte"
+	import ProfileBar from 	"$components/layout/navigation/profileBar.svelte";
+	import Background from 	"$components/layout/background.svelte"
 
-	import Transition from "$lib/handlers/transitionWrapper.svelte";
+	import Transition from 	"$lib/handlers/transitionWrapper.svelte";
 
 	import { scrollPos } from '$lib/stores/accessibilityController';
 
@@ -17,7 +17,9 @@
 
 <div class="layout">
 	<div class="nav">
-		<ProfileBar/>
+		<div>
+			<ProfileBar/>
+		</div>
 	</div>
 	<div class="page">
 		<Route/>
@@ -51,7 +53,12 @@
 			&.nav {
 				max-width: 	25%;
 				width: 		25%;
-				min-width: 	25%;}
+				min-width: 	25%;
+
+				> div {
+					position: fixed;
+					width: inherit;}
+			}
 			&.page {
 				padding-left: var(--containerPadding);
 

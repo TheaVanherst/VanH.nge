@@ -8,12 +8,7 @@ export const load = async () => {
         "postData":
             *[  _type == 'blogPost'
             ]  | 
-            order (
-                select(
-                    defined(publishedAt) => publishedAt,
-                    defined(_createdAt) => _createdAt
-                ) 
-            desc )
+            order (publishedAt desc )
             [0..5]{
                 ${query}
             }

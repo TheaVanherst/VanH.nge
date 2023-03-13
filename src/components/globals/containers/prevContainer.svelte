@@ -1,10 +1,16 @@
 <script>
     import { urlChanger } from '$lib/stores/directoryController.js';
 
-    export let colour = "orange", hoverColour = "yellow", highlightColour = "red"
-    export let id = undefined;
+    export let
+		colour = "orange",
+		hoverColour = "yellow",
+		highlightColour = "red";
 
-    let hover = false, navigating = false;
+    export let
+		id = undefined;
+
+    let hover = false,
+		navigating = false;
 
     const simulateNavigation = () => {
         navigating =    true;
@@ -19,12 +25,12 @@
 </script>
 
 <a href="{urlDirect}"
+   id="{id}"
    class="previewContainer"
    on:mouseover={() => {hover = true}}
    on:mouseleave={() => {hover = false}}
    on:click={() => {urlChanger(urlDirect); simulateNavigation}}>
-	<div id={id}
-		 class="post {colour}
+	<div class="post {colour}
 			{(hoverColour ? ' h' + hoverColour : '') +
 			(highlightColour ? ' g' + highlightColour : '')}"
 

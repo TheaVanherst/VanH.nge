@@ -1,8 +1,8 @@
 <script>
-	import BlogPostPreview from "$components/blog/preview/previewComponent.svelte"
-	import GalleryComponent from "$components/generic/preview/previewGallery.svelte";
-    import Container from "$components/globals/containers/container.svelte";
-    import NervContainer from "$components/globals/containers/nervContainer.svelte";
+	import BlogPostPreview from 	"$components/blog/previewComponent.svelte"
+	import GalleryComponent from 	"$components/generic/previewGallery.svelte";
+    // import Container from 			"$components/globals/containers/container.svelte";
+    import NervContainer from 		"$components/globals/containers/nervContainer.svelte";
 
 	export let data = null;
     console.log(data);

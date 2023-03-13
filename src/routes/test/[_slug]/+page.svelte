@@ -1,6 +1,6 @@
 <script>
 	import BlogComponent  		from "$components/blog/blogComponent.svelte"
-    import GalleryComponent from "$components/generic/preview/previewGallery.svelte";
+    import GalleryComponent from "$components/generic/previewGallery.svelte";
 
     import Contents 			from '$components/blog/contentList.svelte'
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
