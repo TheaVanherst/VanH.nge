@@ -42,6 +42,8 @@
 		-moz-box-sizing: 	border-box; /* Firefox, other Gecko */
 		box-sizing: 		border-box; /* Opera/IE 8+ */
 
+		gap: 15px;
+
 		> * {
 			display: 	block;
 			position:	relative;
@@ -54,13 +56,8 @@
 				max-width: 	25%;
 				width: 		25%;
 				min-width: 	25%;
-
-				> div {
-					position: fixed;
-					width: inherit;}
 			}
 			&.page {
-				padding-left: var(--containerPadding);
 
 				max-width: 	75%;
 				width: 		75%;}

@@ -7,20 +7,19 @@
 </script>
 
 <div class="content">
-	<div class="col2">
-		{#each data.postData as post, i}
+	<div class="page">
+		{#each data.postRequests as post, i}
 			<div>
 				<PreviewBlogPost post={post}/>
 			</div>
 		{/each}
 	</div>
-	<div class="col3">
+	<div class="contents">
 		<PageScrollWrapper>
-			<TitleList list={data.postData}/>
+			<TitleList list={data.postRequests}/>
 		</PageScrollWrapper>
 	</div>
 </div>
-
 
 <style lang="scss">
 	.content {
@@ -28,13 +27,6 @@
 		gap: 		var(--containerPadding);
 		display: 	inline-flex;
 
-		> * {
-			height: 	max-content;
-			display: 	block;
-			position: 	relative;
-
-			&.col2 { width:	70%;}
-			&.col3 { width: 30%;}
-		}
-	}
+		.page { 	width:	70%;}
+		.contents { width: 	30%;} }
 </style>

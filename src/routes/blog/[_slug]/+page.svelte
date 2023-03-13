@@ -7,12 +7,12 @@
 </script>
 
 <div class="content">
-	<div class="col2 col">
-        <BlogComponent post={data[0]}/>
+	<div class="page">
+        <BlogComponent post={data.requestedProject[0]}/>
 	</div>
-	<div class="col3 col">
+	<div class="contents">
 		<PageScrollWrapper>
-			<Contents list={data[0]}/>
+			<Contents list={data.requestedProject[0]}/>
 		</PageScrollWrapper>
 	</div>
 </div>
@@ -24,13 +24,6 @@
 		gap: 		var(--containerPadding);
 		display: 	inline-flex;
 
-		.col {
-			height: 	max-content;
-			display: 	block;
-			position: 	relative;
-
-			&.col2 { width:	70%;}
-			&.col3 { width: 30%;}
-		}
-	}
+		.page { 	width:	70%;}
+		.contents { width: 	30%;} }
 </style>

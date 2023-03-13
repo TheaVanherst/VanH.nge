@@ -1,6 +1,6 @@
 
 import client from "$lib/sanityClient.js";
-import query from "$lib/queries/artPosts"
+import { artQuery } from "$lib/queries/galleryPosts.js"
 
 import { error } from '@sveltejs/kit';
 
@@ -9,7 +9,7 @@ export const load = async () => {
         "postRequests": 
             *[ _type == 'artPost'
             ] | order(publishedAt desc)[0..20] {
-                ${query}
+                ${artQuery}
             }
     }`);
 

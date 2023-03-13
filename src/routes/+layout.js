@@ -12,7 +12,7 @@ export const load = async () => {
                 'fullName': fullName,
                 'twitter': twitterURL,
             }
-        }`);
+    }`);
 
     if (allQueries.userData) {
         return allQueries;

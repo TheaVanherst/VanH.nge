@@ -1,7 +1,7 @@
 
 import client from "$lib/sanityClient.js";
-import blogQuery from "$lib/queries/blogPreviews.js"
-import artQuery from "$lib/queries/artPosts.js";
+import { blogPreviewQuery } from "$lib/queries/blogPosts"
+import { artQuery } from "$lib/queries/galleryPosts.js";
 
 import { error } from '@sveltejs/kit';
 
@@ -10,15 +10,15 @@ export const load = async () => {
         "featuredProject":
             *[ _type == "artPost" && 
                 "📌 Pinned" in categories[] -> title
-            ] | order(publishedAt) desc)
+            ] | order(publishedAt desc)
             {
-                ${artQuery}
+                ${ artQuery }
             },
         "featuredBlogPosts": 
             *[ _type == "blogPost" && 
                 "📌 Pinned" in categories[] -> title
-            ] | order(publishedAt) desc){
-                ${blogQuery}
+            ] | order(publishedAt desc){
+                ${ blogPreviewQuery }
             }
     }`);
 

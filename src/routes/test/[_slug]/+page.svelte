@@ -9,12 +9,17 @@
     let h = 0, w = 0;
 </script>
 
+<svelte:head>
+	<title>Test</title>
+	<meta name="description" content="Blog posts"/>
+</svelte:head>
+
 <div class="content">
-	<div class="left">
+	<div class="page">
         <BlogComponent post={data.requestedProject[0]}/>
 	</div>
 
-	<div class="right"
+	<div class="contents"
 		 bind:clientWidth={w}
 		 bind:clientHeight={h}>
 		<PageScrollWrapper>
@@ -43,20 +48,12 @@
 	</div>
 </div>
 
-
 <style lang="scss">
 	.content {
 		width: 		100%;
 		gap: 		var(--containerPadding);
 		display: 	inline-flex;
 
-		> * {
-			height: 	max-content;
-			display: 	block;
-			position: 	relative;
-
-			&.left { width:	70%;}
-			&.right { width: 30%;}
-		}
-	}
+		.page { 	width:	70%;}
+		.contents { width: 	30%;} }
 </style>

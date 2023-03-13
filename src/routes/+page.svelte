@@ -5,7 +5,6 @@
     import NervContainer from 		"$components/globals/containers/nervContainer.svelte";
 
 	export let data = null;
-    console.log(data);
 </script>
 
 <div class="content">
