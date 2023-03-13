@@ -5,17 +5,16 @@
     export let max = 65535; //fallback (basically, infinite)
 
     let parent;
-    let offset = undefined; // this just prevents constant recalcing until value is found.
+    let w;
 
-    $: parent && !offset && $scrollPos ? reCalc() : undefined
+    $: parent ? reCalc() : undefined;
         // I can't think of an alternative.
         // I've spent 4 hours on this and don't want to spend more time.
 
     const reCalc = () => { //updates on element load.
-        let val = parent?.offsetTop; // TODO: this MIGHT need fixing at a later date.
+        let val = parent.offsetTop; // TODO: this MIGHT need fixing at a later date.
         max = parseInt(max) + val;
         min = val;
-        offset = val;
     };
 
     let sticky =    false; // sticks itself to the page
@@ -33,10 +32,11 @@
     }
 </script>
 
-<div bind:this={parent}>
+<div bind:this={parent} bind:clientWidth={w}>
     <div
         class="scroller"
-        style="--topOffset: {max}px;"
+        style="--topOffset: {max}px; width: {w}px"
+
         class:sticky={sticky}
         class:stuck={stuck}>
         <slot/>
@@ -49,7 +49,6 @@
         position:   absolute;
 
         &.sticky {
-            padding-right:  var(--containerPadding);
             position:       fixed;
             top:            var(--containerPadding);}
 
