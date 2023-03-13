@@ -9,9 +9,6 @@
     let focus =     '_blank';
     let internal =  false;
 
-    // this is all a bit of a mess, and needs a recode tbh.
-    // imo, I would just separate the portable text link appender from the regular ref appender.
-
     const
         target = (r) => {
             return r ? '_blank' : '_self';},
@@ -53,6 +50,10 @@
 {/if}
 
 <style lang="scss">
+    @mixin cgm($colour, $background){
+        box-shadow:     inset 0 0 0 0 $background;
+        color:          $colour;}
+
     a {
         position:   relative;
 
@@ -64,18 +65,14 @@
 
         margin:         0 -2px;
         padding:        0 2px 0 1px;
-        box-shadow:     inset 0 0 0 0 var(--darkAccent3);
-        color:          var(--accent3);
+
+            @include cgm(var(--accent3), var(--darkAccent3));
 
         &:hover {
             text-decoration:    none;
-            box-shadow:         inset 0 0 100px 0 var(--accent3);
-            color:              var(--textColourInvert);
-        }
+            @include cgm(var(--textColourInvert), var(--accent3));}
 
         &::selection {
-            color:      var(--background);
-            background: var(--accent3)
-        }
+            @include cgm(var(--textColourInvert), var(--accent3));}
     }
 </style>

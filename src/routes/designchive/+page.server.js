@@ -10,10 +10,7 @@ export const load = async () => {
             *[
                 _type == 'designPost'
             ] | 
-            order(select(
-                defined(publishedAt) => publishedAt,
-                defined(_createdAt) => _createdAt
-            ) desc)[0..20] {
+            order(publishedAt desc)[0..20] {
                 ${query}
             }
     }`);

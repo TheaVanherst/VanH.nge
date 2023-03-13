@@ -208,8 +208,7 @@
 	}
 
 	.citePreview {
-		@extend .shimmer;
-
+			@extend .shimmer;
 		height: 20px;
 		margin: var(--imageSpacing) 0;
 	}

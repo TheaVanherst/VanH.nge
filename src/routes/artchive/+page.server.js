@@ -7,13 +7,8 @@ import { error } from '@sveltejs/kit';
 export const load = async () => {
     const allQueries = await client.fetch(`{
         "postRequests": 
-            *[
-                _type == 'artPost'
-            ] | 
-            order(select(
-                defined(publishedAt) => publishedAt,
-                defined(_createdAt) => _createdAt
-            ) desc)[0..20] {
+            *[ _type == 'artPost'
+            ] | order(publishedAt desc)[0..20] {
                 ${query}
             }
     }`);

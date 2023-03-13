@@ -8,24 +8,16 @@ import { error } from '@sveltejs/kit';
 export const load = async () => {
     const allQueries = await client.fetch(`{
         "featuredProject":
-            *[  _type == "artPost" && 
+            *[ _type == "artPost" && 
                 "📌 Pinned" in categories[] -> title
-            ] | 
-            order( select(
-                defined(publishedAt) => publishedAt,
-                defined(_createdAt) => _createdAt
-            ) desc)
+            ] | order(publishedAt) desc)
             {
                 ${artQuery}
             },
         "featuredBlogPosts": 
-            *[  _type == "blogPost" && 
+            *[ _type == "blogPost" && 
                 "📌 Pinned" in categories[] -> title
-            ] | 
-            order( select(
-                defined(publishedAt) => publishedAt,
-                defined(_createdAt) => _createdAt
-            ) desc){
+            ] | order(publishedAt) desc){
                 ${blogQuery}
             }
     }`);

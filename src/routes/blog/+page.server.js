@@ -6,9 +6,8 @@ import { error } from '@sveltejs/kit';
 export const load = async () => {
     const allQueries = await client.fetch(`{
         "postData":
-            *[  _type == 'blogPost'
-            ]  | 
-            order (publishedAt desc )
+            *[ _type == 'blogPost'
+            ] | order(publishedAt desc )
             [0..5]{
                 ${query}
             }
