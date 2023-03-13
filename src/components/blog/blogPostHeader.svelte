@@ -7,15 +7,14 @@
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 
     export let
-            createdOn =     null,
-            updatedOn =     null;
+        createdOn =     null,
+        updatedOn =     null;
     export let
-            titleHeader =   null,
-            title =         null,
-            subtitle =      null;
+        titleHeader =   null,
+        title =         null;
     export let
-            author =        null,
-            editor =        null;
+        author =        null,
+        editor =        null;
 </script>
 
 <header>
@@ -35,9 +34,13 @@
     </div>
 
     <div class="date">
-        <p class="createdOn">{createdPush(createdOn)}</p>
+        <p class="createdOn">
+            {createdPush(createdOn)}
+        </p>
         {#if updatedOn}
-            <p class="updatedOn">{updatedPush(updatedOn, createdOn)}</p>
+            <p class="updatedOn">
+                {updatedPush(updatedOn, createdOn)}
+            </p>
         {/if}
     </div>
 

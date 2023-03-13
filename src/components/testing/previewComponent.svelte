@@ -13,10 +13,10 @@
     export let post = null;
 </script>
 
-<PreviewContainer hoverBool="{true}" urlDirect={'/test/' + post.slug} id={post.slug}>
-    <PostHeader titleHeader={post.headerImage}	title={post.title}/>
+<PreviewContainer    urlDirect={'/test/' + post.slug}   id={post.slug}>
+    <PostHeader     titleHeader={post.headerImage}	    title={post.title}/>
 
-    <InvContainer overflowBool={false} colour="green">
+    <InvContainer colour="green">
         {#if post.editor}
             {#if post.author === post.editor}
                 <AuthorTag

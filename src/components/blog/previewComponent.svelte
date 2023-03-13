@@ -15,7 +15,7 @@
 <PreviewContainer urlDirect={'/blog/' + post.slug} id="{post.slug}">
     <PostHeader titleHeader={post.headerImage}	title={post.title}/>
 
-    <InvContainer overflowBool={false} colour="green">
+    <InvContainer colour="green">
         {#if post.editor}
             <AuthorTag
                     preview={true} social={post.editor?.socialMedia}

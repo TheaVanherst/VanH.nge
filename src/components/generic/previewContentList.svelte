@@ -30,7 +30,5 @@
 		padding:    0 0 10px 0;
 
         &:last-of-type {
-            padding:    0;
-        }
-	}
+            padding:    0;}}
 </style>

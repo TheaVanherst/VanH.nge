@@ -45,6 +45,8 @@
 
         .headerBackground {
             position:   absolute;
+            width:      100%; // this retains the image to it's max size
+                // relative to the container. DON'T REMOVE.
         }
     }
 </style>

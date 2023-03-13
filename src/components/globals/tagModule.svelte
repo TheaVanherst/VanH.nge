@@ -16,7 +16,7 @@
     let x;
 </script>
 
-<div class="tags">
+<div class="content">
     <div class="lineDiv orange"></div>
 
     <div class="lineScale green" style="--xPos:{x / 0.6 + 'px'}">  <!-- scroll offset calc -->
@@ -63,6 +63,8 @@
 </div>
 
 <style lang="scss">
+
+    /* Scrollbar overflow preset */
     .tagWrapper {
         display:    grid;
         overflow-x: scroll;
@@ -70,16 +72,10 @@
         .tagSleeve {
             display:        inline-block;
             white-space:    nowrap;
-            min-width:      100%;
-        }
-    }
+            min-width:      100%;}}
 
-    .tags {
+    .content {
         margin:     5px 0 10px 0;
-        font-size:  0;
-
-        vertical-align: top;
-        display:        grid;
 
         .tag {
             counter-increment: section;

@@ -33,7 +33,6 @@
         {list.title}
     </TitleCard>
 
-
     <div>
         {#each list.titles as title, i}
             <p href="#header-{title._key}"
@@ -53,8 +52,7 @@
 
 <style lang="scss">
     div {
-        padding: var(--containerPadding);
-    }
+        padding: var(--containerPadding);}
 
     p {
 	    cursor:     alias;
@@ -63,23 +61,13 @@
         padding-bottom: 5px;
 
 	    &:last-of-type {
-		    padding: 0 0 0 0;
-	    }
+		    padding: 0 0 0 0;}
 
-	    &.e0 {
-		    margin-left: 0;
+	    &.e0 {  margin-left: 0px;
 		    &:not(:first-of-type){
-			    margin-top: 2px;
-		    }
-        }
-	    &.e1 {
-		    margin-left: 10px;
-        }
-	    &.e2 {
-		    margin-left: 20px;
-        }
-	    &.e3 {
-		    margin-left: 35px;
-        }
+			    margin-top: 2px;}}
+	    &.e1 {  margin-left: 10px;}
+	    &.e2 {  margin-left: 20px;}
+	    &.e3 {  margin-left: 35px;}
     }
 </style>

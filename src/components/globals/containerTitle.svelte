@@ -18,11 +18,12 @@
         &.red {     background: var(--darkAccent4);}
 
 	    p {
-            font-family: "Arimo", sans-serif;
-		    padding:    10px 15px 10px 15px;
-
+            font-size:      100%;
+            font-family:    "Arimo", sans-serif;
 		    color:          var(--textColourInvert);
             font-weight:    800;
+
+            padding:        10px 15px 10px 15px;
 	    }
     }
 </style>

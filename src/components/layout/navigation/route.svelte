@@ -20,75 +20,79 @@
     }
 </script>
 
-<div class="router">
-    <div class="padding">
-        {#each $urlStoreArr as route, i}
-            <div class="wrapper"
-                 class:transitioning={$loading}
-                 class:clickable={i < $urlStoreArr.length - 1}>
-                <div class={$urlStoreArr[i]}
-                     on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-                    {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                        <h1 class="dir">
-                            }
-                        </h1>
-                        <h1>
-                            {serializer(route).replaceAll("-"," ")}
-                        </h1>
-                    {:else}
-                        <h1>
-                            Vanh.art
-                        </h1>
-                    {/if}
+<div class="content">
+    <div class="wrapper">
+        <div class="sleeve">
+            {#each $urlStoreArr as route, i}
+                <div class="routeBlock"
+                     class:transitioning={$loading}
+                     class:clickable={i < $urlStoreArr.length - 1}>
+                    <div class="{$urlStoreArr[i]} cell"
+                         on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+                        {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                            <h1 class="dir">
+                                }
+                            </h1>
+                            <h1>
+                                {serializer(route).replaceAll("-"," ")}
+                            </h1>
+                        {:else}
+                            <h1>
+                                Vanh.art
+                            </h1>
+                        {/if}
+                    </div>
                 </div>
-            </div>
-        {/each}
+            {/each}
 
-        {#if $loading}
-            <LoadingBlinking/>
-        {/if}
+            {#if $loading}
+                <LoadingBlinking/>
+            {/if}
+        </div>
     </div>
 </div>
 
 <style lang="scss">
-    .router {
-        width: 		100%;
+    h1 {
+        padding-right:  10px;
+        line-height: inherit;
+        display:    inline-block;}
 
-        margin:     0 0 var(--containerPadding);
-        background: var(--backgroundTrans);
-        overflow-x: scroll;
+    /* Scrollbar overflow preset */
+    .content {
+        display:        grid;
+        .wrapper {
+            display:        grid;
+            overflow-x:     scroll;
+            white-space:    nowrap;
+
+            .sleeve {
+                padding: 10px;}}}
+
+    .content {
+        width:          100%;
+        margin:         0 0 var(--containerPadding);
+        background:     var(--backgroundTrans);
         text-transform: capitalize;
 
-        .padding {
-            padding:        10px;
-            white-space:    nowrap;
-        }
+        .routeBlock {
+            display:        inline-block;
+            transition:     opacity .3s ease-in-out;
 
-	    .wrapper {
-		    &:not(:last-child){
-			    padding-right:  10px;}}
+            > div {
+                display: flex;
 
-        .dir {
-		    top:    -4px;}
+                .dir {
+                    display: block;
+                    top:    -2px;}}
 
-        h1 {
-	        display:    inline-block;}
-    }
+            &.clickable {
+                cursor:     alias;
+                opacity:    0.5;
 
-    .wrapper {
-	    transition: opacity .3s ease-in-out;
-        display:    inline-block;
-        position:   relative;
+                &:hover {
+                    opacity: 1;}}
 
-	    &.clickable {
-		    cursor:     alias;
-		    opacity:    0.5;
-
-		    &:hover {
-			    opacity: 1;}
-	    }
-
-	    &.transitioning {
-		    opacity:    0.3;}
-    }
+            &.transitioning {
+                opacity:    0.3;}}}
 </style>
