@@ -26,41 +26,24 @@
 <style lang="scss">
     .titleCard {
         overflow:       hidden;
-        width:          100%;
-
         display:        flex;
-        column-count:   2;
         align-items:    center;
         position:       relative;
 
-        //margin-bottom:  var(--containerPadding);
-
-        > * {
-            display:    inline-block;
-        }
-
         .title {
-            max-width:  80%;
             min-width:  50%;
             width:      min-content;
-
             padding:    6px 10px;
 
             transform:          scale(0.9, 1);
             transform-origin:   left;
+            background:         var(--backgroundTrans);
 
-            z-index:    100;
-            background: var(--backgroundTrans);
-
-            h4 {
-                font-family: "Arimo", sans-serif;
-                float:      left;
-                padding:    6px 0 0 0;
-            }
+            h2 {
+                margin: 0 0 4px 2px;}
         }
 
         .headerBackground {
-            overflow:   hidden;
             position:   absolute;
         }
     }

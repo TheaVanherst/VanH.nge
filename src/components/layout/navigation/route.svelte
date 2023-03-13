@@ -33,7 +33,7 @@
                             }
                         </h1>
                         <h1>
-                            {serializer(route)}
+                            {serializer(route).replaceAll("-"," ")}
                         </h1>
                     {:else}
                         <h1>
@@ -57,6 +57,7 @@
         margin:     0 0 var(--containerPadding);
         background: var(--backgroundTrans);
         overflow-x: scroll;
+        text-transform: capitalize;
 
         .padding {
             padding:        10px;

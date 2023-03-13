@@ -1,12 +1,12 @@
 <script>
     import { urlChanger, urlStoreArr } from '$lib/stores/directoryController.js';
     export let push = "";
-    $: push;
 </script>
 
 <a href={push}
    class:curRoot={"/" + $urlStoreArr[1] === push}
-   on:click={urlChanger("/" + $urlStoreArr[1] === push ? "/" : push)}>
+   class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}
+   on:click={urlChanger("/" + $urlStoreArr[1] !== push || $urlStoreArr.length > 2 ? push : "/")}>
     <div class="powerBar">
         <div class="left">
             <div class="highlight">
@@ -86,14 +86,17 @@
 
         @include cgm(var(--accent1), var(--accent3));
 
-        &:hover {       margin-left:    -5px;
-            @include cgm(var(--accent3), var(--darkAccent3));}
+        &:hover {
+            margin-left:    -5px;
+                @include cgm(var(--accent3), var(--darkAccent3));}
 
         &.curRoot {     margin-left:    -5px;
-            @include cgm(var(--darkAccent4), var(--darkAccent3));
+                @include cgm(var(--darkAccent4), var(--darkAccent3));
             .powerBar { width:          calc($width + 10px);
                 .left { margin-right:   10px;}}
-            &:hover {   margin-left:    0;
-                @include cgm(var(--accent3), var(--darkAccent3));}}
+            &:hover {
+                @include cgm(var(--darkAccent3), var(--darkAccent4));
+                &.embedded {
+                    @include cgm(var(--accent4), var(--accent1));}}}
     }
 </style>
