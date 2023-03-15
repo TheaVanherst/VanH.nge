@@ -27,6 +27,7 @@ let
                 "handle": select(
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
+                "slug": slug.current,
                 twitterUrl,
                 socialMedia[0],
             },
@@ -36,6 +37,7 @@ let
                 "handle": select(
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
+                "slug": slug.current,
                 twitterUrl,
                 socialMedia[0],
             },

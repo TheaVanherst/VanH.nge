@@ -19,6 +19,7 @@ let
                 "handle": select(
                     defined(handle) =>   handle,
                     defined(fullName) => fullName),
+                "slug": slug.current,
                 socialMedia[0],
             },
             collaborators[]-> {

@@ -10,14 +10,14 @@
 </script>
 
 <div class="content">
-<!--	<Masonry-->
-<!--		items=	{data.postRequests}-->
-<!--		gap=	{15}-->
-<!--		idKey=	{`_id`}-->
+	<Masonry
+		items=	{data.postRequests}
+		gap=	{15}
+		idKey=	{`_id`}
 
-<!--		animate=		{false}-->
-<!--		columnClass=	"flex"-->
-<!--		let:item>-->
-<!--		<DesignPost post={item}/>-->
-<!--	</Masonry>-->
+		animate=		{false}
+		columnClass=	"flex"
+		let:item>
+		<DesignPost post={item}/>
+	</Masonry>
 </div>

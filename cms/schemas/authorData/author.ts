@@ -1,6 +1,7 @@
 
 import { defineField, defineType }  from 'sanity'
 import { UsersIcon }                 from '@sanity/icons'
+import {slugUniqueCheck} from '../components/slugCheck'
 
 export default defineType({
   name: 'author',
@@ -16,6 +17,16 @@ export default defineType({
       name: 'handle', title: 'Handle',
       description: "A shorthand onsite username",
       type: 'string',
+    }),
+    defineField({
+      name: 'slug', title: 'Slug',
+      type: 'slug',
+      validation: Rule => Rule.required(),
+      options: {
+        source: 'handle',
+        maxLength: 16,
+        isUnique: slugUniqueCheck
+      }
     }),
     defineField({
       name: 'socialMedia', title: 'Social Media Links',
