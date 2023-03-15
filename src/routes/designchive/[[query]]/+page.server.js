@@ -1,43 +1,15 @@
 
-import client from "$lib/sanityClient.js";
-import { designQuery } from "$lib/queries/galleryPosts.js"
+import client               from "$lib/sanityClient.js";
+import { designQuery }      from "$lib/queries/galleryPosts.js"
+import { queryGenerator }   from "$lib/queries/queryParamTypes.js";
 
 import { error } from '@sveltejs/kit';
 
-let referenceTypes = {
-    "tags" : `in categories[] -> title`,
-    "author" : `== author -> slug.current`
-}
-
 export const load = async ({params}) => {
     const { query } = params
+    let queryString = queryGenerator(query);
 
-    let queryString = "", //request string for specific query types prompted by [[query]]
-        allQueries;
-
-    if (!!query){
-        let queryPartition = query.split('&');
-
-        for (let e in queryPartition) {
-            let query = queryPartition[e].split('=');
-
-            if (query.length === 2){
-
-                let queryArray = [],
-                    queryType = query[0],
-                    queryReqT = query[1].split(':');
-
-                for (let i in queryReqT){
-                    queryArray[i] = `"${queryReqT[i]}" ${referenceTypes[queryType]}`
-                }
-
-                queryString += ` && ${queryArray.join(' || ')}`
-
-            }
-        }
-    }
-
-    allQueries = await client.fetch(`{
+    let allQueries = await client.fetch(`{
         "postRequests": 
             *[  _type == 'designPost' 
                 ${queryString}
@@ -46,16 +18,17 @@ export const load = async ({params}) => {
                 ${ designQuery }
             },
         "specifiedTags":
-            *[ _type == 'designCategory'
+            *[ _type == 'designCategory' || _type == 'genericCategory'
             ] {
+                _type,
                 title
             }
     }`);
 
-    allQueries.queryString = queryString;
+    // allQueries.queryString = queryString; // Query debugging.
 
     if (allQueries.postRequests) {
         return allQueries;}
-    // else {
-    //     throw new error(404, "No return searches found.");}
+    else {
+        throw new error(404, "No return searches found.");}
 }
