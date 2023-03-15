@@ -1,6 +1,6 @@
 
-import client from              "$lib/sanityClient.js";
-import { blogPreviewQuery } from    "$lib/queries/blogPosts.js"
+import client from "$lib/sanityClient.js";
+import { blogPreviewQuery } from "$lib/queries/blogPosts.js"
 
 import { error } from '@sveltejs/kit';
 

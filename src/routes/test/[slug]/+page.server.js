@@ -7,12 +7,12 @@ import { error } from '@sveltejs/kit';
 import { artQuery } from "$lib/queries/galleryPosts.js";
 
 export const load = async ({params}) => {
-    const { _slug } = params
+    const { slug } = params
 
     const allQueries = await client.fetch(`{
         "requestedProject":
             *[ _type == 'post' && 
-                slug.current == '${_slug}'
+                slug.current == '${slug}'
             ]{ ${ blogQuery } },
         "featuredProject": 
             *[ "📊 Featured" in categories[] -> title

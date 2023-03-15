@@ -6,7 +6,6 @@
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;
-    let h = 0, w = 0;
 </script>
 
 <svelte:head>

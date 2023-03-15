@@ -1,15 +1,15 @@
 
-import client from      "$lib/sanityClient.js";
-import { blogQuery } from   "$lib/queries/blogPosts.js"
+import client from "$lib/sanityClient.js";
+import { blogQuery } from "$lib/queries/blogPosts.js"
 
 import { error } from '@sveltejs/kit';
 
 export const load = async ({params}) => {
-    const { _slug } = params
+    const { slug } = params
     const allQueries = await client.fetch(`{
         "requestedProject": 
             *[  _type == 'blogPost' && 
-                slug.current == '${_slug}'
+                slug.current == '${slug}'
             ]{
                 ${ blogQuery }
             }
