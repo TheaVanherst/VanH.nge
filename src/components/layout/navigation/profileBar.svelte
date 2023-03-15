@@ -3,7 +3,7 @@
 
     import navigation from '$lib/stores/navigationDirectories.js';
     import Button from "$components/layout/navigation/navButton.svelte";
-    import Switch from '$components/globals/toggleSwitch.svelte';
+    import Switch from '$components/globals/blocks/toggleSwitch.svelte';
 </script>
 
 <div class="profileGraphic">

@@ -1,6 +1,6 @@
 <script>
 	import BlogPostPreview from 	"$components/blog/previewComponent.svelte"
-	import GalleryComponent from 	"$components/generic/previewGallery.svelte";
+	import GalleryComponent from "$components/generic/simplifiedGallery.svelte";
     // import Container from 			"$components/globals/containers/container.svelte";
     import NervContainer from 		"$components/globals/containers/nervContainer.svelte";
 

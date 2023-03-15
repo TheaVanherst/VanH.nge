@@ -1,5 +1,5 @@
 <script>
-    import HeaderModule from "$components/blog/postTitleCard.svelte"
+    import HeaderModule from "$components/generic/postTitleCard.svelte"
     import TagModule from "$components/globals/tagModule.svelte"
     import PostModule from "$lib/serializer/portableText.svelte"
 

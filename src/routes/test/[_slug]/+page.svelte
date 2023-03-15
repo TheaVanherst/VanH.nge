@@ -1,8 +1,8 @@
 <script>
 	import BlogComponent  		from "$components/blog/blogComponent.svelte"
-    import GalleryComponent from "$components/generic/previewGallery.svelte";
+    import GalleryComponent from "$components/generic/simplifiedGallery.svelte";
 
-    import Contents 			from '$components/blog/contentList.svelte'
+    import Contents 			from '$components/generic/contents/contentList.svelte'
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;

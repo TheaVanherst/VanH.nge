@@ -1,5 +1,5 @@
 <script>
-    import TitleCard        from "$components/globals/containerTitle.svelte"
+    import TitleCard        from "$components/generic/contents/contentTitle.svelte"
     import Container        from "$components/globals/containers/container.svelte";
 
     import scrollIntoView   from "$lib/stores/scrollHandler.js";

@@ -7,7 +7,7 @@
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
     import AuthorTag                    from "$components/globals/authorTag.svelte";
-    import PostHeader                   from "$components/blog/postTitleCard.svelte";
+    import PostHeader                   from "$components/generic/postTitleCard.svelte";
 
     export let post = null;
 </script>

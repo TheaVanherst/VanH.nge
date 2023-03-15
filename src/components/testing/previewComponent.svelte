@@ -6,7 +6,7 @@
     import InvContainer     from "$components/globals/containers/invContainer.svelte";
 
     import AuthorTag        from "$components/globals/authorTag.svelte";
-    import PostHeader       from "$components/blog/postTitleCard.svelte"
+    import PostHeader       from "$components/generic/postTitleCard.svelte"
 
     import { createdPush, updatedPush } from "$lib/dateBuilder.js"
 

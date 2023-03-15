@@ -1,32 +1,34 @@
 <script>
-    import { loading, urlStoreArr } from '$lib/stores/directoryController.js';
-    import { urlChanger } from '$lib/stores/directoryController.js';
-    import navigation from "$lib/stores/navigationDirectories.js";
+    import { loading, urlStoreArr } from    '$lib/stores/directoryController.js';
+    import { urlChanger } from              '$lib/stores/directoryController.js';
+    import navigation from                  '$lib/stores/navigationDirectories.js';
 
     let parent;
     let pw = 0, cw = 0, uw = undefined;
+        // wrapper width, child width, child [controlled] width
 
     const scrollToRight = async (node) => {
-        if (pw < uw) {
+        if (pw < uw) { //checks if wrapper is bigger than children.
             node.scroll({ left: 0, behavior: 'smooth' });
 
-            setTimeout(() => {
-                uw = cw - 20;
+            setTimeout(() => { //this waits until the transition is finished.
+                uw = cw - 20; //sets parent width
             }, 1000);}
         else {
-            uw = cw - 20;
+            uw = cw - 20; //sets parent width
 
             node.scroll({ left: uw, behavior: 'smooth' });
         }
     };
 
-    $: cw !== uw && parent ? scrollToRight(parent) : undefined
+    $: cw !== uw && parent ? scrollToRight(parent) : undefined //checks if contents of router is different to parent
+        // this will update whenever the route changes, and will change the value of the parent equal to the child.
 
     const serializer = (r) => {
         // this just calculates the publicly named directory via the sidebar names.
         let i = navigation.map(e => e.path).indexOf("/" + r)
         return i !== -1 ? navigation[i].title : r;
-    }
+    };
 
     const urlGenerator = (pos) => {
         // generates URL based on the current URL.
@@ -34,18 +36,14 @@
         for (let i = 0; i < pos + 1; i++) {
             returnURL[i] = $urlStoreArr[i];} // fetches current address
         return returnURL ? returnURL.join("/") : "/";
-    }
+    };
 </script>
 
 <div class="router">
-    <div class="wrapper"
-         bind:clientWidth={pw}
-         bind:this={parent}>
 
-        <div class="sleeve"
-             style="width: {uw}px">
-            <div class="routeWidth"
-                 bind:clientWidth={cw}>
+    <div class="wrapper" bind:clientWidth={pw} bind:this={parent}>
+        <div class="sleeve" style="width: {uw}px">
+            <div class="routeWidth" bind:clientWidth={cw}>
 
                 {#each $urlStoreArr as route, i}
                     <div class="routeBlock"
@@ -61,7 +59,7 @@
                                 <h1>
                                     {serializer(route).replaceAll("-"," ")}
                                 </h1>
-                            {:else}
+                            {:else} <!-- website title [Brings you to the home page] -->
                                 <h1>
                                     Vanh.art
                                 </h1>
@@ -73,8 +71,8 @@
 
             </div>
         </div>
-
     </div>
+
 </div>
 
 <style lang="scss">
@@ -83,12 +81,8 @@
         line-height:    inherit;
         display:        inline-block;}
 
-    /* Scrollbar overflow preset */
-    .router {
+    .router { /* Scrollbar overflow preset */
         display:        grid;
-
-        //-webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 20%);
-
         .wrapper {
             white-space:        nowrap;
             overflow-x:         scroll;
