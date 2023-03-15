@@ -14,6 +14,7 @@
 <a href="{urlDirect}" id="{id}"
    on:mouseover={() => {hover = true}}
    on:mouseleave={() => {hover = false}}
+   sveltekit:prefetch
    on:click={() => {urlChanger(urlDirect)}}>
 	<div
 		class="post {colour} {(hoverColour ? ' g' + hoverColour : '')}"

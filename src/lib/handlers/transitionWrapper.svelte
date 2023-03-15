@@ -7,16 +7,16 @@
 
     import { afterNavigate, beforeNavigate } from '$app/navigation';
 
-    afterNavigate(() => {
+    afterNavigate(async () => {
         loading.set(false);
     });
 
-    beforeNavigate(() => {
+    beforeNavigate(async () => {
         navigating.set(true);
 
         setTimeout(() => {
             navigating.set(false);
-        }, transTimeOut + 150);
+        }, transTimeOut);
     });
     // these are jank solutions, but generally work for the time being.
     // this all needs being replaced with a history scraper.
