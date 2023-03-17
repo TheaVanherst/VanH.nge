@@ -20,7 +20,7 @@ const queryGenerator = (query) => { //request string for specific query types pr
                 for (let i in queryReqT){
                     queryArray[i] = `"${queryReqT[i]}" ${referenceTypes[query[0]]}`;}
                 //searches the query type to search against the tag type.
-                queryString += ` && ${queryArray.join(' || ')}`;} // strings together the query for GROQ to use.
+                queryString += ` && ${queryArray.join(' && ')}`;} // strings together the query for GROQ to use.
             else {
                 throw new error(404, "Optional query related search error");}
         }
