@@ -40,10 +40,10 @@
 			commentArray[0] = [];
 			imageArray = value.images;
 
-			for (let i in value.images) {
-				if (value.images[i].alt) {
+			for (let x in value.images) {
+				if (value.images[x].alt) {
                     length++;
-					commentArray[0][i] = fetch(NumArr[i] + "image: ",i);
+					commentArray[0][x] = fetch(NumArr[x] + "image: ",x);
                 }}},
 
     	regularGrid = (width) => { // Dynamic Grid, Grid
@@ -52,24 +52,24 @@
                 width = 2; //fallback if no column count is not declared.
             }
 
-			for (let e = 0; e < Math.ceil(value.images.length / width); e++) {
-                imageArray[e] = 	[];
-                commentArray[e] = 	[]; // establishes 2d arrs
+			for (let x = 0; x < Math.ceil(value.images.length / width); x++) {
+                imageArray[x] = 	[];
+                commentArray[x] = 	[]; // establishes 2d arrs
 
-				for (let i = 0; i < width; i++) {
-					let f = i + (e * width);
+				for (let y = 0; y < width; y++) {
+					let pos = y + (x * width);
 
-					if (value.images[f]) {
-						imageArray[e][i] = value.images[f];
+					if (value.images[pos]) {
+						imageArray[x][y] = value.images[pos];
 
-						if (value.images[f].alt) {
+						if (value.images[pos].alt) {
                             length++;
-                            let text = value.images.length === f + 1 && f % width === 0 ? sideArr[2] : sideArr[i];
-                            commentArray[e][i] = fetch(text + "image: ", f);
+                            let text = value.images.length === pos + 1 && pos % width === 0 ? sideArr[2] : sideArr[y];
+                            commentArray[x][y] = fetch(text + "image: ", pos);
                         }}}
 
-                if (commentArray[e].length > 0) { //if the column includes citation, declare which column it's in.
-                    titles[e] = NumArr[e] + "row;";}
+                if (commentArray[x].length > 0) { //if the column includes citation, declare which column it's in.
+                    titles[x] = NumArr[x] + "row;";}
             }
 
             if (titles && titles.length <= 1){
@@ -82,25 +82,26 @@
                 width = 2; //fallback if no column count is not declared.
             }
 
-			for (let e = 0; e < width; e++) {
-				imageArray[e] = 	[];
-				commentArray[e] = 	[]; // establishes 2d arrs
+			for (let y = 0; y < width; y++) {
+				imageArray[y] = 	[];
+				commentArray[y] = 	[]; // establishes 2d arrs
 
-				for (let i = 0; i < Math.ceil(value.images.length / width); i++) {
-					let f = e + (i * width); // calculated vertical placement in row
+				for (let x = 0; x < Math.ceil(value.images.length / width); x++) {
+					let pos = y + (x * width); // calculated vertical placement in row
 
-					if (value.images[f]) { //checks if image exists
-						imageArray[e][i] = value.images[f]; //assigns image to 2d arr
-                        if (value.images[f].alt) { //checks for citation
+					if (value.images[pos]) { //checks if image exists
+						imageArray[y][x] = value.images[pos]; //assigns image to 2d arr
+                        if (value.images[pos].alt) { //checks for citation
                             length++;
-                            commentArray[e][i] = fetch(NumArr[i] + "image: ",f); //adds citation accordance of image arr
+                            commentArray[y][x] = fetch(NumArr[x] + "image: ",pos); //adds citation accordance of image arr
                         }}}
 
-                if (commentArray[e].length > 0) { //if the column includes citation, declare which column it's in.
-                    titles[e] = sideArr[e] + "column;";}
+                if (commentArray[y].length > 0) { //if the column includes citation, declare which column it's in.
+                    titles[y] = sideArr[y] + "column;";}
             }
 		};
 
+    // general fallbacks to prevent weird instances of showcases that don't make sense
     if (value.images.length <= 1) {
         	value.display = "vertical";} // prevents scroll / carousel being used for 1 image cases.
     else if (
@@ -146,29 +147,29 @@
     });
 </script>
 
-{#if returnSheet}
+{#if returnSheet} <!-- waits for return sheet -->
 	<div style="margin-bottom:{length > 0 ? `${margin - 1}px` : '3px' }">
 		<svelte:component this={returnSheet} push="{imageArray}"/>
 	</div>
-{:else}
+{:else} <!-- preview animations -->
 	<div class="imagePreview gen{Math.floor(Math.random() * 3)}">
 		<div></div>
 	</div>
 {/if}
 
-{#if returnSheet && length > 0}
+{#if returnSheet && length > 0} <!-- checks if citations exist -->
 	{#if returnSheet}
 		<div style="margin-bottom:{margin}px">
 			<CitationBlock push={commentArray} titles={titles}/>
 		</div>
-	{:else}
+	{:else} <!-- preview animations -->
 		<div style="margin-bottom:{margin - 2}px"
 			 class="citePreview"></div>
 	{/if}
 {/if}
 
 <style lang="scss">
-	$backgroundSize: 800px;
+	$backgroundSize: 800px; // gradient resolution in X.
 
 	@mixin cgm($aspect, $cols, $height){
 		aspect-ratio: 	$aspect;

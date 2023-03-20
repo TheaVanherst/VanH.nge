@@ -1,22 +1,27 @@
 <script>
+    // local navigation checks & multipliers
     import { navigating, loading, directionX, directionY }  from '$lib/stores/directoryController.js';
-    import { motion }               from '$lib/stores/accessibilityController';
-
+    import { motion }                                       from '$lib/stores/accessibilityController';
+    // transition imports
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions     from 'svelte/easing'
-
+    // navigation checks
     import { afterNavigate, beforeNavigate } from '$app/navigation';
 
-    afterNavigate(async () => {
+    afterNavigate(async () => { //required on the front age to indicate load in
         loading.set(false);
     });
 
     beforeNavigate(async () => {
-        navigating.set(true);
+        navigating.set(true); //fallback in weird instances
 
-        setTimeout(() => {
+        if ($loading){ // fallback in an instance where the page hasn't loaded in yet
+            setTimeout(() => {
+                navigating.set(false);
+            }, transTimeOut);
+        } else {
             navigating.set(false);
-        }, transTimeOut);
+        }
     });
     // these are jank solutions, but generally work for the time being.
     // this all needs being replaced with a history scraper.
@@ -35,16 +40,16 @@
     export let
         transTimeIn = 300,
         transTimeOut = 300;
-    export let
+    export let // allows page delays
         delayIn = 0,
         delayOut = 0;
 
-    export let
+    export let // transition position multipliers
         transX = 30,
         transY = 30;
 </script>
 
-{#if !$navigating && !$loading}
+{#if !$navigating && !$loading} <!-- loading checks -->
     <div class="transitionWrapper"
         in:transition={{
             transTimeIn, delayIn, easing,
@@ -58,8 +63,8 @@
     </div>
 {/if}
 
-<style>
-    div {
+<style lang="scss">
+    div { //fallback
         min-width:  100%;
         max-width:  100%;
         width:      100%;

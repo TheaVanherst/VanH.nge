@@ -1,14 +1,14 @@
 
-const
+const // global emojis to indicate edited / published
     publishedEmoji = "📰",
     EditedEmoji = "📑"
 
-const createdPush = (creationDate, dateLength) => {
+const createdPush = (creationDate, dateLength) => { // generic date builder.
         return `${publishedEmoji} Published ${nth(new Date(creationDate), dateLength ? dateLength : "shortDate")}`;
     },
 
      updatedPush = (updatedDate) => {
-         updatedDate = new Date(updatedDate);
+         updatedDate = new Date(updatedDate); // builds date to be standardized to js
 
          return `↳ ${EditedEmoji} Edited ${time_ago(updatedDate)}
              ${2419200 > relativeTime(updatedDate) ? 
@@ -16,13 +16,13 @@ const createdPush = (creationDate, dateLength) => {
                 `` }`;
     },
 
-    dTypes = {
+    dTypes = { // date type converter
         fullDate : {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'},
         shortDate : {year: 'numeric', month: 'long', day: 'numeric'},
         tinyDate : {year: 'numeric', month: 'short', day: 'numeric'}
     },
 
-    relativeTime = (time) => {
+    relativeTime = (time) => { // relativity builder
         return (+new Date() - time) / 1000;
     },
 
@@ -42,11 +42,12 @@ const createdPush = (creationDate, dateLength) => {
     },
 
     time_ago = (time) => {
-        let tFormats = [
+            // context checks
+        let tFormats = [ // prebuilt sentences for the date builder.
             [60, 'seconds', 1],
-            [120, 'a minute ago', 'a minute from now'],
+            [120, 'a minute', 'a minute from now'],
             [3600, 'minutes', 60],
-            [7200, 'an hour ago', 'an hour from now'],
+            [7200, 'an hour', 'an hour from now'],
             [86400, 'hours', 3600],
             [172800, 'yesterday', 'tomorrow'],
             [604800, 'days', 86400],
@@ -57,17 +58,22 @@ const createdPush = (creationDate, dateLength) => {
             [58060800, 'last year', 'Next year'],
             [2903040000, 'years', 29030400],
             [5806080000, 'last century', 'next century'],
-            [58060800000, 'centuries', 2903040000]];
+            [58060800000, 'centuries', 2903040000]
+        ];
 
         let secs = relativeTime(time);
 
         if (secs < 120) {
             return 'Just now';}
 
-        let i = 0, form;
-        while (form = tFormats[i++]) {
-            if (secs < form[0]) {
+        let i = 0,
+            form;
+        while (form = tFormats[i++]) {      // looks through tformats to look for date context
+            if (secs < form[0]) {           // looks for first number seconds value is greater than
                 return typeof form[2] == 'string' ? form[1] : Math.floor(secs / form[2]) + ' ' + form[1] + ' ago';}}
+                                            // additional context check to see if future or present & data return
+                                            // if data return is a string from tformats, print built sentence.
+                                            // otherwise just state how many {time period}'s it was.
     }
 
 export { createdPush, updatedPush, relativeTime }
