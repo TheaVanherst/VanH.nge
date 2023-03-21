@@ -1,8 +1,10 @@
 <script>
 	import ArtPost from "$components/generic/generalGallery.svelte";
     import Masonry from 'svelte-bricks'; // THIS IS SO FUCKING GOOD.
+	import {page} from "$app/stores";
 
-	export let data = [];
+    export let data = [];
+    console.log($page, data);
 </script>
 
 <div class="content">

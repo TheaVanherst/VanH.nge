@@ -1,5 +1,5 @@
 <script>
-    import { urlChanger, urlStoreArr } from '$lib/stores/directoryController.js';
+    import { urlChanger, urlStoreArr } from '$lib/controllers/directoryController.js';
     export let push = "";
 </script>
 

@@ -1,5 +1,5 @@
 <script>
-    import { relativeTime } from "$lib/dateBuilder.js";
+    import { relativeTime } from "$lib/builders/dateBuilder.js";
 
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc
     export let tags = [];   // forms array as a fallback to check the length of later

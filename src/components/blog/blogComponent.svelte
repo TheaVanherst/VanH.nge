@@ -4,7 +4,7 @@
     import PostHeader   from "$components/generic/postTitleCard.svelte";
     import AuthorTag    from "$components/globals/authorTag.svelte";
 
-    import { createdPush, updatedPush } from "$lib/dateBuilder.js"
+    import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js"
 
     import TagModule    from "$components/globals/tagModule.svelte"
     import PostModule   from "$lib/serializer/portableText.svelte"

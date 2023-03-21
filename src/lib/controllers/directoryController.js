@@ -14,7 +14,7 @@ let directoryString; // god i hate this
 
 // navigation controller
 
-import navigation from "$lib/stores/navigationDirectories.js";
+import navigation from "$lib/controllers/navigationDirectories.js";
 
 let urlStoreArr =   writable([""]); // handles the transition direction
 let directionX =    writable(0); // handles the transition direction

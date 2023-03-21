@@ -1,5 +1,5 @@
 
-   // name on the url button // path it takes you    // internal references via. CMS & what to search for.
+   // name on the url button // path it takes you to // internal references via. CMS & what to search for.
 const navigation = [
     { title: "Home",            path: "/",              local: "" },
     { title: "Blog",            path: "/blog",          local: "blogPost" },

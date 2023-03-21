@@ -1,5 +1,5 @@
 <script>
-    import { scrollPos } from "$lib/stores/accessibilityController.js"
+    import { scrollPos } from "$lib/controllers/accessibilityController.js"
 
     export let min = undefined;
     export let max = 65535; //fallback (basically, infinite)

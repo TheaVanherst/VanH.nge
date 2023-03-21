@@ -1,15 +1,16 @@
 
 import client from "$lib/sanityClient.js";
+
 import { artQuery } from "$lib/queries/galleryPosts.js"
+import { queryGenerator } from "$lib/queries/queryParamTypes.js";
 
 import { error } from '@sveltejs/kit';
-import {queryGenerator} from "$lib/queries/queryParamTypes.js";
 
 export const load = async ({params}) => {
     const { query } = params
     let queryString = queryGenerator(query);
 
-    const allQueries = await client.fetch(`{
+    let allQueries = await client.fetch(`{
         "postRequests": 
             *[  _type == 'artPost'
                 ${queryString}
@@ -17,6 +18,8 @@ export const load = async ({params}) => {
                 ${artQuery}
             }
     }`);
+
+    allQueries.returnTest = queryString;
 
     if (allQueries.postRequests) {
         return allQueries;

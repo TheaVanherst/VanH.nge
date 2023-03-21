@@ -1,7 +1,7 @@
 <script>
     // local navigation checks & multipliers
-    import { navigating, loading, directionX, directionY }  from '$lib/stores/directoryController.js';
-    import { motion }                                       from '$lib/stores/accessibilityController';
+    import { navigating, loading, directionX, directionY }  from '$lib/controllers/directoryController.js';
+    import { motion }                                       from '$lib/controllers/accessibilityController';
     // transition imports
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions     from 'svelte/easing'

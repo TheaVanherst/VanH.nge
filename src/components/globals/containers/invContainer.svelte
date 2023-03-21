@@ -1,5 +1,5 @@
 <script>
-    import { urlChanger } from '$lib/stores/directoryController.js';
+    import { urlChanger } from '$lib/controllers/directoryController.js';
 
     export let push = null;
     export let targetBool = false;
