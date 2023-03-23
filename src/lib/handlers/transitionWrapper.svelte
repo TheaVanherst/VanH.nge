@@ -1,6 +1,6 @@
 <script>
     // local navigation checks & multipliers
-    import { navigating, loading, directionX, directionY }  from '$lib/controllers/directoryController.js';
+    import { navigate, loading, directionX, directionY }    from '$lib/controllers/directoryController.js';
     import { motion }                                       from '$lib/controllers/accessibilityController';
     // transition imports
     import * as transitionFunctions from 'svelte/transition'
@@ -10,17 +10,19 @@
 
     afterNavigate(async () => { //required on the front age to indicate load in
         loading.set(false);
+
+
     });
 
     beforeNavigate(async () => {
-        navigating.set(true); //fallback in weird instances
+        navigate.set(true); //fallback in weird instances
 
         if ($loading){ // fallback in an instance where the page hasn't loaded in yet
             setTimeout(() => {
-                navigating.set(false);
+                navigate.set(false);
             }, transTimeOut);
         } else {
-            navigating.set(false);
+            navigate.set(false);
         }
     });
     // these are jank solutions, but generally work for the time being.
@@ -49,7 +51,7 @@
         transY = 30;
 </script>
 
-{#if !$navigating && !$loading} <!-- loading checks -->
+{#if !$navigate && !$loading} <!-- loading checks -->
     <div class="transitionWrapper"
         in:transition={{
             transTimeIn, delayIn, easing,

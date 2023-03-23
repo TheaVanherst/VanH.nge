@@ -1,7 +1,7 @@
 <script>
     import { loading, urlStoreArr } from '$lib/controllers/directoryController.js';
-    import { urlChanger } from '$lib/controllers/directoryController.js';
-    import navigation from '$lib/controllers/navigationDirectories.js';
+    import { urlChanger }           from '$lib/controllers/directoryController.js';
+    import navigation               from '$lib/controllers/navigationDirectories.js';
 
     let parent;
     let pw = 0, cw = 0, uw = undefined;
@@ -9,16 +9,16 @@
 
     const scrollToRight = async (node) => {
         if (pw < uw) { //checks if wrapper is bigger than children.
-            node.scroll({ left: 0, behavior: 'smooth' });
+            node.scroll({ left: 0, behavior: 'smooth' }); // resets the container scroll
 
-            setTimeout(() => { //this waits until the transition is finished.
+            setTimeout(() => { // Waits until the transition is finished.
                 uw = cw - 20; //sets parent width
             }, 1000);}
         else {
             uw = cw - 20; //sets parent width
-
-            node.scroll({ left: uw, behavior: 'smooth' });
-        }
+            // This changes the scroll position for overflowing containers automatically,
+            //      but only if the route is longer than the container.
+            node.scroll({ left: uw, behavior: 'smooth' });} // sets the container scroll pos
     };
 
     $: cw !== uw && parent ? scrollToRight(parent) : undefined //checks if contents of router is different to parent
@@ -49,23 +49,42 @@
                     <div class="routeBlock"
                          class:transitioning={$loading}
                          class:clickable={i < $urlStoreArr.length - 1}>
-                        <div class="{$urlStoreArr[i]} cell"
-                             on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
 
-                            {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                                <h1 class="dir">
-                                    }
-                                </h1>
-                                <h1>
-                                    {serializer(route).replaceAll("-"," ")}
-                                </h1>
-                            {:else} <!-- website title [Brings you to the home page] -->
-                                <h1>
-                                    Vanh.art
-                                </h1>
-                            {/if}
+                        {#if i !== $urlStoreArr.length - 1}
+                            <a class="{$urlStoreArr[i]} cell"
+                                href="{urlGenerator(i)}"
+                                    on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
 
-                        </div>
+                                {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                                    <h1 class="dir">
+                                        }
+                                    </h1>
+                                    <h1>
+                                        {serializer(route).replaceAll("-"," ")}
+                                    </h1>
+                               {:else} <!-- website title [Brings you to the home page] -->
+                                    <h1>
+                                        Vanh.art
+                                    </h1>
+                               {/if}
+                            </a>
+                        {:else}
+                            <p class="{$urlStoreArr[i]} cell">
+                                {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                                    <h1 class="dir">
+                                        }
+                                    </h1>
+                                    <h1>
+                                        {serializer(route).replaceAll("-"," ")}
+                                    </h1>
+                                {:else} <!-- website title [Brings you to the home page] -->
+                                    <h1>
+                                        Vanh.art
+                                    </h1>
+                                {/if}
+                            </p>
+                        {/if}
+
                     </div>
                 {/each}
 
