@@ -1,6 +1,6 @@
 <script>
 	import BlogComponent  		from "$components/blog/blogComponent.svelte";
-	import Contents 			from '$components/generic/contents/contentList.svelte';
+	import Contents 			from '$components/layout/contents/contentList.svelte';
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;
@@ -12,7 +12,10 @@
 	</div>
 	<div class="contents">
 		<PageScrollWrapper>
-			<Contents list={data.requestedProject[0]}/>
+			<Contents
+				list={data.requestedProject[0].titles}
+				title={data.requestedProject[0].title}
+				ref={data.requestedProject[0].slug}/>
 		</PageScrollWrapper>
 	</div>
 </div>

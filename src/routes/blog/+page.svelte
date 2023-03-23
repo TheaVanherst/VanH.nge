@@ -1,6 +1,6 @@
 <script>
 	import PreviewBlogPost 		from "$components/blog/previewComponent.svelte"
-	import TitleList 			from "$components/generic/contents/previewContentList.svelte"
+	import TitleList 			from "$components/layout/contents/previewContentList.svelte"
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
 	export let data = null;
@@ -16,7 +16,9 @@
 	</div>
 	<div class="contents">
 		<PageScrollWrapper>
-			<TitleList list={data.postRequests}/>
+			<TitleList
+				titles={data.postRequests.map(x => x.title)}
+				href={data.postRequests.map(x => x.slug)}/>
 		</PageScrollWrapper>
 	</div>
 </div>

@@ -1,12 +1,13 @@
 <script>
     import { urlChanger, urlStoreArr } from '$lib/controllers/directoryController.js';
     export let push = "";
+    console.log()
 </script>
 
 <a href={push}
    class:curRoot={"/" + $urlStoreArr[1] === push}
    class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}
-   on:click={urlChanger("/" + $urlStoreArr[1] !== push || $urlStoreArr.length > 2 ? push : "/")}>
+   on:click|preventDefault={urlChanger("/" + $urlStoreArr[1] !== push || $urlStoreArr.length > 2 ? push : "/")}>
     <div class="powerBar">
         <div class="left">
             <div class="highlight">

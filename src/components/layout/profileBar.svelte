@@ -2,7 +2,7 @@
     import { motion } from '$lib/controllers/accessibilityController.js'
 
     import navigation from '$lib/controllers/navigationDirectories.js';
-    import Button from "$components/layout/navigation/navButton.svelte";
+    import Button from "$components/layout/navButton.svelte";
     import Switch from '$components/globals/blocks/toggleSwitch.svelte';
 </script>
 
