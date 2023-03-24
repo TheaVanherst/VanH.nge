@@ -10,16 +10,12 @@
 <div class="content">
 	<div class="page">
 		{#each data.postRequests as post, i}
-			<div>
-				<PreviewBlogPost post={post}/>
-			</div>
+			<PreviewBlogPost post={post}/>
 		{/each}
 	</div>
 	<div class="contents">
 		<PageScrollWrapper>
-			<TitleList
-				titles={data.postRequests.map(x => x.title)}
-				href={data.postRequests.map(x => x.slug)}/>
+			<TitleList data={data.postRequests}/>
 		</PageScrollWrapper>
 	</div>
 </div>

@@ -5,7 +5,7 @@
 
 <div class="{dataset[0].level} contentsEl">
 	{#each dataset as embed}
-		<p href="#header-{embed.key}"
+		<p href="#{embed.type}{embed.key}"
 		   on:click|preventDefault={scrollIntoView}>
 			{embed.text}
 		</p>

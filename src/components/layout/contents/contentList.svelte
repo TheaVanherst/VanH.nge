@@ -1,6 +1,5 @@
 <script>
-    import Container 			from "$components/globals/containers/container.svelte";
-    import { scrollIntoView }   from "$lib/controllers/accessibilityController.js";
+    import ContentsWrapper 		from "$components/layout/contents/contentsWrapper.svelte";
     import ContentsListItem 	from "$components/layout/contents/contentsListItem.svelte";
 
     export let
@@ -32,6 +31,7 @@
                 pId: 	l !== 0 ? p : null, // fallback to go to parent element
                 text: 	arr[i].children[0].text,
                 key:	arr[i]._key,
+				type: 	"header-",
             };
 
             // loops through array to find how indented it should be relative to previous element
@@ -49,45 +49,8 @@
         }
         return nest(relArray)
 	}
-
-    let hov = false;
 </script>
 
-<Container padding={0} colour={!hov ? "green" : "orange"}>
-	<div
-		class="title"
-		on:mouseenter={() => hov = true	}
-		on:mouseleave={() => hov = false}
-		on:click|preventDefault={scrollIntoView}>
-		<p>
-			{title}
-		</p>
-	</div>
-
-	<div class="contents">
-		<ContentsListItem dataset={arrayGen(list)}/>
-	</div>
-</Container>
-
-<style lang="scss">
-	.title {
-		cursor:			alias;
-		width:      	100%;
-		background: 	var(--accent1);
-
-		p {
-			font-size: 		100%;
-			font-family: 	"Arimo", sans-serif;
-			color: 			var(--textColourInvert);
-			font-weight: 	800;
-
-			padding: 		10px 15px 10px 15px;}
-
-		&:hover {
-			background: 	var(--darkAccent3);}
-	}
-
-	.contents {
-		padding: 	calc(var(--containerPadding) - 5px);
-	}
-</style>
+<ContentsWrapper title={title}>
+	<ContentsListItem dataset={arrayGen(list)}/>
+</ContentsWrapper>
