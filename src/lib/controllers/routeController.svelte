@@ -48,42 +48,25 @@
                 {#each $urlStoreArr as route, i}
                     <div class="routeBlock"
                          class:transitioning={$loading}
-                         class:clickable={i < $urlStoreArr.length - 1}>
+                         class:clickable={i !== $urlStoreArr.length - 1}>
 
-                        {#if i !== $urlStoreArr.length - 1}
-                            <a class="{$urlStoreArr[i]} cell"
-                                href="{urlGenerator(i)}"
-                                    on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+                        <a class="{$urlStoreArr[i]} cell"
+                           href="{urlGenerator(i)}"
+                           on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
 
-                                {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                                    <h1 class="dir">
-                                        }
-                                    </h1>
-                                    <h1>
-                                        {serializer(route).replaceAll("-"," ")}
-                                    </h1>
-                               {:else} <!-- website title [Brings you to the home page] -->
-                                    <h1>
-                                        Vanh.art
-                                    </h1>
-                               {/if}
-                            </a>
-                        {:else}
-                            <p class="{$urlStoreArr[i]} cell">
-                                {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                                    <h1 class="dir">
-                                        }
-                                    </h1>
-                                    <h1>
-                                        {serializer(route).replaceAll("-"," ")}
-                                    </h1>
-                                {:else} <!-- website title [Brings you to the home page] -->
-                                    <h1>
-                                        Vanh.art
-                                    </h1>
-                                {/if}
-                            </p>
-                        {/if}
+                            {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                                <h1 class="dir">
+                                    }
+                                </h1>
+                                <h1>
+                                    {serializer(route).replaceAll("-"," ")}
+                                </h1>
+                            {:else} <!-- website title [Brings you to the home page] -->
+                                <h1>
+                                    Vanh.art
+                                </h1>
+                            {/if}
+                        </a>
 
                     </div>
                 {/each}
@@ -108,8 +91,9 @@
 
             -ms-overflow-style: none;       /* IE and Edge */
             scrollbar-width:    none;       /* Firefox */
-            ::-webkit-scrollbar {
-                display:        none;}}}    /* Chrome, Safari and Opera */
+            &::-webkit-scrollbar {
+                display:        none;}      /* Chrome, Safari and Opera */
+        }}
 
     .sleeve {
         position:   relative;
@@ -137,15 +121,13 @@
                     display: block;
                     top:    -2px;}}
 
-            &.clickable {
-                cursor:     alias;
+            &.clickable {       cursor:     alias;
                                 opacity:    0.5;
                 &:hover {       opacity:    1;}}
             &.transitioning {   opacity:    0.3;}
-            &:not(.clickable) {
-                position: relative;
-                z-index: 99;
-            }
+            &:not(.clickable) { pointer-events: none;
+                                position:   relative;
+                                z-index:    99;}
         }
     }
 </style>

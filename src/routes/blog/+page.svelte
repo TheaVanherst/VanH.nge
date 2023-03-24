@@ -16,9 +16,7 @@
 	</div>
 	<div class="contents">
 		<PageScrollWrapper>
-			<TitleList
-				titles={data.postRequests.map(x => x.title)}
-				href={data.postRequests.map(x => x.slug)}/>
+			<TitleList data={data.postRequests}/>
 		</PageScrollWrapper>
 	</div>
 </div>
