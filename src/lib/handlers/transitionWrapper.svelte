@@ -1,17 +1,24 @@
 <script>
     // local navigation checks & multipliers
-    import { navigate, loading, directionX, directionY }    from '$lib/controllers/directoryController.js';
-    import { motion }                                       from '$lib/controllers/accessibilityController';
+    import { navigate, loading,
+            directory, directionProcessing,
+            directionX, directionY}         from '$lib/controllers/directoryController.js';
+    import { motion }                       from '$lib/controllers/accessibilityController';
     // transition imports
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions     from 'svelte/easing'
     // navigation checks
     import { afterNavigate, beforeNavigate } from '$app/navigation';
+    import { page } from "$app/stores";
 
     afterNavigate(async () => { //required on the front age to indicate load in
         loading.set(false);
 
-
+        let url = $page.url.pathname; //temporary solution to fix router issues.
+        if ($directory !== url) await directionProcessing("/", url);
+            // the prev url can't be set to "$directory", because it's empty on page back.
+            // setting it as such freezes redirects.
+            // TODO: FIX THIS VIA. HISTORY STATES.
     });
 
     beforeNavigate(async () => {

@@ -28,7 +28,7 @@
         serializer = (r) => {
             // this just calculates the publicly named directory via the sidebar names.
             let i = navigation.map(e => e.path).indexOf("/" + r);
-            return i !== -1 ? navigation[i].title : r;},
+            return (i !== -1 ? navigation[i].title : r).replaceAll("-"," ");},
 
         urlGenerator = (pos) => {
             // generates url based on position in router.
@@ -46,24 +46,26 @@
                          class:transitioning={$loading}
                          class:clickable={i !== $urlStoreArr.length - 1}>
 
-                        <a class="{$urlStoreArr[i]} cell"
-                           href="{urlGenerator(i)}"
-                           on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
-
-                            {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                        {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
+                            <a class="{$urlStoreArr[i]} cell"
+                               href="{urlGenerator(i)}"
+                               on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
                                 <h1 class="dir">
                                     }
                                 </h1>
                                 <h1>
-                                    {serializer(route).replaceAll("-"," ")}
+                                    {serializer(route)}
                                 </h1>
-                            {:else} <!-- website title [Brings you to the home page] -->
+                            </a>
+                        {:else} <!-- website title [Brings you to the home page] -->
+                            <a class="{$urlStoreArr[i]} cell"
+                               href="/featured"
+                               on:click|preventDefault={() => urlChanger("/featured")}>
                                 <h1>
                                     Vanh.art
                                 </h1>
-                            {/if}
-                        </a>
-
+                            </a>
+                        {/if}
                     </div>
                 {/each}
 

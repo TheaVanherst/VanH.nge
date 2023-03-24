@@ -5,18 +5,11 @@
 	import Background 	from 	"$components/layout/background.svelte"
 
 	import { scrollPos } 			from '$lib/controllers/accessibilityController';
-    import { directionProcessing } 	from "$lib/controllers/directoryController.js";
+
     import Route 		from "$lib/controllers/routeController.svelte"
     import Transition 	from 	"$lib/handlers/transitionWrapper.svelte";
 
-    import { page } from '$app/stores';
-
 	export let data = null;
-
-    let url = $page.url.pathname
-    if (!!url){
-		directionProcessing("/", url)
-    }
 </script>
 
 <svelte:window bind:scrollY={$scrollPos} />
