@@ -1,13 +1,11 @@
 <script>
-    import Transition 	from 	"$lib/handlers/transitionWrapper.svelte";
+
 </script>
 
 <a href="/featured">
-	<Transition>
-		<p>
-			click to enter the website, lol
-		</p>
-	</Transition>
+	<p>
+		click to enter the website, lol
+	</p>
 </a>
 
 <style lang="scss">

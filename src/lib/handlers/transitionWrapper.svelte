@@ -25,6 +25,7 @@
         navigate.set(true); //fallback in weird instances
 
         if ($loading){ // fallback in an instance where the page hasn't loaded in yet
+            // this fixes a lot of load in issues when navigating via the browser.
             setTimeout(() => {
                 navigate.set(false);
             }, transTimeOut);

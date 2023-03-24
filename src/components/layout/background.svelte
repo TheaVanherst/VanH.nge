@@ -1,60 +1,49 @@
 <script>
     import { scrollPos } from '$lib/controllers/accessibilityController';
+
+    // TODO: NOTE;
+    // Not using --ypos, and trying to use $scrollPos causes a slight delay when scrolling.
+    // do not change this - I promise you this is the most reliable.
+
+    const levels = [4,3,2]
 </script>
 
-
-<backgroundElement style="--yPos: -{$scrollPos}px">
-    <div class="spaceBg3 backGround"></div>
-    <div class="spaceBg2 backGround"></div>
-    <div class="spaceBg1 backGround"></div>
-</backgroundElement>
+<parallax>
+    {#each levels as level}
+        <div
+            class="spaceBg{level - 1}"
+            style="background-position-y: 	calc({-$scrollPos/level}px);"></div>
+    {/each}
+</parallax>
 
 <style lang="scss">
+    // gif resolutions
     $res1: 234px;
     $res2: 400px;
 
-	.backGround {
-		width: 		150%;
-		top: 		0;
+    parallax {
+        div {
+            width: 		150%;
+            top: 		0;
+            position: 	fixed;}
+    }
 
-		position: 				fixed;
-		background-position-x: 	center;
+    @mixin cgm($st, $sd, $hm, $zh, $ov, $lp){
+        -webkit-animation: 	backgroundScroll+$st $sd linear infinite;
+        animation: 			backgroundScroll+$st $sd linear infinite;
+        background-image: 	url("/starTest"+($st)+".gif");
 
-		&.spaceBg1 {
-			-webkit-animation: 	backgroundScroll1 15s linear infinite;
-			animation: 			backgroundScroll1 15s linear infinite;
-			background-position-y: 	calc(var(--yPos) / 2);
-			background-image: 		url("/starTest3.gif");
+        left:  -$lp;
+        height: calc(100vh + $hm);
 
-			height: 		calc($res1 * ($res1 / 100px));
-			min-height: 	calc(100vh + $res1);
-			z-index: 		-2;}
+        position: 	fixed;
+        z-index:   -$zh;
+        opacity: 	$ov;
+    }
 
-		&.spaceBg2 {
-			-webkit-animation: 	backgroundScroll2 45s linear infinite;
-			animation: 			backgroundScroll2 45s linear infinite;
-			background-position-y: 	calc(var(--yPos) / 3);
-			background-image: 		url("/starTest2.gif");
-
-			height: 		calc($res2  * ($res2  / 100px));
-			min-height: 	calc(100vh + $res2 );
-
-			left: 		-250px;
-			z-index: 	-1;
-			opacity: 	 0.7;}
-
-		&.spaceBg3 {
-			-webkit-animation: 	backgroundScroll1 45s linear infinite;
-			animation: 			backgroundScroll1 45s linear infinite;
-			background-position-y: 	calc(var(--yPos) / 4);
-			background-image: 		url("/starTest3.gif");
-
-			height: 		calc($res1 * ($res1 / 100px));
-			min-height: 	calc(100vh + $res1);
-
-			left: 		-355px;
-			z-index: 	-1;
-			opacity: 	 0.5;}}
+    .spaceBg1 {    @include cgm(1,15s,$res1,3,1,0);}
+    .spaceBg2 {    @include cgm(2,45s,$res2,2,0.7,250px);}
+    .spaceBg3 {    @include cgm(1,45s,$res1,1,0.5,355px);}
 
 	@keyframes backgroundScroll1 {
 		0% {  	transform: translateY(calc($res1 * -1));}
