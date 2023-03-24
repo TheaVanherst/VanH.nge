@@ -68,7 +68,6 @@ const fetchData = (url) => {
 const urlChanger = async (url) => {
     event.preventDefault(); // for some reason it breaks without this specifically on navigation buttons
     url = !url ? "/" : url //god I hate this so much, but the tldr is;
-
         // to fetch the homepage ("https://*website*"), you HAVE to specify "/" when redirecting.
         // the problem is, that the way how the url builders work is that doing it any other way
         // either breaks the directory router or breaks the url router.

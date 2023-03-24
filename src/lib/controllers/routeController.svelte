@@ -12,10 +12,10 @@
             node.scroll({ left: 0, behavior: 'smooth' }); // resets the container scroll
 
             setTimeout(() => { // Waits until the transition is finished.
-                uw = cw - 20; //sets parent width
+                uw = cw - 20; //sets parent width - parent padding.
             }, 1000);}
         else {
-            uw = cw - 20; //sets parent width
+            uw = cw - 20; //sets parent width - parent padding.
             // This changes the scroll position for overflowing containers automatically,
             //      but only if the route is longer than the container.
             node.scroll({ left: uw, behavior: 'smooth' });} // sets the container scroll pos
@@ -24,19 +24,15 @@
     $: if (cw !== uw && parent) scrollToRight(parent); //checks if contents of router is different to parent
         // this will update whenever the route changes, and will change the value of the parent equal to the child.
 
-    const serializer = (r) => {
-        // this just calculates the publicly named directory via the sidebar names.
-        let i = navigation.map(e => e.path).indexOf("/" + r)
-        return i !== -1 ? navigation[i].title : r;
-    };
+    const
+        serializer = (r) => {
+            // this just calculates the publicly named directory via the sidebar names.
+            let i = navigation.map(e => e.path).indexOf("/" + r);
+            return i !== -1 ? navigation[i].title : r;},
 
-    const urlGenerator = (pos) => {
-        // generates URL based on the current URL.
-        let returnURL = [];
-        for (let i = 0; i < pos + 1; i++) {
-            returnURL[i] = $urlStoreArr[i];} // fetches current address
-        return returnURL ? returnURL.join("/") : "/";
-    };
+        urlGenerator = (pos) => {
+            // generates url based on position in router.
+            return $urlStoreArr.slice(0, pos + 1).map(i => i).join("/");};
 </script>
 
 <div class="router">
