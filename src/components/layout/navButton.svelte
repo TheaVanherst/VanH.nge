@@ -1,7 +1,6 @@
 <script>
     import { urlChanger, urlStoreArr } from '$lib/controllers/directoryController.js';
     export let push = "";
-    console.log()
 </script>
 
 <a href={push}

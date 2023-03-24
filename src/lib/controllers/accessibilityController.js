@@ -9,4 +9,15 @@ export { motion };
 // Scroll pos
 
 const scrollPos = writable(0);
-export { scrollPos };
+
+const scrollIntoView = ({ target }) => {
+    let element = document.querySelector(target.getAttribute('href'));
+
+    if (!element) element = document.body;
+
+    element.scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+export { scrollIntoView, scrollPos };

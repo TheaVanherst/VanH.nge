@@ -21,7 +21,7 @@
             node.scroll({ left: uw, behavior: 'smooth' });} // sets the container scroll pos
     };
 
-    $: cw !== uw && parent ? scrollToRight(parent) : undefined //checks if contents of router is different to parent
+    $: if (cw !== uw && parent) scrollToRight(parent); //checks if contents of router is different to parent
         // this will update whenever the route changes, and will change the value of the parent equal to the child.
 
     const serializer = (r) => {
