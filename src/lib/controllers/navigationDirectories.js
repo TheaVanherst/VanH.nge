@@ -6,7 +6,6 @@ const navigation = [
 
     { title: "Artchive",        path: "/artchive",      local: "artPost" },
     { title: "Designchive",     path: "/designchive",   local: "designPost" },
-    { title: "Testing",         path: "/test",          local: "post" },
 
     { title: "Authors",         path: "/authors",       local: "author" },
 ];

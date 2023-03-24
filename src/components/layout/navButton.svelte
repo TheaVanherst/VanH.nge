@@ -1,22 +1,20 @@
 <script>
-    import { urlChanger, urlStoreArr } from '$lib/controllers/directoryController.js';
+    import { urlChanger, urlStoreArr }  from '$lib/controllers/directoryController.js';
+    import navigation                   from "$lib/controllers/navigationDirectories.js";
+
     export let push = "";
 </script>
 
 <a href={push}
-   class:curRoot={"/" + $urlStoreArr[1] === push}
-   class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}
-   on:click|preventDefault={urlChanger("/" + $urlStoreArr[1] !== push || $urlStoreArr.length > 2 ? push : "/")}>
+    class:curRoot={"/" + $urlStoreArr[1] === push}
+    class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}
+    on:click|preventDefault={urlChanger("/" + $urlStoreArr[1] !== push ? push : navigation[0].path)}>
     <div class="powerBar">
         <div class="left">
-            <div class="highlight">
-
-            </div>
+            <div class="highlight"></div>
         </div>
         <div class="right">
-            <div>
-
-            </div>
+            <div></div>
         </div>
     </div>
 
@@ -40,7 +38,7 @@
 
     a {
         counter-increment:  section;
-        padding-bottom:      10px;
+        padding-bottom:     10px;
         display:            flex;
 
         &:before {  //fake button IDS

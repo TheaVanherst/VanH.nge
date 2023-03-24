@@ -1,7 +1,6 @@
 <script>
-	import PreviewBlogPost 		from "$components/testing/previewComponent.svelte"
+	import PreviewBlogPost 		from "$components/blog/previewComponent.svelte"
 	import TitleList 			from "$components/layout/contents/previewContentList.svelte"
-
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
     export let data = null;

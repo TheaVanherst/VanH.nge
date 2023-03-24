@@ -15,7 +15,10 @@
         loading.set(false);
 
         let url = $page.url.pathname; //temporary solution to fix router issues.
-        if ($directory !== url) await directionProcessing("/", url);
+        if ($directory !== url) {
+            $directory = url;
+            await directionProcessing("/", url);
+        }
             // the prev url can't be set to "$directory", because it's empty on page back.
             // setting it as such freezes redirects.
             // TODO: FIX THIS VIA. HISTORY STATES.

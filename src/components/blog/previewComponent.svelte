@@ -12,7 +12,7 @@
     export let post = null;
 </script>
 
-<PreviewContainer urlDirect={'/blog/' + post.slug} id="{post.slug}">
+<PreviewContainer urlDirect={"/blog/" + post.slug} id="{post.slug}">
     <PostHeader titleHeader={post.headerImage}	title={post.title}/>
 
     <InvContainer colour="green">

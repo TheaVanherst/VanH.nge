@@ -8,7 +8,6 @@
 
     import TagModule    from "$components/globals/tagModule.svelte"
     import PostModule   from "$lib/serializer/portableText.svelte"
-
     import Container    from "$components/globals/containers/container.svelte";
 
     export let post = null;

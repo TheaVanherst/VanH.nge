@@ -1,13 +1,12 @@
 <script>
 	import '../styles.scss';
 
-	import ProfileBar 	from "$components/layout/profileBar.svelte";
-	import Background 	from 	"$components/layout/background.svelte"
+	import ProfileBar 		from "$components/layout/profileBar.svelte";
+	import Background 		from "$components/layout/background.svelte"
 
-	import { scrollPos } 			from '$lib/controllers/accessibilityController';
-
-    import Route 		from "$lib/controllers/routeController.svelte"
-    import Transition 	from 	"$lib/handlers/transitionWrapper.svelte";
+	import { scrollPos } 	from '$lib/controllers/accessibilityController';
+    import Route 			from "$lib/controllers/routeController.svelte"
+    import Transition 		from "$lib/handlers/transitionWrapper.svelte";
 
 	export let data = null;
 </script>
