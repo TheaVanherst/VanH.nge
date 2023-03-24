@@ -2,7 +2,7 @@
     import ContentsWrapper 		from "$components/layout/contents/contentsWrapper.svelte";
     import ContentsListItem 	from "$components/layout/contents/contentsListItem.svelte";
 
-    export let data = undefined
+    export let data = undefined;
 
     const arrayGen = (arr) => {
         return arr.map((x) => {
@@ -10,9 +10,7 @@
                 text: x.title,
                 key: x.slug,
                 level: "h1",
-                type: "",}
-        });
-    }
+                type: "",};});};
 </script>
 
 <ContentsWrapper>

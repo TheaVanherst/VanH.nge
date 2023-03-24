@@ -1,4 +1,5 @@
 <script>
+    import HorizontalGrid from "$components/generic/nerv/horizontalGrid.svelte";
     import { relativeTime } from "$lib/builders/dateBuilder.js";
 
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc
@@ -19,12 +20,9 @@
 <div class="content">
     <div class="lineDiv orange"></div>
 
-    <div class="lineScale green" style="--xPos:{x / 0.6 + 'px'}">  <!-- scroll offset calc -->
-        <div class="small"></div>
-        <div class="medium"></div>
-        <div class="large"></div>
-        <div class="xLarge"></div>
-    </div>
+    <HorizontalGrid     offset={x / 0.6}
+        tiny={true}     small={true}
+        medium={true}   large={true}/>
 
     <div class="tagWrapper"
          bind:this={carousel}
