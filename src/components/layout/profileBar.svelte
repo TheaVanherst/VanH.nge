@@ -2,13 +2,17 @@
     import { motion } from '$lib/controllers/accessibilityController.js'
 
     import navigation from '$lib/controllers/navigationDirectories.js';
-    import Button from "$components/layout/navButton.svelte";
-    import Switch from '$components/globals/blocks/toggleSwitch.svelte';
+
+    import Button 		from "$components/layout/navButton.svelte";
+    import Switch 		from '$components/globals/blocks/toggleSwitch.svelte';
+    import StatusBlock 	from "$components/generic/nerv/statusBlock.svelte";
 </script>
 
 <div class="profileGraphic">
 	<img src="/profileGraphic.png"/>
 </div>
+
+<StatusBlock upper="TEST PLUG 00" lesser="MONITOR" padding="0 0 15px"/>
 
 <div class="buttonWrapper">
 	<div class="wrapperOffset">

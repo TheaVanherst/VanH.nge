@@ -4,7 +4,7 @@
     export let titleHeader = undefined;
     export let title = undefined;
 
-    let random = Math.floor(Math.random() * 3 + 1);
+    let random = Math.floor(Math.random() * 6 + 1);
 </script>
 
 <div class="titleCard">

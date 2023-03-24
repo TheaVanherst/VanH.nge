@@ -1,7 +1,8 @@
 <script>
+	import Emergency from "$components/generic/nerv/emergency.svelte";
+
 	import BlogPostPreview from 	"$components/blog/previewComponent.svelte"
 	import GalleryComponent from "$components/generic/simplifiedGallery.svelte";
-    // import Container from 			"$components/globals/containers/container.svelte";
     import NervContainer from 		"$components/globals/containers/nervContainer.svelte";
 
 	export let data = null;
@@ -23,32 +24,16 @@
 
 	</div>
 	<div class="col3 col">
-<!--		<Container colour={"red"} padding="{0}">-->
-<!--			<div class="emergency red flashing">-->
-<!--				<div class="bars"></div>-->
-<!--				<div class="bars"></div>-->
-<!--			</div>-->
+<!--		<Emergency/>-->
 
-<!--			<div class="emergencyWrapper flashing">-->
-<!--				<div>-->
-<!--					<p class="def red">EMERGENCY</p>-->
-<!--				</div>-->
-<!--			</div>-->
+<!--		<NervContainer-->
+<!--				subtitle="CODE 202"-->
+<!--				colour={"orange"} tabColour={"orange"} stripeColour={"red"}-->
+<!--				warning={true}>-->
 
-<!--			<div class="emergency red flashing">-->
-<!--				<div class="bars"></div>-->
-<!--				<div class="bars"></div>-->
-<!--			</div>-->
-<!--		</Container>-->
-
-		<NervContainer
-				subtitle="CODE 202"
-				colour={"orange"} tabColour={"orange"} stripeColour={"red"}
-				barBool={true} warning={true}>
-
-			<p class="defPad bod orange">
-				This site is currently in development. please do not take what you see as a true representation of the final site.</p>
-		</NervContainer>
+<!--			<p class="defPad bod orange">-->
+<!--				This site is currently in development. please do not take what you see as a true representation of the final site.</p>-->
+<!--		</NervContainer>-->
 
 		{#if data.featuredProject}
 			<div class="header green">

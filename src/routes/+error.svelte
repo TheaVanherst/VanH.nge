@@ -4,9 +4,7 @@
 
 {#if $page?.error}
     <div class="flexContainer">
-        <div class="pony">
-            <img src="/error.png"/>
-        </div>
+        <img src="/error.gif"/>
         <div>
             <h1>{$page?.status}</h1>
             <p>{$page?.error?.message}</p>
@@ -28,8 +26,9 @@
 		font-size:  14px;
 
         img {
-			width: 200px;
-			height: 100%;
+			width:      60%;
+            object-fit: cover;
+			height:     100%;
 		}
 
 		h1 {

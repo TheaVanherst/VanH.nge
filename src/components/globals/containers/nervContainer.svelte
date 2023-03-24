@@ -1,24 +1,22 @@
 <script>
-    export let
-		colour = "green",
-		tabColour =  "green",
-		stripeColour =   "orange";
+	// TODO: redo this
 
     export let
-		title = "NERV:",
-		subtitle = "CODE " + Math.floor(Math.random() * 404),
-    	warningString = "ACCESS RESTRICTED : NON NERV PERSONNEL";
+		colour = 		"green",
+		tabColour =  	"green";
+    export let
+		title = 		"NERV",
+		subtitle = 		`CODE ${Math.floor(Math.random() * 404)}:`;
 
     export let
-		warning = false,
-		barBool = false;
+		warning = false;
 </script>
 
-<div class={"nervWrapper " + colour}>
+<div class="container {colour}">
 
 	<div class="tab">
 		<div class="tilt">
-			<p class="def tabName {tabColour}">
+			<p class="def {tabColour}">
 				{title}
 			</p>
 		</div>
@@ -27,24 +25,7 @@
 		</p>
 	</div>
 
-	<div class="container">
-		{#if barBool}
-			{#if warning}
-				<div class=" bar">
-					<div class="warning steep {stripeColour}"></div>
-
-					<div class="emergencyWrapper gap scroll">
-						<p class="alt">
-							{warningString}
-						</p>
-					</div>
-
-					<div class="warning steep {stripeColour}"></div>
-				</div>
-			{:else}
-				<div class="bar warning steep {stripeColour}"></div>
-			{/if}
-		{/if}
+	<div class="wrapper">
 		<slot/>
 	</div>
 
@@ -52,7 +33,7 @@
 
 <style lang="scss">
 	@mixin cgm($colour){
-		.container {
+		.wrapper {
 			border: 	1px solid $colour;}
 		.tab {
 			border-left: 	1px solid $colour;
@@ -64,52 +45,43 @@
 	.orange {  @include cgm(var(--darkAccent3));}
 	.red {     @include cgm(var(--darkAccent4));}
 
-	.nervWrapper {
+	.container {
 		display: grid;
-
-		.container {
-			break-inside: avoid-column;
+		.wrapper {
+			padding-top: 	15px;
 			background:		var(--backgroundTrans);
 			margin-bottom:  var(--containerPadding);
-
-			.bar {
-				margin: 6px 6px 0 6px;}
-
-			& > *:not(.bar):first-child {
-				position: 	relative;
-				display: 	block;
-				margin: 	17px 0 0 0;}
 		}
 	}
 
 	.tab {
-		font-family:    Arial, Helvetica, sans-serif;
 		overflow:       hidden;
 		white-space:    nowrap;
 		display:        inline-flex;
 		margin-bottom: -24px;
 
+		.def {
+			font-size:      36px;
+			font-weight:    700;}
+
 		.caption {
-			padding:    4px 4px 5px 4px;
+			padding:    5px 7px 5px 0;
 			margin:     auto auto 0 -5px;
 
 			background: var(--background);
-
-			display:    block;
 			position:   relative;
 
 			text-transform: uppercase;
-			font-weight:    600;
-		}
+			font-weight:    700;}
 
 		.tilt {
 			background: var(--background);
 			width:     	min-content;
-			padding:    0 4px 0 2px;
+			padding:    0 9px 0 6px;
 			transform:  skew(14deg);
 
 			p {
-				transform:  	skew(-14deg) scale(1, 0.8);
+				transform:  	skew(-14deg) scale(1, 0.9);
 				padding:    	0 0 0 3px;
 				text-transform: uppercase;
 			}

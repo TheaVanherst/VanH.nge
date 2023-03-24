@@ -29,9 +29,9 @@
     }
 
     @mixin cgm($st, $sd, $hm, $zh, $ov, $lp){
-        -webkit-animation: 	backgroundScroll+$st $sd linear infinite;
-        animation: 			backgroundScroll+$st $sd linear infinite;
-        background-image: 	url("/starTest"+($st)+".gif");
+        -webkit-animation: 	backgroundSpeed+$st $sd linear infinite;
+        animation: 			backgroundSpeed+$st $sd linear infinite;
+        background-image: 	url("/stars"+($st)+".gif");
 
         left:  -$lp;
         height: calc(100vh + $hm);
@@ -45,10 +45,10 @@
     .spaceBg2 {    @include cgm(2,45s,$res2,2,0.7,250px);}
     .spaceBg3 {    @include cgm(1,45s,$res1,1,0.5,355px);}
 
-	@keyframes backgroundScroll1 {
+	@keyframes backgroundSpeed1 {
 		0% {  	transform: translateY(calc($res1 * -1));}
 		100% {  transform: translateY(0px);} }
-	@keyframes backgroundScroll2 {
+	@keyframes backgroundSpeed2 {
 		0% {  	transform: translateY(calc($res2 * -1));}
 		100% {  transform: translateY(0px);} }
 </style>
