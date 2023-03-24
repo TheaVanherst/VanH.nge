@@ -82,7 +82,7 @@ const
         title2: 'gallery.images[2]',
 
         media: 'gallery.images[0]',
-        author0: 'author.fullName',
+        author0: 'authors.fullName',
         author1: 'collaborators.0.fullName',
         author2: 'collaborators.1.fullName',
       },

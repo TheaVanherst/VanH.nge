@@ -113,7 +113,7 @@ const
       select: {
         title: 'title',
         subtitle: 'briefDesc',
-        author: 'author.fullName',
+        author: 'authors.fullName',
         media: 'mainImage',
       },
       prepare(selection) {

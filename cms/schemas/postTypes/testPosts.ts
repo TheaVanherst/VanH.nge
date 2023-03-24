@@ -96,7 +96,7 @@ export default defineType({
   preview: {
     select: {
       title: 'title', subtitle: 'briefDesc',
-      author: 'author.fullName', media: 'mainImage',
+      author: 'authors.fullName', media: 'mainImage',
     },
     prepare(selection) {
       const {author, title, media} = selection
