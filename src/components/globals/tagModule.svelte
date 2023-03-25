@@ -1,5 +1,5 @@
 <script>
-    import HorizontalGrid from "$components/generic/nerv/horizontalGrid.svelte";
+    import HorizontalGrid from "$components/globals/misc/nervHorizontalGrid.svelte";
     import { relativeTime } from "$lib/builders/dateBuilder.js";
 
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc

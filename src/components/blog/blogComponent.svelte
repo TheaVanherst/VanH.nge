@@ -13,8 +13,13 @@
     export let post = null;
 </script>
 
-<Container overflowBool="{false}" id="post-{post.slug}" colour="orange">
-    <PostHeader titleHeader="{post.headerImage}"	title="{post.title}"/>
+<Container
+        overflowBool="{false}"
+        id="post-{post.slug}"
+        colour="orange">
+    <PostHeader
+            titleHeader="{post.headerImage}"
+            title="{post.title}"/>
 
     <div class="profile">
         {#if post.author && post.author.userPortrait}
@@ -54,20 +59,24 @@
                         content="Edited by ">
                     {post.editor?.handle}
                 </AuthorTag>
-                <AuthorTag social={post.author?.socialMedia}
-                           content=", Published by ">
+                <AuthorTag
+                        social={post.author?.socialMedia}
+                        content=", Published by ">
                     {post.author?.handle}
                 </AuthorTag>
             {/if}
         {:else}
-            <AuthorTag social={post.author?.socialMedia}
-                       content="Published by ">
+            <AuthorTag
+                    social={post.author?.socialMedia}
+                    content="Published by ">
                 {post.author?.handle}
             </AuthorTag>
         {/if}
     </div>
 
-    <TagModule time="{post.publishedAt}"    tags={post.categories}/>
+    <TagModule
+            time="{post.publishedAt}"
+            tags={post.categories}/>
     <PostModule
             postData="{post.body}"/>
 </Container>

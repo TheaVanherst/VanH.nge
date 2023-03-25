@@ -39,7 +39,6 @@
                         </h1>
                     </a>
                 {/if}
-
             </div>
         {/each}
     </ScrollAnimationWrapper>
@@ -51,8 +50,6 @@
         padding:        8px 10px 10px;
 
         background:     var(--backgroundTrans);
-        border-bottom:  1px solid var(--accent1);
-
         text-transform: capitalize;
         z-index:        100;
 

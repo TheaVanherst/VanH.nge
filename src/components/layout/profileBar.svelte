@@ -1,18 +1,20 @@
 <script>
     import { motion } from '$lib/controllers/accessibilityController.js'
-
     import navigation from '$lib/controllers/navigationDirectories.js';
 
     import Button 		from "$components/layout/navButton.svelte";
-    import Switch 		from '$components/globals/blocks/toggleSwitch.svelte';
-    import StatusBlock 	from "$components/generic/nerv/statusBlock.svelte";
+    import Switch 		from '$components/globals/components/toggleSwitch.svelte';
+    import StatusBlock 	from "$components/globals/titles/nervStatusBlock.svelte";
 </script>
-
 <div class="profileGraphic">
 	<img src="/profileGraphic.png"/>
 </div>
 
-<StatusBlock upper="TEST PLUG 00" lesser="MONITOR" padding="0 0 15px"/>
+<StatusBlock
+		title="TEST PLUG 00"
+		substitle="MONITOR"
+		external="THEA VANHERST"
+		padding="0 0 15px"/>
 
 <div class="buttonWrapper">
 	<div class="wrapperOffset">
