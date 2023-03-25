@@ -5,6 +5,8 @@
     import Button 		from "$components/layout/navButton.svelte";
     import Switch 		from '$components/globals/components/toggleSwitch.svelte';
     import StatusBlock 	from "$components/globals/titles/nervStatusBlock.svelte";
+
+    import NervButton from "$components/globals/misc/nervButtonChunk.svelte";
 </script>
 <div class="profileGraphic">
 	<img src="/profileGraphic.png"/>
@@ -25,6 +27,8 @@
 </div>
 
 <Switch label="Reduced Motion" bind:bool={$motion}/>
+
+<!--<NervButton/>-->
 
 <style lang="scss">
 	.profileGraphic {

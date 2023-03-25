@@ -1,9 +1,9 @@
 <script>
-	import Emergency from "$components/globals/titles/nervEmergency.svelte";
+	import Emergency from "$components/globals/todo/nervEmergency.svelte";
 
 	import BlogPostPreview from 	"$components/blog/previewComponent.svelte"
 	import GalleryComponent from "$components/generic/simplifiedGallery.svelte";
-    import NervContainer from 		"$components/globals/containers/nervContainer.svelte";
+    import NervContainer from "$components/globals/todo/nervContainer.svelte";
 
     import DefaultTitle from "$components/globals/titles/nervSectionTitle.svelte";
 
@@ -36,8 +36,8 @@
 <!--		</NervContainer>-->
 
 		{#if data.featuredProject}
-			<DefaultTitle size="small" borders={false}>
-				FEATURED ART
+			<DefaultTitle borders={false}>
+				ARTWORKS
 			</DefaultTitle>
 
 			{#each data.featuredProject as post}

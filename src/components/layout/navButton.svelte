@@ -8,17 +8,13 @@
 <a href={push}
     class:curRoot={"/" + $urlStoreArr[1] === push}
     class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}
-    on:click|preventDefault={urlChanger("/" + $urlStoreArr[1] !== push ? push : navigation[0].path)}>
+    on:click|preventDefault={urlChanger("/" + $urlStoreArr[1] !== push ? push : push !== navigation[0].path ? navigation[0].path : "/")}>
     <div class="powerBar">
-        <div class="left">
-            <div class="highlight"></div>
-        </div>
-        <div class="right">
-            <div></div>
-        </div>
+        <div class="highlight"></div>
+        <div></div>
     </div>
 
-    <div class="title neon">
+    <div class="title">
         <p>
             <slot/>
         </p>
@@ -32,8 +28,9 @@
         &:before {      color:      $highlight;}
         .powerBar {
             > div {     background: $colour;}
-            .highlight {background: $highlight;}}
-        .title {        border:     1px solid $highlight;
+            .highlight:before {background: $highlight;}}
+        .title {        filter: 	drop-shadow(0px 0px 0.8px $highlight);
+                        border:     1px solid $highlight;
             p {         color:      $highlight;}}}
 
     a {
@@ -64,20 +61,32 @@
                 width:      calc(100% - $width);
                 transition: margin-right .05s .5s ease-in-out;
 
-                .highlight {
+                &:first-child{
+                    overflow: hidden;
+                    border-top-left-radius:     3px;
+                    border-bottom-left-radius:  3px;
+                }
+                &:last-child{
+                    border-top-right-radius:    3px;
+                    border-bottom-right-radius: 3px;
+                }
+
+                &.highlight:before {
+                    content:    "";
+                    display:    block;
                     width:      25px;
                     height:     10px;}}}
 
         .title {
             height:         23px;
             margin-left:    10px;
-
-            background:     var(--background);
+            padding-bottom: 1px;
+            border-radius:  5px;
 
             p {
                 margin:     auto 0;
                 padding:    0 5px;
-                transform:  scale(1, 1.2);
+                transform:  scale(1, 1.5);
 
                 text-transform: uppercase;
                 font-weight:    800;}}
@@ -91,7 +100,7 @@
         &.curRoot {     margin-left:    -5px;
                 @include cgm(var(--darkAccent4), var(--darkAccent3));
             .powerBar { width:          calc($width + 10px);
-                .left { margin-right:   10px;}}
+                > *:first-child { margin-right:   10px;}}
             &:hover {
                 @include cgm(var(--darkAccent3), var(--darkAccent4));
                 &.embedded {
