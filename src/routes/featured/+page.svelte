@@ -1,9 +1,11 @@
 <script>
-	import Emergency from "$components/generic/nerv/emergency.svelte";
+	import Emergency from "$components/globals/titles/nervEmergency.svelte";
 
 	import BlogPostPreview from 	"$components/blog/previewComponent.svelte"
 	import GalleryComponent from "$components/generic/simplifiedGallery.svelte";
     import NervContainer from 		"$components/globals/containers/nervContainer.svelte";
+
+    import DefaultTitle from "$components/globals/titles/nervSectionTitle.svelte";
 
 	export let data = null;
 </script>
@@ -11,11 +13,9 @@
 <div class="content">
 	<div class="col2 col">
 		{#if data.featuredBlogPosts}
-			<div class="header green borders">
-				<div class="title large">
-					<p>LATEST BLOGS</p>
-				</div>
-			</div>
+			<DefaultTitle>
+				LATEST BLOGS
+			</DefaultTitle>
 
 			{#each data.featuredBlogPosts as post}
 				<BlogPostPreview post={post}/>
@@ -36,11 +36,9 @@
 <!--		</NervContainer>-->
 
 		{#if data.featuredProject}
-			<div class="header green">
-				<div class="title small">
-					<p>FEATURED ART</p>
-				</div>
-			</div>
+			<DefaultTitle size="small" borders={false}>
+				FEATURED ART
+			</DefaultTitle>
 
 			{#each data.featuredProject as post}
 				<div class="artCell">

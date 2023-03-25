@@ -5,8 +5,6 @@
 	import {page} from "$app/stores";
 
     export let data = [];
-    console.log($page);
-    console.log(data);
 </script>
 
 <div class="content">
