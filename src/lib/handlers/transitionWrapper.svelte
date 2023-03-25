@@ -8,9 +8,14 @@
     import * as easingFunctions     from 'svelte/easing'
     // navigation checks
     import { afterNavigate, beforeNavigate } from '$app/navigation';
+    import { page } from "$app/stores";
+
+    const awaitTimeout = (delay) => {
+        return new Promise(resolve => setTimeout(resolve, delay));};
 
     // TODO: Automated navigation controller
     afterNavigate(async () => {
+        loading.set(true);
         navigate.set(true);
         await awaitTimeout(transTimeOut);
         await awaitTimeout(transTimeIn);
@@ -22,15 +27,16 @@
     beforeNavigate(async (navigation) => {
         navigate.set(true);
 
-        let to = navigation.to.url.pathname,
+        let to = navigation.to ? navigation.to.url.pathname : "/",
             from = navigation.from ? navigation.from.url.pathname : "/";
+
+        console.log(to, from, $directory);
 
         if (from === $directory) {
             $directory = to;
+            console.log("yes")
             await directionProcessing(from, to);}
     });
-
-    const awaitTimeout = delay => new Promise(resolve => setTimeout(resolve, delay));
 
     // these are jank solutions, but generally work for the time being.
     // this all needs being replaced with a history scraper.
@@ -42,10 +48,8 @@
 
     // transition position vars
     let transition
-    $:  transition =    !$motion ?
-                            transitionFunctions[transitionReqType] :
-                            transitionFunctions["fade"];
-    let easing =        easingFunctions[easingName];
+    $:  transition = !$motion ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
+    let easing = easingFunctions[easingName];
 
     // transition timeout vars
     export let
