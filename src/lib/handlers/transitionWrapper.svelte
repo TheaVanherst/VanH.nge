@@ -1,7 +1,6 @@
 <script>
     // local navigation checks & multipliers
-    import { navigate, loading,
-            directory, directionProcessing,
+    import { navigate, loading, directionProcessing, directory,
             directionX, directionY}         from '$lib/controllers/directoryController.js';
     import { motion }                       from '$lib/controllers/accessibilityController';
     // transition imports
@@ -9,50 +8,49 @@
     import * as easingFunctions     from 'svelte/easing'
     // navigation checks
     import { afterNavigate, beforeNavigate } from '$app/navigation';
-    import { page } from "$app/stores";
 
-    afterNavigate(async () => { //required on the front age to indicate load in
+    // TODO: Automated navigation controller
+    afterNavigate(async () => {
+        navigate.set(true);
+        await awaitTimeout(transTimeOut);
+        await awaitTimeout(transTimeIn);
+        navigate.set(false);
         loading.set(false);
-
-        let url = $page.url.pathname; //temporary solution to fix router issues.
-        if ($directory !== url) {
-            $directory = url;
-            await directionProcessing("/", url);
-        }
-            // the prev url can't be set to "$directory", because it's empty on page back.
-            // setting it as such freezes redirects.
-            // TODO: FIX THIS VIA. HISTORY STATES.
     });
 
-    beforeNavigate(async () => {
-        navigate.set(true); //fallback in weird instances
+    // TODO: Manual navigation controller
+    beforeNavigate(async (navigation) => {
+        navigate.set(true);
 
-        if ($loading){ // fallback in an instance where the page hasn't loaded in yet
-            // this fixes a lot of load in issues when navigating via the browser.
-            setTimeout(() => {
-                navigate.set(false);
-            }, transTimeOut);
-        } else {
-            navigate.set(false);
-        }
+        let to = navigation.to.url.pathname,
+            from = navigation.from ? navigation.from.url.pathname : "/";
+
+        if (from === $directory) {
+            $directory = to;
+            await directionProcessing(from, to);}
     });
+
+    const awaitTimeout = delay => new Promise(resolve => setTimeout(resolve, delay));
+
     // these are jank solutions, but generally work for the time being.
     // this all needs being replaced with a history scraper.
 
     // transition types
     export let
-        transitionReqType = "fly",
-        easingName = "easeInOut";
+        transitionReqType =     "fly",
+        easingName =            "easeInOut";
 
     // transition position vars
     let transition
-    $:  transition = !$motion ? transitionFunctions[transitionReqType] : transitionFunctions["fade"];
-    let easing = easingFunctions[easingName];
+    $:  transition =    !$motion ?
+                            transitionFunctions[transitionReqType] :
+                            transitionFunctions["fade"];
+    let easing =        easingFunctions[easingName];
 
     // transition timeout vars
     export let
-        transTimeIn = 300,
-        transTimeOut = 300;
+        transTimeIn = 200,
+        transTimeOut = 200;
     export let // allows page delays
         delayIn = 0,
         delayOut = 0;
@@ -62,16 +60,16 @@
         transY = 30;
 </script>
 
-{#if !$navigate && !$loading} <!-- loading checks -->
+{#if !$loading && !$navigate} <!-- loading checks -->
     <div class="transitionWrapper"
-        in:transition={{
-            transTimeIn, delayIn, easing,
-            x: transX * -$directionX,
-            y: transY * $directionY}}
-        out:transition={{
-            transTimeOut, delayOut, easing,
-            x: transX * $directionX,
-            y: transY * -$directionY}}>
+         in:transition={{
+                transTimeIn, delayIn, easing,
+                x: transX * -$directionX,
+                y: transY * $directionY}}
+         out:transition={{
+                transTimeOut, delayOut, easing,
+                x: transX * $directionX,
+                y: transY * -$directionY}}>
         <slot/>
     </div>
 {/if}

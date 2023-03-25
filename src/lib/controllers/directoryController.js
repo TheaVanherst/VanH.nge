@@ -55,29 +55,19 @@ export { urlStoreArr, directionX, directionY}
 
 import { goto } from '$app/navigation';
 
-const fetchData = (url) => {
-    loading.set(true);
-
-    return fetch(url)
-        .then(async (e) => {
-            directory.set(url)
-            goto(e.url);
-        });
-};
-
 const urlChanger = async (url) => {
     event.preventDefault(); // for some reason it breaks without this specifically on navigation buttons
-    url = !url ? "/" : url //god I hate this so much, but the tldr is;
-        // to fetch the homepage ("https://*website*"), you HAVE to specify "/" when redirecting.
-        // the problem is, that the way how the url builders work is that doing it any other way
-        // either breaks the directory router or breaks the url router.
-
         // Just leave it, I promise it's for the greater good.
 
     // url handling
     if(directoryString !== url) {
+        loading.set(true);
         await directionProcessing(directoryString, url);
-        await fetchData(url);
+        await fetch(url)
+            .then(async (e) => {
+                directory.set(url)
+                goto(e.url);
+            });
     }
 };
 
