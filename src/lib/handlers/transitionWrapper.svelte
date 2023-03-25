@@ -8,7 +8,6 @@
     import * as easingFunctions     from 'svelte/easing'
     // navigation checks
     import { afterNavigate, beforeNavigate } from '$app/navigation';
-    import { page } from "$app/stores";
 
     const awaitTimeout = (delay) => {
         return new Promise(resolve => setTimeout(resolve, delay));};
@@ -30,16 +29,10 @@
         let to = navigation.to ? navigation.to.url.pathname : "/",
             from = navigation.from ? navigation.from.url.pathname : "/";
 
-        console.log(to, from, $directory);
-
         if (from === $directory) {
             $directory = to;
-            console.log("yes")
             await directionProcessing(from, to);}
     });
-
-    // these are jank solutions, but generally work for the time being.
-    // this all needs being replaced with a history scraper.
 
     // transition types
     export let
