@@ -9,7 +9,6 @@
     import PostHeader                   from "$components/generic/postTitleCard.svelte";
 
     export let post = null;
-    console.log(post);
 </script>
 
 <PreviewContainer urlDirect={"/blog/" + post.slug} id="{post.slug}">

@@ -10,6 +10,10 @@
     export let
         preview =   false;  // render type
 
+    // this is all over engineered to compensate for mass author data.
+    // theoretically, should handle infinite.
+    // TODO: mobile compatibility
+
     let context = [];
 
     const filterCheck = (a1,a2,fl) => {
@@ -36,13 +40,8 @@
     }
 
     let content =
-        [{
-            context: context[0],
-            authors: authors,
-        },{
-            context: context[1],
-            authors: editors
-        }];
+        [{   context: context[1], authors: editors
+        }, { context: context[0], authors: authors}];
 
     content = content.filter((x) => x.authors[0] !== undefined);
     let last = (a, i) => i === a.length - 1;
@@ -79,6 +78,9 @@
     @mixin cgm($colour, $ogTones, $thickness, $filled){
         color:      $colour;
         box-shadow: inset 0 0 0 0 $ogTones;
+        &::selection {
+            background: $colour;}
+
         &:hover {
             color:      $filled;
             box-shadow: inset 0 0 0 $thickness $colour;}}
@@ -101,6 +103,8 @@
         width:          min-content;
         white-space:    nowrap;
         position:       relative;
+        display:        inline;
+        font-size:      0;
 
 	    span.wrapper {
 		    margin:     0 -.25rem;

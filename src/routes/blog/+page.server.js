@@ -8,7 +8,7 @@ export const load = async () => {
     const allQueries = await client.fetch(`{
         "postRequests":
             *[ _type == 'blogPost' ] 
-            |  order ( publishedAt desc )
+            | order ( publishedAt desc )
             [0..5]{
                 ${blogPreviewQuery}
             }

@@ -85,4 +85,4 @@ let
             'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]
         `
 
-export {blogPreviewQuery, blogQuery};
+export { blogPreviewQuery, blogQuery };

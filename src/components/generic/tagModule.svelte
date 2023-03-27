@@ -95,7 +95,6 @@
 
             &.new {         @include cgm(var(--accent2));}
             &.highlight {   @include cgm(var(--accent1));}
-            &:hover {       @include cgm(var(--accent3));}
 
             &:before, &:after {
                 font-weight:    400;
