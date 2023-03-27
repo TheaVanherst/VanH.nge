@@ -1,13 +1,6 @@
 
 /* TODO: TITLES */
 
-.titlecard {
-	font-family:    'Playfair Display', serif;
-	font-weight:    700;
-	line-height:    100%;
-	padding:        0;
-}
-
 p.bod {
 	font-size:      10px;
 	font-family:    Lucida Console, sans-serif;
@@ -83,19 +76,6 @@ div.dogma {
 	width: min-content;
 	text-wrap: none;
 }
-
-.medPad {
-	padding: 6px 6px 0 6px;
-	&:last-child {
-		padding-bottom: 6px;}}
-.defPad {
-	padding: 10px 10px 0 10px;
-	&:last-child {
-		padding-bottom: 10px;}}
-.nutPad {
-	padding: 10px 20px 0 20px;
-	&:last-child {
-		padding-bottom: 10px;}}
 
 .buttonWrapper {
 	position:   relative;

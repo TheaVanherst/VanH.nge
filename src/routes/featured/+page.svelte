@@ -24,16 +24,17 @@
 
 	</div>
 	<div class="col3 col">
-<!--		<Emergency/>-->
+		<Emergency/>
 
-<!--		<NervContainer-->
-<!--				subtitle="CODE 202"-->
-<!--				colour={"orange"} tabColour={"orange"} stripeColour={"red"}-->
-<!--				warning={true}>-->
-
-<!--			<p class="defPad bod orange">-->
-<!--				This site is currently in development. please do not take what you see as a true representation of the final site.</p>-->
-<!--		</NervContainer>-->
+		<NervContainer
+				title="グローバル"
+				subtitle="CODE 202"
+				colour={"orange"}
+				tabColour={"orange"}
+				stripeColour={"red"}
+				warning={true}>
+			This site is currently in development. please do not take what you see as a true representation of the final site.
+		</NervContainer>
 
 		{#if data.featuredProject}
 			<DefaultTitle borders={false}>
