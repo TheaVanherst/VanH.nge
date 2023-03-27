@@ -10,7 +10,7 @@ const createdPush = (creationDate, dateLength, string) => { // generic date buil
 
      updatedPush = (updatedDate, string = null) => {
          updatedDate = new Date(updatedDate); // builds date to be standardized to js
-         string = string ?? `↳ ${EditedEmoji} Edited`;
+         string = (string ?? `↳ ${EditedEmoji} Edited`) + " ";
 
          let clock = "";
          if (604800 > relativeTime(updatedDate))

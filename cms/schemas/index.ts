@@ -20,6 +20,7 @@ import internalTags       from './catagoryData/internalTags';
 
 // TODO: Author data
 import author         from './authorData/author';
+import authorTags     from './authorData/authorTag';
 
 const blogData = [
   //content declarations
@@ -34,8 +35,9 @@ const blogData = [
 
   //post related data
   author,
-  internalTags,
+  authorTags,
 
+  internalTags,
   codingCategories,
   designCategories,
   artCategories,

@@ -29,21 +29,27 @@ const structure = (S) =>
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['blogPost', 'post', 'artPost', 'designPost'].includes(listItem.getId())
+          (listItem) => [
+            'blogPost', 'post', 'artPost', 'designPost'
+          ].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: --------- CATAGORY DATA
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['programingTags','designCategory', 'artCategory', 'genericCategory', 'category'].includes(listItem.getId())
+          (listItem) => [
+            'programingTags','designCategory', 'artCategory', 'genericCategory', 'category'
+          ].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: --------- CATAGORY DATA
 
       ...S.documentTypeListItems()
         .filter(
-          (listItem) => ['author', 'internalTags'].includes(listItem.getId())
+          (listItem) => [
+            'author', 'internalTags', 'authorTags'
+          ].includes(listItem.getId())
         ),
 
       S.divider(), // TODO: ---------

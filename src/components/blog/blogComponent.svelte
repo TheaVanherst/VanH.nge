@@ -97,6 +97,7 @@
         > div {
             left:          -25px;
             max-width:      60px;
+            max-height:     60px;
 
             overflow:       hidden;
             position:       absolute;

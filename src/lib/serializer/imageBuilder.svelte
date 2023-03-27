@@ -40,7 +40,7 @@
 </script>
 
 {#if image?.asset}
-    <div style="aspect-ratio:{ratioCalc()}"
+    <div
          class:loaded
          class:nsfw={image?.NSFW}>
         <img loading="lazy"

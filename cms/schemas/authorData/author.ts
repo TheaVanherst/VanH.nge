@@ -62,9 +62,24 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'shortDesc',
+      title: 'Short Description',
+      type: 'string',
+      validation: Rule => Rule.required().min(4).max(64),
+    }),
+    defineField({
       name: 'bio',
       title: 'Bio',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'categories', title: 'Tags',
+      type: 'array',
+      of: [
+        { type: 'reference',
+          validation: Rule => Rule.required(),
+          to: {type: 'authorTags'}},
+      ]
     }),
   ],
 

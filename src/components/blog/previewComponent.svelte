@@ -2,7 +2,7 @@
     import PostModule       from "$lib/serializer/portableText.svelte"
 
     import TagModule        from "$components/generic/tagModule.svelte";
-    import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
+    import PreviewContainer from "$components/globals/containers/readMoreContainer.svelte";
     import InvContainer     from "$components/globals/todo/invContainer.svelte";
 
     import AuthorTag                    from "$components/generic/authorTag.svelte";
