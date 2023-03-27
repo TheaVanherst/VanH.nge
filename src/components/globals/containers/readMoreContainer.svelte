@@ -18,7 +18,7 @@
    on:click={() => {urlChanger(urlDirect)}}>
 	<div
 		class="post {colour} {(hoverColour ? ' g' + hoverColour : '')}"
-		class:glow={hover}>
+		class:hover={hover}>
 
 		<slot/>
 
@@ -38,7 +38,7 @@
 	.red {      border: 1px solid var(--darkAccent4);
 		img {   background-color:   var(--darkAccent4);}}
 
-	.glow {
+	.hover {
 		&.ggreen { 	border: 1px solid var(--accent1);
 			img {   background-color:   var(--accent1);}}
 		&.gyellow {	border: 1px solid var(--accent3);

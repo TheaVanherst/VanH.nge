@@ -1,21 +1,20 @@
 
-import client from "$lib/sanityClient.js";
-import { blogQuery } from "$lib/queries/blogPosts.js"
+import client           from "$lib/sanityClient.js";
+import { authorQuery }  from "$lib/queries/authorData"
 
 import { error } from '@sveltejs/kit';
 
 export const load = async ({params}) => {
     const { slug } = params
     const allQueries = await client.fetch(`{
-        "requestedProject": 
-            *[  _type == 'blogPost' && 
-                slug.current == '${slug}'
+        "requestedAuthor": 
+            *[  _type == 'author' && slug.current == '${slug}'
             ]{
-                ${ blogQuery }
+                ${authorQuery}
             }
     }`);
 
-    if (allQueries.requestedProject) {
+    if (allQueries.requestedAuthor) {
         return allQueries;
     } else {
         throw new error(404, "Nothing here but us deer.")

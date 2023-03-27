@@ -1,7 +1,6 @@
 <script>
 	import PreviewComponent from "$components/author/previewComponent.svelte";
 	export let data = [];
-    console.log(data);
 </script>
 
 <div class="content">

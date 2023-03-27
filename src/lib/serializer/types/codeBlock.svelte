@@ -7,7 +7,7 @@
     import json             from 'highlight.js/es/languages/JSON';
     import typescript       from 'highlight.js/es/languages/typescript';
 
-    import styles           from "$root/styles/vansche.scss";
+    import "$root/styles/vansche.scss";
 
     export let portableText = [];
     let language = portableText.value.language;
@@ -119,8 +119,8 @@
         & {         div {   @extend .regularBut;}}
         &.hovered { div {   @extend .glowBut;}}
         &.clicked { div {   @extend .hoverBut;}
-            &.glow {div {   @extend .glowBut;}}}
-        &.glow {    div {   @extend .pressedBut;}}}
+            &.hover {div {   @extend .glowBut;}}}
+        &.hover {    div {   @extend .pressedBut;}}}
 
     .codeData {
         margin:     0 0 0 30px;

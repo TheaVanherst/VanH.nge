@@ -20,7 +20,7 @@
    on:click={() => {urlChanger(urlDirect)}}>
 	<div
 		class="post {colour} {(hoverColour ? ' g' + hoverColour : '')}"
-		class:glow={hover} style="padding: {padding}">
+		class:hover="{hover}" style="padding: {padding}">
 
 		<slot/>
 	</div>
@@ -36,7 +36,7 @@
 	.red {      border: 1px solid var(--darkAccent4);
 		img {   background-color:   var(--darkAccent4);}}
 
-	.glow {
+	.hover {
 		&.ggreen { 	border: 1px solid var(--accent1);
 			img {   background-color:   var(--accent1);}}
 		&.gyellow {	border: 1px solid var(--accent3);
@@ -50,25 +50,8 @@
 		position: 		relative;
 		overflow: 		hidden;
 		break-inside:   avoid-column;
+
 		background:		var(--backgroundTrans);
-
 		margin-bottom:  var(--containerPadding);
-
-		> .readMore {
-			position:   absolute;
-			bottom:     var(--containerPadding);
-			z-index:    20;
-			width: 		calc(100% - (var(--containerPadding) * 2));
-
-			img {
-				display:    block;
-				text-wrap: 	none;
-
-				padding:    4px;
-				width:      16px;
-				height:     16px;
-				margin:     0 auto;
-			}
-		}
 	}
 </style>
