@@ -3,19 +3,16 @@ import client from "$lib/sanityClient.js";
 import { blogQuery } from "$lib/queries/blogPosts.js"
 
 import { error } from '@sveltejs/kit';
-import { artQuery } from "$lib/queries/galleryPosts.js";
 
 export const load = async ({params}) => {
     const { slug } = params
-
     const allQueries = await client.fetch(`{
-        "requestedProject":
-            *[ _type == 'post' && 
+        "requestedProject": 
+            *[  _type == 'blogPost' && 
                 slug.current == '${slug}'
-            ]{ ${ blogQuery } },
-        "featuredProject": 
-            *[ "📊 Featured" in categories[] -> title
-            ]{ ${ artQuery } }
+            ]{
+                ${ blogQuery }
+            }
     }`);
 
     if (allQueries.requestedProject) {

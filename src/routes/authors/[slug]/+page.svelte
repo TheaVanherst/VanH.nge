@@ -1,23 +1,25 @@
 <script>
-	import PreviewBlogPost 		from "$components/blog/previewComponent.svelte"
-	import TitleList 			from "$components/layout/contents/previewContentList.svelte"
+	import BlogComponent  		from "$components/blog/blogComponent.svelte";
+	import Contents 			from '$components/layout/contents/contentList.svelte';
 	import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
 
-    export let data = null;
+	export let data = null;
 </script>
 
 <div class="content">
 	<div class="page">
-		{#each data.postRequests as post, i}
-			<PreviewBlogPost post={post}/>
-		{/each}
+        <BlogComponent post={data.requestedProject[0]}/>
 	</div>
 	<div class="contents">
 		<PageScrollWrapper>
-			<TitleList data={data.postRequests}/>
+			<Contents
+				list={data.requestedProject[0].titles}
+				title={data.requestedProject[0].title}
+				ref={data.requestedProject[0].slug}/>
 		</PageScrollWrapper>
 	</div>
 </div>
+
 
 <style lang="scss">
 	.content {

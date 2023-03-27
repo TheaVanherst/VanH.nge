@@ -22,12 +22,10 @@
             title="{post.title}"/>
 
     <div class="profile">
-        {#if post.author && post.author.userPortrait}
-            <div class="author">
-                <SanityImage image={post.author.userPortrait}/>
-            </div>
-        {/if}
-        {#if post.editor && post.author.handle !== post.editor.handle && post.author.userPortrait}
+        <div class="author">
+            <SanityImage image={post.author.userPortrait}/>
+        </div>
+        {#if post.editor && post.author._id !== post.editor._id}
             <div class="editor">
                 <SanityImage image={post.editor.userPortrait}/>
             </div>
@@ -46,32 +44,7 @@
     </div>
 
     <div class="userData">
-        {#if post.editor}
-            {#if post.author.fullName === post.editor.fullName}
-                <AuthorTag
-                        social={post.author?.socialMedia}
-                        content="Edited & published by ">
-                    {post.author?.handle}
-                </AuthorTag>
-            {:else}
-                <AuthorTag
-                        social={post.editor?.socialMedia}
-                        content="Edited by ">
-                    {post.editor?.handle}
-                </AuthorTag>
-                <AuthorTag
-                        social={post.author?.socialMedia}
-                        content=", Published by ">
-                    {post.author?.handle}
-                </AuthorTag>
-            {/if}
-        {:else}
-            <AuthorTag
-                    social={post.author?.socialMedia}
-                    content="Published by ">
-                {post.author?.handle}
-            </AuthorTag>
-        {/if}
+        <AuthorTag authors={[post.author]} editors={[post.editor]}/>
     </div>
 
     <TagModule
@@ -109,8 +82,8 @@
         display: flex;
         padding: 8px 0 4px calc(var(--contentPaddingY) + 40px);
 
-        width:          auto;
-        font-size:      0;
+        width:      auto;
+        font-size:  0;
 
         > *:last-child:not(:first-child) {
             border-left:   1px solid var(--fadedColourAcc);

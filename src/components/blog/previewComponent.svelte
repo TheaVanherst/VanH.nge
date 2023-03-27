@@ -3,9 +3,8 @@
 
     import TagModule        from "$components/globals/tagModule.svelte";
     import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
-    import InvContainer     from "$components/globals/containers/invContainer.svelte";
+    import InvContainer     from "$components/globals/todo/invContainer.svelte";
 
-    import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js"
     import AuthorTag                    from "$components/globals/authorTag.svelte";
     import PostHeader                   from "$components/generic/postTitleCard.svelte";
 
@@ -16,27 +15,8 @@
     <PostHeader titleHeader={post.headerImage}	title={post.title}/>
 
     <InvContainer colour="green">
-        {#if post.editor}
-            <AuthorTag
-                    preview={true} social={post.editor?.socialMedia}
-                    content="{updatedPush(post._updatedAt, post.publishedAt)} by">
-                {post.editor.handle}
-            </AuthorTag>
-        {:else}
-            {#if post.author === post.editor}
-                <AuthorTag
-                        preview={true} social={post.author?.socialMedia}
-                        content="{updatedPush(post._updatedAt, post.publishedAt)} by">
-                    {post.author.handle}
-                </AuthorTag>
-            {:else}
-                <AuthorTag
-                        preview={true} social={post.author?.socialMedia}
-                        content="{createdPush(post.publishedAt, 'shortDate')} by">
-                    {post.author.handle}
-                </AuthorTag>
-            {/if}
-        {/if}
+        <AuthorTag preview={true}
+            authors={[post.author]} editors={[post.editor]}/>
     </InvContainer>
 
     <TagModule time="{post._createdAt}" tags={post.categories}/>
