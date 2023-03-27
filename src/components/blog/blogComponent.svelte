@@ -2,11 +2,11 @@
     import SanityImage  from '$lib/serializer/imageBuilder.svelte'
 
     import PostHeader   from "$components/generic/postTitleCard.svelte";
-    import AuthorTag    from "$components/globals/authorTag.svelte";
+    import AuthorTag    from "$components/generic/authorTag.svelte";
 
     import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js"
 
-    import TagModule    from "$components/globals/tagModule.svelte"
+    import TagModule    from "$components/generic/tagModule.svelte"
     import PostModule   from "$lib/serializer/portableText.svelte"
     import Container    from "$components/globals/containers/container.svelte";
 
@@ -38,13 +38,14 @@
         </p>
         {#if post._updatedAt}
             <p class="updatedOn">
-                {updatedPush(post._updatedAt, post.publishedAt)}
+                {updatedPush(post._updatedAt)}
             </p>
         {/if}
     </div>
 
     <div class="userData">
-        <AuthorTag authors={[post.author]} editors={[post.editor]}/>
+        <AuthorTag
+            authors={[post.author]} editors={[post.editor]}/>
     </div>
 
     <TagModule

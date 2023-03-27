@@ -3,15 +3,15 @@ const // global emojis to indicate edited / published
     publishedEmoji = "📰",
     EditedEmoji = "📑"
 
-const createdPush = (creationDate, dateLength) => { // generic date builder.
-        return `${publishedEmoji} Published ${nth(new Date(creationDate), dateLength ? dateLength : "shortDate")}`;
+const createdPush = (creationDate, dateLength, string) => { // generic date builder.
+        return `${string ?? publishedEmoji + " Published"} ${nth(new Date(creationDate), dateLength ? dateLength : "shortDate")}`;
     },
 
-     updatedPush = (updatedDate) => {
+     updatedPush = (updatedDate, string = null) => {
          updatedDate = new Date(updatedDate); // builds date to be standardized to js
 
-         return `↳ ${EditedEmoji} Edited ${time_ago(updatedDate)}
-             ${2419200 > relativeTime(updatedDate) ? 
+         return `${string ?? `↳ ${EditedEmoji} Edited`} ${time_ago(updatedDate)}
+             ${604800 > relativeTime(updatedDate) ? 
                 ` at ${new Intl.DateTimeFormat('en-GB', {timeStyle: 'short'}).format(updatedDate)}` : 
                 `` }`;
     },

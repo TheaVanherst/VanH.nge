@@ -1,14 +1,15 @@
 <script>
     import PostModule       from "$lib/serializer/portableText.svelte"
 
-    import TagModule        from "$components/globals/tagModule.svelte";
+    import TagModule        from "$components/generic/tagModule.svelte";
     import PreviewContainer from "$components/globals/containers/prevContainer.svelte";
     import InvContainer     from "$components/globals/todo/invContainer.svelte";
 
-    import AuthorTag                    from "$components/globals/authorTag.svelte";
+    import AuthorTag                    from "$components/generic/authorTag.svelte";
     import PostHeader                   from "$components/generic/postTitleCard.svelte";
 
     export let post = null;
+    console.log(post);
 </script>
 
 <PreviewContainer urlDirect={"/blog/" + post.slug} id="{post.slug}">
@@ -16,10 +17,11 @@
 
     <InvContainer colour="green">
         <AuthorTag preview={true}
+            publicationDate={post.publishedAt} editDate={post._updatedAt}
             authors={[post.author]} editors={[post.editor]}/>
     </InvContainer>
 
-    <TagModule time="{post._createdAt}" tags={post.categories}/>
+    <TagModule time={post.publishedAt} tags={post.categories}/>
 
     <div class="nonClickable">
         <p class="description">

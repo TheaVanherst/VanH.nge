@@ -5,11 +5,11 @@
     export let time = 0;    // so it doesn't cause errors with time relativity in the calc
     export let tags = [];   // forms array as a fallback to check the length of later
 
-    if (tags.length > 1) { //causes errors on reload if you don't have this
-        for (let i in tags){
-            if (tags[i]._type === "category"){ //this is dumb, but it "works".
-                tags.unshift(tags.splice(i, 1)[0]);}
-        }}
+    tags = Array.isArray(tags) ? tags : [tags];
+
+    for (let i in tags){
+        if (tags[i]._type === "category"){ //this is dumb, but it "works".
+            tags.unshift(tags.splice(i, 1)[0]);}}
     // TODO: rewrite this to prioritize unicode.
     // this took 3 hours and I cannot be fucked to find another solution.
 
@@ -37,24 +37,15 @@
                 </div>
             {/if}
 
-            {#if tags?.[0] !== undefined} <!-- prevents errors, lol -->
-                {#if tags.length > 1}
-                    {#each tags as tag, i}
-                        <div class:highlight={tag._type === "category"}
-                             class="tag category">
-                            <span class="hov">
-                                {tag.title}
-                            </span>
-                        </div>
-                    {/each}
-                {:else}
-                    <div class:highlight={tags[0]._type === "category"}
+            {#if tags}
+                {#each tags as tag, i}
+                    <div class:highlight={tag._type === "category"}
                         class="tag category">
                         <span class="hov">
-                            {tags[0].title}
+                            {tag.title}
                         </span>
                     </div>
-                {/if}
+                {/each}
             {/if}
         </div>
     </div>
@@ -83,7 +74,6 @@
             padding:        5px var(--containerPadding);
             margin:         16px 10px 0 0;
 
-            //font-weight:    800;
             font-size:      12px;
             line-height:    12px;
 
@@ -95,27 +85,27 @@
                 ::selection {
                     background: $color!important;}}
 
-            @mixin log($colour){
-                font-weight:    400;
-                position:       absolute;
-                margin-left:   -6px;
+            @mixin log($colour, $margin, $content){
+                content:        $content;
+                margin-top:     $margin;
                 border-left:    1px solid $colour;
                 color:          $colour;}
 
-                            @include cgm(var(--darkAccent3));
+            @include cgm(var(--darkAccent3));
 
             &.new {         @include cgm(var(--accent2));}
             &.highlight {   @include cgm(var(--accent1));}
             &:hover {       @include cgm(var(--accent3));}
 
-            &:before {      @include log(var(--darkAccent3));
-                margin-top:    -15px;
-                padding:        0 0 5px 5px;
-                content:        "+" counter(section);}
-
-            &:after {       @include log(var(--darkAccent3));
-                margin-top:     20px;
-                content:        " ";
+            &:before, &:after {
+                font-weight:    400;
+                position:       absolute;
+                margin-left:   -6px;}
+            &:before {
+                @include log(var(--darkAccent3), -15px, "+" counter(section));
+                padding:        0 0 5px 5px;}
+            &:after {
+                @include log(var(--darkAccent3), 20px, " ");
                 height:         3px;}
 
             &:last-of-type {

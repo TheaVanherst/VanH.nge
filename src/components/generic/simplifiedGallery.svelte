@@ -1,6 +1,6 @@
 <script>
     import Container    from "$components/globals/containers/container.svelte";
-    import TagModule    from "$components/globals/tagModule.svelte";
+    import TagModule    from "$components/generic/tagModule.svelte";
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
 
     export let post = null;

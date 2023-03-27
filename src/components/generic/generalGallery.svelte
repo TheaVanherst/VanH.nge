@@ -1,10 +1,8 @@
 <script>
-    import { createdPush } from "$lib/builders/dateBuilder.js";
-
-    import TagModule    from "$components/globals/tagModule.svelte";
+    import TagModule    from "$components/generic/tagModule.svelte";
     import Container    from "$components/globals/containers/container.svelte";
 
-    import AuthorTag    from "$components/globals/authorTag.svelte";
+    import AuthorTag    from "$components/generic/authorTag.svelte";
     import InvContainer from "$components/globals/todo/invContainer.svelte";
 
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
@@ -18,6 +16,7 @@
 
     <InvContainer>
         <AuthorTag preview={true}
+                   publicationDate={post.publishedAt}
                    authors={[post.author]} editors={[post.editor]}/>
     </InvContainer>
 
