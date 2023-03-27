@@ -27,12 +27,15 @@
 			<p class="description">
 				{author.shortDesc}
 			</p>
-			<div class="tags">
-				{#if author.categories}
-					{#each author.categories as tag}
-						<span>{tag.title}</span>
-					{/each}
-				{/if}
+
+			<div class="wrapper">
+				<div class="tags">
+					{#if author.categories}
+						{#each author.categories as tag}
+							<span>{tag.title}</span>
+						{/each}
+					{/if}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -46,7 +49,7 @@
 		width: 		100%;
 		height: 	100px;
 
-		> * {
+		> div {
 			min-height: 100px;
 		}
 	}
@@ -56,41 +59,52 @@
 		margin: 	var(--containerPadding);
 		overflow: 	hidden;
 
-		> { vertical-align: top;
+		> {
+			vertical-align: top;
 			display: 		table-cell;}
-
-		.pfp {
-			$pfp: calc(100px + (var(--containerPadding) * 2));
-
-			z-index:	1;
-			max-width:	94px;
-			max-height:	94px;
-			min-width:	94px;
-			min-height:	94px;
-
-			aspect-ratio: 1/1;
-			display: 	block;
-			border-radius: 5px;
-
-			overflow: 		hidden;}
 	}
 
+
+	.pfp {
+		$pfp: calc(100px + (var(--containerPadding) * 2));
+
+		z-index:	1;
+		max-width:	94px;
+		max-height:	94px;
+		min-width:	94px;
+		min-height:	94px;
+
+		aspect-ratio: 1/1;
+		display: 	block;
+		border-radius: 5px;
+
+		overflow: 		hidden;}
 	.profile {
 		margin-left: var(--containerPadding);
+		display:	 grid;
+
 		.handle {
 			margin-top: 3px;
-			color: 	var(--backgroundAccent1);}
+			color: 		var(--backgroundAccent1);}
 		.description {
 			margin-top: 10px;}
-		.tags {
-			margin-left: -5px;
-			margin-top: 10px;
+		.wrapper {
+			overflow:	visible scroll;
+			margin-top: 10px;}
+	}
 
-			span {
-				padding: 3px 10px;
-				margin-right: 5px;
-				background: var(--accent3);
-				border-radius: 5px;
+	.tags {
+		height: 		100%;
+		white-space: 	nowrap;
+		display: 		flex;
+
+		span {
+			padding: 		3px 10px;
+			background: 	var(--darkAccent3);
+			border-radius: 	5px;
+
+			&:not(:last-of-type){
+				margin-right: 	5px;
 			}
 		}
 	}

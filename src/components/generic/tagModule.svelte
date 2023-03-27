@@ -2,7 +2,7 @@
     import HorizontalGrid from "$components/globals/todo/nervHorizontalGrid.svelte";
     import { relativeTime } from "$lib/builders/dateBuilder.js";
 
-    export let time = 0;    // so it doesn't cause errors with time relativity in the calc
+    export let time = undefined;    // so it doesn't cause errors with time relativity in the calc
     export let tags = [];   // forms array as a fallback to check the length of later
 
     tags = Array.isArray(tags) ? tags : [tags];
@@ -29,7 +29,7 @@
          on:scroll={() => x = viewport.scrollLeft}>
 
         <div class="tagSleeve">
-            {#if relativeTime(new Date(time)) / 86400 < 14}  <!-- two weeks -->
+            {#if !!time && relativeTime(new Date(time)) / 86400 < 14}  <!-- two weeks -->
                 <div class="tag category new">
                     <span class="hov">
                         🌈 NEW

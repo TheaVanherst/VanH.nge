@@ -28,8 +28,6 @@ let
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
                 "slug": slug.current,
-                twitterUrl,
-                socialMedia[0],
             },
             author-> {
                 _id,
@@ -38,8 +36,6 @@ let
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
                 "slug": slug.current,
-                twitterUrl,
-                socialMedia[0],
             },
             
             'description': briefDesc,
@@ -55,8 +51,7 @@ let
                 "handle": select(
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
-                twitterUrl,
-                socialMedia[0],
+                "slug": slug.current,
                 userPortrait
             },
             author-> {
@@ -65,8 +60,7 @@ let
                 "handle": select(
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
-                twitterUrl,
-                socialMedia[0],
+                "slug": slug.current,
                 userPortrait
             },
             

@@ -20,14 +20,13 @@ let
                     defined(handle) =>   handle,
                     defined(fullName) => fullName),
                 "slug": slug.current,
-                socialMedia[0],
             },
             collaborators[]-> {
                 ...,
                 "handle": select(
                     defined(handle) => handle,
                     defined(fullName) =>  fullName),
-                socialMedia[0],
+                "slug": slug.current,
             },
             
             briefDesc,

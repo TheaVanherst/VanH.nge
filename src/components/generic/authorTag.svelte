@@ -55,9 +55,17 @@
                 {dataType.context}&nbsp;
             </span>
             {#each dataType.authors as author, i}
-                <span class="wrapper nonLink">
-                    {author?.fullName}
-                </span>
+                {#if author.slug}
+                    <a href="/authors/{author.slug}">
+                    <span class="wrapper link">
+                        {author?.fullName}
+                    </span>
+                    </a>
+                {:else}
+                    <span class="wrapper nonLink">
+                        {author?.fullName}
+                    </span>
+                {/if}
 
                 {#if !last(dataType.authors,i)}
                     <span>
@@ -85,8 +93,8 @@
             color:      $filled;
             box-shadow: inset 0 0 0 $thickness $colour;}}
 
-    .nonLink { @include cgm(var(--accent2), var(--accent4), 1px, var(--accent2));}
-    .link {@include cgm(var(--accent3), var(--accent1), 100px, var(--background));}
+    .nonLink { @include cgm(var(--accent4), var(--accent2), 1px, var(--accent4));} // DOESN'T DO ANYTHING
+    .link {@include cgm(var(--accent2), var(--accent1), 100px, var(--background));}
 
     @mixin cge($colour){
         .divider {
