@@ -1,6 +1,5 @@
 <script>
     import navigation       from "$lib/controllers/navigationDirectories.js";
-    import { urlChanger }   from "$lib/controllers/directoryController.js";
 
     export let portableText = null;
     let { value } = portableText;
@@ -11,10 +10,7 @@
 
     const
         target = (r) => {
-            return r ? '_blank' : '_self';},
-        reference = () => {
-            if (internal || focus === '_self') {
-                urlChanger(url);}};
+            return r ? '_blank' : '_self';};
 
     if (value) {
         // checks if import is the serializer
@@ -40,7 +36,7 @@
 </script>
 
 {#if url}
-    <a class="redirect" on:click={reference} href={url} target={focus}>
+    <a class="redirect" href={url} target={focus}>
         <slot />
     </a>
 {:else} <!-- this will appear on post previews -->

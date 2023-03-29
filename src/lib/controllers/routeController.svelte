@@ -2,7 +2,6 @@
     import { fade } from 'svelte/transition';
 
     import { loading, urlStoreArr } from '$lib/controllers/directoryController.js';
-    import { urlChanger }           from '$lib/controllers/directoryController.js';
 
     import navigation               from '$lib/controllers/navigationDirectories.js';
     import ScrollAnimationWrapper   from "$components/globals/misc/scrollAnimationWrapper.svelte";
@@ -25,15 +24,13 @@
                  transition:fade={{duration: 200}}>
 
                 {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                    <a href="{urlGenerator(i)}"
-                       on:click|preventDefault={() => urlChanger(urlGenerator(i))}>
+                    <a href="{urlGenerator(i)}">
                         <h1 class="dir">
                             {serializer(route)}
                         </h1>
                     </a>
                 {:else} <!-- website title [Brings you to the home page] -->
-                    <a href="/featured"
-                       on:click|preventDefault={() => urlChanger("/featured")}>
+                    <a href="/featured">
                         <h1>
                             Vanh.art
                         </h1>

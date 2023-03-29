@@ -27,10 +27,9 @@
     });
 
     beforeNavigate(async (navigation) => { //TODO: ONLY BROWSER NAVIGATION
-        if (navigation.delta) {
-            let to = navigation?.to?.url.pathname ?? "/",
+        let to = navigation?.to?.url.pathname ?? "/",
                 from = navigation?.from?.url.pathname ?? "/";
-            await directionProcessing(from, to);} //assigns direction for transition
+        await directionProcessing(from, to);
         loading.set(true);  //fallback for if the URL manager isn't doing it.
     });
 

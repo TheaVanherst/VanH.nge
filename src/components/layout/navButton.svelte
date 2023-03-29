@@ -1,14 +1,12 @@
 <script>
-    import { urlChanger, urlStoreArr }  from '$lib/controllers/directoryController.js';
-    import navigation                   from "$lib/controllers/navigationDirectories.js";
+    import {urlStoreArr }  from '$lib/controllers/directoryController.js';
 
     export let push = "";
 </script>
 
 <a href={push}
     class:curRoot={"/" + $urlStoreArr[1] === push}
-    class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}
-    on:click|preventDefault={urlChanger("/" + $urlStoreArr[1] !== push ? push : push !== navigation[0].path ? navigation[0].path : "/")}>
+    class:embedded={"/" + $urlStoreArr[1] === push && $urlStoreArr.length > 2 && "/"}>
     <div class="powerBar">
         <div class="highlight"></div>
         <div></div>

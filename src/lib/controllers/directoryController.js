@@ -22,6 +22,8 @@ let urlStoreArr =   writable([""]); // handles the transition direction
 let directionX =    writable(0); // handles the transition direction
 let directionY =    writable(0); // handles the transition direction
 
+export { urlStoreArr, directionX, directionY }
+
 const directionProcessing = async (p,c,b = null) => {
     // calculates which direction it should move horizontally
     let xOffset = 0; // debugging purposes
@@ -59,25 +61,4 @@ const directionProcessing = async (p,c,b = null) => {
     }
 }
 
-export { urlStoreArr, directionX, directionY}
-
-// overall URL handler
-
-import { goto } from '$app/navigation';
-
-const urlChanger = async (url) => {
-    event.preventDefault(); // for some reason it breaks without this specifically on navigation buttons
-        // Just leave it, I promise it's for the greater good.
-
-    // url handling
-    if(directoryString !== url && !pageLoaded) {
-        loading.set(true);  //sets loading to default value
-        await directionProcessing(directoryString, url); //updates router
-        await fetch(directoryString)
-            .then(async (e) => {
-                goto(e.url);
-            });
-    }
-};
-
-export { urlChanger, directionProcessing};
+export { directionProcessing};

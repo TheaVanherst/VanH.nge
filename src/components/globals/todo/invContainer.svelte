@@ -1,6 +1,4 @@
 <script>
-    import { urlChanger } from '$lib/controllers/directoryController.js';
-
     export let push = null;
     export let targetBool = false;
 
@@ -20,7 +18,6 @@
     </div>
 {:else}
     <a href={push}
-       on:click={() => push ? urlChanger(push) : ''}
        target="{targetBool ? '_blank' : '_self'}">
         <div
             class={colour}
