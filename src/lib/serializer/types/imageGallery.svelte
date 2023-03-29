@@ -24,26 +24,15 @@
 
 	let length = 		0;
 
-	const fetch = (cite,i) => {
-        if (value.images[i].alt[value.images[i].alt.length-1] === ".") {
-            value.images[i].alt = value.images[i].alt.slice(0,-1);} //removes fullstops at the end of the citation.
-
-        return [cite,
-				value.images[i].alt,
-				value.images[i].citation,
-				value.images[i].citeURL,
-				value.images[i].blank];
-    };
-
     const
 		horizontalRow = () => { // Carousel, Scroll, Vertical
 			commentArray[0] = [];
 			imageArray = value.images;
 
 			for (let x in value.images) {
-				if (value.images[x].alt) {
+				if (value.images[x].desc) {
                     length++;
-					commentArray[0][x] = fetch(NumArr[x] + "image: ",x);
+					commentArray[0][x] = [NumArr[x] + "image: ",value.images[x].desc];
                 }}},
 
     	regularGrid = (width) => { // Dynamic Grid, Grid
@@ -62,10 +51,10 @@
 					if (value.images[pos]) {
 						imageArray[x][y] = value.images[pos];
 
-						if (value.images[pos].alt) {
+						if (value.images[pos].desc) {
                             length++;
                             let text = value.images.length === pos + 1 && pos % width === 0 ? sideArr[2] : sideArr[y];
-                            commentArray[x][y] = fetch(text + "image: ", pos);
+                            commentArray[x][y] = [text + "image: ", value.images[pos].desc];
                         }}}
 
                 if (commentArray[x].length > 0) { //if the column includes citation, declare which column it's in.
@@ -91,9 +80,9 @@
 
 					if (value.images[pos]) { //checks if image exists
 						imageArray[y][x] = value.images[pos]; //assigns image to 2d arr
-                        if (value.images[pos].alt) { //checks for citation
+                        if (value.images[pos].desc) { //checks for citation
                             length++;
-                            commentArray[y][x] = fetch(NumArr[x] + "image: ",pos); //adds citation accordance of image arr
+                            commentArray[y][x] = [NumArr[x] + "image: ",value.images[pos].desc]; //adds citation accordance of image arr
                         }}}
 
                 if (commentArray[y].length > 0) { //if the column includes citation, declare which column it's in.

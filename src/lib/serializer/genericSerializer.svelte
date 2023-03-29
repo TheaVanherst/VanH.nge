@@ -36,53 +36,51 @@
     export let postData;
 </script>
 
-<div class="postBody">
-    <PortableText
-        value={postData}
-        onMissingComponent={(e) => console.log("Error: ", e)}
-        components={{
-            types: {
-                code:       CodeBlock,
-                image:      ImageBlock,
-                gallery:    ImageGallery,
-                separator:  separator,
-                blockquote: BlockQuote,
-            },
-            block: {
-                normal:     CustomText,
-                h1:         CustomHeading,
-                h2:         CustomHeading,
-                h3:         CustomHeading,
-                h4:         CustomHeading,
-            },
-            marks: {
-                externalLink:   Link,
-                internalLink:   Link,
-                codesnippet:    CodeSnippet,
+<PortableText
+    value={postData}
+    onMissingComponent={(e) => console.log("Error: ", e)}
+    components={{
+        types: {
+            code:       CodeBlock,
+            image:      ImageBlock,
+            gallery:    ImageGallery,
+            separator:  separator,
+            blockquote: BlockQuote,
+        },
+        block: {
+            normal:     CustomText,
+            h1:         CustomHeading,
+            h2:         CustomHeading,
+            h3:         CustomHeading,
+            h4:         CustomHeading,
+        },
+        marks: {
+            externalLink:   Link,
+            internalLink:   Link,
+            codesnippet:    CodeSnippet,
 
-                subscript:      Subscript,
-                superscript:    Superscript,
+            subscript:      Subscript,
+            superscript:    Superscript,
 
-                floatright:     FloatRight,
-                floatcenter:    FloatCenter,
+            floatright:     FloatRight,
+            floatcenter:    FloatCenter,
 
-                readmore:       ReadMore,
-                accent:         Accents,
-                highlight:      Highlight,
-            },
-            list: {
-                bullet:     Wrapper,
-                number:     Wrapper,
-                letter:     Wrapper,
-                numeral:    Wrapper
-            },
-            listItem: {
-                bullet:     Bullet,
-                number:     Number,
-                letter:     Letter,
-                numeral:    Numeral,
-                normal:     Bullet
-            }
-        }}
-    />
-</div>
+            readmore:       ReadMore,
+            accent:         Accents,
+            highlight:      Highlight,
+        },
+        list: {
+            bullet:     Wrapper,
+            number:     Wrapper,
+            letter:     Wrapper,
+            numeral:    Wrapper
+        },
+        listItem: {
+            bullet:     Bullet,
+            number:     Number,
+            letter:     Letter,
+            numeral:    Numeral,
+            normal:     Bullet
+        }
+    }}
+/>

@@ -1,5 +1,5 @@
 
-import { defineType } from 'sanity'
+import {defineField, defineType} from 'sanity'
 import {
   altTestBlock, citationBlock, citationURL,
   citationRender, nsfwBlock, zoomEnabled,
@@ -41,11 +41,11 @@ const
           },
           validation: Rule => Rule.required(),
           fields: [
-            altTestBlock,
-            citationBlock,
-            citationURL,
+            defineField({
+              name: 'desc', title: 'Brief Description',
+              type: 'descContent',
+            }),
             nsfwBlock,
-            newPage,
           ],
         }],
       }, {

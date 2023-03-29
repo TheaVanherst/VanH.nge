@@ -7,7 +7,7 @@
     import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js"
 
     import TagModule    from "$components/generic/tagModule.svelte"
-    import PostModule   from "$lib/serializer/portableText.svelte"
+    import PostModule   from "$lib/serializer/genericSerializer.svelte"
     import Container    from "$components/globals/containers/container.svelte";
 
     export let post = null;

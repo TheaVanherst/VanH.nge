@@ -58,10 +58,8 @@ const
       }),
 
       defineField({
-        name: 'briefDesc',
-        title: 'Brief Description',
-        type: 'string',
-        validation: Rule => Rule.min(16).max(160)
+        name: 'desc', title: 'Brief Description',
+        type: 'descContent',
       }),
 
       defineField({

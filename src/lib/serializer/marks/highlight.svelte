@@ -15,8 +15,8 @@
             // retains padding around elements for the highlight
 
         color:          var(--textColourInvert);
-        background:     var(--accent4);
+        background:     var(--accent1);
         &::selection {
-            background: 	var(--accent4);}
+            background: 	var(--accent1);}
     }
 </style>

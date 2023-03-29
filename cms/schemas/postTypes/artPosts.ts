@@ -47,11 +47,6 @@ const
         name: 'desc', title: 'Brief Description',
         type: 'descContent',
       }),
-      defineField({
-        name: 'briefDesc', title: 'Brief Description',
-        type: 'string',
-        validation: Rule => Rule.min(12).max(160)
-      }),
 
       defineField({
         name: 'publishedAt', title: 'Published at',

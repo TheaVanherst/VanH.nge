@@ -1,6 +1,7 @@
 <script>
-    import LinkAppend from "$lib/serializer/types/linkAppend.svelte";
+    import PostModule   from "$lib/serializer/genericSerializer.svelte"
     export let push = undefined, titles = undefined;
+    console.log(push);
 </script>
 
 <div class="parentCite">
@@ -19,29 +20,9 @@
                                 {comment[0]}
                             </span>
                         {/if}
-
-                        <span class="comment">
-                            {comment[1]}
+                        <span class="cite">
+                            <PostModule postData={comment[1]}/>
                         </span>
-
-                        {#if comment[2] && comment[3]}
-                            <span class="cite">
-                                , Via;
-                            </span>
-                            <sup class="referral">
-                                <LinkAppend portableText={comment[3]}>
-                                    {comment[2]}
-                                </LinkAppend>
-                            </sup>
-                        {:else if comment[3]}
-                            <span class="cite">
-                                <sup class="referral">
-                                    <LinkAppend portableText={[comment[3], comment[4]]}>
-                                        [via]
-                                    </LinkAppend>
-                                </sup>
-                            </span>
-                        {/if}
                     </div>
                 {/if}
             {/each}
@@ -79,17 +60,15 @@
     .citation {
         display: flex;
         > * {
-            vertical-align: top;
-        }
+            vertical-align: top;}
 
         .position {
             white-space: nowrap;
             padding-right: 3px;
             color: var(--darkAccent1);}
-        .comment {
-            color: var(--backgroundAccent1);}
         .cite {
-            color: var(--backgroundAccent1);}
+            > :global(p) {
+                color: var(--backgroundAccent1);}}
         .referral {
             white-space: nowrap;
             padding-left: 5px;}
@@ -97,10 +76,8 @@
         &:hover {
             .position {
                 color: var(--accent1);}
-            .comment {
-                color: var(--textColour);}
             .cite {
-                color: var(--accent1);}
-        }
+                > :global(p) {
+                    color: var(--textColour);}}}
     }
 </style>

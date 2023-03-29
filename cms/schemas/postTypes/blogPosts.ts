@@ -83,11 +83,10 @@ const
           type: 'author'
         }
       }),
+
       defineField({
-        name: 'briefDesc',
-        title: 'Brief Description',
-        type: 'string',
-        validation: Rule => Rule.required().min(12).max(160)
+        name: 'desc', title: 'Brief Description',
+        type: 'descContent',
       }),
       defineField({
         name: 'body',
