@@ -17,17 +17,6 @@ const
           type: 'author'
         }
       }),
-      defineField({
-        name: 'collaborators', title: 'Collaborators',
-        type: 'array',
-        of: [{
-          type: 'reference',
-          validation: Rule => Rule.required(),
-          to: {
-            type: 'author'
-          }
-        }]
-      }),
 
       defineField({
         name: 'gallery', title: 'gallery',
@@ -54,6 +43,10 @@ const
         ],
       }),
 
+      defineField({
+        name: 'desc', title: 'Brief Description',
+        type: 'descContent',
+      }),
       defineField({
         name: 'briefDesc', title: 'Brief Description',
         type: 'string',

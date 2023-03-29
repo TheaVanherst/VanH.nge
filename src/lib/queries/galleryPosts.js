@@ -29,6 +29,7 @@ let
                 profileBanner,
             },
             
+            desc,
             briefDesc,
             gallery,
         `,

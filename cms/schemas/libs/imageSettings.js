@@ -23,7 +23,7 @@ const
       name: 'NSFW',     title: 'Preview Blur',
       type: 'boolean',
       initialValue: false,
-      description: 'Should we blur this images?',
+      description: 'Should we blur this image?',
     },
     zoomEnabled = {
       name: 'zoom',     title: 'Content Zoom',

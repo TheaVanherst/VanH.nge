@@ -25,9 +25,12 @@
 
 	div {
 		break-inside:   avoid-column;
-		background:		var(--backgroundTrans);
         margin-bottom:  var(--containerPadding);
         padding:        var(--containerPadding);
+
+        background:		    var(--backgroundTrans);
+        backdrop-filter:    blur(2px);
+        transform:          translate3d(0, 0, 0);
 
 		&.overflow {    overflow:   hidden;}
 	}

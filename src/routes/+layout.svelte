@@ -20,6 +20,12 @@
 			<ProfileBar/>
 		</div>
 	</div>
+
+<!--	<MobileQuery query="(min-width: 800px)" let:matches>-->
+<!--		{#if matches}-->
+<!--		{/if}-->
+<!--	</MobileQuery>-->
+
 	<div class="page">
 		<Route/>
 		<Transition>
@@ -52,7 +58,7 @@
 			&.nav {
 				max-width: 	25%;
 				width: 		25%;
-				min-width: 	25%;
+				min-width: 	220px;
 			}
 			&.page {
 

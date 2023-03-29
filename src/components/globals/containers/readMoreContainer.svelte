@@ -48,7 +48,10 @@
 		position: 		relative;
 		overflow: 		hidden;
 		break-inside:   avoid-column;
-		background:		var(--backgroundTrans);
+
+		background:			var(--backgroundTrans);
+		backdrop-filter: 	blur(2px);
+		transform: 			translate3d(0, 0, 0);
 
 		margin-bottom:  var(--containerPadding);
 		padding: 		var(--containerPadding);

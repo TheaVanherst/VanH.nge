@@ -6,7 +6,6 @@
 
     let url =       undefined;
     let focus =     '_blank';
-    let internal =  false;
 
     const
         target = (r) => {
@@ -19,8 +18,7 @@
             // Internal URLS;
             if (value.postSlug){
                 focus = target(value.blank);
-                url = (navigation.find(e => e.local === value.postFormat)).path + "/" + value.postSlug;
-                internal = true;}}
+                url = (navigation.find(e => e.local === value.postFormat)).path + "/" + value.postSlug;}}
 
         else if (value._type === "externalLink") {
             // External URLS

@@ -6,9 +6,11 @@
     import InvContainer from "$components/globals/todo/invContainer.svelte";
 
     import ImageGallery from '$lib/serializer/types/imageGallery.svelte';
+    import PostModule   from "$lib/serializer/portableText.svelte"
     import Separator    from "$lib/serializer/block/separator.svelte";
 
     export let post;
+    console.log(post)
 </script>
 
 <Container overflowBool="{false}" colour="orange">
@@ -39,6 +41,10 @@
             {/each}
         </p>
         <Separator portableText="wave"/>
+    {/if}
+
+    {#if post.desc}
+        <PostModule postData={post.desc}/>
     {/if}
 
     {#if post.briefDesc}

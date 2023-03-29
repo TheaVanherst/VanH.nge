@@ -35,9 +35,11 @@
             width:      min-content;
             padding:    6px 10px;
 
-            transform:          scale(0.9, 1);
             transform-origin:   left;
-            background:         var(--backgroundTrans);
+
+            background:		    var(--backgroundTrans);
+            backdrop-filter:    blur(1px) saturate(300%);
+            transform:          scale(0.9, 1);
 
             h2 {
                 margin: 0 0 4px 2px;}

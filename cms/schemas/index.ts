@@ -1,6 +1,7 @@
 
 // TODO: Content Types
 import blockContent   from './components/blocks/textContentBlock';
+import descContent    from './components/blocks/descContentBlock';
 import blockGallery   from './components/blocks/galleryContentBlock';
 
 // TODO: Post Types
@@ -25,6 +26,7 @@ import authorTags     from './authorData/authorTag';
 
 const blogData = [
   //content declarations
+  descContent,
   blockContent,
   blockGallery,
 
