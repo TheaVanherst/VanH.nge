@@ -5,8 +5,8 @@
     import PreviewContainer from "$components/globals/containers/readMoreContainer.svelte";
     import InvContainer     from "$components/globals/todo/invContainer.svelte";
 
-    import AuthorTag                    from "$components/generic/authorTag.svelte";
-    import PostHeader                   from "$components/generic/postTitleCard.svelte";
+    import AuthorTag        from "$components/generic/authorTag.svelte";
+    import PostHeader       from "$components/generic/postTitleCard.svelte";
 
     export let post = null;
 </script>
@@ -24,9 +24,9 @@
 
     <div class="nonClickable">
         <p class="description">
-            {post?.description}
+            <PostModule postData="{post.desc}"/>
         </p>
-        <PostModule postData="{post?.body}"/>
+        <PostModule postData="{post.body}"/>
     </div>
 </PreviewContainer>
 

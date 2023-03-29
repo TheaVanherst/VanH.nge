@@ -31,12 +31,13 @@ let
                 userPortrait,
                 profileBanner,
             },
+            
+            desc,
         `,
 
     blogPreviewQuery =
         constants +
         `
-            'description': briefDesc,
             body[0...4],
         `,
 

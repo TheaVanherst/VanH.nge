@@ -51,8 +51,11 @@
     <TagModule
             time="{post.publishedAt}"
             tags={post.categories}/>
-    <PostModule
-            postData="{post.body}"/>
+
+    <p class="description">
+        <PostModule postData="{post.desc}"/>
+    </p>
+    <PostModule postData="{post.body}"/>
 </Container>
 
 <style lang="scss">
@@ -112,5 +115,11 @@
                 transform:      scale(50%);
             }
         }
+    }
+
+    .description {
+        padding-bottom: var(--containerPadding);
+        border-bottom:  1px solid var(--backgroundAccent1);
+        margin-bottom:  var(--containerPadding);
     }
 </style>

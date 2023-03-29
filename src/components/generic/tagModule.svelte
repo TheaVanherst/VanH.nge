@@ -64,7 +64,7 @@
             min-width:      100%;}}
 
     .content {
-        margin:     5px 0 10px 0;
+        margin:     5px 0 var(--containerPadding) 0;
 
         .tag {
             counter-increment: section;

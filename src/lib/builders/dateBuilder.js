@@ -12,11 +12,11 @@ const createdPush = (creationDate, dateLength, string) => { // generic date buil
          updatedDate = new Date(updatedDate); // builds date to be standardized to js
          string = (string ?? `↳ ${EditedEmoji} Edited`) + " ";
 
-         let clock = "";
-         if (604800 > relativeTime(updatedDate))
-             clock = ` at ${new Intl.DateTimeFormat('en-GB', {timeStyle: 'short'}).format(updatedDate)}`;
+         // let clock = "";
+         // if (604800 > relativeTime(updatedDate))
+         //     clock = ` at ${new Intl.DateTimeFormat('en-GB', {timeStyle: 'short'}).format(updatedDate)}`;
 
-         return string + time_ago(updatedDate) + clock;
+         return string + time_ago(updatedDate);
     },
 
     dTypes = { // date type converter

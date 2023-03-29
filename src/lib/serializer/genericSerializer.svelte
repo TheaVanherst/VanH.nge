@@ -32,6 +32,7 @@
 
     import ReadMore         from '$lib/serializer/marks/readMore.svelte';
     import Accents          from '$lib/serializer/marks/accentTones.svelte';
+    import Underline		from '$lib/serializer/marks/underline.svelte';
 
     export let postData;
 </script>
@@ -68,6 +69,7 @@
             readmore:       ReadMore,
             accent:         Accents,
             highlight:      Highlight,
+            underline:		Underline,
         },
         list: {
             bullet:     Wrapper,
