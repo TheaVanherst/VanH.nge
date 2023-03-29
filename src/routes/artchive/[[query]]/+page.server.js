@@ -2,7 +2,7 @@
 import client from "$lib/sanityClient.js";
 
 import { artQuery } from "$lib/queries/galleryPosts.js"
-import { queryGenerator } from "$lib/queries/queryParamTypes.js";
+import { queryGenerator } from "$lib/builders/queryBuilder.js";
 
 import { error } from '@sveltejs/kit';
 

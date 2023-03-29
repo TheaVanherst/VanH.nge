@@ -18,9 +18,10 @@
 			<SanityImage image={author.userPortrait}/>
 		</div>
 		<div class="profile">
-			<h3>
-				{author.fullName}
-			</h3>
+			<div class="authorName">
+				<h3>{author.fullName}</h3>
+				<h4>{author.verified.emoji}</h4> <!-- this needs the alt -->
+			</div>
 			<p class="handle">
 				@{author.handle}
 			</p>
@@ -67,21 +68,27 @@
 
 	.pfp {
 		$pfp: calc(100px + (var(--containerPadding) * 2));
-
 		z-index:	1;
-		max-width:	94px;
-		max-height:	94px;
-		min-width:	94px;
-		min-height:	94px;
+		max-width:	94px; max-height:	94px;
+		min-width:	94px; min-height:	94px;
 
-		aspect-ratio: 1/1;
 		display: 	block;
 		border-radius: 5px;
 
 		overflow: 		hidden;}
+
 	.profile {
 		margin-left: var(--containerPadding);
 		display:	 grid;
+
+		.authorName {
+			display: flex;
+			height: 1.4rem;
+
+			> * {
+				margin: 		0 5px auto 0;
+				line-height: 	1.5rem;}
+		}
 
 		.handle {
 			margin-top: 3px;

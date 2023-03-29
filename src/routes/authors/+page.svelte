@@ -3,6 +3,9 @@
     import SnippedComponent from "$components/author/snippedComponent.svelte";
 
 	export let data = [];
+
+
+    console.log(data);
 </script>
 
 <div class="content">

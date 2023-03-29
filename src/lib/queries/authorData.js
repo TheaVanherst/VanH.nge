@@ -20,13 +20,20 @@ let
     authorPreviewQuery =
         constants +
         `
-            
+            'verified': externalTags->{
+                emoji,
+                alt,
+            },
         `,
 
     authorQuery =
         constants +
         `
-        
+            'verified': externalTags->{
+                emoji,
+                alt,
+                description
+            },
         `;
 
 export { authorPreviewQuery, authorQuery }

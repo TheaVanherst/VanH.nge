@@ -12,7 +12,6 @@
 
     // this is all over engineered to compensate for mass author data.
     // theoretically, should handle infinite.
-    // TODO: mobile compatibility
 
     let context = [];
 
@@ -28,10 +27,10 @@
     if (results[0] !== undefined){
         authors = filterCheck(authors, results, false);  //there's probably a better way than this.
         editors = filterCheck(editors, results, false);  //there's probably a better way than this.
+        authors = results.concat(authors); // merges the authors + (authors + editors) for simplicity.
+            // this remains here just incase I want to change it at a later date.
 
-        context = ["Published & Edited by:", "Assisted by:"];
-        authors = results.concat(authors);
-
+        // date context constructors // TODO: THESE NEED MOBILE COMPENSATION.
         context[0] = `${!!editDate ? updatedPush(editDate,"Published & Edited") : "Published & Edited"} by`
         context[1] = `With assistance from`
     } else {
