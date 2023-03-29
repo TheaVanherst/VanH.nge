@@ -1,7 +1,7 @@
 <script>
     import { fade } from 'svelte/transition';
 
-    import { loading, urlStoreArr } from '$lib/controllers/directoryController.js';
+    import { urlStoreArr } from '$lib/controllers/directoryController.js';
 
     import navigation               from '$lib/controllers/navigationDirectories.js';
     import ScrollAnimationWrapper   from "$components/globals/misc/scrollAnimationWrapper.svelte";
@@ -10,11 +10,7 @@
         serializer = (r) => {
             // this just calculates the publicly named directory via the sidebar names.
             let i = navigation.map(e => e.path).indexOf("/" + r);
-            return (i !== -1 ? navigation[i].title : r).replaceAll("-"," ");},
-
-        urlGenerator = (pos) => {
-            // generates url based on position in router.
-            return $urlStoreArr.slice(0, pos + 1).map(i => i).join("/");};
+            return (i !== -1 ? navigation[i].title : r).replaceAll("-"," ");};
 </script>
 
 <div class="router">
@@ -24,7 +20,7 @@
                  transition:fade={{duration: 200}}>
 
                 {#if i !== 0} <!-- replaces the first array elm, as it's duplicated on "/" -->
-                    <a href="{urlGenerator(i)}">
+                    <a href="{$urlStoreArr.slice(0, i + 1).map(i => i).join('/')}">
                         <h1 class="dir">
                             {serializer(route)}
                         </h1>

@@ -1,7 +1,7 @@
 <script>
     // local navigation checks & multipliers
     import { navigate, loading,
-            directionProcessing, urlStoreArr,
+            directionProcessing,
              directionX, directionY}    from '$lib/controllers/directoryController.js';
     import { motion }                   from '$lib/controllers/accessibilityController';
     // transition imports
@@ -14,13 +14,12 @@
         return new Promise(resolve => setTimeout(resolve, delay));};
 
     afterNavigate(async (navigation) => {
-        if (!$loading) {            //TODO: ONLY PAGE REFRESHES
+        if (!$loading) {                        //TODO: ONLY PAGE REFRESHES
             let to = navigation?.to?.url.pathname ?? "/",
                 from = navigation?.from?.url.pathname ?? "/";
-            await directionProcessing(from, to, to);
-        } //resets x, y positions
-                //TODO: this would be nice to push inb4 a page refresh.
-        else {                      //TODO: AUTOMATED DIRECTING
+            await directionProcessing(from, to, to);} //resets x, y positions
+                // this would be nice to push inb4 a page refresh.
+        else {                                  //TODO: AUTOMATED DIRECTING
             loading.set(false); // indicates page is fully preloaded.
             navigate.set(true); //sets navigation to default value
             await awaitTimeout(transTimeOut);}
@@ -29,7 +28,7 @@
         navigate.set(false); // indicates page has transitioned
     });
 
-    beforeNavigate(async (navigation) => { //TODO: ONLY BROWSER NAVIGATION
+    beforeNavigate(async (navigation) => {      //TODO: ONLY BROWSER NAVIGATION
         let to = navigation?.to?.url.pathname ?? "/",
             from = navigation?.from?.url.pathname ?? "/";
 

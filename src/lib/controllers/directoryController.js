@@ -53,12 +53,7 @@ const directionProcessing = async (p,c,b = null) => {
 
     // updates local url management.
     urlStoreArr.set(cfr);
-
-    if (!b) {
-        directory.set(c);
-    } else {
-        directory.set(b);
-    }
+    !b ? directory.set(c) : directory.set(b);
 }
 
 export { directionProcessing};
