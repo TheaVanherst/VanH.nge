@@ -1,5 +1,6 @@
 <script>
     import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js";
+    import AuthorToolTip from "$components/generic/authorToolTip.svelte";
 
     export let
         authors =   [],
@@ -54,17 +55,11 @@
                 {dataType.context}&nbsp;
             </span>
             {#each dataType.authors as author, i}
-                {#if author.slug}
-                    <a href="/authors/{author.slug}">
+                <AuthorToolTip author={author}>
                     <span class="wrapper link">
                         {author?.fullName}
                     </span>
-                    </a>
-                {:else}
-                    <span class="wrapper nonLink">
-                        {author?.fullName}
-                    </span>
-                {/if}
+                </AuthorToolTip>
 
                 {#if !last(dataType.authors,i)}
                     <span>
@@ -109,7 +104,6 @@
     .handle {
         width:          min-content;
         white-space:    nowrap;
-        position:       relative;
         display:        inline;
         font-size:      0;
 

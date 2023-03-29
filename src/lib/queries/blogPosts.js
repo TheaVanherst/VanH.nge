@@ -15,29 +15,27 @@ let
                 _ref,
                 _type,
                 title,
-            },   
+            },  
+             
+            editor-> {
+                fullName,
+                handle,
+                "slug": slug.current,
+                userPortrait,
+                profileBanner,
+            },
+            author-> {
+                fullName,
+                handle,
+                "slug": slug.current,
+                userPortrait,
+                profileBanner,
+            },
         `,
 
     blogPreviewQuery =
         constants +
         `
-            editor-> {
-                _id,
-                fullName,
-                "handle": select(
-                    defined(handle) => handle,
-                    defined(fullName) =>  fullName),
-                "slug": slug.current,
-            },
-            author-> {
-                _id,
-                fullName,
-                "handle": select(
-                    defined(handle) => handle,
-                    defined(fullName) =>  fullName),
-                "slug": slug.current,
-            },
-            
             'description': briefDesc,
             body[0...4],
         `,
@@ -45,25 +43,6 @@ let
     blogQuery =
         constants +
         `
-            editor-> {
-                _id,
-                fullName,
-                "handle": select(
-                    defined(handle) => handle,
-                    defined(fullName) =>  fullName),
-                "slug": slug.current,
-                userPortrait
-            },
-            author-> {
-                _id,
-                fullName,
-                "handle": select(
-                    defined(handle) => handle,
-                    defined(fullName) =>  fullName),
-                "slug": slug.current,
-                userPortrait
-            },
-            
             body[]{
                 ...,
                 markDefs[]{

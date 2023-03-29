@@ -14,19 +14,19 @@ let
                 title,
             },   
             
-            author-> {
-                ...,
-                "handle": select(
-                    defined(handle) =>   handle,
-                    defined(fullName) => fullName),
+            editor-> {
+                fullName,
+                handle,
                 "slug": slug.current,
+                userPortrait,
+                profileBanner,
             },
-            collaborators[]-> {
-                ...,
-                "handle": select(
-                    defined(handle) => handle,
-                    defined(fullName) =>  fullName),
+            author-> {
+                fullName,
+                handle,
                 "slug": slug.current,
+                userPortrait,
+                profileBanner,
             },
             
             briefDesc,

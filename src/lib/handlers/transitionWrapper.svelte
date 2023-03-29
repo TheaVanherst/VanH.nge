@@ -1,8 +1,9 @@
 <script>
     // local navigation checks & multipliers
-    import { navigate, loading, directionProcessing, directory,
-            directionX, directionY}         from '$lib/controllers/directoryController.js';
-    import { motion }                       from '$lib/controllers/accessibilityController';
+    import { navigate, loading,
+            directionProcessing, urlStoreArr,
+             directionX, directionY}    from '$lib/controllers/directoryController.js';
+    import { motion }                   from '$lib/controllers/accessibilityController';
     // transition imports
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions     from 'svelte/easing'
@@ -35,6 +36,7 @@
         if (to !== from) {
             await directionProcessing(from, to);
             loading.set(true);}  //fallback for if the URL manager isn't doing it.
+        await awaitTimeout(transTimeOut);
     });
 
     // transition types

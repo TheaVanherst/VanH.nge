@@ -34,6 +34,14 @@ let
                 alt,
                 description
             },
+        `,
+
+    authorToolTips = `
+            userPortrait,
+            profileBanner,
+            fullName,
+            handle,
+            'slug': slug.current,
         `;
 
-export { authorPreviewQuery, authorQuery }
+export { authorPreviewQuery, authorQuery, authorToolTips }
