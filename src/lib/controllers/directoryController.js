@@ -4,13 +4,15 @@ import { writable } from 'svelte/store';
 // navigation fetch vars
 
 const loading =     writable(false);
-const navigate =  writable(false);
+const navigate =  writable(true);
 const directory =   writable("/");
 
 export { loading, navigate, directory };
 
 let directoryString; // god i hate this
     directory.subscribe((val) => { directoryString = val });
+let pageLoaded; // god i hate this
+    navigate.subscribe((val) => { pageLoaded = val });
 
 // navigation controller
 
@@ -46,7 +48,10 @@ const directionProcessing = async (p,c) => {
     // sets writable memory for fetching.
     directionY.set(yOffset);
     directionX.set(xOffset);
+
+    // updates local url management.
     urlStoreArr.set(cfr);
+    directory.set(c);
 }
 
 export { urlStoreArr, directionX, directionY}
@@ -60,12 +65,10 @@ const urlChanger = async (url) => {
         // Just leave it, I promise it's for the greater good.
 
     // url handling
-    if(directoryString !== url) {
-        loading.set(true);
-        await directionProcessing(directoryString, url);
-        await fetch(url)
+    if(directoryString !== url && !pageLoaded) {
+        await directionProcessing(directoryString, url); //updates router
+        await fetch(directoryString)
             .then(async (e) => {
-                directory.set(url)
                 goto(e.url);
             });
     }
