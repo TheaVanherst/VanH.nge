@@ -1,6 +1,6 @@
 <script>
     // local navigation checks & multipliers
-    import { navigate, loading, directionProcessing, directory,
+    import { navigate, loading, directionProcessing,
             directionX, directionY}         from '$lib/controllers/directoryController.js';
     import { motion }                       from '$lib/controllers/accessibilityController';
     // transition imports
@@ -13,28 +13,25 @@
         return new Promise(resolve => setTimeout(resolve, delay));};
 
     afterNavigate(async (navigation) => {
-        if (!$loading) {
-            console.log("refresh / website entry");
-
-            let to = navigation.to ? navigation.to.url.pathname : "/",
-                from = navigation.from ? navigation.from.url.pathname : "/";
-            await directionProcessing(from, to);
-            directory.set(to);} // updates local url
-        else {
-            console.log("clicked an internal link");
-
-            loading.set(false);
+        if (!$loading) {            //TODO: ONLY PAGE REFRESHES
+            let to = navigation?.to?.url.pathname ?? "/";
+            await directionProcessing("/", "/", to);} //resets x, y positions
+                //TODO: this would be nice to push inb4 a page refresh.
+        else {                      //TODO: AUTOMATED DIRECTING
+            loading.set(false); // indicates page is fully preloaded.
             navigate.set(true); //sets navigation to default value
             await awaitTimeout(transTimeOut);}
-        // indicates page is fully preloaded.
 
         await awaitTimeout(transTimeIn); // waits for fade in to complete
         navigate.set(false); // indicates page has transitioned
     });
 
-    beforeNavigate(async () => { // TODO: this determines page switching from page refresh.
-        loading.set(true);  //sets loading to default value
-        await awaitTimeout(transTimeOut); // prevents scroller related issues.
+    beforeNavigate(async (navigation) => { //TODO: ONLY BROWSER NAVIGATION
+        if (navigation.delta) {
+            let to = navigation?.to?.url.pathname ?? "/",
+                from = navigation?.from?.url.pathname ?? "/";
+            await directionProcessing(from, to);} //assigns direction for transition
+        loading.set(true);  //fallback for if the URL manager isn't doing it.
     });
 
     // transition types
