@@ -48,7 +48,7 @@ const structure = (S) =>
       ...S.documentTypeListItems()
         .filter(
           (listItem) => [
-            'author', 'internalTags', 'authorTags'
+            'author', 'internalTags', 'externalTags', 'authorTags'
           ].includes(listItem.getId())
         ),
 

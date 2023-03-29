@@ -1,7 +1,8 @@
 
 import { defineField, defineType }  from 'sanity'
 import { UsersIcon }                 from '@sanity/icons'
-import {slugUniqueCheck} from '../components/slugCheck'
+import {slugUniqueCheck} from '../libs/slugCheck'
+import {icon} from '../components/misc/verfied'
 
 export default defineType({
   name: 'author',
@@ -27,6 +28,14 @@ export default defineType({
         maxLength: 16,
         isUnique: slugUniqueCheck
       }
+    }),
+    defineField({
+      name: 'externalTags', title: 'Verification',
+      type: 'reference',
+      validation: Rule => Rule.required(),
+      to: {
+        type: 'externalTags'
+      },
     }),
     defineField({
       name: 'socialMedia', title: 'Social Media Links',
@@ -87,8 +96,17 @@ export default defineType({
   preview: {
     select: {
       title: 'fullName',
-      subtitle: 'bio',
+      shortDesc: 'shortDesc',
       media: 'userPortrait',
+      icon: 'externalTags.emoji',
     },
+    prepare(selection) {
+      const {title, shortDesc, media, icon} = selection
+      return {
+        title: `${title} ${icon}`,
+        subtitle: shortDesc,
+        media: media,
+      }
+    }
   },
 })

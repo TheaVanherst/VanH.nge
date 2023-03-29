@@ -1,6 +1,6 @@
 
 import { defineField, defineType }  from 'sanity'
-import { slugUniqueCheck }          from '../components/slugCheck'
+import { slugUniqueCheck }          from '../libs/slugCheck'
 import { BlockContentIcon }         from '@sanity/icons'
 
 import { publishDateAsc, publishDateDesc }  from '../libs/sortOrder'

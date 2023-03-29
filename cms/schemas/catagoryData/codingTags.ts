@@ -1,22 +1,13 @@
 
-import { defineField, defineType }  from 'sanity'
-import { CodeBlockIcon }       from '@sanity/icons'
+import { defineType }  from 'sanity'
+import { CodeBlockIcon }            from '@sanity/icons'
+import tagData                      from '../components/fields/tagData';
 
 const
   codingCategories = defineType({
     name: 'programingTags', title: 'Coding Tags',
     type: 'document',
-    fields: [
-      defineField({
-        name: 'title', title: 'Title',
-        type: 'string',
-      }),
-      defineField({
-        name: 'description', title: 'Description',
-        description: 'this will only be shown when filtered',
-        type: 'text',
-      }),
-    ],
+    fields: tagData,
     icon: CodeBlockIcon,
   });
 

@@ -14,9 +14,10 @@ import codingCategories   from './catagoryData/codingTags';
 import designCategories   from './catagoryData/designCategories';
 import artCategories      from './catagoryData/artCatagories';
 import genericCategories  from './catagoryData/genericTags';
-import highlightTags         from './catagoryData/highlightTags';
+import highlightTags      from './catagoryData/highlightTags';
 
-import internalTags       from './catagoryData/internalTags';
+import internalTags   from './authorData/internalTags';
+import externalTags   from './authorData/externalTags';
 
 // TODO: Author data
 import author         from './authorData/author';
@@ -36,8 +37,9 @@ const blogData = [
   //post related data
   author,
   authorTags,
-
   internalTags,
+  externalTags,
+
   codingCategories,
   designCategories,
   artCategories,

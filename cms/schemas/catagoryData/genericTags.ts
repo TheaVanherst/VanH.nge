@@ -1,22 +1,13 @@
 
-import { defineField, defineType }  from 'sanity'
-import { TagIcon }                from '@sanity/icons'
+import { defineType }  from 'sanity'
+import { TagIcon }                  from '@sanity/icons'
+import tagData                      from '../components/fields/tagData';
 
 const
   genericCategories = defineType({
     name: 'genericCategory', title: 'Generic Tags',
     type: 'document',
-    fields: [
-      defineField({
-        name: 'title', title: 'Title',
-        type: 'string',
-      }),
-      defineField({
-        name: 'description', title: 'Description',
-        description: 'this will only be shown when filtered',
-        type: 'text',
-      }),
-    ],
+    fields: tagData,
     icon: TagIcon,
   });
 
