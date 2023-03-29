@@ -12,26 +12,29 @@
     const awaitTimeout = (delay) => {
         return new Promise(resolve => setTimeout(resolve, delay));};
 
-    // TODO: Automated navigation controller
-    afterNavigate(async () => {
-        loading.set(true);
-        navigate.set(true);
-        await awaitTimeout(transTimeOut);
-        await awaitTimeout(transTimeIn);
-        navigate.set(false);
-        loading.set(false);
+    afterNavigate(async (navigation) => {
+        if (!$loading) {
+            console.log("refresh / website entry");
+
+            let to = navigation.to ? navigation.to.url.pathname : "/",
+                from = navigation.from ? navigation.from.url.pathname : "/";
+            await directionProcessing(from, to);
+            directory.set(to);} // updates local url
+        else {
+            console.log("clicked an internal link");
+
+            loading.set(false);
+            navigate.set(true); //sets navigation to default value
+            await awaitTimeout(transTimeOut);}
+        // indicates page is fully preloaded.
+
+        await awaitTimeout(transTimeIn); // waits for fade in to complete
+        navigate.set(false); // indicates page has transitioned
     });
 
-    // TODO: Manual navigation controller
-    beforeNavigate(async (navigation) => {
-        navigate.set(true);
-
-        let to = navigation.to ? navigation.to.url.pathname : "/",
-            from = navigation.from ? navigation.from.url.pathname : "/";
-
-        if (from === $directory) {
-            $directory = to;
-            await directionProcessing(from, to);}
+    beforeNavigate(async () => { // TODO: this determines page switching from page refresh.
+        loading.set(true);  //sets loading to default value
+        await awaitTimeout(transTimeOut); // prevents scroller related issues.
     });
 
     // transition types
