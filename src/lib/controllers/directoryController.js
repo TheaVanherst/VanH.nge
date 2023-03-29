@@ -5,7 +5,7 @@ import { writable } from 'svelte/store';
 
 const loading =     writable(false);
 const navigate =  writable(true);
-const directory =   writable("/");
+const directory =   writable(undefined);
 
 export { loading, navigate, directory };
 

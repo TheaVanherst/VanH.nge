@@ -1,6 +1,6 @@
 <script>
     // local navigation checks & multipliers
-    import { navigate, loading, directionProcessing,
+    import { navigate, loading, directionProcessing, directory,
             directionX, directionY}         from '$lib/controllers/directoryController.js';
     import { motion }                       from '$lib/controllers/accessibilityController';
     // transition imports
@@ -14,8 +14,10 @@
 
     afterNavigate(async (navigation) => {
         if (!$loading) {            //TODO: ONLY PAGE REFRESHES
-            let to = navigation?.to?.url.pathname ?? "/";
-            await directionProcessing("/", "/", to);} //resets x, y positions
+            let to = navigation?.to?.url.pathname ?? "/",
+                from = navigation?.from?.url.pathname ?? "/";
+            await directionProcessing(from, to, to);
+        } //resets x, y positions
                 //TODO: this would be nice to push inb4 a page refresh.
         else {                      //TODO: AUTOMATED DIRECTING
             loading.set(false); // indicates page is fully preloaded.
@@ -28,9 +30,11 @@
 
     beforeNavigate(async (navigation) => { //TODO: ONLY BROWSER NAVIGATION
         let to = navigation?.to?.url.pathname ?? "/",
-                from = navigation?.from?.url.pathname ?? "/";
-        await directionProcessing(from, to);
-        loading.set(true);  //fallback for if the URL manager isn't doing it.
+            from = navigation?.from?.url.pathname ?? "/";
+
+        if (to !== from) {
+            await directionProcessing(from, to);
+            loading.set(true);}  //fallback for if the URL manager isn't doing it.
     });
 
     // transition types
