@@ -14,19 +14,16 @@
         return new Promise(resolve => setTimeout(resolve, delay));};
 
     // this is fucking retarded
-    afterNavigate(async (navigation) => {
+    afterNavigate(async (n) => {
         navigate.set(true); //sets navigation to default value
 
-        if (!$loading) {
-            if (navigation.type === "enter") { //website enter
-                let to = navigation?.to?.url.pathname ?? "/";
-                await directionProcessing(to, to, to);} //resets x, y positions
-            else { // page refresh
-                let to = navigation?.to?.url.pathname ?? "/",
-                    from = navigation?.from?.url.pathname ?? "/";
-                await directionProcessing(from, to);}} //resets x, y positions
-                // this would be nice to push inb4 a page refresh.
-        else {                                  //TODO: AUTOMATED DIRECTING
+        if (!$loading) {            //TODO: ONLY BROWSER NAVIGATION
+            let to =    n.to.url.pathname ?? "/",
+                from =  n.type === "enter" ? to :
+                        n?.from?.url.pathname ?? "/"; //checks reload vs browser
+            await directionProcessing(from, to, to);} //resets x, y positions
+
+        else {                      //TODO: AUTOMATED DIRECTING
             loading.set(false); // indicates page is fully preloaded.
             await awaitTimeout(transTimeOut);}
 
@@ -34,17 +31,19 @@
         navigate.set(false); // indicates page has transitioned
     });
 
-    beforeNavigate(async (navigation) => {      //TODO: ONLY BROWSER NAVIGATION
-        let to = navigation?.to?.url.pathname ?? "/",
-            from = navigation?.from?.url.pathname ?? "/";
+    beforeNavigate(async (n) => {   //TODO: ONLY BROWSER NAVIGATION
+        let to =    n?.to?.url.pathname ?? "/",
+            from =  n?.from?.url.pathname ?? "/";
 
         if (to !== from) { // checks for page reload
-            if (navigation.willUnload || // prevents _blank internal redirects
+            if (n.willUnload || // prevents _blank internal redirects
                 $navigate || $loading) { // haults the current transition if already transitioning.
-                event.preventDefault();}
+                document.preventDefault();}
             else {
                 loading.set(true);
                 await directionProcessing(from, to);}}
+
+        await awaitTimeout(transTimeIn);
     });
 
     // transition types
