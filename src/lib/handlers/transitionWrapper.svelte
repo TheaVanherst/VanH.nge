@@ -13,20 +13,21 @@
     const awaitTimeout = (delay) => {
         return new Promise(resolve => setTimeout(resolve, delay));};
 
+    // this is fucking retarded
     afterNavigate(async (navigation) => {
-        console.log(navigation)
+        navigate.set(true); //sets navigation to default value
+
         if (!$loading) {
-            if (navigation.type === "enter") {
+            if (navigation.type === "enter") { //website enter
                 let to = navigation?.to?.url.pathname ?? "/";
                 await directionProcessing(to, to, to);} //resets x, y positions
-            else {
+            else { // page refresh
                 let to = navigation?.to?.url.pathname ?? "/",
                     from = navigation?.from?.url.pathname ?? "/";
                 await directionProcessing(from, to);}} //resets x, y positions
                 // this would be nice to push inb4 a page refresh.
         else {                                  //TODO: AUTOMATED DIRECTING
             loading.set(false); // indicates page is fully preloaded.
-            navigate.set(true); //sets navigation to default value
             await awaitTimeout(transTimeOut);}
 
         await awaitTimeout(transTimeIn); // waits for fade in to complete
@@ -38,11 +39,12 @@
             from = navigation?.from?.url.pathname ?? "/";
 
         if (to !== from) { // checks for page reload
-            if (navigation.willUnload === false) {  // prevents _blank internal redirects
-                await directionProcessing(from, to);
-                loading.set(true);}}  //fallback for if the URL manager isn't doing it.
-
-        await awaitTimeout(transTimeOut);
+            if (navigation.willUnload || // prevents _blank internal redirects
+                $navigate || $loading) { // haults the current transition if already transitioning.
+                event.preventDefault();}
+            else {
+                loading.set(true);
+                await directionProcessing(from, to);}}
     });
 
     // transition types

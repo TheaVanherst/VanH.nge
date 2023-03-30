@@ -9,12 +9,7 @@ const directory =   writable(undefined);
 
 export { loading, navigate, directory };
 
-let directoryString; // god i hate this
-    directory.subscribe((val) => { directoryString = val });
-let pageLoaded; // god i hate this
-    navigate.subscribe((val) => { pageLoaded = val });
-
-// navigation controller
+// TODO: navigation controller
 
 import navigation from "$lib/controllers/navigationDirectories.js";
 
@@ -56,4 +51,4 @@ const directionProcessing = async (p,c,b = null) => {
     !b ? directory.set(c) : directory.set(b);
 }
 
-export { directionProcessing};
+export { directionProcessing };
