@@ -70,7 +70,11 @@ const descContent = defineType({
                 type: 'reference',
                 to: [
                   { type: 'author' },
-                ]
+                  { type: 'blogPost' },
+                ],
+                options: {
+                  disableNew: true,
+                }
               },{
                 title: 'Open in a new Window?', name: 'blank',
                 type: 'boolean', initialValue: false,

@@ -48,8 +48,9 @@
 		break-inside:   avoid-column;
 
 		background:			var(--backgroundTrans);
-		backdrop-filter: 	blur(2px);
-		transform: 			translate3d(0, 0, 0);
+		//backdrop-filter:    blur(2px);
+		//transform:          translate3d(0, 0, 0);
+		/*TODO: this causes issues with Z-INDEX of author tooltips.*/
 
 		margin-bottom:  var(--containerPadding);
 	}

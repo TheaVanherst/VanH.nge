@@ -11,9 +11,6 @@
     export let
         preview =   false;  // render type
 
-    // this is all over engineered to compensate for mass author data.
-    // theoretically, should handle infinite.
-
     let context = [];
 
     const filterCheck = (a1,a2,fl) => {
@@ -32,7 +29,7 @@
             // this remains here just incase I want to change it at a later date.
 
         // date context constructors // TODO: THESE NEED MOBILE COMPENSATION.
-        context[0] = `${!!editDate ? updatedPush(editDate,"Published & Edited") : "Published & Edited"} by`
+        context[0] = `${!!editDate ? updatedPush(editDate,"Published by & edited") : "Published by & edited"} by`
         context[1] = `With assistance from`
     } else {
         context[0] = `${publicationDate && !(!!editDate) ? createdPush(publicationDate) : "Published"} by`
@@ -55,11 +52,7 @@
                 {dataType.context}&nbsp;
             </span>
             {#each dataType.authors as author, i}
-                <AuthorToolTip author={author}>
-                    <span class="wrapper link">
-                        {author?.fullName}
-                    </span>
-                </AuthorToolTip>
+                <AuthorToolTip author={author}/>
 
                 {#if !last(dataType.authors,i)}
                     <span>
@@ -77,19 +70,6 @@
 </div>
 
 <style lang="scss">
-    @mixin cgm($colour, $ogTones, $thickness, $filled){
-        color:      $colour;
-        box-shadow: inset 0 0 0 0 $ogTones;
-        &::selection {
-            background: $colour;}
-
-        &:hover {
-            color:      $filled;
-            box-shadow: inset 0 0 0 $thickness $colour;}}
-
-    .nonLink { @include cgm(var(--accent4), var(--accent2), 1px, var(--accent4));} // DOESN'T DO ANYTHING
-    .link {@include cgm(var(--accent2), var(--accent1), 100px, var(--background));}
-
     @mixin cge($colour){
         .divider {
             border-left:    1px solid $colour;}}
@@ -104,15 +84,5 @@
     .handle {
         width:          min-content;
         white-space:    nowrap;
-        display:        inline;
-        font-size:      0;
-
-	    span.wrapper {
-		    margin:     0 -.25rem;
-		    padding:    .125rem  .25rem;
-
-            text-decoration:    underline 1px;
-		    transition:         color .2s ease-in-out, box-shadow .2s ease-in-out;
-
-            &:hover { text-decoration: none;}}}
+        display:        inline;}
 </style>

@@ -1,4 +1,6 @@
 
+import { referencing } from "$lib/queries/internalReferencing.js";
+
 let
     constants =
         `
@@ -32,7 +34,13 @@ let
                 profileBanner,
             },
             
-            desc,
+            desc[]{
+                ...,
+                markDefs[]{
+                    ...,
+                    ${referencing}
+                },
+            },
         `,
 
     blogPreviewQuery =
@@ -48,15 +56,24 @@ let
                 ...,
                 markDefs[]{
                     ...,
-                    _type == "internalLink" => {
-                        ...,
-                        "postSlug": @.reference->slug.current,
-                        "postFormat": @.reference->_type
-                    }
-                }
+                    ${referencing}
+                },
             },
             
             'titles': body[][style == "h4" || style == "h3" || style == "h2" || style == "h1"]
-        `
+        `,
 
-export { blogPreviewQuery, blogQuery };
+    blogToolTips =
+        `
+            'slug': slug.current,
+            
+            title,
+            'headerImage': mainImage,
+            
+            publishedAt,
+            _updatedAt,
+        `;
+
+
+
+export { blogPreviewQuery, blogQuery, blogToolTips};

@@ -87,11 +87,10 @@
         padding: 8px 0 4px calc(var(--contentPaddingY) + 40px);
 
         width:      auto;
-        font-size:  0;
+        font-size:  12px;
 
         > *:last-child:not(:first-child) {
-            border-left:   1px solid var(--fadedColourAcc);
-        }
+            border-left:   1px solid var(--fadedColourAcc);}
     }
 
     .profile {

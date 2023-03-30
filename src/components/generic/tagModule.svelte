@@ -52,6 +52,8 @@
 </div>
 
 <style lang="scss">
+    span {
+        font-size: 12px;}
 
     /* Scrollbar overflow preset */
     .tagWrapper {
@@ -92,6 +94,8 @@
                 color:          $colour;}
 
             @include cgm(var(--darkAccent3));
+            &:hover {
+                @include cgm(var(--accent3));}
 
             &.new {         @include cgm(var(--accent2));}
             &.highlight {   @include cgm(var(--accent1));}

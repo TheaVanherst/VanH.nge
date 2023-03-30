@@ -6,8 +6,7 @@
 
     const scrollIntoView = async ({target}) => {
         document.querySelector("#a"+randomId).scrollLeft =
-            document.querySelector(target.getAttribute('href')).offsetLeft;
-    }
+            document.querySelector(target.getAttribute('href')).offsetLeft;}
 
     let x = 0;
     export let push;
@@ -21,12 +20,12 @@
                 <label  class="next"
                         on:click|preventDefault={scrollIntoView}
                         href="#a{randomId}-{(e === push.length - 1 ? 0 : e + 1)}">
-                    &#x203a;
+                    <img src="/icons/rightRouteArrow.webp"/>
                 </label>
                 <label  class="prev"
                         on:click|preventDefault={scrollIntoView}
                         href="#a{randomId}-{(e !== 0 ? e - 1 : push.length - 1)}">
-                    &#x2039;
+                    <img src="/icons/rightRouteArrow.webp"/>
                 </label>
 
                 <container>
@@ -75,25 +74,27 @@
 		    position:   relative;
 
 		    label {
-			    padding:    30px 10px;
+			    padding:    10px 10px;
+
+                transform:  translateY(-50%);
 			    top:        50%;
 
-			    position: absolute;
+			    position:   absolute;
 			    z-index:    100;
-			    transform:  translateY(-50%);
-			    background: rgba(0, 0, 0, 0.50);
-
+                background: var(--accent1);
 			    transition: background .2s ease-out;
 
-			    &.next {
-				    right:  0;
-				    border-radius:  5px 0 0 5px;}
-			    &.prev {
-				    left:   0;
-				    border-radius:  0 5px 5px 0;}
-			    &:hover {
-				    background: rgba(0, 0, 0, 1);
-                }
+                > * {
+                    width:      15px;
+                    height:     15px;
+                    display:    block;
+                    pointer-events: none;}
+
+			    &.next {    right:      0;}
+			    &.prev {    left:       0;
+                    > * {   transform:  scale(-1, 1);}}
+			    &:hover {   background: var(--accent2);
+                    > * {   filter:     invert(1);} }
             }
         }
     }

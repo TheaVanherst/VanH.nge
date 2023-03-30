@@ -1,40 +1,21 @@
 <script>
-    import navigation       from "$lib/controllers/navigationDirectories.js";
+    import AuthorToolTip from "$components/generic/authorToolTip.svelte";
 
     export let portableText = null;
     let { value } = portableText;
 
     let url =       undefined;
     let focus =     '_blank';
-
-    const
-        target = (r) => {
-            return r ? '_blank' : '_self';};
-
-    if (value) {
-        // checks if import is the serializer
-
-        if (value._type === "internalLink") {
-            // Internal URLS;
-            if (value.postSlug){
-                focus = target(value.blank);
-                url = (navigation.find(e => e.local === value.postFormat)).path + "/" + value.postSlug;}}
-
-        else if (value._type === "externalLink") {
-            // External URLS
-            focus = target(value.blank);
-            url = value.href;
-        }}
-
-    else {
-        //manually inserted links
-        url =   portableText[0];
-        focus = target(portableText[1]);
-    }
 </script>
 
-{#if url}
-    <a class="redirect" href={url} target={focus}>
+{#if value._type === "internalLink"}
+    {#if value.format === "author"}
+        <AuthorToolTip author="{value.data}"/>
+    {:else if value.format === "blogPost"}
+
+    {/if}
+{:else if value.href}
+    <a class="redirect" href={value.href} target={value.blank ? '_blank' : '_self'}>
         <slot />
     </a>
 {:else} <!-- this will appear on post previews -->

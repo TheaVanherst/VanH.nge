@@ -1,4 +1,6 @@
 
+import { referencing } from "$lib/queries/internalReferencing.js";
+
 let
     constants =
         `
@@ -29,8 +31,13 @@ let
                 profileBanner,
             },
             
-            desc,
-            briefDesc,
+            desc[]{
+                ...,
+                markDefs[]{
+                    ...,
+                    ${referencing}
+                },
+            },
             gallery,
         `,
 

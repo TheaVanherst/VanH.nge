@@ -15,8 +15,6 @@
 
     // this is fucking retarded
     afterNavigate(async (n) => {
-        navigate.set(true); //sets navigation to default value
-
         if (!$loading) {            //TODO: ONLY BROWSER NAVIGATION
             let to =    n.to.url.pathname ?? "/",
                 from =  n.type === "enter" ? to :
@@ -24,6 +22,7 @@
             await directionProcessing(from, to, to);} //resets x, y positions
 
         else {                      //TODO: AUTOMATED DIRECTING
+            navigate.set(true); //sets navigation to default value
             loading.set(false); // indicates page is fully preloaded.
             await awaitTimeout(transTimeOut);}
 
@@ -38,7 +37,7 @@
         if (to !== from) { // checks for page reload
             if (n.willUnload || // prevents _blank internal redirects
                 $navigate || $loading) { // haults the current transition if already transitioning.
-                document.preventDefault();}
+                event.preventDefault();}
             else {
                 loading.set(true);
                 await directionProcessing(from, to);}}

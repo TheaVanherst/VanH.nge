@@ -36,7 +36,8 @@ let
             },
         `,
 
-    authorToolTips = `
+    authorToolTips =
+        `
             userPortrait,
             profileBanner,
             fullName,

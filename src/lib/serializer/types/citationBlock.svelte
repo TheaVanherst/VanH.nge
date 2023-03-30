@@ -1,7 +1,8 @@
 <script>
     import PostModule   from "$lib/serializer/genericSerializer.svelte"
-    export let push = undefined, titles = undefined;
-    console.log(push);
+    export let
+        push = undefined,
+        titles = undefined;
 </script>
 
 <div class="parentCite">
@@ -31,17 +32,12 @@
 </div>
 
 <style lang="scss">
-
-    span {
-        font-size:      12px;}
     sup {
         padding-left: 3px;
         display: inherit;}
 
-    * {
-        ::selection {
-            background-color: 	var(--darkAccent1)!important;}
-    }
+    * { ::selection {
+            background-color: 	var(--darkAccent1)!important;}}
 
     .parentCite {
         vertical-align: bottom;

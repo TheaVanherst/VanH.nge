@@ -12,7 +12,9 @@
      class= {colour}
      style="padding: {padding}px"
      class:overflow={overflowBool}>
-    <slot/>
+    <e style="position: relative; display: block">
+        <slot/>
+    </e>
 </div>
 
 <style lang="scss">
@@ -29,8 +31,9 @@
         padding:        var(--containerPadding);
 
         background:		    var(--backgroundTrans);
-        backdrop-filter:    blur(2px);
-        transform:          translate3d(0, 0, 0);
+        //backdrop-filter:    blur(2px);
+        //transform:          translate3d(0, 0, 0);
+        /*TODO: this causes issues with Z-INDEX of author tooltips.*/
 
 		&.overflow {    overflow:   hidden;}
 	}
