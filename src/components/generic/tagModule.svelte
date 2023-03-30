@@ -13,7 +13,7 @@
     // TODO: rewrite this to prioritize unicode.
     // this took 3 hours and I cannot be fucked to find another solution.
 
-    let viewport;
+    let vp;
     let x;
 </script>
 
@@ -25,8 +25,8 @@
         medium={true}   large={true}/>
 
     <div class="tagWrapper"
-         bind:this={viewport}
-         on:scroll={() => x = viewport.scrollLeft}>
+         bind:this={vp}
+         on:scroll={() => x = vp.scrollLeft}>
 
         <div class="tagSleeve">
             {#if !!time && relativeTime(new Date(time)) / 86400 < 14}  <!-- two weeks -->
