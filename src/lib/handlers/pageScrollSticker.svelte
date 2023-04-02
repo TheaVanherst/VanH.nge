@@ -8,10 +8,10 @@
     let w;
     let bool = false;
 
-    $: !bool && !!parent?.offsetTop && $scrollPos ? reCalc() : undefined;
+    $: !bool && !!parent?.parentElement.offsetTop && $scrollPos ? reCalc() : undefined;
 
     const reCalc = () => { //updates on element load.
-        let val = parent.offsetTop; // TODO: this MIGHT need fixing at a later date.
+        let val = parent.parentElement.offsetTop; // TODO: this MIGHT need fixing at a later date.
         max = parseInt(max) + val;
         min = val;
         bool = true;

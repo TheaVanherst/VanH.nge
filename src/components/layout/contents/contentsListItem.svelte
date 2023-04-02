@@ -1,9 +1,11 @@
 <script>
     import { scrollIntoView }   from "$lib/controllers/accessibilityController.js";
+    import { slide } from 'svelte/transition';
+
 	export let dataset;
 </script>
 
-<div class="{dataset[0].level} contentsEl">
+<div class="{dataset[0].level} contentsEl" transition:slide|local>
 	{#each dataset as embed}
 		<p href="#{embed.type}{embed.key}"
 		   on:click|preventDefault={scrollIntoView}>

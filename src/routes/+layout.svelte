@@ -5,32 +5,53 @@
 	import Background 		from "$components/layout/background.svelte"
 
 	import { scrollPos } 	from '$lib/controllers/accessibilityController';
-    import Route 			from "$lib/controllers/routeController.svelte"
-    import Transition 		from "$lib/handlers/transitionWrapper.svelte";
+
+    import Route 				from "$lib/controllers/routeController.svelte"
+    import Transition 			from "$lib/handlers/transitionWrapper.svelte";
+
+    import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
+    import Contents 			from '$components/layout/contents/contentList.svelte';
+
+    import MobileQuery from "$lib/handlers/mobileQuery.svelte";
 
 	export let data = null;
+    import {page} from "$app/stores";
 </script>
 
 <svelte:window bind:scrollY={$scrollPos} />
 <Background/>
 
-<div class="layout" id="layout">
-	<div class="nav">
-		<div>
-			<ProfileBar/>
-		</div>
-	</div>
+<div class="layout table" id="layout">
+	<MobileQuery query="(min-width: 900px)" let:matches>
+		{#if matches}
+			<div class="profileContent">
+				<PageScrollWrapper>
+					<ProfileBar/>
+				</PageScrollWrapper>
+			</div>
+		{/if}
+	</MobileQuery>
 
-<!--	<MobileQuery query="(min-width: 800px)" let:matches>-->
-<!--		{#if matches}-->
-<!--		{/if}-->
-<!--	</MobileQuery>-->
-
-	<div class="page">
+	<div class="pageContent">
 		<Route/>
-		<Transition>
-			<slot/>
-		</Transition>
+		<div class="table">
+			<div class="pageDataWrapper">
+				<Transition>
+					<slot/>
+				</Transition>
+			</div>
+			<MobileQuery query="(min-width: 640px)" let:matches>
+				{#if matches}
+					{#if !!$page.data.contentsList}
+						<div class="pageNavigation">
+							<PageScrollWrapper>
+								<Contents data={$page.data.contentsList}/>
+							</PageScrollWrapper>
+						</div>
+					{/if}
+				{/if}
+			</MobileQuery>
+		</div>
 	</div>
 </div>
 
@@ -45,25 +66,26 @@
 		margin: 	0 auto;
 		padding: 	var(--containerPadding);
 
-		max-width:  1080px; // temporary
-		width: 		100%;
-		display: 	flex;
+		max-width:  	1280px;
+	}
 
-		gap: 15px;
+	.profileContent {
+		min-width: 		235px;
+		max-width: 		25%;}
+	.pageContent {
+		width: 			100%;}
+
+	.table {
+		width: 		100%;
+		height: 	100%;
+
+		display: 	flex;
+		gap: 		15px;
 
 		> * {
-			display: 	block;
-			position:	relative;
+			display: table-cell;
+			position: relative;} }
 
-			&.nav {
-				max-width: 	25%;
-				width: 		25%;
-				min-width: 	220px;
-			}
-			&.page {
-
-				max-width: 	75%;
-				width: 		75%;}
-		}
-	}
+	.pageDataWrapper {	width: 			100%;}
+	.pageNavigation {	min-width: 		235px;}
 </style>

@@ -13,6 +13,11 @@ export const load = async () => {
                 ${blogPreviewQuery}
             }
         }`);
+    allQueries.contentsList = {
+        title:      "Contents",
+        contents:   allQueries.postRequests.map(x => x.title),
+        preview:    true,
+    };
 
     if (allQueries.postRequests) {
         return allQueries;}

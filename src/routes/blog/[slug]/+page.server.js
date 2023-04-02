@@ -6,14 +6,19 @@ import { error } from '@sveltejs/kit';
 
 export const load = async ({params}) => {
     const { slug } = params
-    const allQueries = await client.fetch(`{
+    let allQueries = await client.fetch(`{
         "requestedProject": 
             *[  _type == 'blogPost' && 
                 slug.current == '${slug}'
             ]{
                 ${ blogQuery }
-            }
+            },
     }`);
+    allQueries.contentsList = {
+        title:     allQueries.requestedProject.map(x => x.title),
+        contents:   allQueries.requestedProject.map(x => x.titles),
+        preview:    false,
+    };
 
     if (allQueries.requestedProject) {
         return allQueries;

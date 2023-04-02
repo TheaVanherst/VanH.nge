@@ -1,33 +1,35 @@
 <script>
     // local navigation checks & multipliers
-    import { navigate, loading,
+    import { navigationStatus, loadingStatus,
             directionProcessing,
              directionX, directionY}    from '$lib/controllers/directoryController.js';
     import { motion }                   from '$lib/controllers/accessibilityController';
+
     // transition imports
     import * as transitionFunctions from 'svelte/transition'
     import * as easingFunctions     from 'svelte/easing'
     // navigation checks
-    import { afterNavigate, beforeNavigate } from '$app/navigation';
+    import { afterNavigate, beforeNavigate }    from '$app/navigation';
+    import { page }                             from "$app/stores";
 
     const awaitTimeout = (delay) => {
         return new Promise(resolve => setTimeout(resolve, delay));};
 
     // this is fucking retarded
     afterNavigate(async (n) => {
-        if (!$loading) {            //TODO: ONLY BROWSER NAVIGATION
+        if (!$loadingStatus) {            //TODO: ONLY BROWSER NAVIGATION
             let to =    n.to.url.pathname ?? "/",
                 from =  n.type === "enter" ? to :
                         n?.from?.url.pathname ?? "/"; //checks reload vs browser
             await directionProcessing(from, to, to);} //resets x, y positions
 
         else {                      //TODO: AUTOMATED DIRECTING
-            navigate.set(true); //sets navigation to default value
-            loading.set(false); // indicates page is fully preloaded.
+            navigationStatus.set(true); //sets navigation to default value
+            loadingStatus.set(false); // indicates page is fully preloaded.
             await awaitTimeout(transTimeOut);}
 
         await awaitTimeout(transTimeIn); // waits for fade in to complete
-        navigate.set(false); // indicates page has transitioned
+        navigationStatus.set(false); // indicates page has transitioned
     });
 
     beforeNavigate(async (n) => {   //TODO: ONLY BROWSER NAVIGATION
@@ -36,14 +38,16 @@
 
         if (to !== from) { // checks for page reload
             if (n.willUnload || // prevents _blank internal redirects
-                $navigate || $loading) { // haults the current transition if already transitioning.
+                $navigationStatus || $loadingStatus) { // haults the current transition if already transitioning.
                 event.preventDefault();}
             else {
-                loading.set(true);
+                loadingStatus.set(true);
                 await directionProcessing(from, to);}}
 
         await awaitTimeout(transTimeIn);
     });
+
+    $:console.log(beforeNavigate);
 
     // transition types
     export let
@@ -68,14 +72,18 @@
         transY = 30;
 </script>
 
-{#if !$loading && !$navigate} <!-- loading checks -->
+{#if !$loadingStatus && !$navigationStatus} <!-- loading checks -->
     <div class="transitionWrapper"
          in:transition={{
-                transTimeIn, delayIn, easing,
+                duration:transTimeIn,
+                delay:delayIn,
+                ease:easing,
                 x: transX * -$directionX,
                 y: transY * $directionY}}
          out:transition={{
-                transTimeOut, delayOut, easing,
+                duration:transTimeOut,
+                delay:delayOut,
+                ease:easing,
                 x: transX * $directionX,
                 y: transY * -$directionY}}>
         <slot/>

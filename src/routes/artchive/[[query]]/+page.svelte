@@ -5,15 +5,18 @@
     export let data = [];
 </script>
 
-<div class="content">
+<div class="gallery">
 	<Masonry
-		items=	{data.postRequests}
-		gap=	{15}
-		idKey=	{`_id`}
-
-		animate=		{false}
-		columnClass=	"flex"
-		let:item>
+			items=	{data.postRequests}
+			gap=	{15}
+			idKey=	{`_id`}
+			animate=		{false}
+			columnClass=	"flex"
+			let:item>
 		<ArtPost post={item}/>
 	</Masonry>
 </div>
+
+<style lang="scss">
+
+</style>

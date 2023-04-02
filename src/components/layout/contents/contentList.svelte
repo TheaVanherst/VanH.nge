@@ -1,10 +1,19 @@
 <script>
-    import ContentsWrapper 		from "$components/layout/contents/contentsWrapper.svelte";
     import ContentsListItem 	from "$components/layout/contents/contentsListItem.svelte";
 
-    export let
-		list = 	[],
-		title = "";
+    import { slide } from 'svelte/transition';
+    import { scrollIntoView } from "$lib/controllers/accessibilityController.js";
+
+    export let data = [];
+
+    const stripGen = (arr) => {
+        return arr.map(x => {
+            return {
+                text: x,
+                key: x,
+                level: "h1",
+                type: "",};});
+	}
 
     const arrayGen = (arr) => {
         let relArray = [],
@@ -49,8 +58,59 @@
         }
         return nest(relArray)
 	}
+
+    let list, title;
+    $: list = !data.preview ? arrayGen(data.contents[0]) : stripGen(data.contents);
+
+	let hov = false;
 </script>
 
-<ContentsWrapper title={title}>
-	<ContentsListItem dataset={arrayGen(list)}/>
-</ContentsWrapper>
+{#if list}
+	<div class="container {!hov ? 'green' : 'orange'}"
+		 in:slide={{delay:300}} out:slide>
+		<div	class="title"
+				on:click|preventDefault={scrollIntoView}>
+			<p>
+				{data.title}
+			</p>
+		</div>
+
+		<div class="contents">
+			<ContentsListItem dataset={list}/>
+		</div>
+	</div>
+{/if}
+
+<style lang="scss">
+	@mixin cgm($colour){ border: 1px solid $colour;}
+
+	.container {
+		margin-bottom:  var(--containerPadding);
+
+		break-inside:   avoid-column;
+		background:		var(--backgroundTrans);
+
+		&.green {   @include cgm(var(--accent1));}
+		&.orange {  @include cgm(var(--darkAccent3));}
+	}
+
+	.title {
+		cursor:			alias;
+		background: 	var(--accent1);
+
+		p {
+			font-size: 		100%;
+			font-family: 	"Arimo", sans-serif;
+			color: 			var(--textColourInvert);
+			font-weight: 	800;
+
+			padding: 		10px 15px 10px 15px;}
+
+		&:hover {
+			background: 	var(--darkAccent3);}
+	}
+
+	.contents {
+		padding:	calc(var(--containerPadding) - 5px);
+	}
+</style>

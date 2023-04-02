@@ -10,11 +10,15 @@ let referencing =
             @.reference->
                 _type == "author" => {
                     "data": @.reference-> {
-                        ${authorToolTips}}},
+                        ${authorToolTips}
+                    }
+                },
             @.reference->
                 _type == "blogPost" => {
                     "data": @.reference-> {
-                        ${blogToolTips}}},
+                        ${blogToolTips}
+                    }
+                },
         },
     `
 

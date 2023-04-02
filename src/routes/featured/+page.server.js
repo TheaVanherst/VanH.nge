@@ -22,6 +22,12 @@ export const load = async () => {
             }
     }`);
 
+    allQueries.contentsList = {
+        title:     "Contents",
+        contents:   allQueries.featuredBlogPosts.map(x => x.title),
+        preview:    true,
+    };
+
     if (allQueries.featuredProject) {
         return allQueries;
     } else {

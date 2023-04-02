@@ -14,9 +14,9 @@
 </script>
 
 <Container
-        overflowBool="{false}"
-        id="post-{post.slug}"
-        colour="orange">
+    overflowBool="{false}"
+    id="post-{post.slug}"
+    colour="orange">
     <PostHeader
             titleHeader="{post.headerImage}"
             title="{post.title}"/>

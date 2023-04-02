@@ -3,11 +3,11 @@ import { writable } from 'svelte/store';
 
 // navigation fetch vars
 
-const loading =     writable(false);
-const navigate =  writable(true);
+const loadingStatus =     writable(false);
+const navigationStatus =  writable(true);
 const directory =   writable(undefined);
 
-export { loading, navigate, directory };
+export { loadingStatus, navigationStatus, directory };
 
 // TODO: navigation controller
 
