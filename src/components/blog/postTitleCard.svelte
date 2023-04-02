@@ -42,6 +42,7 @@
             transform:          scale(0.9, 1);
 
             h2 {
+                text-transform: uppercase;
                 margin: 0 0 4px 2px;}
         }
 

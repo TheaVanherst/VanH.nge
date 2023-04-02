@@ -1,7 +1,7 @@
 <script>
     import SanityImage  from '$lib/serializer/imageBuilder.svelte'
 
-    import PostHeader   from "$components/generic/postTitleCard.svelte";
+    import PostHeader   from "$components/blog/postTitleCard.svelte";
     import AuthorTag    from "$components/generic/authorTag.svelte";
 
     import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js"

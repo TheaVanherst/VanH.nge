@@ -6,7 +6,7 @@
     import InvContainer     from "$components/globals/todo/invContainer.svelte";
 
     import AuthorTag        from "$components/generic/authorTag.svelte";
-    import PostHeader       from "$components/generic/postTitleCard.svelte";
+    import PostHeader       from "$components/blog/postTitleCard.svelte";
 
     export let post = null;
 </script>

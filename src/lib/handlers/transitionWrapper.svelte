@@ -1,16 +1,18 @@
 <script>
     // local navigation checks & multipliers
-    import { navigationStatus, loadingStatus,
-            directionProcessing,
-             directionX, directionY}    from '$lib/controllers/directoryController.js';
+    import { navigationStatus, loadingStatus, directionProcessing,
+             directionX, directionY }   from '$lib/controllers/directoryController.js';
     import { motion }                   from '$lib/controllers/accessibilityController';
 
+    import LoadingFull from "$components/globals/components/loadingFull.svelte";
+
     // transition imports
-    import * as transitionFunctions from 'svelte/transition'
-    import * as easingFunctions     from 'svelte/easing'
+    import * as transitionFunctions from 'svelte/transition';
+    import * as easingFunctions     from 'svelte/easing';
+    import { fade }                 from "svelte/transition";
+
     // navigation checks
     import { afterNavigate, beforeNavigate }    from '$app/navigation';
-    import { page }                             from "$app/stores";
 
     const awaitTimeout = (delay) => {
         return new Promise(resolve => setTimeout(resolve, delay));};
@@ -61,15 +63,15 @@
 
     // transition timeout vars
     export let
-        transTimeIn = 200,
-        transTimeOut = 200;
+        transTimeIn = 250,
+        transTimeOut = 250;
     export let // allows page delays
         delayIn = 0,
         delayOut = 0;
 
     export let // transition position multipliers
-        transX = 30,
-        transY = 30;
+        transX = 25,
+        transY = 25;
 </script>
 
 {#if !$loadingStatus && !$navigationStatus} <!-- loading checks -->
@@ -88,12 +90,19 @@
                 y: transY * -$directionY}}>
         <slot/>
     </div>
+{:else}
+    <div class="loader">
+        <LoadingFull/>
+    </div>
 {/if}
 
+
+
 <style lang="scss">
-    div { //fallback
-        min-width:  100%;
-        max-width:  100%;
-        width:      100%;
+    .loader {
+        width:  110px;
+        height: 110px;
+        margin: 50px 0 0 -50px;
+        position: absolute;
     }
 </style>
