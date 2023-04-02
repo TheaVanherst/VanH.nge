@@ -77,17 +77,6 @@ div.dogma {
 	text-wrap: none;
 }
 
-.buttonWrapper {
-	position:   relative;
-
-	margin-left: 20px;
-	border-left: 2px solid var(--darkAccent3);
-
-	.wrapperOffset {
-		margin-left: -20px;
-	}
-}
-
 @mixin tcr($colour){
 	color: $colour;
 	&::selection {

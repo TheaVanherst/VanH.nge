@@ -100,6 +100,7 @@
 
 <style lang="scss">
     .loader {
+        top: 0px;
         width:  110px;
         height: 110px;
         margin: 50px 0 0 -50px;

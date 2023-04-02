@@ -14,6 +14,7 @@ export const load = async ({params}) => {
                 ${ blogQuery }
             },
     }`);
+
     allQueries.contentsList = {
         title:     allQueries.requestedProject.map(x => x.title),
         contents:   allQueries.requestedProject.map(x => x.titles),

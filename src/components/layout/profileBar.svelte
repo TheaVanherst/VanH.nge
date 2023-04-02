@@ -6,17 +6,22 @@
     import Switch 		from '$components/globals/components/toggleSwitch.svelte';
     import StatusBlock 	from "$components/globals/titles/nervStatusBlock.svelte";
 
-    import NervButton from "$components/globals/misc/nervButtonChunk.svelte";
+    import RacingComp from "$components/globals/components/racingComp.svelte";
+    import { navigationStatus, loadingStatus }   from '$lib/controllers/directoryController.js';
 </script>
+
 <div class="profileGraphic">
 	<img src="/profileGraphic.png"/>
 </div>
 
 <StatusBlock
-		title="TEST PLUG 00"
-		substitle="MONITOR"
-		external="THEA VANHERST"
-		padding="0 0 15px"/>
+	title="TEST PLUG 00" substitle="MONITOR"
+	external="THEA VANHERST" padding="0 0 10px"/>
+
+<RacingComp
+	colours="{['green','red','red']}"
+	titles="{['STOP','SLOW','RACING']}"
+	bools={[!$loadingStatus && !$navigationStatus, $loadingStatus, $navigationStatus]}/>
 
 <div class="buttonWrapper">
 	<div class="wrapperOffset">
@@ -45,6 +50,16 @@
 
 			position:   absolute;
 			animation:  float 6s ease-in-out infinite;
+		}
+	}
+
+	.buttonWrapper {
+		margin-left: 	20px;
+		margin-top: 	10px;
+		border-left: 	2px solid var(--darkAccent3);
+
+		.wrapperOffset {
+			margin-left: -20px;
 		}
 	}
 

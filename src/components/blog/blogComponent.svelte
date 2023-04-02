@@ -49,8 +49,8 @@
     </div>
 
     <TagModule
-            time="{post.publishedAt}"
-            tags={post.categories}/>
+        time="{post.publishedAt}"
+        tags={post.categories}/>
 
     <p class="description">
         <PostModule postData="{post.desc}"/>

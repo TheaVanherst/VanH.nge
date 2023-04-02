@@ -14,8 +14,11 @@
 
     import MobileQuery from "$lib/handlers/mobileQuery.svelte";
 
+    import SimplifiedGallery from "$components/generic/simplifiedGallery.svelte";
+
 	export let data = null;
     import {page} from "$app/stores";
+    $: console.log($page);
 </script>
 
 <svelte:window bind:scrollY={$scrollPos} />
@@ -45,7 +48,13 @@
 					{#if !!$page.data.contentsList}
 						<div class="pageNavigation">
 							<PageScrollWrapper>
-								<Contents data={$page.data.contentsList}/>
+								{#if !!$page.data.contentsList}
+									<Contents data={$page.data.contentsList}/>
+								{/if}
+								{#if !!$page.data.featuredProject}
+									<SimplifiedGallery post={$page.data.featuredProject[0]}/>
+									<SimplifiedGallery post={$page.data.featuredProject[1]}/>
+								{/if}
 							</PageScrollWrapper>
 						</div>
 					{/if}
@@ -70,7 +79,7 @@
 	}
 
 	.profileContent {
-		min-width: 		235px;
+		min-width: 		222px;
 		max-width: 		25%;}
 	.pageContent {
 		width: 			100%;}
@@ -86,6 +95,7 @@
 			display: table-cell;
 			position: relative;} }
 
-	.pageDataWrapper {	width: 			100%;}
+	.pageDataWrapper {	transition: width .3s ease-in-out;
+						width: 			100%;}
 	.pageNavigation {	min-width: 		235px;}
 </style>

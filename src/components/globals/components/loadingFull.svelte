@@ -1,7 +1,16 @@
+
 <div class="loading">
 	<div class="plane">
 		<div class="circle outer"></div>
 		<div class="circle in"></div>
+		<div class="rotation tilt">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 	</div>
 	<div class="plane tilt">
 		<div class="circle out"></div>
@@ -10,8 +19,7 @@
 
 <style lang="scss">
 	.loading {
-		filter: drop-shadow(0px 0px 2px var(--darkAccent1));
-	}
+		filter: drop-shadow(0px 0px 2px var(--darkAccent1));}
 
 	.plane {
 		position: absolute;
