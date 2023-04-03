@@ -3,23 +3,25 @@
 	import '../styles.scss';
 
     // global query handlers
-    import MobileQuery from "$lib/handlers/mobileQuery.svelte";
+    import MobileQuery 		from "$lib/handlers/mobileQuery.svelte";
     import { scrollPos } 	from '$lib/controllers/accessibilityController';
 
 	// navigation bar
-	import ProfileBar 		from "$components/layout/profileBar.svelte";
-	import Background 		from "$components/layout/background.svelte"
+	import ProfileBar 	from "$components/layout/profileBar.svelte";
+	import Background 	from "$components/layout/background.svelte"
 
     // page top
-    import Route 				from "$lib/controllers/routeController.svelte"
-    import Transition 			from "$lib/handlers/transitionWrapper.svelte";
+    import Route 		from "$lib/controllers/routeController.svelte"
+    // import Transition 	from "$lib/handlers/transitionWrapper.svelte";
+    import Transition 	from "$lib/handlers/newTransitionWrapper.svelte";
 
     // sidebar
     import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
     import Contents 			from '$components/layout/contents/contentList.svelte';
-    import SimplifiedGallery from "$components/generic/simplifiedGallery.svelte";
+    import SimplifiedGallery 	from "$components/generic/simplifiedGallery.svelte";
 
-    import { fade, slide }                 from "svelte/transition";
+    // temp
+    import { fade, slide }	from "svelte/transition";
 
 	export let data = null;
 
@@ -30,13 +32,16 @@
 <Background/>
 
 <div class="layout table" id="layout">
+
 	<MobileQuery query="(min-width: 900px)" let:matches>
 		{#if matches}
+
 			<div class="profileContent">
 				<PageScrollWrapper>
 					<ProfileBar/>
 				</PageScrollWrapper>
 			</div>
+
 		{/if}
 	</MobileQuery>
 
@@ -51,6 +56,7 @@
 
 			<MobileQuery query="(min-width: 640px)" let:matches>
 				{#if matches}
+
 					{#if !!$page.data.contentsList || !!$page.data.featuredProject}
 						<div class="pageNavigation">
 							<PageScrollWrapper>
@@ -71,6 +77,7 @@
 							</PageScrollWrapper>
 						</div>
 					{/if}
+
 				{/if}
 			</MobileQuery>
 

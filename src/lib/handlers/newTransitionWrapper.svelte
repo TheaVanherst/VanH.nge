@@ -1,8 +1,8 @@
 <script>
     // local navigation checks & multipliers
     import { navigationStatus, loadingStatus, directionProcessing,
-             directionX, directionY }   from '$lib/controllers/directoryController.js';
-    import { motion }                   from '$lib/controllers/accessibilityController';
+        directionX, directionY }    from '$lib/controllers/directoryController.js';
+    import { motion }               from '$lib/controllers/accessibilityController';
 
     import LoadingFull from "$components/globals/components/loadingFull.svelte";
 
@@ -11,25 +11,20 @@
     import * as easingFunctions     from 'svelte/easing';
 
     // navigation checks
-    import { afterNavigate, beforeNavigate }    from '$app/navigation';
+    import { afterNavigate, beforeNavigate} from '$app/navigation';
 
-    const awaitTimeout = (delay) => {
-        return new Promise(resolve => setTimeout(resolve, delay));};
+    let pageUpdate = {};
 
-    // this is fucking retarded
     afterNavigate(async (n) => {
         if (!$loadingStatus) {            //TODO: ONLY BROWSER NAVIGATION
             let to =    n.to.url.pathname ?? "/",
                 from =  n.type === "enter" ? to :
                         n?.from?.url.pathname ?? "/"; //checks reload vs browser
             await directionProcessing(from, to, to);} //resets x, y positions
-
         else {                      //TODO: AUTOMATED DIRECTING
             navigationStatus.set(true); //sets navigation to default value
-            loadingStatus.set(false); // indicates page is fully preloaded.
-            await awaitTimeout(transTimeOut);}
+            loadingStatus.set(false);} // indicates page is fully preloaded.
 
-        await awaitTimeout(transTimeIn); // waits for fade in to complete
         navigationStatus.set(false); // indicates page has transitioned
     });
 
@@ -38,14 +33,14 @@
             from =  n?.from?.url.pathname ?? "/";
 
         if (to !== from) { // checks for page reload
+            pageUpdate = {};
+
             if (n.willUnload || // prevents _blank internal redirects
-                $navigationStatus || $loadingStatus) { // haults the current transition if already transitioning.
+                    $navigationStatus || $loadingStatus) { // haults the current transition if already transitioning.
                 event.preventDefault();}
             else {
                 loadingStatus.set(true);
                 await directionProcessing(from, to);}}
-
-        await awaitTimeout(transTimeIn);
     });
 
     // transition types
@@ -63,31 +58,36 @@
         transTimeIn = 250,
         transTimeOut = 250;
     export let // allows page delays
-        delayIn = 0,
+        delayIn = 250,
         delayOut = 0;
-
     export let // transition position multipliers
         transX = 25,
         transY = 25;
+
+    // TODO: This needs to be stored
 </script>
 
-{#if !$loadingStatus && !$navigationStatus} <!-- loading checks -->
+{#key pageUpdate}
     <div class="transitionWrapper"
-         in:transition={{
-                duration:transTimeIn,
-                delay:delayIn,
-                ease:easing,
-                x: transX * -$directionX,
-                y: transY * $directionY}}
-         out:transition={{
-                duration:transTimeOut,
-                delay:delayOut,
-                ease:easing,
-                x: transX * $directionX,
-                y: transY * -$directionY}}>
-        <slot/>
+        in:transition={{
+            ease:       easing,
+            duration:   transTimeIn,
+            delay:      delayIn,
+            x: transX * -$directionX,
+            y: transY * $directionY}}
+        out:transition={{
+            ease:       easing,
+            duration:   transTimeOut,
+            delay:      delayOut,
+            x: transX * $directionX,
+            y: transY * -$directionY}}>
+        <div class="absol">
+            <slot/>
+        </div>
     </div>
-{:else}
+{/key}
+
+{#if !(!$loadingStatus && !$navigationStatus)}
     <div class="loader">
         <LoadingFull/>
     </div>
@@ -103,4 +103,9 @@
         margin: 50px 0 0 -50px;
         position: absolute;
     }
+
+    :global(.transitionWrapper > .absol:nth-child(1)) {
+        position: relative;}
+    :global(.transitionWrapper > .absol:nth-child(0)) {
+        position: absolute;}
 </style>
