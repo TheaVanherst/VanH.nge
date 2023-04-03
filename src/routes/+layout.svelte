@@ -1,22 +1,28 @@
 <script>
+	// general shit
 	import '../styles.scss';
 
+    // global query handlers
+    import MobileQuery from "$lib/handlers/mobileQuery.svelte";
+    import { scrollPos } 	from '$lib/controllers/accessibilityController';
+
+	// navigation bar
 	import ProfileBar 		from "$components/layout/profileBar.svelte";
 	import Background 		from "$components/layout/background.svelte"
 
-	import { scrollPos } 	from '$lib/controllers/accessibilityController';
-
+    // page top
     import Route 				from "$lib/controllers/routeController.svelte"
     import Transition 			from "$lib/handlers/transitionWrapper.svelte";
 
+    // sidebar
     import PageScrollWrapper 	from "$lib/handlers/pageScrollSticker.svelte";
     import Contents 			from '$components/layout/contents/contentList.svelte';
-
-    import MobileQuery from "$lib/handlers/mobileQuery.svelte";
-
     import SimplifiedGallery from "$components/generic/simplifiedGallery.svelte";
 
+    import { fade, slide }                 from "svelte/transition";
+
 	export let data = null;
+
     import { page } from "$app/stores";
 </script>
 
@@ -52,8 +58,15 @@
 									<Contents data={$page.data.contentsList}/>
 								{/if}
 								{#if !!$page.data.featuredProject}
-									<SimplifiedGallery post={$page.data.featuredProject[0]}/>
-									<SimplifiedGallery post={$page.data.featuredProject[1]}/>
+									<div transition:slide id="test">
+										{#key $page.data.featuredProject[0]}
+											<div transition:fade>
+												{#each $page.data.featuredProject as artElement}
+													<SimplifiedGallery post={artElement}/>
+												{/each}
+											</div>
+										{/key}
+									</div>
 								{/if}
 							</PageScrollWrapper>
 						</div>
@@ -66,6 +79,16 @@
 </div>
 
 <style lang="scss">
+	#test {
+		> *:nth-child(0){
+			position: relative;
+		}
+		> *:nth-child(1){
+			position: absolute;
+		}
+	}
+
+
 	* {
 		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 		-moz-box-sizing: 	border-box; /* Firefox, other Gecko */

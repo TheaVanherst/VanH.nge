@@ -9,7 +9,6 @@
     // transition imports
     import * as transitionFunctions from 'svelte/transition';
     import * as easingFunctions     from 'svelte/easing';
-    import { fade }                 from "svelte/transition";
 
     // navigation checks
     import { afterNavigate, beforeNavigate }    from '$app/navigation';
