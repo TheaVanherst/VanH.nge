@@ -17,8 +17,7 @@
     import SimplifiedGallery from "$components/generic/simplifiedGallery.svelte";
 
 	export let data = null;
-    import {page} from "$app/stores";
-    $: console.log($page);
+    import { page } from "$app/stores";
 </script>
 
 <svelte:window bind:scrollY={$scrollPos} />
@@ -43,9 +42,10 @@
 					<slot/>
 				</Transition>
 			</div>
+
 			<MobileQuery query="(min-width: 640px)" let:matches>
 				{#if matches}
-					{#if !!$page.data.contentsList}
+					{#if !!$page.data.contentsList || !!$page.data.featuredProject}
 						<div class="pageNavigation">
 							<PageScrollWrapper>
 								{#if !!$page.data.contentsList}
@@ -60,6 +60,7 @@
 					{/if}
 				{/if}
 			</MobileQuery>
+
 		</div>
 	</div>
 </div>

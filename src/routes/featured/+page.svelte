@@ -5,12 +5,10 @@
 	export let data = null;
 </script>
 
-{#if data.featuredBlogPosts}
-	<DefaultTitle>
-		LATEST BLOGS
-	</DefaultTitle>
+<DefaultTitle>
+	LATEST BLOGS
+</DefaultTitle>
 
-	{#each data.featuredBlogPosts as post}
-		<BlogPostPreview post={post}/>
-	{/each}
-{/if}
+{#each data.postRequests as post}
+	<BlogPostPreview post={post}/>
+{/each}

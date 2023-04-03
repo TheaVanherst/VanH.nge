@@ -2,10 +2,13 @@
     import { onMount } from "svelte";
     import CitationBlock from "$lib/serializer/types/citationBlock.svelte";
 
-    // this checks if it's a portable text comp or a manual request from a component -
-	// and streamlines it into the same type of data, so it can be requested at will.
-    export let portableText = null;
-    export let margin = 5;
+    export let
+		portableText = null;
+
+    export let
+		margin = 5,
+		citations = true;
+
     let value = portableText?.value ? portableText?.value : portableText;
 
     const sideArr = [
@@ -129,10 +132,6 @@
                 returnSheet = (await import(`./galleryTypes/vertical.svelte`)).default
                 break;
         }
-
-        // to add to this, copy and paste and pick how you want it to be divided through a function call
-		// then add the return sheet via; /lib/serializer/gallerytypes/[galleryFormat].svelte
-		// the case HAS to be equal to what the name is in the CMS.
     });
 </script>
 
@@ -146,7 +145,7 @@
 	</div>
 {/if}
 
-{#if returnSheet && length > 0} <!-- checks if citations exist -->
+{#if returnSheet && length > 0 && citations} <!-- checks if citations exist -->
 	{#if returnSheet}
 		<div style="margin-bottom:{margin}px">
 			<CitationBlock push={commentArray} titles={titles}/>
@@ -161,14 +160,14 @@
 	$backgroundSize: 800px; // gradient resolution in X.
 
 	@mixin cgm($aspect, $cols, $height){
-		aspect-ratio: 	$aspect;
+		aspect-ratio: 	calc(1 / $aspect);
 		column-count: 	$cols;
 		> * {
 			height: 	$height;}}
 
-	.gen0 {@include cgm(1/1, 1, 100%);}
-	.gen1 {@include cgm(1/0.5, 2, 200%);}
-	.gen2 {@include cgm(1/0.3, 3, 300%);}
+	.gen0 {@include cgm(1, 1, 100%);}
+	.gen1 {@include cgm(0.5, 2, 200%);}
+	.gen2 {@include cgm(0.3, 3, 300%);}
 
 	.shimmer {
 		width: 	100%;

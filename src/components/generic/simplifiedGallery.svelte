@@ -7,6 +7,6 @@
 </script>
 
 <Container colour="yellow" padding={5}>
-    <ImageGallery margin={5} portableText={post.gallery}/>
+    <ImageGallery margin={5} portableText={post.gallery} citations={false}/>
     <TagModule time="{post.publishedAt}" tags={post.categories}/>
 </Container>

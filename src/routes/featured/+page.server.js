@@ -1,34 +1,27 @@
 
-import client from "$lib/sanityClient.js";
-import { blogPreviewQuery } from "$lib/queries/blogPosts"
-import { artQuery } from "$lib/queries/galleryPosts.js";
+import client       from "$lib/sanityClient.js";
+import { error }    from '@sveltejs/kit';
 
-import { error } from '@sveltejs/kit';
+import { blogPreviewQuery } from "$lib/queries/blogPosts";
+import { pinnedId }         from "$lib/queries/internalReferencing.js";
 
 export const load = async () => {
-    const allQueries = await client.fetch(`{
-        "featuredProject":
-            *[ _type == "artPost" && 
-                "📌 Pinned" in categories[] -> title
-            ] | order(publishedAt desc)
-            {
-                ${ artQuery }
-            },
-        "featuredBlogPosts": 
+    let allQueries = await client.fetch(`{
+        "postRequests": 
             *[ _type == "blogPost" && 
-                "📌 Pinned" in categories[] -> title
+                "${ pinnedId }" in categories[] -> _id
             ] | order(publishedAt desc){
                 ${ blogPreviewQuery }
             }
-    }`);
+        }`);
 
     allQueries.contentsList = {
         title:     "Contents",
-        contents:   allQueries.featuredBlogPosts.map(x => x.title),
+        contents:   allQueries.postRequests.map(x => x.title),
         preview:    true,
     };
 
-    if (allQueries.featuredProject) {
+    if (allQueries.postRequests) {
         return allQueries;
     } else {
         throw new error(404, "There was an searching for featured posts.")
