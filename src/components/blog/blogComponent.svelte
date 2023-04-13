@@ -2,7 +2,7 @@
     import SanityImage  from '$lib/serializer/imageBuilder.svelte'
 
     import PostHeader   from "$components/blog/postTitleCard.svelte";
-    import AuthorTag    from "$components/generic/authorTag.svelte";
+    import AuthorToolTip from "$components/generic/authorToolTip.svelte";
 
     import { createdPush, updatedPush } from "$lib/builders/dateBuilder.js"
 
@@ -21,17 +21,6 @@
             titleHeader="{post.headerImage}"
             title="{post.title}"/>
 
-    <div class="profile">
-        <div class="author">
-            <SanityImage image={post.author.userPortrait}/>
-        </div>
-        {#if post.editor && post.author._id !== post.editor._id}
-            <div class="editor">
-                <SanityImage image={post.editor.userPortrait}/>
-            </div>
-        {/if}
-    </div>
-
     <div class="date">
         <p class="createdOn">
             {createdPush(post.publishedAt)}
@@ -44,8 +33,32 @@
     </div>
 
     <div class="userData">
-        <AuthorTag
-            authors={[post.author]} editors={[post.editor]}/>
+        {#if post.author}
+            <AuthorToolTip author={post.author} tag={false}>
+                <div class="wrap author">
+                    <div class="picture">
+                        <SanityImage image={post.author.userPortrait}/>
+                    </div>
+                    <div class="authorTag">
+                        <p class="handle">{post.author.fullName}</p>
+                        <p>Author</p>
+                    </div>
+                </div>
+            </AuthorToolTip>
+        {/if}
+        {#if post.editor}
+            <AuthorToolTip author={post.author} tag={false}>
+                <div class="wrap editor">
+                    <div class="picture">
+                        <SanityImage image={post.editor.userPortrait}/>
+                    </div>
+                    <div class="authorTag">
+                        <p class="handle">{post.editor.fullName}</p>
+                        <p>Editor</p>
+                    </div>
+                </div>
+            </AuthorToolTip>
+        {/if}
     </div>
 
     <TagModule
@@ -62,7 +75,7 @@
     .date {
         background-color: var(--accent1);
 
-        padding:    10px 15px 10px 50px;
+        padding:    10px 15px;
         overflow:   hidden;
 
         p {
@@ -83,14 +96,47 @@
     }
 
     .userData {
-        display: flex;
-        padding: 8px 0 4px calc(var(--contentPaddingY) + 40px);
+        padding: 15px 0 10px;
 
         width:      auto;
         font-size:  12px;
 
-        > *:last-child:not(:first-child) {
-            border-left:   1px solid var(--fadedColourAcc);}
+        column-count:   2;
+        gap:            15px;
+
+        @mixin cgm($colour){
+            border:     1px solid $colour;
+            border-top: 3px solid $colour;
+            .handle {
+                color: $colour;}}
+
+        .wrap {
+            background-color:   var(--backgroundTrans);
+            backdrop-filter:    blur(2px);
+
+            padding:        10px;
+            white-space:    nowrap;
+            display:        flex;
+
+            &.author {
+                @include cgm(var(--accent1));}
+            &.editor {
+                @include cgm(var(--darkAccent3));}
+            &:hover {
+                @include cgm(var(--accent3));}
+
+            > .picture {
+                width:      36px;
+                height:     36px;
+
+                border-radius:  50%;
+                overflow:       hidden;}
+
+            > .authorTag {
+                margin: auto 10px;
+
+                > *:not(:last-child) {
+                    padding-bottom: 2px;}}}
     }
 
     .profile {

@@ -79,7 +79,8 @@
             font-size:      12px;
             line-height:    12px;
 
-            //cursor:         pointer;
+            background-color:   var(--backgroundTrans);
+            cursor:             pointer;
 
             @mixin cgm($color) {
                 border:     1px solid $color;

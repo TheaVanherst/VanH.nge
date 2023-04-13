@@ -2,6 +2,7 @@
     import SanityImage 		from "$lib/serializer/imageBuilder.svelte";
 
     export let author = undefined;
+    export let tag = true;
 
     let h = false;
 	let p, c;
@@ -13,17 +14,29 @@
     // TODO: This needs compensation to prevent it overflowing the window
 </script>
 
-<span
-	class="holder"
-	bind:this={p}
-	on:mouseover={	() => h = true}
-	on:mouseleave={	() => h = false}>
-	<a href="/authors/{author.slug.current ?? author.slug}">
-		<span class="author">
-        	{author.fullName}
-        </span>
-	</a>
-</span>
+{#if tag}
+	<span
+		class="holder"
+		bind:this={p}
+		on:mouseover={	() => h = true}
+		on:mouseleave={	() => h = false}>
+		<a href="/authors/{author.slug.current ?? author.slug}">
+			<span class="author">
+				{author.fullName}
+			</span>
+		</a>
+	</span>
+{:else}
+	<div
+		bind:this={p}
+		on:mouseover={	() => h = true}
+		on:mouseleave={	() => h = false}>
+		<a href="/authors/{author.slug.current ?? author.slug}">
+			<slot/>
+		</a>
+	</div>
+{/if}
+
 {#if h}
 	<div id="tooltip"
 		 bind:this={c}
